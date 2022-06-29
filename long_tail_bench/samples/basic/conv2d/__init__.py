@@ -9,7 +9,7 @@ import json
 
 
 def get_sample_config():
-    with open("/data/liuhangda/op_test/LongTail-Bench/long_tail_bench/samples/conv2d/conv2d.json", "r") as f:
+    with open("./long_tail_bench/samples/basic/conv2d/conv2d.json", "r") as f:
         arg_data = json.load(f)
     arg_data_length = len(arg_data["input_size"])
     args_cases_ = []

@@ -9,7 +9,7 @@ import json
 
 
 def get_sample_config():
-    with open("/data/liuhangda/op_test/LongTail-Bench/long_tail_bench/samples/add/add.json", "r") as f:
+    with open("./long_tail_bench/samples/basic/add/add.json", "r") as f:
         arg_data = json.load(f)
     arg_data_length = len(arg_data["add1"])
     args_cases_ = []

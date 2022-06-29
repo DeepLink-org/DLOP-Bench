@@ -11,7 +11,8 @@ from long_tail_bench.core import registry
 from long_tail_bench.core.engine import Engine
 
 # Register all cases
-from long_tail_bench import samples  # noqa
+from long_tail_bench.samples import basic  # noqa
+from long_tail_bench.samples import long_tail   # noqa
 
 if BENCH_DEBUG:
     from long_tail_bench.core.executer import log_debug_info
