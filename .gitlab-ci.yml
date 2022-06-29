@@ -1,0 +1,28 @@
+stages:
+  - lint
+  - benchmark-test
+
+variables:
+  PAT_IMAGE: "registry.sensetime.com/parrots/parrots:pat_latest_ci"
+
+lint:lint-python:
+  image: $PAT_IMAGE
+  stage: lint
+  tags:
+    - long_tail_bench
+  script:
+    - source /usr/local/env/pat_latest && make lint
+  allow_failure: true
+
+benchmark-test:pat-test:
+  image: $PAT_IMAGE
+  stage: benchmark-test
+  variables:
+    KUBERNETES_RESOURCES_LIMITS_NVIDIA.COM/GPU: 1
+    KUBERNETES_RESOURCES_REQUESTS_NVIDIA.COM/GPU: 1
+  tags:
+    - long_tail_bench
+  script:
+    - source /usr/local/env/pat_latest && FRAMEWORK=parrots python3 -m pytest tests/
+    
+

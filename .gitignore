@@ -1,0 +1,147 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pth
+*$py.class
+
+# scripts
+/*.sh
+
+# C extensions
+*.so
+
+# Patch / Merge
+*.orig
+*.reg
+
+# Distribution / packaging
+.Python
+env/
+build/
+build*
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+docs/build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# celery beat schedule file
+celerybeat-schedule
+
+# SageMath parsed files
+*.sage.py
+
+# dotenv
+.env
+
+# virtualenv
+.venv
+venv/
+ENV/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+
+# vi
+*.swp
+*.swo
+
+# JetBrains CLion
+.idea/
+cmake-build-*/
+
+# macOS system files
+.DS_Store
+
+# VS Code workspace configuration
+.vscode
+
+# autobenchmark data file
+python/auto_benchmark/data/*
+python/auto_benchmark/logs/*
+
+# build doc
+docs/source/learn_more/mathfunctions.rst
+
+# compute ext
+python/pat_ext
+
+# mr-list
+*.xlsx
+
+# others
+*.gz
+*.pkl
+results/*.csv
+results/*.xlsx
+results/*.txt
+results/*.json
+results/*.tar.gz
