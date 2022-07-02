@@ -280,7 +280,12 @@ class Engine(object):
     def performance_all(
         self, executer, sample_config, case_name, np_args_generator
     ):
-        samples_perf = {"input_size": [], "kernel_size": [], "bias": [], "stride": [], "padding": [], "dilation": [], "groups": [], "time_cost": []}
+        item_num = len(sample_config.args_cases[0])
+        samples_perf = {
+            "item_"+str(i): []
+            for i in range(item_num)
+            }
+        samples_perf.update({"time_cost": []})
         func_args = self.make_data(
             executer,
             sample_config,
@@ -293,13 +298,8 @@ class Engine(object):
             self.run_per_iter(executer, func_args[idx], sample_config)
             time_cost = time.time() - time_start
             
-            samples_perf["input_size"].append(sample_config.args_cases[idx][0])
-            samples_perf["kernel_size"].append(sample_config.args_cases[idx][1])
-            samples_perf["bias"].append(sample_config.args_cases[idx][2])
-            samples_perf["stride"].append(sample_config.args_cases[idx][3])
-            samples_perf["padding"].append(sample_config.args_cases[idx][4])
-            samples_perf["dilation"].append(sample_config.args_cases[idx][5])
-            samples_perf["groups"].append(sample_config.args_cases[idx][6])
+            for item_i in range(item_num):
+                samples_perf["item_"+str(item_i)].append(sample_config.args_cases[idx][item_i])
             samples_perf["time_cost"].append(str(time_cost))
         return samples_perf
 
@@ -337,20 +337,19 @@ class Engine(object):
     
     def save_performance_all(self, case_name, samples_perf):
         with open("./perf_result/"+case_name+"_perf.csv", 'w', newline="") as w:
-            csv_writer = csv.DictWriter(w, fieldnames=["input_size", "kernel_size", "bias", "stride", "padding", "dilation", "groups", "time_cost"])
+            item_num = len(samples_perf.keys())
+            field_names = [
+                "item_"+str(i)
+                for i in range(item_num-1)
+            ]
+            field_names.append("time_cost")
+            csv_writer = csv.DictWriter(w, fieldnames=field_names)
             csv_writer.writeheader()
-            length = len(samples_perf["input_size"])
+            length = len(samples_perf["item_1"])
             for i in range(length):
                 dic = {       
-                    'input_size': samples_perf["input_size"][i],
-                    'kernel_size': samples_perf["kernel_size"][i],
-                    'bias': samples_perf["bias"][i],
-                    'stride': samples_perf["stride"][i],
-                    'padding': samples_perf["padding"][i],
-                    'dilation': samples_perf["dilation"][i],
-                    'padding': samples_perf["padding"][i],
-                    'groups': samples_perf["groups"][i],
-                    'time_cost': samples_perf["time_cost"][i]
+                    item: samples_perf[item][i]
+                    for item in samples_perf.keys()
                 }
                 csv_writer.writerow(dic)
                 

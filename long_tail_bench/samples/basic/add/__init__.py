@@ -29,7 +29,10 @@ def get_sample_config():
 
 def gen_np_args(add1, add2):
     add1 = np.random.random(add1)
-    add2 = np.random.random(add2)
+    if isinstance(add2[0], int): # add2 is a tensor
+        add2 = np.random.random(add2)
+    else: # add2 is an imm
+        add2 = np.array(add2)
 
     return [add1, add2]
 
