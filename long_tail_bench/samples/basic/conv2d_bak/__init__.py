@@ -19,7 +19,7 @@ def get_sample_config():
         args_cases=args_cases_,
         requires_grad=[False] * 9,
         backward=[False],
-        performance_iters=1000,
+        performance_iters=1,
         save_timeline=False,
         source=SampleSource.MMDET,
         url="",  # noqa
@@ -28,6 +28,7 @@ def get_sample_config():
 
 
 def gen_np_args(input_size_, kernel_size_, bias_, stride_, padding_, dilation_, groups_):
+    input_image = np.random.random(input_size_)
     input_size = input_size_
     kernel_size = kernel_size_
     bias = bias_
@@ -36,7 +37,7 @@ def gen_np_args(input_size_, kernel_size_, bias_, stride_, padding_, dilation_, 
     dilation = dilation_
     groups = groups_
 
-    return [input_size, kernel_size, bias, stride, padding, dilation, groups]
+    return [input_image, input_size, kernel_size, bias, stride, padding, dilation, groups]
 
 
 register_sample(__name__, get_sample_config, gen_np_args)

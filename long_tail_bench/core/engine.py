@@ -13,6 +13,8 @@ from long_tail_bench.common import BENCH_DEBUG, DEVICE_CPU, trans_to_np,\
 from long_tail_bench.core.executer import tensor_type, set_runtime_exec_mode
 from long_tail_bench.core.registrator import custom_class_manager
 
+import csv
+
 
 class Engine(object):
     def __init__(
@@ -155,9 +157,7 @@ class Engine(object):
                 ]
             else:
                 self._origin_func_args = [
-                    executer.generate_args(
-                        case, sample_config.requires_grad, np_args_generator
-                    )
+                    executer.generate_args(case, sample_config.requires_grad, np_args_generator)
                     for case in sample_config.args_cases
                 ]
 
@@ -182,7 +182,13 @@ class Engine(object):
         # warmup
         self.warmup(executer, sample_config, np_args_generator)
 
-        # performance
+        # performance for all shapes
+        samples_perf = self.performance_all(
+            executer, sample_config, case_name, np_args_generator
+        )  # noqa
+        
+        self.save_performance_all(case_name, samples_perf)
+        
         self.performance(
             executer, sample_config, stage_mode, np_args_generator
         )  # noqa
@@ -268,6 +274,32 @@ class Engine(object):
             executer.synchronize()
         time_cost = time.time() - time_start
         self._times[stage_mode.value] = time_cost
+    
+    def performance_all(
+        self, executer, sample_config, case_name, np_args_generator
+    ):
+        samples_perf = {"input_size": [], "kernel_size": [], "bias": [], "stride": [], "padding": [], "dilation": [], "groups": [], "time_cost": []}
+        func_args = self.make_data(
+            executer,
+            sample_config,
+            case_name=case_name,
+            np_args_generator=np_args_generator,
+        )  # noqa
+
+        for idx in range(len(func_args)):
+            time_start = time.time()
+            self.run_per_iter(executer, func_args[idx], sample_config)
+            time_cost = time.time() - time_start
+            
+            samples_perf["input_size"].append(sample_config.args_cases[idx][0])
+            samples_perf["kernel_size"].append(sample_config.args_cases[idx][1])
+            samples_perf["bias"].append(sample_config.args_cases[idx][2])
+            samples_perf["stride"].append(sample_config.args_cases[idx][3])
+            samples_perf["padding"].append(sample_config.args_cases[idx][4])
+            samples_perf["dilation"].append(sample_config.args_cases[idx][5])
+            samples_perf["groups"].append(sample_config.args_cases[idx][6])
+            samples_perf["time_cost"].append(str(time_cost))
+        return samples_perf
 
     def timeline(
         self, executer, sample_config, case_name, stage_mode, np_args_generator
@@ -300,6 +332,29 @@ class Engine(object):
             "tags": tags,
         }
         json_helper.save(content)
+    
+    def save_performance_all(self, case_name, samples_perf):
+        with open("./perf_result/"+case_name+"_perf.csv", 'w', newline="") as w:
+            csv_writer = csv.DictWriter(w, fieldnames=["input_size", "kernel_size", "bias", "stride", "padding", "dilation", "groups", "time_cost"])
+            csv_writer.writeheader()
+            length = len(samples_perf["input_size"])
+            for i in range(length):
+                dic = {       
+                    'input_size': samples_perf["input_size"][i],
+                    'kernel_size': samples_perf["kernel_size"][i],
+                    'bias': samples_perf["bias"][i],
+                    'stride': samples_perf["stride"][i],
+                    'padding': samples_perf["padding"][i],
+                    'dilation': samples_perf["dilation"][i],
+                    'padding': samples_perf["padding"][i],
+                    'groups': samples_perf["groups"][i],
+                    'time_cost': samples_perf["time_cost"][i]
+                }
+                csv_writer.writerow(dic)
+                
+            w.close()
+            
+    
 
     def check_unknown_error(self, case_name, json_helper):
         last_mode = None
