@@ -10,5 +10,6 @@ def args_adaptor(np_args):
     add2 = torch.from_numpy(np_args[1])
     return [add1, add2]
 
+
 def executer_creator():
     return Executer(add, args_adaptor)
