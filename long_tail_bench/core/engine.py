@@ -157,7 +157,9 @@ class Engine(object):
                 ]
             else:
                 self._origin_func_args = [
-                    executer.generate_args(case, sample_config.requires_grad, np_args_generator)
+                    executer.generate_args(
+                        case, sample_config.requires_grad, np_args_generator
+                    )
                     for case in sample_config.args_cases
                 ]
 
