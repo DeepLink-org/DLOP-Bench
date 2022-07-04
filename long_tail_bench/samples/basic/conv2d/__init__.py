@@ -13,7 +13,7 @@ def get_sample_config():
         arg_data = json.load(f)
     arg_data_length = len(arg_data["input_size"])
     args_cases_ = []
-    for i in range(100):
+    for i in range(arg_data_length):
         args_cases_.append((arg_data["input_size"][i], arg_data["kernel_size"][i], arg_data["bias"][i], arg_data["stride"][i], arg_data["padding"][i], arg_data["dilation"][i], arg_data["groups"][i]))
     return SampleConfig(
         args_cases=args_cases_,
@@ -28,7 +28,6 @@ def get_sample_config():
 
 
 def gen_np_args(input_size_, kernel_size_, bias_, stride_, padding_, dilation_, groups_):
-    input_image = np.random.random(input_size_)
     input_size = input_size_
     kernel_size = kernel_size_
     bias = bias_
@@ -37,7 +36,7 @@ def gen_np_args(input_size_, kernel_size_, bias_, stride_, padding_, dilation_, 
     dilation = dilation_
     groups = groups_
 
-    return [input_image, input_size, kernel_size, bias, stride, padding, dilation, groups]
+    return [input_size, kernel_size, bias, stride, padding, dilation, groups]
 
 
 register_sample(__name__, get_sample_config, gen_np_args)

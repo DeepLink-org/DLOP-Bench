@@ -13,6 +13,8 @@ from long_tail_bench.common import BENCH_DEBUG, DEVICE_CPU, trans_to_np,\
 from long_tail_bench.core.executer import tensor_type, set_runtime_exec_mode
 from long_tail_bench.core.registrator import custom_class_manager
 
+import csv
+
 
 class Engine(object):
     def __init__(
@@ -182,7 +184,13 @@ class Engine(object):
         # warmup
         self.warmup(executer, sample_config, np_args_generator)
 
-        # performance
+        # performance for all shapes
+        samples_perf = self.performance_all(
+            executer, sample_config, case_name, np_args_generator
+        )  # noqa
+        
+        self.save_performance_all(case_name, samples_perf)
+        
         self.performance(
             executer, sample_config, stage_mode, np_args_generator
         )  # noqa
@@ -268,6 +276,32 @@ class Engine(object):
             executer.synchronize()
         time_cost = time.time() - time_start
         self._times[stage_mode.value] = time_cost
+    
+    def performance_all(
+        self, executer, sample_config, case_name, np_args_generator
+    ):
+        item_num = len(sample_config.args_cases[0])
+        samples_perf = {
+            "item_"+str(i): []
+            for i in range(item_num)
+            }
+        samples_perf.update({"time_cost": []})
+        func_args = self.make_data(
+            executer,
+            sample_config,
+            case_name=case_name,
+            np_args_generator=np_args_generator,
+        )  # noqa
+
+        for idx in range(len(func_args)):
+            time_start = time.time()
+            self.run_per_iter(executer, func_args[idx], sample_config)
+            time_cost = time.time() - time_start
+            
+            for item_i in range(item_num):
+                samples_perf["item_"+str(item_i)].append(sample_config.args_cases[idx][item_i])
+            samples_perf["time_cost"].append(str(time_cost))
+        return samples_perf
 
     def timeline(
         self, executer, sample_config, case_name, stage_mode, np_args_generator
@@ -300,6 +334,28 @@ class Engine(object):
             "tags": tags,
         }
         json_helper.save(content)
+    
+    def save_performance_all(self, case_name, samples_perf):
+        with open("./perf_result/"+case_name+"_perf.csv", 'w', newline="") as w:
+            item_num = len(samples_perf.keys())
+            field_names = [
+                "item_"+str(i)
+                for i in range(item_num-1)
+            ]
+            field_names.append("time_cost")
+            csv_writer = csv.DictWriter(w, fieldnames=field_names)
+            csv_writer.writeheader()
+            length = len(samples_perf["item_1"])
+            for i in range(length):
+                dic = {       
+                    item: samples_perf[item][i]
+                    for item in samples_perf.keys()
+                }
+                csv_writer.writerow(dic)
+                
+            w.close()
+            
+    
 
     def check_unknown_error(self, case_name, json_helper):
         last_mode = None

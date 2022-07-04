@@ -9,12 +9,12 @@ import json
 
 
 def get_sample_config():
-    with open("./long_tail_bench/samples/basic/add/add.json", "r") as f:
+    with open("./long_tail_bench/samples/basic/max/max.json", "r") as f:
         arg_data = json.load(f)
-    arg_data_length = len(arg_data["add1"])
+    arg_data_length = len(arg_data["max1"])
     args_cases_ = []
     for i in range(arg_data_length):
-        args_cases_.append((arg_data["add1"][i], arg_data["add2"][i]))
+        args_cases_.append((arg_data["max1"][i], arg_data["max2"][i]))
     return SampleConfig(
         args_cases=args_cases_,
         requires_grad=[False] * 2,
@@ -27,14 +27,16 @@ def get_sample_config():
     )
 
 
-def gen_np_args(add1, add2):
-    add1 = np.random.random(add1)
-    if isinstance(add2[0], int): # add2 is a tensor
-        add2 = np.random.random(add2)
-    else: # add2 is an imm
-        add2 = np.array(add2)
+def gen_np_args(max1, max2):
+    max1 = np.random.random(max1)
+    if len(max2) == 0: # no max2
+        max2 = np.array(max2)
+    elif isinstance(max2[0], int): # max2 is a tensor
+        max2 = np.random.random(max2)
+    else: # max2 is an imm
+        max2 = np.array(max2)
 
-    return [add1, add2]
+    return [max1, max2]
 
 
 register_sample(__name__, get_sample_config, gen_np_args)
