@@ -17,9 +17,9 @@ def parse_env(env):
 
 BENCH_DEBUG = parse_env("BENCH_DEBUG")
 DEVICE_CPU = parse_env("DEVICE_CPU")
-FRAMEWORK = (FrameType(os.getenv("FRAMEWORK"))
-             if os.getenv("FRAMEWORK") else None)
-# FRAMEWORK = FrameType("torch")
+# FRAMEWORK = (FrameType(os.getenv("FRAMEWORK"))
+#              if os.getenv("FRAMEWORK") else None)
+FRAMEWORK = FrameType("torch")
 
 SAMPLE_IMPL = (FrameType(os.getenv("SAMPLE_IMPL"))
                if os.getenv("SAMPLE_IMPL") else None)
