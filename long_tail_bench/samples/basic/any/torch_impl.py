@@ -4,16 +4,14 @@ import numpy as np
 from long_tail_bench.core.executer import Executer
 
 
-def any(input):
-    input_np = np.random.random(input)
-    input_tensor = torch.from_numpy(input_np).to(torch.float32).cuda()
-    return torch.any(input_tensor)
+def any(input_torch):
+    
+    return torch.any(input_torch)
 
 
 def args_adaptor(np_args):
-    input_tensor = np_args[0]
-    
-    return [input_tensor]
+    input_torch = torch.from_numpy(np_args[0]).to(torch.float32).cuda()
+    return [input_torch]
 
 
 def executer_creator():

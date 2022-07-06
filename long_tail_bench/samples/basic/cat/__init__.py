@@ -22,7 +22,7 @@ def get_sample_config():
         args_cases_[i] = [cur_case]
     return SampleConfig(
         args_cases=args_cases_,
-        requires_grad=[False] * 1,
+        requires_grad=[False] * 2,
         backward=[False],
         performance_iters=1000,
         save_timeline=False,
@@ -31,11 +31,26 @@ def get_sample_config():
         tags=[SampleTag.ViewAttribute],
     )
 
+def find_first_diff(input_size_):
+    for i in range(len(input_size_[0])):
+        cur = input_size_[0][i]
+        for j in range(len(input_size_)):
+            if input_size_[j][i] != cur:
+                return i
+    return 0
 
-def gen_np_args(input_tensor_):
-    input_tensor = input_tensor_
+def gen_np_args(input_size_):
+    input_size = input_size_
+    input_np = []
+    axis = 0
+    for i in range(len(input_size)):
+        input_tmp = np.random.random(input_size[i])
+        input_np.append(input_tmp)
+    if len(input_size_[0]) > 1 and len(input_size_) > 1:
+        axis = find_first_diff(input_size_)
 
-    return [input_tensor]
+    return [input_np, axis]
 
 
 register_sample(__name__, get_sample_config, gen_np_args)
+

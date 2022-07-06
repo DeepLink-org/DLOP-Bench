@@ -4,15 +4,17 @@ import numpy as np
 from long_tail_bench.core.executer import Executer
 
 
-def all(input_torch):
-    
-    return torch.all(input_torch)
+
+def cat(input_torch, dims):
+
+    return torch.permute(input_torch, dims)
 
 
 def args_adaptor(np_args):
     input_torch = torch.from_numpy(np_args[0]).to(torch.float32).cuda()
-    return [input_torch]
+    dims = np_args[1]
+    return [input_torch, dims]
 
 
 def executer_creator():
-    return Executer(all, args_adaptor)
+    return Executer(cat, args_adaptor)

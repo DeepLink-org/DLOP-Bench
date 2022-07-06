@@ -27,10 +27,9 @@ def get_sample_config():
     )
 
 
-def gen_np_args(input_tensor_):
-    input_tensor = input_tensor_
-
-    return [input_tensor]
+def gen_np_args(input_size_):
+    input_np = np.random.random(input_size_)
+    return [input_np]
 
 
 register_sample(__name__, get_sample_config, gen_np_args)
