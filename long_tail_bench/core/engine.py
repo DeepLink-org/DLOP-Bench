@@ -138,6 +138,7 @@ class Engine(object):
                 continue
             executer.backward(ret[idx])
             executer.reset_grad(func_args, sample_config.requires_grad)
+
         return ret
 
     def make_data(
@@ -162,7 +163,6 @@ class Engine(object):
                     )
                     for case in sample_config.args_cases
                 ]
-
         num = 1 if just_one else len(self._origin_func_args)
         return [
             executer.clone_func_args(args)
@@ -180,7 +180,6 @@ class Engine(object):
         self.assert_correctness(
             executer, sample_config, stage_mode, case_name, np_args_generator
         )
-
         # warmup
         self.warmup(executer, sample_config, np_args_generator)
 
@@ -188,7 +187,7 @@ class Engine(object):
         samples_perf = self.performance_all(
             executer, sample_config, case_name, np_args_generator
         )  # noqa
-        
+
         self.save_performance_all(case_name, samples_perf)
         
         self.performance(
@@ -345,7 +344,7 @@ class Engine(object):
             field_names.append("time_cost")
             csv_writer = csv.DictWriter(w, fieldnames=field_names)
             csv_writer.writeheader()
-            length = len(samples_perf["item_1"])
+            length = len(samples_perf["item_0"])
             for i in range(length):
                 dic = {       
                     item: samples_perf[item][i]
