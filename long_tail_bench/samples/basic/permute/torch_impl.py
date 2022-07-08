@@ -5,7 +5,7 @@ from long_tail_bench.core.executer import Executer
 
 
 
-def cat(input_torch, dims):
+def permute(input_torch, dims):
 
     return torch.permute(input_torch, dims)
 
@@ -17,4 +17,4 @@ def args_adaptor(np_args):
 
 
 def executer_creator():
-    return Executer(cat, args_adaptor)
+    return Executer(permute, args_adaptor)
