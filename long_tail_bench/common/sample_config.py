@@ -5,7 +5,7 @@ class SampleConfig(object):
     def __init__(self,
                  args_cases=[],
                  requires_grad=[],
-                 backward=[],
+                 backward=False,
                  warm_up_iters=10,
                  performance_iters=1000,
                  timeline_iters=10,
