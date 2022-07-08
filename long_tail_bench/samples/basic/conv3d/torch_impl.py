@@ -19,7 +19,7 @@ def conv3d(input, weight, bias, stride, padding, dilation, groups):
     padding_image = tuple(padding) if len(padding) > 1 else padding[0]
     dilation_image = tuple(dilation) if len(dilation) > 1 else dilation[0]
     groups_image = groups[0]
-    ret = torch.nn.functional.conv3d(input_image, weight_image, bias_image, stride_image, padding_image, dilation_image, groups_image).cuda()
+    ret = torch.nn.functional.conv3d(input_image, weight_image, bias_image, stride_image, padding_image, dilation_image, groups_image)
     return ret
 
 

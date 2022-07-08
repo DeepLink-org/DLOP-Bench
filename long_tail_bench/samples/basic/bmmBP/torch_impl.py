@@ -9,7 +9,10 @@ def bmm(input, mat2):
     input_image = torch.from_numpy(input_image_np).to(torch.float32).cuda()
     mat2_image_np = np.random.random(mat2)
     mat2_image = torch.from_numpy(mat2_image_np).to(torch.float32).cuda()
+    input_image.requires_grad = True
+    mat2_image.requires_grad = True
     ret = torch.bmm(input_image, mat2_image)
+    ret.backward(ret)
     return ret
 
 

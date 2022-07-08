@@ -7,14 +7,18 @@ from long_tail_bench.core.executer import Executer
 def linear(input, weight, bias):
     input_image_np = np.random.random(input)
     input_image = torch.from_numpy(input_image_np).to(torch.float32).cuda()
+    input_image.requires_grad = True
     weight_image_np = np.random.random(weight)
     weight_image = torch.from_numpy(weight_image_np).to(torch.float32).cuda()
+    weight_image.requires_grad = True
     if not bias[0]:
         bias_image = None
     else:
         bias_image_np = np.random.random(bias)
         bias_image = torch.from_numpy(bias_image_np).to(torch.float32).cuda()
+        bias_image.requires_grad = True
     ret = torch.nn.functional.linear(input_image, weight_image, bias_image)
+    ret.backward(ret)
     return ret
 
 

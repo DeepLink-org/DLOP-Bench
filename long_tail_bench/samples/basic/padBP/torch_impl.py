@@ -6,8 +6,10 @@ from long_tail_bench.core.executer import Executer
 def pad(input, pad):
     input_image_np = np.random.random(input)
     input_image = torch.from_numpy(input_image_np).to(torch.float32).cuda()
+    input_image.requires_grad = True
     pad_image = tuple(pad)
     ret = torch.nn.functional.pad(input_image, pad_image)
+    ret.backward(ret)
     return ret
 
 

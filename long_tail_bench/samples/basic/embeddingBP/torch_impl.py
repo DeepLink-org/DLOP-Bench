@@ -8,13 +8,15 @@ def embedding(input, weight, padding_idx, max_norm, norm_type, scale_grad_by_fre
     input_image_np = np.random.random(input)
     input_image = torch.from_numpy(input_image_np).to(torch.long).cuda()
     weight_image_np = np.random.random(weight)
-    weight_image = torch.from_numpy(weight_image_np).to(torch.float32).cuda()    
+    weight_image = torch.from_numpy(weight_image_np).to(torch.float32).cuda()
+    weight_image.requires_grad = True  
     padding_idx_image = padding_idx[0]
     max_norm_image = max_norm[0]
     norm_type_image = norm_type[0]
     scale_grad_by_freq_image = scale_grad_by_freq[0]
     sparse_iamge = sparse[0]
     ret = torch.nn.functional.embedding(input_image, weight_image, padding_idx_image, max_norm_image, norm_type_image, scale_grad_by_freq_image, sparse_iamge)
+    ret.backward(ret)
     return ret
 
 
