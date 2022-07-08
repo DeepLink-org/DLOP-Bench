@@ -9,7 +9,7 @@ import json
 
 
 def get_sample_config():
-    with open("./long_tail_bench/samples/basic/conj/conj.json", "r") as f:
+    with open("./long_tail_bench/samples/basic/to/to.json", "r") as f:
         arg_data = json.load(f)
     arg_data_length = len(arg_data["input_shape"])
     args_cases_ = []
