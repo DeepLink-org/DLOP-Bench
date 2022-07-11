@@ -6,8 +6,8 @@ def add(add1, add2):
     return torch.add(add1, add2)
 
 def args_adaptor(np_args):
-    add1 = torch.from_numpy(np_args[0])
-    add2 = torch.from_numpy(np_args[1])
+    add1 = torch.from_numpy(np_args[0]).to(torch.float32).cuda()
+    add2 = torch.from_numpy(np_args[1]).to(torch.float32).cuda()
     return [add1, add2]
 
 
