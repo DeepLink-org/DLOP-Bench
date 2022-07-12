@@ -11,7 +11,7 @@ def broadcast_tensors(tensors):
 def args_adaptor(np_args):
     data = []
     for args in np_args:
-        data.append(torch.from_numpy(args))
+        data.append(torch.from_numpy(args).cuda())
     return [tuple(data)]
 
 

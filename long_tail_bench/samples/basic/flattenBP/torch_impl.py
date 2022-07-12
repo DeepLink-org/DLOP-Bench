@@ -5,7 +5,9 @@ from long_tail_bench.core.executer import Executer
 
 
 def flatten(input_tensor, start_dim, end_dim):
+    input_tensor.requires_grad=True
     output_tensor = torch.flatten(input_tensor, start_dim, end_dim)
+    output_tensor.backward(output_tensor)
     return output_tensor
 
 
