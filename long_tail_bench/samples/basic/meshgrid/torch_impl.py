@@ -5,17 +5,14 @@ from long_tail_bench.core.executer import Executer
 
 
 def meshgrid(*inputs):
-    input_images = []
-    for input_size in inputs:
-        input_image_np = np.random.random(input_size)
-        input_image = torch.from_numpy(input_image_np).to(torch.float32).cuda()
-        input_images.append(input_image)
-    return torch.meshgrid(input_images)
-
+    return torch.meshgrid(inputs)
 
 def args_adaptor(np_args):
-    print(np_args)
-    return np_args
+    input_images = []
+    for np_image in np_args:
+        input_images.append(torch.from_numpy(np_image).to(torch.float32).cuda())
+
+    return input_images
 
 
 def executer_creator():

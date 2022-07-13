@@ -33,7 +33,7 @@ def get_sample_config():
 def gen_np_args(*inputs):
     args = []
     for input_ in inputs:
-        args.append(input_)
+        args.append(np.random.random(input_))
     return args
 
 register_sample(__name__, get_sample_config, gen_np_args)
