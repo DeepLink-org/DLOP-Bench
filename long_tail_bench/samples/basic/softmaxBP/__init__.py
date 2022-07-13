@@ -6,22 +6,20 @@ from long_tail_bench.common import (
 )
 import numpy as np
 import json
-import random
 
 
 def get_sample_config():
-    with open("./long_tail_bench/samples/basic/contiguous/contiguous.json", "r") as f:
+    with open("./long_tail_bench/samples/basic/softmax/softmax.json", "r") as f:
         arg_data = json.load(f)
     arg_data_length = len(arg_data["input_shape"])
     args_cases_ = []
     for i in range(arg_data_length):
-        if random.random() < 0.3:
-            args_cases_.append([arg_data["input_shape"][i]])
+        args_cases_.append((arg_data["input_shape"][i], arg_data["dim"][i], arg_data["_stacklevel"][i]))
     return SampleConfig(
         args_cases=args_cases_,
-        requires_grad=[False] * 1,
+        requires_grad=[False] * 3,
         backward=[False],
-        performance_iters=100,
+        performance_iters=1000,
         save_timeline=False,
         source=SampleSource.MMDET,
         url="",  # noqa
@@ -29,9 +27,10 @@ def get_sample_config():
     )
 
 
-def gen_np_args(input_shape):
+def gen_np_args(input_shape, dim, _stacklevel):
     input_tensor = np.random.random(input_shape)
-    return [input_tensor]
+
+    return [input_tensor, dim, _stacklevel]
 
 
 register_sample(__name__, get_sample_config, gen_np_args)

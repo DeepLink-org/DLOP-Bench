@@ -6,8 +6,10 @@ from long_tail_bench.core.executer import Executer
 
 def conj(input_tensor):
     return [torch.conj(input_tensor)]
+
+
 def args_adaptor(np_args):
-    input_tensor = torch.from_numpy(np_args[0])
+    input_tensor = torch.from_numpy(np_args[0]).cuda()
     return [input_tensor]
 
 
