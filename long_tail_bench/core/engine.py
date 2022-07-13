@@ -15,6 +15,10 @@ from long_tail_bench.core.registrator import custom_class_manager
 
 import csv
 
+import torch
+import numpy as np
+from torch.profiler import profile
+
 
 class Engine(object):
     def __init__(
@@ -184,11 +188,11 @@ class Engine(object):
         self.warmup(executer, sample_config, np_args_generator)
 
         # performance for all shapes
-        samples_perf = self.performance_all(
+        samples_perf, samples_torch_profile = self.performance_all(
             executer, sample_config, case_name, np_args_generator
         )  # noqa
 
-        self.save_performance_all(case_name, samples_perf)
+        self.save_performance_all(case_name, samples_perf, samples_torch_profile)
         
         self.performance(
             executer, sample_config, stage_mode, np_args_generator
@@ -285,6 +289,7 @@ class Engine(object):
             for i in range(item_num)
             }
         samples_perf.update({"time_cost": []})
+        samples_torch_profile = []
         func_args = self.make_data(
             executer,
             sample_config,
@@ -293,14 +298,23 @@ class Engine(object):
         )  # noqa
 
         for idx in range(len(func_args)):
-            time_start = time.time()
-            self.run_per_iter(executer, func_args[idx], sample_config)
-            time_cost = time.time() - time_start
+            with profile(
+                activities=[torch.profiler.ProfilerActivity.CPU, torch.profiler.ProfilerActivity.CUDA],
+                profile_memory=True,
+                record_shapes=True,
+                with_stack=True,
+                with_flops=True,
+            ) as profiler:
+                time_start = time.time()
+                self.run_per_iter(executer, func_args[idx], sample_config)
+                time_cost = time.time() - time_start
+                profiler.step()
             
             for item_i in range(item_num):
                 samples_perf["item_"+str(item_i)].append(sample_config.args_cases[idx][item_i])
             samples_perf["time_cost"].append(str(time_cost))
-        return samples_perf
+            samples_torch_profile.append(profiler.key_averages().table(sort_by="self_cuda_time_total", row_limit=-1))
+        return samples_perf, samples_torch_profile
 
     def timeline(
         self, executer, sample_config, case_name, stage_mode, np_args_generator
@@ -334,7 +348,7 @@ class Engine(object):
         }
         json_helper.save(content)
     
-    def save_performance_all(self, case_name, samples_perf):
+    def save_performance_all(self, case_name, samples_perf, samples_torch_profile):
         with open("./perf_result/"+case_name+"_perf.csv", 'w', newline="") as w:
             item_num = len(samples_perf.keys())
             field_names = [
@@ -351,6 +365,16 @@ class Engine(object):
                     for item in samples_perf.keys()
                 }
                 csv_writer.writerow(dic)
+                
+            w.close()
+        with open("./profiler_result/"+case_name+"_profiler.txt", 'w', newline="") as w:
+            for i in range(length):
+                dic = {       
+                    item: samples_perf[item][i]
+                    for item in samples_perf.keys()
+            }
+                w.write(str(dic))
+                w.write(samples_torch_profile[i]+"\n")
                 
             w.close()
             
