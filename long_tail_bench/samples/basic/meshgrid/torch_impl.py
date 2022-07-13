@@ -6,7 +6,6 @@ from long_tail_bench.core.executer import Executer
 
 def meshgrid(*inputs):
     input_images = []
-    print(inputs)
     for input_size in inputs:
         input_image_np = np.random.random(input_size)
         input_image = torch.from_numpy(input_image_np).to(torch.float32).cuda()
