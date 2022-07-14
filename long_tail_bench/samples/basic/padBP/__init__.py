@@ -28,7 +28,9 @@ def get_sample_config():
 
 
 def gen_np_args(input, pad):
-    return [input, pad]
+    input_image_np = np.random.random(input)
+    pad_image = tuple(pad)
+    return [input_image_np, pad_image]
 
 
 register_sample(__name__, get_sample_config, gen_np_args)

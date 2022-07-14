@@ -27,7 +27,17 @@ def get_sample_config():
 
 
 def gen_np_args(input, weight, bias, stride, padding, dilation, groups):
-    return [input, weight, bias, stride, padding, dilation, groups]
-
+    input_image_np = np.random.random(input)
+    weight_image_np = np.random.random(weight)
+    if not bias[0]:
+        bias_image_np = None
+    else:
+        bias_image_np = np.random.random(bias)
+    
+    stride_image = tuple(stride) if len(stride) > 1 else stride[0]
+    padding_image = tuple(padding) if len(padding) > 1 else padding[0]
+    dilation_image = tuple(dilation) if len(dilation) > 1 else dilation[0]
+    groups_image = groups[0]
+    return [input_image_np, weight_image_np, bias_image_np, stride_image, padding_image, dilation_image, groups_image]
 
 register_sample(__name__, get_sample_config, gen_np_args)

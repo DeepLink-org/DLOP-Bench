@@ -28,7 +28,13 @@ def get_sample_config():
 
 
 def gen_np_args(input_, weight_, bias_):
-    return [input_, weight_, bias_]
+    input_image_np = np.random.random(input_)
+    weight_image_np = np.random.random(weight_)
+    if not bias_[0]:
+        bias_image_np = None
+    else:
+        bias_image_np = np.random.random(bias_)
+    return [input_image_np, weight_image_np, bias_image_np]
 
 
 register_sample(__name__, get_sample_config, gen_np_args)

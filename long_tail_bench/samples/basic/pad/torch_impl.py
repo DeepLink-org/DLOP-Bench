@@ -4,17 +4,13 @@ import numpy as np
 from long_tail_bench.core.executer import Executer
 
 def pad(input, pad):
-    input_image_np = np.random.random(input)
-    input_image = torch.from_numpy(input_image_np).to(torch.float32).cuda()
-    pad_image = tuple(pad)
-    ret = torch.nn.functional.pad(input_image, pad_image)
+    ret = torch.nn.functional.pad(input, pad)
     return ret
 
 
 def args_adaptor(np_args):
-    input = np_args[0]
-    pad = np_args[1]
-    return [input, pad]
+    input_image = torch.from_numpy(np_args[0]).to(torch.float32).cuda()
+    return [input_image, np_args[1]]
 
 
 def executer_creator():

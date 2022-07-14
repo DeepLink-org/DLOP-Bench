@@ -27,7 +27,14 @@ def get_sample_config():
 
 
 def gen_np_args(input, weight, padding_idx, max_norm, norm_type, scale_grad_by_freq, sparse):
-    return [input, weight, padding_idx, max_norm, norm_type, scale_grad_by_freq, sparse]
+    input_image_np = np.random.random(input)
+    weight_image_np = np.random.random(weight)
+    padding_idx_image = padding_idx[0]
+    max_norm_image = max_norm[0]
+    norm_type_image = norm_type[0]
+    scale_grad_by_freq_image = scale_grad_by_freq[0]
+    sparse_iamge = sparse[0]
+    return [input_image_np, weight_image_np, padding_idx_image, max_norm_image, norm_type_image, scale_grad_by_freq_image, sparse_iamge]
 
 
 register_sample(__name__, get_sample_config, gen_np_args)

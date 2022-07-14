@@ -28,7 +28,9 @@ def get_sample_config():
 
 
 def gen_np_args(input, mat2):
-    return [input, mat2]
+    input_image_np = np.random.random(input)
+    mat2_image_np = np.random.random(mat2)
+    return [input_image_np, mat2_image_np]
 
 
 register_sample(__name__, get_sample_config, gen_np_args)

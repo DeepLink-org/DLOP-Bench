@@ -3,30 +3,26 @@ import torch.nn
 import numpy as np
 from long_tail_bench.core.executer import Executer
 
-
 def linear(input, weight, bias):
-    input_image_np = np.random.random(input)
-    input_image = torch.from_numpy(input_image_np).to(torch.float32).cuda()
-    input_image.requires_grad = True
-    weight_image_np = np.random.random(weight)
-    weight_image = torch.from_numpy(weight_image_np).to(torch.float32).cuda()
-    weight_image.requires_grad = True
-    if not bias[0]:
-        bias_image = None
-    else:
-        bias_image_np = np.random.random(bias)
-        bias_image = torch.from_numpy(bias_image_np).to(torch.float32).cuda()
-        bias_image.requires_grad = True
-    ret = torch.nn.functional.linear(input_image, weight_image, bias_image)
+    ret = torch.nn.functional.linear(input, weight, bias)
     ret.backward(ret)
     return ret
 
 
 def args_adaptor(np_args):
-    input = np_args[0]
-    weight = np_args[1]
-    bias = np_args[2]
-    return [input, weight, bias]
+    input_image = torch.from_numpy(np_args[0]).to(torch.float32).cuda()
+    input_image.requires_grad = True
+
+    weight_image = torch.from_numpy(np_args[1]).to(torch.float32).cuda()
+    weight_image.requires_grad = True
+
+    if np_args[2] is None:
+        bias_image = None
+    else:
+        bias_image = torch.from_numpy(np_args[2]).to(torch.float32).cuda()
+        bias_image.requires_grad = True
+
+    return [input_image, weight_image, bias_image]
 
 
 def executer_creator():

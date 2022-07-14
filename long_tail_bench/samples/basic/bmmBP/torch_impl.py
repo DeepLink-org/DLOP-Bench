@@ -4,21 +4,17 @@ import numpy as np
 from long_tail_bench.core.executer import Executer
 
 
-def bmm(input, mat2):
-    input_image_np = np.random.random(input)
-    input_image = torch.from_numpy(input_image_np).to(torch.float32).cuda()
-    mat2_image_np = np.random.random(mat2)
-    mat2_image = torch.from_numpy(mat2_image_np).to(torch.float32).cuda()
-    input_image.requires_grad = True
-    mat2_image.requires_grad = True
-    ret = torch.bmm(input_image, mat2_image)
+def bmm(input, mat2): 
+    ret = torch.bmm(input, mat2)
     ret.backward(ret)
     return ret
 
 
 def args_adaptor(np_args):
-    input = np_args[0]
-    mat2 = np_args[1]
+    input = torch.from_numpy(np_args[0]).to(torch.float32).cuda()
+    mat2 = torch.from_numpy(np_args[1]).to(torch.float32).cuda()
+    input.requires_grad = True
+    mat2.requires_grad = True
     return [input, mat2]
 
 
