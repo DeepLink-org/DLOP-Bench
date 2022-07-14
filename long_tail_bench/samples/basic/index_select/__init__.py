@@ -26,9 +26,9 @@ def get_sample_config():
         tags=[SampleTag.ViewAttribute],
     )
 
-
 def gen_np_args(input_size_, dim_, index_):
-    return [input_size_, dim_, index_]
-
+    input_image_np = np.random.random(input_size_)
+    index_tensor = np.random.randint(0, input_size_[int(dim_)], (int(index_[0]),))
+    return [input_image_np, dim_, index_tensor]
 
 register_sample(__name__, get_sample_config, gen_np_args)
