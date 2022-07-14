@@ -28,10 +28,10 @@ def get_sample_config():
 
 
 def gen_np_args(input_size_, min_, max_):
-    input_size = input_size_
-    min = min_
-    max = max_
+    input_image_np = np.random.random(input_size_)
+    min = min_[0]
+    max = max_[0]
 
-    return [input_size, min, max]
+    return [input_image_np, min, max]
 
 register_sample(__name__, get_sample_config, gen_np_args)

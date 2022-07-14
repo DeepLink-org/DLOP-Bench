@@ -14,10 +14,10 @@ def get_sample_config():
     arg_data_length = len(arg_data["input_size"])
     args_cases_ = []
     for i in range(arg_data_length):
-        args_cases_.append((arg_data["input_size"][i], arg_data["p"][i], arg_data["training"][i]), arg_data["inplace"][i])
+        args_cases_.append((arg_data["input_size"][i], arg_data["p"][i], arg_data["inplace"][i]))
     return SampleConfig(
         args_cases=args_cases_,
-        requires_grad=[False] * 4,
+        requires_grad=[False] * 3,
         backward=[False],
         performance_iters=1000,
         save_timeline=False,
@@ -27,12 +27,11 @@ def get_sample_config():
     )
 
 
-def gen_np_args(input_size_, p_, training_, inplace_):
-    input_size = input_size_
-    p = p_
-    training = training_
-    inplace = inplace_
+def gen_np_args(input_size_, p_, inplace_):
+    input_image_np = np.random.random(input_size_)
+    p = p_[0]
+    inplace = inplace_[0]
 
-    return [input_size, p, training, inplace]
+    return [input_image_np, p, inplace]
 
 register_sample(__name__, get_sample_config, gen_np_args)

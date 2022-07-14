@@ -9,12 +9,12 @@ import json
 
 
 def get_sample_config():
-    with open("./long_tail_bench/samples/basic/arange/arange.json", "r") as f:
+    with open("./long_tail_bench/samples/basic/clampBP/clamp.json", "r") as f:
         arg_data = json.load(f)
-    arg_data_length = len(arg_data["start"])
+    arg_data_length = len(arg_data["input_size"])
     args_cases_ = []
     for i in range(arg_data_length):
-        args_cases_.append((arg_data["start"][i], arg_data["end"][i], arg_data["step"][i]))
+        args_cases_.append((arg_data["input_size"][i], arg_data["min"][i], arg_data["max"][i]))
     return SampleConfig(
         args_cases=args_cases_,
         requires_grad=[False] * 3,
@@ -27,11 +27,11 @@ def get_sample_config():
     )
 
 
-def gen_np_args(start_, end_, step_):
-    start = start_[0]
-    end = end_[0]
-    step = step_[0]
-    
-    return [start, end, step]
+def gen_np_args(input_size_, min_, max_):
+    input_image_np = np.random.random(input_size_)
+    min = min_[0]
+    max = max_[0]
+
+    return [input_image_np, min, max]
 
 register_sample(__name__, get_sample_config, gen_np_args)

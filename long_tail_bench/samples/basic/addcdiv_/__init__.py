@@ -28,11 +28,11 @@ def get_sample_config():
 
 
 def gen_np_args(input_size_, tensor1_size_, tensor2_size_):
-    input_size = input_size_
-    tensor1_size = tensor1_size_
-    tensor2_size = tensor2_size_
+    input_image_np = np.random.random(input_size_)
+    input_image_np1 = np.random.random(tensor1_size_)
+    input_image_np2 = np.random.random(tensor2_size_)
 
-    return [input_size, tensor1_size, tensor2_size]
+    return [input_image_np, input_image_np1, input_image_np2]
 
 
 register_sample(__name__, get_sample_config, gen_np_args)
