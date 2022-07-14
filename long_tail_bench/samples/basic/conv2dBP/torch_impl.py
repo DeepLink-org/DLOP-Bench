@@ -3,10 +3,10 @@ import torch.nn
 from long_tail_bench.core.executer import Executer
 
 
-def conv2d(input_image, in_channels, out_channels, kernel_size, bias, stride, padding, dilation, groups):
+def conv2dBP(input_image, in_channels, out_channels, kernel_size, bias, stride, padding, dilation, groups):
     conv2d = torch.nn.Conv2d(in_channels=in_channels, out_channels=out_channels, kernel_size=kernel_size, stride=stride, padding=padding, dilation=dilation, groups=groups, bias=bias).cuda()
     ret = conv2d(input_image)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 
@@ -24,4 +24,4 @@ def args_adaptor(np_args):
 
 
 def executer_creator():
-    return Executer(conv2d, args_adaptor)
+    return Executer(conv2dBP, args_adaptor)
