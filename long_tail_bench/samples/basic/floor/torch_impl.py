@@ -6,7 +6,7 @@ def floor(floor_0):
     return torch.floor(floor_0)
 
 def args_adaptor(np_args):
-    floor_0 = torch.from_numpy(np_args[0])
+    floor_0 = torch.from_numpy(np_args[0]).cuda()
     return [floor_0]
 
 

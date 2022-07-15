@@ -6,8 +6,8 @@ def mul_(mul__0, mul__1):
     return mul__0.mul_(mul__1)
 
 def args_adaptor(np_args):
-    mul__0 = torch.from_numpy(np_args[0])
-    mul__1 = torch.from_numpy(np_args[1])
+    mul__0 = torch.from_numpy(np_args[0]).cuda()
+    mul__1 = torch.from_numpy(np_args[1]).cuda()
     return [mul__0, mul__1]
 
 

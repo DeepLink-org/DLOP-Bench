@@ -6,7 +6,7 @@ def sort(sort_0):
     return torch.sort(sort_0)
 
 def args_adaptor(np_args):
-    sort_0 = torch.from_numpy(np_args[0])
+    sort_0 = torch.from_numpy(np_args[0]).cuda()
     return [sort_0]
 
 

@@ -9,7 +9,7 @@ def sin(sin_0):
     return ret
 
 def args_adaptor(np_args):
-    sin_0 = torch.from_numpy(np_args[0])
+    sin_0 = torch.from_numpy(np_args[0]).cuda()
     return [sin_0]
 
 

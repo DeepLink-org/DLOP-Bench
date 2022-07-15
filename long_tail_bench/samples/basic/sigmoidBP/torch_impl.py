@@ -9,7 +9,7 @@ def sigmoid(sigmoid_0):
     return ret
 
 def args_adaptor(np_args):
-    sigmoid_0 = torch.from_numpy(np_args[0])
+    sigmoid_0 = torch.from_numpy(np_args[0]).cuda()
     return [sigmoid_0]
 
 

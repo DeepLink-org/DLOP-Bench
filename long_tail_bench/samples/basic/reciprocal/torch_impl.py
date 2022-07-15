@@ -6,7 +6,7 @@ def reciprocal(reciprocal_0):
     return torch.reciprocal(reciprocal_0)
 
 def args_adaptor(np_args):
-    reciprocal_0 = torch.from_numpy(np_args[0])
+    reciprocal_0 = torch.from_numpy(np_args[0]).cuda()
     return [reciprocal_0]
 
 

@@ -6,7 +6,7 @@ def relu_(relu__0):
     return relu__0.relu_()
 
 def args_adaptor(np_args):
-    relu__0 = torch.from_numpy(np_args[0])
+    relu__0 = torch.from_numpy(np_args[0]).cuda()
     return [relu__0]
 
 

@@ -6,8 +6,8 @@ def rsub(rsub_0, rsub_1):
     return torch.rsub(rsub_0, rsub_1)
 
 def args_adaptor(np_args):
-    rsub_0 = torch.from_numpy(np_args[0])
-    rsub_1 = torch.from_numpy(np_args[1])
+    rsub_0 = torch.from_numpy(np_args[0]).cuda()
+    rsub_1 = torch.from_numpy(np_args[1]).cuda()
     return [rsub_0, rsub_1]
 
 

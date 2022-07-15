@@ -6,7 +6,7 @@ def nonzero(nonzero_0):
     return torch.nonzero(nonzero_0)
 
 def args_adaptor(np_args):
-    nonzero_0 = torch.from_numpy(np_args[0])
+    nonzero_0 = torch.from_numpy(np_args[0]).cuda()
     return [nonzero_0]
 
 

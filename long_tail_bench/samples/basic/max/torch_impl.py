@@ -8,8 +8,8 @@ def max(max1, max2):
     return torch.max(max1, max2)
 
 def args_adaptor(np_args):
-    max1 = torch.from_numpy(np_args[0])
-    max2 = torch.from_numpy(np_args[1])
+    max1 = torch.from_numpy(np_args[0]).cuda()
+    max2 = torch.from_numpy(np_args[1]).cuda()
     return [max1, max2]
 
 

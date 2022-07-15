@@ -9,7 +9,7 @@ def neg(neg_0):
     return ret
 
 def args_adaptor(np_args):
-    neg_0 = torch.from_numpy(np_args[0])
+    neg_0 = torch.from_numpy(np_args[0]).cuda()
     return [neg_0]
 
 

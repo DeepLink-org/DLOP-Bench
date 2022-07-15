@@ -6,7 +6,7 @@ def sqrt_(sqrt__0):
     return sqrt__0.sqrt_()
 
 def args_adaptor(np_args):
-    sqrt__0 = torch.from_numpy(np_args[0])
+    sqrt__0 = torch.from_numpy(np_args[0]).cuda()
     return [sqrt__0]
 
 

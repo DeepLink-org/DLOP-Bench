@@ -6,7 +6,7 @@ def isnan(isnan_0):
     return torch.isnan(isnan_0)
 
 def args_adaptor(np_args):
-    isnan_0 = torch.from_numpy(np_args[0])
+    isnan_0 = torch.from_numpy(np_args[0]).cuda()
     return [isnan_0]
 
 

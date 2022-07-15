@@ -6,7 +6,7 @@ def cos(cos_0):
     return torch.cos(cos_0)
 
 def args_adaptor(np_args):
-    cos_0 = torch.from_numpy(np_args[0])
+    cos_0 = torch.from_numpy(np_args[0]).cuda()
     return [cos_0]
 
 

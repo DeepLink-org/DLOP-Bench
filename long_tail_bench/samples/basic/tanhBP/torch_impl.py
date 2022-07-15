@@ -9,7 +9,7 @@ def tanh(tanh_0):
     return ret
 
 def args_adaptor(np_args):
-    tanh_0 = torch.from_numpy(np_args[0])
+    tanh_0 = torch.from_numpy(np_args[0]).cuda()
     return [tanh_0]
 
 
