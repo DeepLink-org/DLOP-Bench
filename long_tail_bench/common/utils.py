@@ -20,7 +20,6 @@ def import_impl(sample_module_name, impl):
     try:
         __import__(import_str)
     except ModuleNotFoundError:
-        # print(import_str, " is not implemented.")
         print(end="")
     else:
         return sys.modules[import_str]

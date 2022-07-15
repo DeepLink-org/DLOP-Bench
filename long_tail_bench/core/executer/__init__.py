@@ -36,6 +36,8 @@ elif FRAMEWORK is FrameType.JAX:
         set_runtime_exec_mode,
         get_runtime_exec_mode,
     )
+else:
+    raise AttributeError("Please set a framework")
 
 __all__ = (
     [

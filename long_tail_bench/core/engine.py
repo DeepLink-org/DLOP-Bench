@@ -345,7 +345,7 @@ class Engine(object):
             field_names.append("time_cost")
             csv_writer = csv.DictWriter(w, fieldnames=field_names)
             csv_writer.writeheader()
-            length = len(samples_perf["item_1"])
+            length = len(samples_perf["item_0"])
             for i in range(length):
                 dic = {       
                     item: samples_perf[item][i]
@@ -356,7 +356,6 @@ class Engine(object):
             w.close()
             
     
-
     def check_unknown_error(self, case_name, json_helper):
         last_mode = None
         for stage_mode in self._stage_modes:
