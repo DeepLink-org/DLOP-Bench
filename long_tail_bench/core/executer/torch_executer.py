@@ -56,6 +56,7 @@ class TorchAPIExecuter(BaseCaseExecuter):
             func_args = self.adapt_args(np_args)
         else:
             func_args = self._args_adaptor(*case)
+
         assert len(func_args) == len(requires_grad)
 
         for arg, re_g in zip(func_args, requires_grad):

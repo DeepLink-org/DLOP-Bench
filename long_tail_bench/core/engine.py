@@ -379,7 +379,6 @@ class Engine(object):
             w.close()
             
     
-
     def check_unknown_error(self, case_name, json_helper):
         last_mode = None
         for stage_mode in self._stage_modes:
