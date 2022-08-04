@@ -1,0 +1,45 @@
+from math import ceil
+import torch
+import torch.nn
+import numpy as np
+from long_tail_bench.core.executer import Executer
+
+def max_unpool2d(input_image, indices_image, kernel_size_image, \
+        stride_image, padding_image, output_size_image):
+
+    pool_input_image_np = np.random.random(input_image)
+    pool_input_image = torch.from_numpy(pool_input_image_np).to(torch.float32).cuda()
+    pool = torch.nn.MaxPool2d(kernel_size_image,stride_image,padding_image, return_indices=True)
+
+    output_size_image, indices_image = pool(pool_input_image)
+    ret = torch.nn.functional.max_unpool2d(output_size_image, indices_image, kernel_size_image, \
+        stride_image, padding_image).cuda()
+
+    return ret
+
+def args_adaptor(np_args):
+    input_i = np_args[0]
+    indices_i = np_args[1]
+    kernel_size = np_args[2]
+    stride = np_args[3]
+    padding = np_args[4]
+    output_image = np_args[5]
+
+    if (len(kernel_size)) >1 :
+        kernel_size_image = tuple(kernel_size)
+    else:
+        kernel_size_image = kernel_size[0]
+    if (len(stride)) >1 :
+        stride_image = tuple(stride)
+    else:
+        stride_image = stride[0]
+    if (len(padding)) >1:
+        padding_image = padding[0]
+    else:
+        padding_image = padding[0]
+
+    return [input_i, indices_i, kernel_size_image, \
+        stride_image, padding_image, output_image]
+
+def executer_creator():
+    return Executer(max_unpool2d, args_adaptor)
