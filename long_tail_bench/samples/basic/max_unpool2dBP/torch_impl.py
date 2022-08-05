@@ -9,6 +9,7 @@ def max_unpool2d(input_size_image, indices_image, kernel_size_image, \
 
     ret = torch.nn.functional.max_unpool2d(input_size_image, indices_image, kernel_size_image, \
         stride_image, padding_image).cuda()
+    ret.backward(ret)
 
     return ret
 
@@ -35,11 +36,15 @@ def args_adaptor(np_args):
 
     pool_input_image_np = np.random.random(input_i)
     pool_input_image = torch.from_numpy(pool_input_image_np).to(torch.float32).cuda()
+    pool_input_image.requires_grad = True
     pool = torch.nn.MaxPool2d(kernel_size_image,stride_image,padding_image, return_indices=True)
-
     input_size_image, indices_image = pool(pool_input_image)
+    input_size_image.requires_grad = True
+    input_size_image.backward(input_size_image)
+    indices_image.requires_grad = True
+    indices_image.backward(indices_image)
 
-    return [input_size_image, indices_image, kernel_size_image, \
+    return [input_size_image, indices_i, kernel_size_image, \
         stride_image, padding_image, output_image]
 
 def executer_creator():
