@@ -46,7 +46,6 @@ class Engine(object):
         self._json_helper = JsonHelper(self._settings.result_json_filepath)
         self._show_config = show_config
         self._parrots_exec_mode = parrots_exec_mode
-        self.case_elapsedtime = []
 
     def is_enable(self, case_name):
         if not self._run_case_names:
@@ -116,7 +115,7 @@ class Engine(object):
                     case_name,
                     "Stage Mode:",
                     stage_mode,
-                    # "Time Costing: " + str(self._times[stage_mode.value]),
+                    "Time Costing: " + str(self._times[stage_mode.value]),
                 )
             self.save_performance(case_name, self._json_helper, sample_config)
 
@@ -169,21 +168,9 @@ class Engine(object):
                     for case in sample_config.args_cases
                 ]
         num = 1 if just_one else len(self._origin_func_args)
-        # print("test case ", num)
         return [
             executer.clone_func_args(args)
             for args in self._origin_func_args[0:num]
-        ]
-
-    def new_make_data(
-        self,
-        executer,
-        args_cases,
-        np_args_generator=None,
-    ):
-        args = executer.generate_args(args_cases[0], [False]*9, np_args_generator)
-        return [
-            executer.clone_func_args(args)
         ]
 
     def run_per_mode(
@@ -200,23 +187,21 @@ class Engine(object):
         # warmup
         self.warmup(executer, sample_config, np_args_generator)
 
-        # # performance for all shapes
-        # samples_perf, samples_torch_profile = self.performance_all(
-        #     executer, sample_config, case_name, np_args_generator
-        # )  # noqa
+        # performance for all shapes
+        samples_perf, samples_torch_profile = self.performance_all(
+            executer, sample_config, case_name, np_args_generator
+        )  # noqa
 
-        # self.save_performance_all(case_name, samples_perf, samples_torch_profile)
+        self.save_performance_all(case_name, samples_perf, samples_torch_profile)
         
-        # self.performance(
-        #     executer, sample_config, stage_mode, np_args_generator
-        # )  # noqa
+        self.performance(
+            executer, sample_config, stage_mode, np_args_generator
+        )  # noqa
 
-        self.perf_per_case(executer, sample_config, np_args_generator)
-        
-        # # timeline
-        # self.timeline(
-        #     executer, sample_config, case_name, stage_mode, np_args_generator
-        # )
+        # timeline
+        self.timeline(
+            executer, sample_config, case_name, stage_mode, np_args_generator
+        )
         if not DEVICE_CPU:
             executer.synchronize()
 
@@ -271,44 +256,6 @@ class Engine(object):
             )
             self.run_per_iter(executer, func_args[0], sample_config)
 
-    def perf_per_case(self, executer, sample_config, np_args_generator):
-        # func_args = self.make_data(executer, sample_config, \
-        #     np_args_generator=np_args_generator)
-        # print(len(func_args))
-        iters = 100
-        self.case_elapsedtime.append("running_time")
-        for i in range(len(sample_config.args_cases)):
-            # print("------ ", i, " ", sample_config.args_cases[i])
-            item = self.new_make_data(executer, 
-                [sample_config.args_cases[i]], 
-                np_args_generator=np_args_generator)[0]
-            if not DEVICE_CPU:
-                executer.synchronize()
-            time_start = time.time()
-            for idx in range(iters):
-                self.run_per_iter(executer, item, sample_config)
-            if not DEVICE_CPU:
-                executer.synchronize()
-            time_cost = time.time() - time_start
-            self.case_elapsedtime.append(time_cost/iters)
-
-        print("len==== ", len(self.case_elapsedtime))
-        # print(self.case_elapsedtime)
-
-        with open("/mnt/lustre/jianglijuan/benchmark/parameter/extract_info_script/conv2d_top10.csv") as readCSV:
-            rows = csv.reader(readCSV)
-            with open("conv2d_top10.csv", "w") as writeCSV:
-                writer = csv.writer(writeCSV)
-                # row = rows[0]
-                # row.append("running_time")
-                # writer.writerow(row)
-                i = 0
-                for row in rows:
-                    # row = rows[i+1]
-                    row.append(self.case_elapsedtime[i])
-                    writer.writerow(row)
-                    i += 1
-
     def performance(
         self, executer, sample_config, stage_mode, np_args_generator
     ):
@@ -343,18 +290,14 @@ class Engine(object):
             }
         samples_perf.update({"time_cost": []})
         samples_torch_profile = []
-        # func_args = self.make_data(
-        #     executer,
-        #     sample_config,
-        #     case_name=case_name,
-        #     np_args_generator=np_args_generator,
-        # )  # noqa
+        func_args = self.make_data(
+            executer,
+            sample_config,
+            case_name=case_name,
+            np_args_generator=np_args_generator,
+        )  # noqa
 
-        # for idx in range(len(func_args)):
-        for i in range(len(sample_config.args_cases)):
-            item = self.new_make_data(executer, 
-                [sample_config.args_cases[i]], 
-                np_args_generator=np_args_generator)[0]
+        for idx in range(len(func_args)):
             with profile(
                 activities=[torch.profiler.ProfilerActivity.CPU, torch.profiler.ProfilerActivity.CUDA],
                 profile_memory=True,
@@ -363,12 +306,12 @@ class Engine(object):
                 with_flops=True,
             ) as profiler:
                 time_start = time.time()
-                self.run_per_iter(executer, item, sample_config)
+                self.run_per_iter(executer, func_args[idx], sample_config)
                 time_cost = time.time() - time_start
                 profiler.step()
             
             for item_i in range(item_num):
-                samples_perf["item_"+str(item_i)].append(sample_config.args_cases[i][item_i])
+                samples_perf["item_"+str(item_i)].append(sample_config.args_cases[idx][item_i])
             samples_perf["time_cost"].append(str(time_cost))
             samples_torch_profile.append(profiler.key_averages().table(sort_by="self_cuda_time_total", row_limit=-1))
         return samples_perf, samples_torch_profile
@@ -406,28 +349,25 @@ class Engine(object):
         json_helper.save(content)
     
     def save_performance_all(self, case_name, samples_perf, samples_torch_profile):
-        # with open("./perf_result/"+case_name+"_perf.csv", 'w', newline="") as w:
-        #     item_num = len(samples_perf.keys())
-        #     field_names = [
-        #         "item_"+str(i)
-        #         for i in range(item_num-1)
-        #     ]
-        #     field_names.append("time_cost")
-        #     csv_writer = csv.DictWriter(w, fieldnames=field_names)
-        #     csv_writer.writeheader()
-        #     length = len(samples_perf["item_0"])
-        #     for i in range(length):
-        #         dic = {       
-        #             item: samples_perf[item][i]
-        #             for item in samples_perf.keys()
-        #         }
-        #         csv_writer.writerow(dic)
+        with open("./perf_result/"+case_name+"_perf.csv", 'w', newline="") as w:
+            item_num = len(samples_perf.keys())
+            field_names = [
+                "item_"+str(i)
+                for i in range(item_num-1)
+            ]
+            field_names.append("time_cost")
+            csv_writer = csv.DictWriter(w, fieldnames=field_names)
+            csv_writer.writeheader()
+            length = len(samples_perf["item_0"])
+            for i in range(length):
+                dic = {       
+                    item: samples_perf[item][i]
+                    for item in samples_perf.keys()
+                }
+                csv_writer.writerow(dic)
                 
-        #     w.close()
-        length = len(samples_perf["item_0"])
-        # with open("./profiler_result/"+case_name+"_profiler.txt", 'w', newline="") as w:
-        # print(samples_torch_profile[0][1])
-        with open(case_name+"_profiler.txt", 'w', newline="") as w:
+            w.close()
+        with open("./profiler_result/"+case_name+"_profiler.txt", 'w', newline="") as w:
             for i in range(length):
                 dic = {       
                     item: samples_perf[item][i]
