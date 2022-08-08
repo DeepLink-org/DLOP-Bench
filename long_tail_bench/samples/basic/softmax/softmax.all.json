@@ -1,0 +1,156 @@
+import csv
+import json
+import os
+import re
+csv.field_size_limit(500 * 1024 * 1024)
+
+
+def read_csv(r_path):
+    content_list = []
+    with open(r_path) as r:
+        reader = csv.reader(r)
+        for row in reader:
+            if isinstance(row, (list, tuple)) and len(row) == 1:
+                row = row[0]
+            content_list.append(row)
+    return content_list
+
+def split_arg(conv2d_info):
+    ret = []
+    info_length = len(conv2d_info)
+    start = 1
+    i = 0
+    while i < info_length:
+        if conv2d_info[i] == ',' and conv2d_info[i-1] == ']':
+            ret.append(conv2d_info[start: i-1])
+            i += 2
+            start = i+1
+        i += 1
+    ret.append(conv2d_info[start: info_length-1])
+    return ret
+
+def split_attr(attr):
+    ret = []
+    info_length = len(attr)
+    start = 0
+    middle = 0
+    i = 0
+    #print(attr)
+    while i < info_length:
+        if attr[i] == '{':
+            start = i
+        elif attr[i] == ':' and attr[i-2] != 'e':
+            middle = i
+        elif (attr[i] == '}' and attr[i-3]!= 't') or (attr[i] == ',' and attr[i-1] != '}'):
+            name = attr[start+2:middle-1]
+            #print(name)
+            #print("===")
+            #print(attr[middle+2:i])
+            #print("===")
+            number = int(attr[middle+2:i])
+            if name == 'dim':
+                ret.append([number, 3])
+            elif name == '_stacklevel':
+                ret.append([None, number])
+        i += 1
+    #print('===')
+    #print(ret)
+    #print('===')
+    return ret
+
+def find_index(content_list, name):
+    content_list_length = len(content_list)
+    for i in range(content_list_length):
+        if content_list[i][0] == name:
+            return i
+    return -1
+
+def string2list(s):
+    ret = []
+    s_l = len(s)
+    start = 1
+    for i in range(s_l):
+        if s[i] == ',':
+            ret.append(int(s[start:i]))
+            start = i + 2
+    ret.append(int(s[start:s_l-1]))
+    return ret
+
+def parentheses_change(s):
+    # change '(x, y)' to '[x, y]'
+    s_length = len(s)
+    ret = ""
+    for i in range(s_length):
+        if s[i] == '(' and s[i+1] != '[':
+            ret += "["
+        elif s[i] == ')' and s[i-1] != ']':
+            ret += "]"
+        else:
+            ret += s[i]
+    return ret
+            
+
+def get_info_dict(item_dict, item_info, op_info):
+    count = 0
+    for op_info_iter in op_info:
+        splitstr = op_info_iter.split('/ ')
+        info_length = len(splitstr[0])
+        i = 0
+        start = 0
+        while i < info_length:
+            if splitstr[0][i] == '[':
+                start = i
+            elif splitstr[0][i] == ']':
+                item_dict[item_info[0]].append(string2list(splitstr[0][start:i+1]))
+                i += 2
+                start = i+1
+            i += 1
+        item_dict[item_info[1]].append(int(splitstr[1]))
+        if len(splitstr) <= 3:
+            item_dict[item_info[2]].append(int(splitstr[2]))
+        else:
+            item_dict[item_info[2]].append(int(splitstr[3]))
+        
+    return item_dict
+
+if __name__ == "__main__":
+    
+    info_dict = {"input_shape": [], "dim": [], '_stacklevel': []}
+    item_info = ["input_shape", "dim", "_stacklevel"]
+    
+    dirpath = '../new_arg'
+    fileList = os.listdir(dirpath)
+    info_split = []
+    attr_split = []
+    print("---------------read csv and split args---------------------")
+    for filepath in fileList:
+        content_list = read_csv("../new_arg/"+filepath)
+        index = find_index(content_list, "softmax")
+        if index != -1: # if the model contains op
+            #print(content_list[index])
+            info = content_list[index][2]
+            attr = content_list[index][3]
+            if attr[2] == '}':
+                continue
+            info_split += (split_arg(info))
+            #print(attr)
+            attr_split += split_attr(attr)
+
+    #print(info_split)
+    print("---------------duplicate removal---------------------")
+    info_split_new = []
+    print(info_split)
+    print(attr_split)
+    for i in range(len(attr_split)):
+        print(info_split[i])
+        info_split_new.append(parentheses_change(info_split[i] + '/ ' + str(attr_split[i][0]) + '/ ' + str(attr_split[i][1])))
+    print("info size before duplicate removal: ", len(info_split_new))
+    #info_split_new = list(set(info_split_new))
+    print("info size after duplicate removal: ", len(info_split_new))
+    print("---------------read args and turn into dict---------------------")
+    info_dict = get_info_dict(info_dict, item_info, info_split_new)
+    arg_data = info_dict
+
+    info_json = json.dumps(info_dict)
+    with open('../arg_json/softmax.json', 'w') as f:
+        f.write(info_json)
