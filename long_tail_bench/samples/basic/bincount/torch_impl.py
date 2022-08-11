@@ -9,7 +9,7 @@ def bincount(input_torch):
 
 
 def args_adaptor(np_args):
-    input_torch = torch.from_numpy(np_args[0]).to(torch.float32).cuda()
+    input_torch = torch.from_numpy(np_args[0]).to(torch.int32).cuda()
     return [input_torch]
 
 
