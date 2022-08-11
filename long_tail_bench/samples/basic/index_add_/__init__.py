@@ -9,7 +9,7 @@ import json
 
 
 def get_sample_config():
-    with open("./long_tail_bench/samples/basic/any/index_add_.json", "r") as f:
+    with open("./long_tail_bench/samples/basic/index_add_/index_add_.json", "r") as f:
         arg_data = json.load(f)
     arg_data_length = len(arg_data["input_size"])
     args_cases_ = []
@@ -17,7 +17,7 @@ def get_sample_config():
         args_cases_.append([arg_data["input_size"][i], arg_data["dim"][i]])
     return SampleConfig(
         args_cases=args_cases_,
-        requires_grad=[False] * 1,
+        requires_grad=[False] * 2,
         backward=[False],
         performance_iters=1000,
         save_timeline=False,

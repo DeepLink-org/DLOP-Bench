@@ -9,7 +9,7 @@ import json
 
 
 def get_sample_config():
-    with open("./long_tail_bench/samples/basic/any/logsumexp.json", "r") as f:
+    with open("./long_tail_bench/samples/basic/logsumexp/logsumexp.json", "r") as f:
         arg_data = json.load(f)
     arg_data_length = len(arg_data["input_size"])
     args_cases_ = []
