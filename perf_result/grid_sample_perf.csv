@@ -1,0 +1,3 @@
+item_0,item_1,item_2,item_3,item_4,time_cost
+"[5704, 1, 5, 7]","[5704, 9, 9, 2]",bilinear,zeros,True,2.5731377601623535
+"[5704, 1, 11, 15]","[5704, 9, 9, 2]",bilinear,zeros,True,0.008752822875976562
