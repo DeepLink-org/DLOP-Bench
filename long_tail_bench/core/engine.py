@@ -181,7 +181,7 @@ class Engine(object):
         args_cases,
         np_args_generator=None,
     ):
-        args = executer.generate_args(args_cases[0], [False]*9, np_args_generator)
+        args = executer.generate_args(args_cases[0], [False]*2, np_args_generator)
         return [
             executer.clone_func_args(args)
         ]
@@ -200,12 +200,12 @@ class Engine(object):
         # warmup
         self.warmup(executer, sample_config, np_args_generator)
 
-        # # performance for all shapes
-        # samples_perf, samples_torch_profile = self.performance_all(
-        #     executer, sample_config, case_name, np_args_generator
-        # )  # noqa
+        # performance for all shapes
+        samples_perf, samples_torch_profile = self.performance_all(
+            executer, sample_config, case_name, np_args_generator
+        )  # noqa
 
-        # self.save_performance_all(case_name, samples_perf, samples_torch_profile)
+        self.save_performance_all(case_name, samples_perf, samples_torch_profile)
         
         # self.performance(
         #     executer, sample_config, stage_mode, np_args_generator
@@ -295,9 +295,9 @@ class Engine(object):
         print("len==== ", len(self.case_elapsedtime))
         # print(self.case_elapsedtime)
 
-        with open("/mnt/lustre/jianglijuan/benchmark/parameter/extract_info_script/conv2d_top10.csv") as readCSV:
+        with open("/mnt/lustre/zhoushenglong/WAIC/DLOP-Bench/op_csv/cat.csv") as readCSV:
             rows = csv.reader(readCSV)
-            with open("conv2d_top10.csv", "w") as writeCSV:
+            with open("./tmp/cat_A100.csv", "w") as writeCSV:
                 writer = csv.writer(writeCSV)
                 # row = rows[0]
                 # row.append("running_time")
@@ -438,7 +438,6 @@ class Engine(object):
                 
             w.close()
             
-    
     def check_unknown_error(self, case_name, json_helper):
         last_mode = None
         for stage_mode in self._stage_modes:
