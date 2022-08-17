@@ -10,7 +10,7 @@ def one_hot(input, num_classes):
 
 def args_adaptor(np_args):
     input = torch.from_numpy(np_args[0]).cuda()
-
+    print(input, np_args[1])
     return [input, np_args[1]]
 
 
