@@ -13,14 +13,18 @@ def get_sample_config():
         arg_data = json.load(f)
     arg_data_length = len(arg_data["input0"])
     args_cases_ = []
+    cnt = 0
     for i in range(arg_data_length):
         cur_args = []
-        for j in range(len(arg_data)): 
+        for j in range(2): 
             cur_args.append(arg_data["input" + str(j)][i])
-        args_cases_.append(cur_args)
+        if arg_data['input2'][i] != []:
+            pass
+        else:
+            args_cases_.append(cur_args)
     return SampleConfig(
         args_cases=args_cases_,
-        requires_grad=[False] * len(arg_data),
+        requires_grad=[False] * 2,
         backward=False,
         performance_iters=1000,
         save_timeline=False,
@@ -32,8 +36,8 @@ def get_sample_config():
 
 def gen_np_args(*inputs):
     args = []
-    for input_ in inputs:
-        args.append(np.random.random(input_))
+    for i in range(2):
+        args.append(np.random.random(inputs[i]))
     return args
 
 register_sample(__name__, get_sample_config, gen_np_args)

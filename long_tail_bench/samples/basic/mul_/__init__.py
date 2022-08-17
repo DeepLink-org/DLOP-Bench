@@ -29,9 +29,10 @@ def get_sample_config():
 
 def gen_np_args(mul__0, mul__1):
     mul__0 = np.random.random(mul__0)
-    if isinstance(mul__1, list): # mul__1 is a tensor
+
+    if isinstance(mul__1[0], int):
         mul__1 = np.random.random(mul__1)
-    else: # mul__1 is an imm
+    else:
         mul__1 = np.array(mul__1)
 
     return [mul__0, mul__1]

@@ -1,7 +1,7 @@
 import json
 import matplotlib.pyplot as plt 
 
-with open("./long_tail_bench/samples/basic/softmax/softmax.all.json", 'r') as f:
+with open("./softmax.all.json", 'r') as f:
     data = json.load(f)
 calc_cnt = []
 max_ = 0
@@ -34,10 +34,15 @@ print(mins)
 print(mind)
 
 
-#plt.hist(calc_cnt, bins = 10)
+plt.hist(calc_cnt, bins=20, edgecolor='k', density=False)
+plt.xlabel('Floating operations')
+plt.ylabel('Count')
+# fig.text(0, 0.5, 'Count', va='center', rotation='vertical')
+plt.savefig('flops_cnt.jpg')
 #plt.text()
 #plt.show()
 
+'''
 innermost = 0
 non_innermost = 0
 reduce_ = []
@@ -72,4 +77,4 @@ plt.show()
 #print(innermost)
 #print(non_innermost)
 
-
+'''
