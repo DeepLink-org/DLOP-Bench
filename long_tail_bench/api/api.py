@@ -1,4 +1,7 @@
 import argparse
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from long_tail_bench.common import (
     Settings,
     FRAMEWORK,
