@@ -89,3 +89,9 @@ Sample gripper usage, it will grip the sample decorated and save files generated
 
 ## Paper
 [WIP] LongTail-Bench: A Benchmark for long tail operators in Deep Learning
+
+
+## performance test for BLAS, Distribution, Linalg and Sort
+```
+python run.py
+```
