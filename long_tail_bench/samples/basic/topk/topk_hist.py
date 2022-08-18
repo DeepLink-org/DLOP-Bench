@@ -14,16 +14,16 @@ for i in range(len(data['topk_0'])):
         max_ = cnt
     if cnt < min_:
         min_ = cnt
-    calc_cnt.append(cnt)
+    calc_cnt.append(cnt * 4 / (10**6))
 #calc_cnt = [1, 2, 3, 4]
-gn = int((max(calc_cnt) - min(calc_cnt))/10000)
-print(max(calc_cnt))
-print(min(calc_cnt))
+n, bins, _ = plt.hist(calc_cnt, bins=10, edgecolor='k', density=False)
+for i in range(len(n)):
+    plt.text((bins[i]+bins[i+1])/2, n[i]*1.01, int(n[i]), color = 'black', fontsize=10, horizontalalignment="center")
 
-
-plt.hist(calc_cnt, bins = 10)
-plt.xlabel("shape size")
-plt.ylabel("count")
-plt.savefig("topk_count.png")
+plt.xlabel('Mbytes')
+plt.ylabel('Frequency of occurrence')
+# plt.yscale("log", base=10)
 # plt.text()
+# plt.show()
+plt.savefig('topk_top10_mem.pdf')
 plt.show()
