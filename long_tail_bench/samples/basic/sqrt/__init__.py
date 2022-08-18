@@ -28,7 +28,7 @@ def get_sample_config():
 
 
 def gen_np_args(sqrt_0):
-    sqrt_0 = np.random.random(sqrt_0)
+    sqrt_0 = np.random.random(sqrt_0[0])
     return [sqrt_0]
 
 
