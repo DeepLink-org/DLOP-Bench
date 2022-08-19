@@ -17,7 +17,6 @@ import csv
 
 import torch
 import numpy as np
-from torch.profiler import profile
 
 
 class Engine(object):
@@ -110,13 +109,7 @@ class Engine(object):
                 logging.exception(e)
                 break
             else:
-                print(
-                    "Case Name:",
-                    case_name,
-                    "Stage Mode:",
-                    stage_mode,
-                    "Time Costing: " + str(self._times[stage_mode.value]),
-                )
+                print("test success!")
             self.save_performance(case_name, self._json_helper, sample_config)
 
     def run_per_iter(self, executer, func_args, sample_config):
@@ -188,20 +181,12 @@ class Engine(object):
         self.warmup(executer, sample_config, np_args_generator)
 
         # performance for all shapes
-        samples_perf, samples_torch_profile = self.performance_all(
+        samples_perf = self.performance_all(
             executer, sample_config, case_name, np_args_generator
         )  # noqa
 
-        self.save_performance_all(case_name, samples_perf, samples_torch_profile)
-        
-        self.performance(
-            executer, sample_config, stage_mode, np_args_generator
-        )  # noqa
+        self.save_performance_all(case_name, samples_perf)
 
-        # timeline
-        self.timeline(
-            executer, sample_config, case_name, stage_mode, np_args_generator
-        )
         if not DEVICE_CPU:
             executer.synchronize()
 
@@ -255,30 +240,6 @@ class Engine(object):
                 np_args_generator=np_args_generator,
             )
             self.run_per_iter(executer, func_args[0], sample_config)
-
-    def performance(
-        self, executer, sample_config, stage_mode, np_args_generator
-    ):
-        iters = sample_config.performance_iters
-        func_args = [
-            self.make_data(
-                executer,
-                sample_config,
-                just_one=True,
-                np_args_generator=np_args_generator,
-            )[0]
-            for _ in range(iters)
-        ]
-
-        if not DEVICE_CPU:
-            executer.synchronize()
-        time_start = time.time()
-        for idx in range(iters):
-            self.run_per_iter(executer, func_args[idx], sample_config)
-        if not DEVICE_CPU:
-            executer.synchronize()
-        time_cost = time.time() - time_start
-        self._times[stage_mode.value] = time_cost
     
     def performance_all(
         self, executer, sample_config, case_name, np_args_generator
@@ -298,43 +259,14 @@ class Engine(object):
         )  # noqa
 
         for idx in range(len(func_args)):
-            with profile(
-                activities=[torch.profiler.ProfilerActivity.CPU, torch.profiler.ProfilerActivity.CUDA],
-                profile_memory=True,
-                record_shapes=True,
-                with_stack=True,
-                with_flops=True,
-            ) as profiler:
-                time_start = time.time()
-                self.run_per_iter(executer, func_args[idx], sample_config)
-                time_cost = time.time() - time_start
-                profiler.step()
+            time_start = time.time()
+            self.run_per_iter(executer, func_args[idx], sample_config)
+            time_cost = time.time() - time_start
             
             for item_i in range(item_num):
                 samples_perf["item_"+str(item_i)].append(sample_config.args_cases[idx][item_i])
             samples_perf["time_cost"].append(str(time_cost))
-            samples_torch_profile.append(profiler.key_averages().table(sort_by="self_cuda_time_total", row_limit=-1))
-        return samples_perf, samples_torch_profile
-
-    def timeline(
-        self, executer, sample_config, case_name, stage_mode, np_args_generator
-    ):
-        if not sample_config.save_timeline:
-            return
-
-        executer.save_timeline_start(
-            case_name, stage_mode, self._settings.result_dir
-        )
-
-        for _ in range(sample_config.timeline_iters):
-            func_args = self.make_data(
-                executer,
-                sample_config,
-                just_one=True,
-                np_args_generator=np_args_generator,
-            )
-            self.run_per_iter(executer, func_args[0], sample_config)
-        executer.save_timeline_end()
+        return samples_perf
 
     def save_performance(self, case_name, json_helper, sample_config):
         content = json_helper.read()
@@ -348,7 +280,7 @@ class Engine(object):
         }
         json_helper.save(content)
     
-    def save_performance_all(self, case_name, samples_perf, samples_torch_profile):
+    def save_performance_all(self, case_name, samples_perf):
         with open("./perf_result/"+case_name+"_perf.csv", 'w', newline="") as w:
             item_num = len(samples_perf.keys())
             field_names = [
@@ -367,17 +299,6 @@ class Engine(object):
                 csv_writer.writerow(dic)
                 
             w.close()
-        with open("./profiler_result/"+case_name+"_profiler.txt", 'w', newline="") as w:
-            for i in range(length):
-                dic = {       
-                    item: samples_perf[item][i]
-                    for item in samples_perf.keys()
-            }
-                w.write(str(dic))
-                w.write(samples_torch_profile[i]+"\n")
-                
-            w.close()
-            
     
     def check_unknown_error(self, case_name, json_helper):
         last_mode = None
