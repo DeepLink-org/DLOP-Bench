@@ -14,7 +14,7 @@ for i in range(len(data['x1'])):
     cnt = 1
     for d in range(len(data['x1'][i])):
         cnt = cnt * data['x1'][i][d]
-    cnt = cnt * 3
+    cnt = cnt * 4
     if cnt > max_:
         maxs = data['x1'][i]
         maxd = data['x2'][i]
@@ -23,20 +23,16 @@ for i in range(len(data['x1'])):
         mins = data['x1'][i]
         mind = data['x2'][i]
         min_ = cnt
-    calc_cnt.append(cnt)
+    calc_cnt.append(cnt / (10**6))
 #calc_cnt = [1, 2, 3, 4]
-gn = int((max(calc_cnt) - min(calc_cnt))/10000)
-print(max(calc_cnt))
-print(maxs)
-print(maxd)
-print(min(calc_cnt))
-print(mins)
-print(mind)
+n, bins, _ = plt.hist(calc_cnt, bins=10, edgecolor='k', density=False)
+for i in range(len(n)):
+    plt.text((bins[i]+bins[i+1])/2, n[i]*1.01, int(n[i]), color = 'black', fontsize=10, horizontalalignment="center")
 
-
-plt.hist(calc_cnt, bins = 10)
-plt.xlabel("flops")
-plt.ylabel("count")
-plt.savefig("norm_count.png")
+plt.xlabel('Mbytes')
+plt.ylabel('Frequency of occurrence')
+# plt.yscale("log", base=10)
 # plt.text()
+# plt.show()
+plt.savefig('norm_top10_mem.pdf')
 plt.show()

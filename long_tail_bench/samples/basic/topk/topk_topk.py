@@ -51,6 +51,14 @@ d_order=sorted(cnt_dict.items(),key=lambda x:x[1],reverse=True)
 d_order = d_order[:10]
 print(d_order)
 
+topk_dict = {"topk_0": [], "topk_1": [], "topk_2": []}
+for item in d_order:
+    topk_dict["topk_0"].append(list(item[0][:-2]))
+    topk_dict["topk_1"].append(item[0][-2])
+    topk_dict["topk_2"].append(item[0][-1])
+with open('topk.json', 'w') as json_file:
+    json.dump(topk_dict, json_file)
+
 perf_result_path = os.path.dirname(os.path.dirname((os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))))
 dirpath = os.path.join(perf_result_path, "perf_result", "topk_perf.csv")
 f = pd.read_csv(dirpath)

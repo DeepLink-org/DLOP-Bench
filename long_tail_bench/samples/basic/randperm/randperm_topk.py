@@ -36,7 +36,6 @@ cnt_dict = {}
 for i in range(len(data['n'])):
     key = []
     key.append(data['n'][i])
-    # key.append(data['mat2'][i])
     keyt = tuple(key)
     if keyt in cnt_dict.keys():
         cnt_dict[keyt] += 1
@@ -45,17 +44,30 @@ for i in range(len(data['n'])):
 d_order=sorted(cnt_dict.items(),key=lambda x:x[1],reverse=True)
 d_order = d_order[:10]
 print(d_order)
-#print(d_order[0][0][:-2])
+
+
+topk_dict = {"n": []}
+for item in d_order:
+    topk_dict["n"].append(item[0][0])
+with open('randperm.json', 'w') as json_file:
+    json.dump(topk_dict, json_file)
 
 perf_result_path = os.path.dirname(os.path.dirname((os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))))
 dirpath = os.path.join(perf_result_path, "perf_result", "randperm_perf.csv")
 f = pd.read_csv(dirpath)
-# print(f['item_0'][0][0][:-2])
-# print("++++++++++++++++++")
 print(f)
-# print("------------------")
-for i in range(len(f["time_cost"].values)): 
-    #print(tuple(f['item_0'].values))
-    for j in range(len(d_order)):
-        if f['item_0'][i] == d_order[j][0][0]:
-            print(str(d_order[j][0]) + ": " + str(f["time_cost"].values[i] * 1000) + 'ms')
+
+print("""\\begin{table}[H]
+\\label{tbl:distribution_randperm_top10}
+    \\centering
+    \\caption{top10 configurations and call times}
+\\begin{tabular}{c|c|c}
+\\hline""")
+print("id & Config (n) & call times \\\\ \hline")
+for i in range(len(d_order)):
+    for j in range(len(f["time_cost"].values)): 
+        if f['item_0'][j] == d_order[i][0][0]:
+            print(str(i + 1) + " & " + "(" + str(f['item_0'][j]) + ")" + " & " + str(d_order[i][1]) + " \\\\ \hline")
+            break
+print("""\\end{tabular}
+\\end{table}""")

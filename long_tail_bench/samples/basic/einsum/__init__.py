@@ -14,10 +14,7 @@ def get_sample_config():
         arg_data = json.load(f)
     arg_data_length = len(arg_data["x1"])
     args_cases_ = []
-    print(len(arg_data['x1']), len(arg_data['x2']), len(arg_data['x3']))
     for i in range(arg_data_length):
-        print(i, (arg_data["x1"][i], arg_data["x2"][i], 
-            arg_data["x3"][i]))
         args_cases_.append((arg_data["x1"][i], arg_data["x2"][i], 
             arg_data["x3"][i]))
     return SampleConfig(

@@ -5,35 +5,26 @@ with open("randperm_all.json", 'r') as f:
     data = json.load(f)
 calc_cnt = []
 max_ = 0
-maxs = []
-mins = []
-maxd = []
-mind = []
 min_ = 999
 for i in range(len(data['n'])):
     cnt = data['n'][i]
     if cnt > max_:
-        maxs = data['n'][i]
-        maxd = data['n'][i]
         max_ = cnt
     if cnt < min_:
-        mins = data['n'][i]
-        mind = data['n'][i]
         min_ = cnt
-    calc_cnt.append(cnt)
+    calc_cnt.append(cnt * 4 / (10**6))
 #calc_cnt = [1, 2, 3, 4]
-gn = int((max(calc_cnt) - min(calc_cnt))/10000)
-print(max(calc_cnt))
-print(maxs)
-print(maxd)
-print(min(calc_cnt))
-print(mins)
-print(mind)
 
+n, bins, _ = plt.hist(calc_cnt, bins=10, edgecolor='k', density=False)
+for i in range(len(n)):
+    plt.text((bins[i]+bins[i+1])/2, n[i]*1.01, int(n[i]), color = 'black', fontsize=10, horizontalalignment="center")
 
-plt.hist(calc_cnt, bins = 10)
-plt.xlabel("flops")
-plt.ylabel("count")
-plt.savefig("randperm_count.png")
+plt.xlabel('Mbytes')
+plt.ylabel('Frequency of occurrence')
+# plt.yscale("log", base=10)
+# plt.text()
+# plt.show()
+plt.savefig('randperm_top10_mem.pdf')
+
 # plt.text()
 plt.show()

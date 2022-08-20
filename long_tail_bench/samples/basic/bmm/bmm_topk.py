@@ -48,7 +48,6 @@ for i in range(len(data['input'])):
         key.append(d)
     for d in data['mat2'][i]:
         key.append(d)
-    # key.append(data['mat2'][i])
     keyt = tuple(key)
     if keyt in cnt_dict.keys():
         cnt_dict[keyt] += 1
@@ -57,18 +56,32 @@ for i in range(len(data['input'])):
 d_order=sorted(cnt_dict.items(),key=lambda x:x[1],reverse=True)
 d_order = d_order[:10]
 print(d_order)
-#print(d_order[0][0][:-2])
+
+topk_dict = {"input": [], "mat2": []}
+for item in d_order:
+    topk_dict["input"].append(list(item[0][:-3]))
+    topk_dict["mat2"].append(list(item[0][-3:]))
+with open('bmm.json', 'w') as json_file:
+    json.dump(topk_dict, json_file)
+
 
 perf_result_path = os.path.dirname(os.path.dirname((os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))))
 dirpath = os.path.join(perf_result_path, "perf_result", "bmm_perf.csv")
 f = pd.read_csv(dirpath)
-# print(f['item_0'][0][0][:-2])
-# print("++++++++++++++++++")
 print(f)
-# print("------------------")
- 
+
+print("""\\begin{table}[H]
+\\label{tbl:blas_bmm_top10}
+    \\centering
+    \\caption{top10 configurations and call times}
+\\begin{tabular}{c|c|c}
+\\hline""")
+print("id & Config ([input], [mat2]) & call times \\\\ \hline")
 for i in range(len(d_order)):
     for j in range(len(f["time_cost"].values)):
-        # if tuple(string2list(f['item_0'][i])) == d_order[j][0][:-3] and string2list(f['item_1'][i]) == list(d_order[j][0][-3:-1]):
         if string2string(f['item_0'][j], f['item_1'][j]) == tuple2string(d_order[i][0]):
-            print(str(d_order[i][0]) + ": " + str(f["time_cost"].values[j] * 1000) + 'ms')
+            print(str(i + 1) + " & " + "(" + f['item_0'][j] + ", " + f['item_1'][j] + ")" + " & " + str(d_order[i][1]) + " \\\\ \hline")
+            break
+            # print(str(d_order[i][0]) + ": " + str(f["time_cost"].values[j] * 1000) + 'ms')
+print("""\\end{tabular}
+\\end{table}""")

@@ -16,10 +16,11 @@ for i in range(len(data['input'])):
         cnt = cnt * data['input'][i][d]
     for d in range(len(data['weight'][i])):
         cnt = cnt * data['weight'][i][d]
-    if len(data['weight'][i]) == 1:
-        cnt = cnt / data['weight'][i][0]
-    else:
-        cnt = cnt / data['weight'][i][1]
+    # if len(data['weight'][i]) == 1:
+    #     cnt = cnt / data['weight'][i][0]
+    # else:
+    #     cnt = cnt / data['weight'][i][1]
+    cnt = cnt / data['weight'][i][-1]
     if cnt > max_:
         maxs = data['input'][i]
         maxd = data['weight'][i]
@@ -30,6 +31,17 @@ for i in range(len(data['input'])):
         min_ = cnt
     calc_cnt.append(cnt)
 #calc_cnt = [1, 2, 3, 4]
+n, bins, _ = plt.hist(calc_cnt, bins=10, edgecolor='k', density=False)
+for i in range(len(n)):
+    plt.text((bins[i]+bins[i+1])/2, n[i]*1.01, int(n[i]), color = 'black', fontsize=10, horizontalalignment="center")
+
+plt.xlabel('GFLOPs')
+plt.ylabel('Frequency of occurrence')
+# plt.yscale("log", base=10)
+# plt.text()
+# plt.show()
+plt.savefig('linear_top10_flops.pdf')
+
 gn = int((max(calc_cnt) - min(calc_cnt))/10000)
 print(max(calc_cnt))
 print(maxs)
