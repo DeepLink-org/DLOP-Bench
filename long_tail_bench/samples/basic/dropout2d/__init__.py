@@ -29,8 +29,8 @@ def get_sample_config():
 
 def gen_np_args(input_size_, p_, inplace_):
     input_image_np = np.random.random(input_size_)
-    p = p_[0]
-    inplace = inplace_[0]
+    p = p_
+    inplace = inplace_
 
     return [input_image_np, p, inplace]
 
