@@ -4,9 +4,6 @@ __pycache__/
 *.pth
 *$py.class
 
-# scripts
-/*.sh
-
 # C extensions
 *.so
 
