@@ -10,3 +10,4 @@ for op_name in op_list:
     old_name = op_name + "_perf.csv"
     new_name = op_name + "_" + gpu_name + "_perf.csv"
     rename_command = "cd {} && mv {} {} && cd ..".format(dir_name, old_name, new_name)
+    os.system(rename_command)
