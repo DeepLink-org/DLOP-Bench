@@ -1,1 +1,0 @@
-{"input": [[4, 512, 14, 14], [4, 256, 28, 28], [4, 128, 56, 56]], "kernel_size": [[2], [2], [2]], "stride": [[2], [2], [2]], "padding": [[0], [0], [0]], "ceil_mode": [[false], [false], [false]], "count_include_pad": [[true], [true], [true]], "divisor_override": [[null], [null], [null]]}
