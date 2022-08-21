@@ -250,7 +250,7 @@ class Engine(object):
 
     def warmup(self, executer, sample_config, np_args_generator):
         for _ in range(sample_config.warm_up_iters):
-            func_args = self.make_data(
+            func_args = self.make_data_new(
                 executer,
                 sample_config,
                 0,
