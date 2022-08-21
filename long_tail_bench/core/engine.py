@@ -119,7 +119,7 @@ class Engine(object):
         ret = executer.execute(func_args)
         if isinstance(ret, (int, float, str, tensor_type())):
             ret = (ret,)
-        elif isinstance(ret, (dict, collections.Mapping)):
+        elif isinstance(ret, (dict, collections.abc.Mapping)):
             pass
         elif isinstance(ret, tuple(custom_class_manager.get_custom_classes())):
             ret = unfold_custom_class(ret)
@@ -166,6 +166,22 @@ class Engine(object):
             for args in self._origin_func_args[0:num]
         ]
 
+    def make_data_new(
+        self,
+        executer,
+        sample_config,
+        index,
+        np_args_generator=None,
+    ):
+        self._origin_func_args = [
+            executer.generate_args(
+                sample_config.args_cases[index], sample_config.requires_grad, np_args_generator
+            )
+        ]
+        return [
+            executer.clone_func_args(self._origin_func_args[0])
+        ]
+
     def run_per_mode(
         self, case_name, stage_mode, executer, sample_config, np_args_generator
     ):
@@ -198,14 +214,15 @@ class Engine(object):
         case_name=None,
         np_args_generator=None,
     ):
-        func_args = self.make_data(
-            executer,
-            sample_config,
-            case_name=case_name,
-            np_args_generator=np_args_generator,
-        )  # noqa
-        for idx in range(len(func_args)):
-            ret = self.run_per_iter(executer, func_args[idx], sample_config)
+        
+        for idx in range(len(sample_config.args_cases)):
+            func_args = self.make_data_new(
+                executer,
+                sample_config,
+                idx,
+                np_args_generator=np_args_generator,
+            )  # noqa
+            ret = self.run_per_iter(executer, func_args[0], sample_config)
             if stage_mode not in self._rets:
                 self._rets[stage_mode] = {}
             self._rets[stage_mode][idx] = ret
@@ -236,7 +253,7 @@ class Engine(object):
             func_args = self.make_data(
                 executer,
                 sample_config,
-                just_one=True,
+                0,
                 np_args_generator=np_args_generator,
             )
             self.run_per_iter(executer, func_args[0], sample_config)
@@ -250,17 +267,17 @@ class Engine(object):
             for i in range(item_num)
             }
         samples_perf.update({"time_cost": []})
-        samples_torch_profile = []
-        func_args = self.make_data(
-            executer,
-            sample_config,
-            case_name=case_name,
-            np_args_generator=np_args_generator,
-        )  # noqa
+        
 
-        for idx in range(len(func_args)):
+        for idx in range(len(sample_config.args_cases)):
+            func_args = self.make_data_new(
+                executer,
+                sample_config,
+                idx,
+                np_args_generator=np_args_generator,
+            )  # noqa
             time_start = time.time()
-            self.run_per_iter(executer, func_args[idx], sample_config)
+            self.run_per_iter(executer, func_args[0], sample_config)
             time_cost = time.time() - time_start
             
             for item_i in range(item_num):
