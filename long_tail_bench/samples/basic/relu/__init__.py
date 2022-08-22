@@ -11,10 +11,10 @@ import json
 def get_sample_config():
     with open("./long_tail_bench/samples/basic/relu/relu.json", "r") as f:
         arg_data = json.load(f)
-    arg_data_length = len(arg_data["relu_0"])
+    arg_data_length = len(arg_data["input_size"])
     args_cases_ = []
     for i in range(arg_data_length):
-        args_cases_.append((arg_data["relu_0"][i], ))
+        args_cases_.append((arg_data["input_size"][i], ))
     return SampleConfig(
         args_cases=args_cases_,
         requires_grad=[False] * 1,
@@ -27,8 +27,8 @@ def get_sample_config():
     )
 
 
-def gen_np_args(relu_0):
-    relu_0 = np.random.random(relu_0)
+def gen_np_args(input_size):
+    relu_0 = np.random.random(input_size)
     return [relu_0]
 
 
