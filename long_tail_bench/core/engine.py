@@ -202,7 +202,7 @@ class Engine(object):
         )  # noqa
 
         self.save_performance_all(case_name, samples_perf)
-
+        
         if not DEVICE_CPU:
             executer.synchronize()
 
@@ -225,7 +225,7 @@ class Engine(object):
             ret = self.run_per_iter(executer, func_args[0], sample_config)
             if stage_mode not in self._rets:
                 self._rets[stage_mode] = {}
-            self._rets[stage_mode][idx] = ret
+            self._rets[stage_mode][idx] = None
 
             if stage_mode == self._stage_modes.S1:
                 continue
