@@ -1,26 +1,26 @@
 # Long Tail Bench
 ````````````````````````````````````````````````````````````````````````````````````````
-针对算子性能报告更改/新增了如下文件:
-    DLOP-Bench/run.sh:测试算子的运行脚本，根据需要直接解掉对应注释即可,涉及到的算子均在脚本中；
+针对算子性能报告更改/新增了如下文件：
+    DLOP-Bench/run.sh：测试算子的运行脚本，根据需要直接解掉对应注释即可，涉及到的算子均在脚本中；
 
-    DLOP-Bench/op_csv:其中包含了每个对应算子的参数信息和调用信息;
+    DLOP-Bench/op_csv：其中包含了每个对应算子的参数信息和调用信息；
 
-    DLOP-Benc/tmp:其中保存每个对应算子的性能测试结果;
+    DLOP-Benc/tmp：其中保存每个对应算子的性能测试结果；
 
-    DLOP-Bench/scripts:其中包含了每个对应算子的画图脚本，从DLOP-Benc/tmp中读取对应算子的测试结果，生成相应图片在DLOP-Benc/pictures中;
+    DLOP-Bench/scripts：其中包含了每个对应算子的画图脚本，从DLOP-Benc/tmp中读取对应算子的测试结果，生成相应图片在DLOP-Benc/pictures中；
 
-    DLOP-Bench/pictures:其中保存每个对应算子所生成的图片;
+    DLOP-Bench/pictures：其中保存每个对应算子所生成的图片；
 
-    同时，更新了每个算子测试时所用到的包含算子参数信息的json文件,从parameter仓库获取。
+    同时，更新了每个算子测试时所用到的包含算子参数信息的json文件，从parameter仓库获取。
 
-    测试流程:
+    测试流程：
         根据算子更改运行脚本；
 
         根据算子信息更改DLOP-Bench/long_tail_bench/core/engine.py中函数new_make_data中的参数个数信息，
-        以及函数perf_per_case中readCSV的路径名(对应DLOP-Bench/op_csv中的csv),
-        以及writeCSV的路径名(对应DLOP-Benc/tmp文件夹,文件名按算子自定义)；
+        以及函数perf_per_case中readCSV的路径名(对应DLOP-Bench/op_csv中的csv)，
+        以及writeCSV的路径名(对应DLOP-Benc/tmp文件夹，文件名按算子自定义)；
 
-        运行脚本run.sh,会在DLOP-Benc/tmp中生成结果；
+        运行脚本run.sh，会在DLOP-Benc/tmp中生成结果；
 
         根据算子执行DLOP-Bench/scripts中的画图脚本，在DLOP-Bench/pictures中生成对应结果图片。
 ````````````````````````````````````````````````````````````````````````````````````````
