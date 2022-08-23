@@ -11,7 +11,6 @@ def grid_sample(input_torch, grid_torch, mode, padding_mode, align_coners):
 def args_adaptor(np_args):
     input_torch = torch.from_numpy(np_args[0]).to(torch.float32).cuda()
     grid_torch = torch.from_numpy(np_args[1]).to(torch.float32).cuda()
-
     return [input_torch, grid_torch, np_args[2], np_args[3], np_args[4]]
 
 

@@ -6,6 +6,7 @@ from long_tail_bench.common import (
 )
 import numpy as np
 import json
+import random
 
 
 def get_sample_config():
@@ -14,11 +15,12 @@ def get_sample_config():
     arg_data_length = len(arg_data["input_size"])
     args_cases_ = []
     for i in range(arg_data_length):
-        args_cases_.append((arg_data["input_size"][i], arg_data["p"][i], arg_data["inplace"][i]))
+        p = 0.5
+        args_cases_.append((arg_data["input_size"][i], [p], arg_data["inplace"][i]))
     return SampleConfig(
         args_cases=args_cases_,
         requires_grad=[False] * 3,
-        backward=[False],
+        backward=False,
         performance_iters=1000,
         save_timeline=False,
         source=SampleSource.MMDET,

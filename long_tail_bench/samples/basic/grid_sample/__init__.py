@@ -15,8 +15,7 @@ def get_sample_config():
     arg_data_length = len(arg_data["input"])
     args_cases_ = []
     for i in range(arg_data_length):
-        if random.random() < 0.6:
-            args_cases_.append((arg_data["input"][i], arg_data["grid"][i], arg_data["mode"][i], arg_data["padding_mode"][i], arg_data["align_coners"][i]))
+        args_cases_.append((arg_data["input"][i], arg_data["grid"][i], arg_data["mode"][i], arg_data["padding_mode"][i], arg_data["align_coners"][i]))
     return SampleConfig(
         args_cases=args_cases_,
         requires_grad=[False] * 5,
