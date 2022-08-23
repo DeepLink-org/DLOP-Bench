@@ -18,32 +18,26 @@ FRAMEWORK=parrots python ./long_tail_bench/api/api.py -c bbox2delta -sc
 ## Getting Started Instruction
 This is parrots running command demo that illustrates how you can use LongTail-Bench to test samples performance. These apis can also be used in backend torch or xla, just set corresponding FRAMEWORK environment:
 ```bash
-# prepare parrots environmant
-source pat_latest
 # config long tail bench PYTHONPATH
-cd LongTail-Bench
+cd DLOP
 export PYTHONPATH=./long_tail_bench:$PYTHONPATH
 # run one sample
-FRAMEWORK=parrots python ./long_tail_bench/api/api.py -c tblr2bbox
+FRAMEWORK=[framework] python3 ./long_tail_bench/api/api.py -c tblr2bbox
 # run several samples
-FRAMEWORK=parrots python ./long_tail_bench/api/api.py -c tblr2bbox,bbox2delta
+FRAMEWORK=[framework] python3 ./long_tail_bench/api/api.py -c tblr2bbox,bbox2delta
 # run all samples
-FRAMEWORK=parrots python ./long_tail_bench/api/api.py
+FRAMEWORK=[framework] python3 ./long_tail_bench/api/api.py
 # run several stages, 1: eager stage, 2: fixed shape jit stage, 3: fixed shape coder stage,
 # 4: dynamic shape jit stage, 5: dynamic shape coder stage, 2、3、4 just for parrots compiler
-FRAMEWORK=parrots python ./long_tail_bench/api/api.py -st 1,2,3
+FRAMEWORK=[framework] python3 ./long_tail_bench/api/api.py -st 1,2,3
 # show all tags
-FRAMEWORK=parrots python ./long_tail_bench/api/api.py -sg
+FRAMEWORK=[framework] python3 ./long_tail_bench/api/api.py -sg
 # show samples of one tag
-FRAMEWORK=parrots python ./long_tail_bench/api/api.py -sot AdvancedIndexing
+FRAMEWORK=[framework] python3 ./long_tail_bench/api/api.py -sot AdvancedIndexing
 # show features of the running samples, including sample source, url and semantic tags
-FRAMEWORK=parrots python ./long_tail_bench/api/api.py -c bbox2delta -sc
-# transform results recorded to excel, it will create csv or xlsx file in directory ./long_tail_bench/results/
-FRAMEWORK=parrots python ./long_tail_bench/api/export_result_to_excel.py
-# parrots PAT debug
-FRAMEWORK=parrots PARROTS_PAT_DEBUG=1 python ./long_tail_bench/api/api.py
+FRAMEWORK=[framework] python3 ./long_tail_bench/api/api.py -c bbox2delta -sc
 # benchmark debug
-FRAMEWORK=parrots BENCH_DEBUG=1 python ./long_tail_bench/api/api.py
+FRAMEWORK=[framework] BENCH_DEBUG=1 python ./long_tail_bench/api/api.py
 
 ```
 

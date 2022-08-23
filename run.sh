@@ -40,6 +40,7 @@ FRAMEWORK=torch python3 ./long_tail_bench/api/api.py -st 1 -c pad
 # FRAMEWORK=torch python3 ./long_tail_bench/api/api.py -st 1 -c reshape
 # FRAMEWORK=torch python3 ./long_tail_bench/api/api.py -st 1 -c softmax
 # FRAMEWORK=torch python3 ./long_tail_bench/api/api.py -st 1 -c sort
+FRAMEWORK=torch python3 ./long_tail_bench/api/api.py -st 1 -c sqrt
 # FRAMEWORK=torch python3 ./long_tail_bench/api/api.py -st 1 -c squeeze
 # FRAMEWORK=torch python3 ./long_tail_bench/api/api.py -st 1 -c stack
 # FRAMEWORK=torch python3 ./long_tail_bench/api/api.py -st 1 -c topk
