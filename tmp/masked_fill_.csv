@@ -1,0 +1,15 @@
+id,source_neural_network,num_of_calls,parameters,running_time
+#0,master_toy_dataset,5,"{'input': [[1, 1, 30, 30]], 'masked': [[1, 1, 30, 30]], 'value': [-1000000000.0]}",1.0471343994140625e-05
+#1,master_toy_dataset,5,"{'input': [[1, 1, 30, 30]], 'masked': [[1, 1, 30, 30]], 'value': [0]}",1.0280609130859374e-05
+#2,mask2former_r50_lsj_8x2_50e_coco,15,"{'input': [[16, 100, 1024]], 'masked': [[16, 100, 1024]], 'value': ['-inf']}",1.0638236999511718e-05
+#3,mask2former_r50_lsj_8x2_50e_coco,15,"{'input': [[16, 100, 4096]], 'masked': [[16, 100, 4096]], 'value': ['-inf']}",3.5247802734375e-05
+#4,mask2former_r50_lsj_8x2_50e_coco,15,"{'input': [[16, 100, 16384]], 'masked': [[16, 100, 16384]], 'value': ['-inf']}",0.0001451253890991211
+#5,maskformer_r50_mstrain_16x1_75e_coco,12,"{'input': [[8, 1, 713]], 'masked': [[8, 1, 713]], 'value': ['-inf']}",1.0223388671875e-05
+#6,maskformer_r50_mstrain_16x1_75e_coco,12,"{'input': [[8, 1, 399]], 'masked': [[8, 1, 399]], 'value': ['-inf']}",1.0149478912353516e-05
+#7,maskformer_r50_mstrain_16x1_75e_coco,12,"{'input': [[8, 1, 460]], 'masked': [[8, 1, 460]], 'value': ['-inf']}",1.016378402709961e-05
+#8,maskformer_r50_mstrain_16x1_75e_coco,12,"{'input': [[8, 1, 768]], 'masked': [[8, 1, 768]], 'value': ['-inf']}",9.944438934326172e-06
+#9,maskformer_r50_mstrain_16x1_75e_coco,12,"{'input': [[8, 1, 330]], 'masked': [[8, 1, 330]], 'value': ['-inf']}",1.007080078125e-05
+#10,detr_r50_8x2_150e_coco,24,"{'input': [[16, 1, 391]], 'masked': [[16, 1, 391]], 'value': ['-inf']}",9.899139404296876e-06
+#11,detr_r50_8x2_150e_coco,12,"{'input': [[16, 1, 840]], 'masked': [[16, 1, 840]], 'value': ['-inf']}",9.899139404296876e-06
+#12,detr_r50_8x2_150e_coco,12,"{'input': [[16, 1, 600]], 'masked': [[16, 1, 600]], 'value': ['-inf']}",9.915828704833985e-06
+#13,detr_r50_8x2_150e_coco,12,"{'input': [[16, 1, 805]], 'masked': [[16, 1, 805]], 'value': ['-inf']}",9.92298126220703e-06

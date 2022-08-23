@@ -1,0 +1,906 @@
+id,source_neural_network,num_of_calls,parameters,running_time
+#0,maml_conv4_1xb105_cub_5way-5shot,5,"{'input_tensor': [[25]], 'dim': [[0]]}",1.9235610961914064e-05
+#1,maml_conv4_1xb105_cub_5way-5shot,5,"{'input_tensor': [[80]], 'dim': [[0]]}",5.3224563598632815e-05
+#2,master_toy_dataset,30,"{'input_tensor': [[180]], 'dim': [[0]]}",0.00013728857040405274
+#3,meta-baseline_conv4_1xb100_cub_5way-1shot,5,"{'input_tensor': [[50]], 'dim': [[0]]}",3.3686161041259764e-05
+#4,attention-rpn_r50_c4_voc-split1_base-training,10,"{'input_tensor': [[1]], 'dim': [[0]]}",3.497600555419922e-06
+#5,efficientnet-b0_8xb32_cifar10,1,"{'input_tensor': [[16]], 'dim': [[0]]}",1.2791156768798828e-05
+#6,ddpm_cosine_hybird_timestep-4k_drop0.3_cifar10_32x32_b8x16_500k,5,"{'input_tensor': [[1, 16]], 'dim': [[0]]}",3.635883331298828e-06
+#7,dmnet_r50-d8_512x512_160k_ade20k,25,"{'input_tensor': [[1, 2048, 64, 64]], 'dim': [[0]]}",3.9434432983398435e-06
+#8,dmnet_r50-d8_512x512_160k_ade20k,4,"{'input_tensor': [[74]], 'dim': [[0]]}",5.314826965332031e-05
+#9,dmnet_r50-d8_512x512_160k_ade20k,30,"{'input_tensor': [[1, 1, 1]], 'dim': [[0]]}",3.6025047302246092e-06
+#10,dmnet_r50-d8_512x512_160k_ade20k,30,"{'input_tensor': [[1, 1]], 'dim': [[0]]}",3.6025047302246092e-06
+#11,dmnet_r50-d8_512x512_160k_ade20k,10,"{'input_tensor': [[6]], 'dim': [[0]]}",6.530284881591797e-06
+#12,dmnet_r50-d8_512x512_160k_ade20k,5,"{'input_tensor': [[1, 2048, 66, 66]], 'dim': [[0]]}",3.795623779296875e-06
+#13,dmnet_r50-d8_512x512_160k_ade20k,2,"{'input_tensor': [[48]], 'dim': [[0]]}",3.3719539642333986e-05
+#14,dmnet_r50-d8_512x512_160k_ade20k,30,"{'input_tensor': [[1, 3, 3]], 'dim': [[0]]}",3.6191940307617187e-06
+#15,dmnet_r50-d8_512x512_160k_ade20k,30,"{'input_tensor': [[3, 3]], 'dim': [[0]]}",4.940032958984375e-06
+#16,dmnet_r50-d8_512x512_160k_ade20k,10,"{'input_tensor': [[54]], 'dim': [[0]]}",3.7500858306884764e-05
+#17,dmnet_r50-d8_512x512_160k_ade20k,5,"{'input_tensor': [[1, 2048, 68, 68]], 'dim': [[0]]}",3.8313865661621094e-06
+#18,dmnet_r50-d8_512x512_160k_ade20k,4,"{'input_tensor': [[16]], 'dim': [[0]]}",1.3630390167236329e-05
+#19,dmnet_r50-d8_512x512_160k_ade20k,30,"{'input_tensor': [[1, 5, 5]], 'dim': [[0]]}",3.635883331298828e-06
+#20,dmnet_r50-d8_512x512_160k_ade20k,30,"{'input_tensor': [[5, 5]], 'dim': [[0]]}",6.160736083984375e-06
+#21,dmnet_r50-d8_512x512_160k_ade20k,10,"{'input_tensor': [[150]], 'dim': [[0]]}",0.00011359453201293945
+#22,dmnet_r50-d8_512x512_160k_ade20k,5,"{'input_tensor': [[1, 2048, 70, 70]], 'dim': [[0]]}",3.902912139892578e-06
+#23,dmnet_r50-d8_512x512_160k_ade20k,30,"{'input_tensor': [[1, 7, 7]], 'dim': [[0]]}",3.578662872314453e-06
+#24,dmnet_r50-d8_512x512_160k_ade20k,10,"{'input_tensor': [[216]], 'dim': [[0]]}",0.00017713546752929688
+#25,dmnet_r50-d8_512x512_160k_ade20k,4,"{'input_tensor': [[81]], 'dim': [[0]]}",5.8307647705078126e-05
+#26,dmnet_r50-d8_512x512_160k_ade20k,2,"{'input_tensor': [[43]], 'dim': [[0]]}",2.8808116912841796e-05
+#27,dmnet_r50-d8_512x512_160k_ade20k,2,"{'input_tensor': [[10]], 'dim': [[0]]}",9.114742279052734e-06
+#28,dmnet_r50-d8_512x512_160k_ade20k,4,"{'input_tensor': [[78]], 'dim': [[0]]}",5.48553466796875e-05
+#29,dmnet_r50-d8_512x512_160k_ade20k,2,"{'input_tensor': [[30]], 'dim': [[0]]}",2.117633819580078e-05
+#30,dmnet_r50-d8_512x512_160k_ade20k,4,"{'input_tensor': [[86]], 'dim': [[0]]}",6.069183349609375e-05
+#31,dmnet_r50-d8_512x512_160k_ade20k,2,"{'input_tensor': [[35]], 'dim': [[0]]}",2.424001693725586e-05
+#32,dmnet_r50-d8_512x512_160k_ade20k,2,"{'input_tensor': [[17]], 'dim': [[0]]}",1.3430118560791015e-05
+#33,dmnet_r50-d8_512x512_160k_ade20k,6,"{'input_tensor': [[92]], 'dim': [[0]]}",6.508588790893555e-05
+#34,dmnet_r50-d8_512x512_160k_ade20k,2,"{'input_tensor': [[42]], 'dim': [[0]]}",2.805471420288086e-05
+#35,dmnet_r50-d8_512x512_160k_ade20k,2,"{'input_tensor': [[19]], 'dim': [[0]]}",1.4493465423583984e-05
+#36,dmnet_r50-d8_512x512_160k_ade20k,4,"{'input_tensor': [[112]], 'dim': [[0]]}",7.910490036010743e-05
+#37,dmnet_r50-d8_512x512_160k_ade20k,2,"{'input_tensor': [[137]], 'dim': [[0]]}",9.999513626098633e-05
+#38,dmnet_r50-d8_512x512_160k_ade20k,2,"{'input_tensor': [[127]], 'dim': [[0]]}",9.208917617797852e-05
+#39,dmnet_r50-d8_512x512_160k_ade20k,2,"{'input_tensor': [[96]], 'dim': [[0]]}",6.696701049804687e-05
+#40,dmnet_r50-d8_512x512_160k_ade20k,2,"{'input_tensor': [[91]], 'dim': [[0]]}",6.38437271118164e-05
+#41,dmnet_r50-d8_512x512_160k_ade20k,2,"{'input_tensor': [[135]], 'dim': [[0]]}",9.829998016357422e-05
+#42,dmnet_r50-d8_512x512_160k_ade20k,2,"{'input_tensor': [[125]], 'dim': [[0]]}",9.053707122802735e-05
+#43,dmnet_r50-d8_512x512_160k_ade20k,2,"{'input_tensor': [[93]], 'dim': [[0]]}",6.496906280517578e-05
+#44,dmnet_r50-d8_512x512_160k_ade20k,2,"{'input_tensor': [[132]], 'dim': [[0]]}",9.59157943725586e-05
+#45,dmnet_r50-d8_512x512_160k_ade20k,2,"{'input_tensor': [[116]], 'dim': [[0]]}",8.175849914550782e-05
+#46,dmnet_r50-d8_512x512_160k_ade20k,2,"{'input_tensor': [[105]], 'dim': [[0]]}",7.228851318359375e-05
+#47,dmnet_r50-d8_512x512_160k_ade20k,2,"{'input_tensor': [[131]], 'dim': [[0]]}",9.485483169555665e-05
+#48,dmnet_r50-d8_512x512_160k_ade20k,2,"{'input_tensor': [[99]], 'dim': [[0]]}",6.906270980834961e-05
+#49,configs--body--2d_kpt_sview_rgb_img--topdown_heatmap--coco--pvt-s_coco_256x192.py,1,"{'input_tensor': [[16]], 'dim': [[0]]}",1.281261444091797e-05
+#50,yolact_r50_8x8_coco,5,"{'input_tensor': [[8, 19248, 81]], 'dim': [[0]]}",9.725093841552734e-06
+#51,yolact_r50_8x8_coco,15,"{'input_tensor': [[8, 19248, 4]], 'dim': [[0]]}",1.338958740234375e-05
+#52,yolact_r50_8x8_coco,10,"{'input_tensor': [[8, 19248]], 'dim': [[0]]}",1.3065338134765624e-05
+#53,decoupled_solo_r50_fpn_1x_coco,7,"{'input_tensor': [[1, 800, 1088]], 'dim': [[0]]}",5.664825439453125e-06
+#54,decoupled_solo_r50_fpn_1x_coco,76,"{'input_tensor': [[1]], 'dim': [[0]]}",4.153251647949219e-06
+#55,decoupled_solo_r50_fpn_1x_coco,4,"{'input_tensor': [[2, 800, 1088]], 'dim': [[0]]}",5.075931549072265e-06
+#56,decoupled_solo_r50_fpn_1x_coco,24,"{'input_tensor': [[2]], 'dim': [[0]]}",4.291534423828125e-06
+#57,decoupled_solo_r50_fpn_1x_coco,1,"{'input_tensor': [[3, 800, 1088]], 'dim': [[0]]}",8.971691131591797e-06
+#58,decoupled_solo_r50_fpn_1x_coco,16,"{'input_tensor': [[3]], 'dim': [[0]]}",8.64267349243164e-06
+#59,decoupled_solo_r50_fpn_1x_coco,2,"{'input_tensor': [[1, 800, 1120]], 'dim': [[0]]}",6.35385513305664e-06
+#60,decoupled_solo_r50_fpn_1x_coco,1,"{'input_tensor': [[2, 800, 1216]], 'dim': [[0]]}",7.519721984863281e-06
+#61,decoupled_solo_r50_fpn_1x_coco,1,"{'input_tensor': [[4, 800, 1216]], 'dim': [[0]]}",1.0395050048828125e-05
+#62,decoupled_solo_r50_fpn_1x_coco,4,"{'input_tensor': [[4]], 'dim': [[0]]}",9.264945983886719e-06
+#63,decoupled_solo_r50_fpn_1x_coco,1,"{'input_tensor': [[7, 800, 1216]], 'dim': [[0]]}",1.1529922485351562e-05
+#64,decoupled_solo_r50_fpn_1x_coco,8,"{'input_tensor': [[7]], 'dim': [[0]]}",9.808540344238281e-06
+#65,decoupled_solo_r50_fpn_1x_coco,1,"{'input_tensor': [[6, 800, 1216]], 'dim': [[0]]}",1.0476112365722656e-05
+#66,decoupled_solo_r50_fpn_1x_coco,8,"{'input_tensor': [[6]], 'dim': [[0]]}",8.974075317382813e-06
+#67,decoupled_solo_r50_fpn_1x_coco,4,"{'input_tensor': [[1, 800, 1216]], 'dim': [[0]]}",5.474090576171875e-06
+#68,decoupled_solo_r50_fpn_1x_coco,3,"{'input_tensor': [[1, 1088, 800]], 'dim': [[0]]}",5.545616149902344e-06
+#69,decoupled_solo_r50_fpn_1x_coco,2,"{'input_tensor': [[3, 1088, 800]], 'dim': [[0]]}",7.510185241699219e-06
+#70,decoupled_solo_r50_fpn_1x_coco,1,"{'input_tensor': [[10, 800, 800]], 'dim': [[0]]}",1.5277862548828125e-05
+#71,decoupled_solo_r50_fpn_1x_coco,4,"{'input_tensor': [[10]], 'dim': [[0]]}",1.153707504272461e-05
+#72,decoupled_solo_r50_fpn_1x_coco,1,"{'input_tensor': [[11, 800, 800]], 'dim': [[0]]}",1.6200542449951173e-05
+#73,decoupled_solo_r50_fpn_1x_coco,4,"{'input_tensor': [[11]], 'dim': [[0]]}",1.161336898803711e-05
+#74,decoupled_solo_r50_fpn_1x_coco,1,"{'input_tensor': [[7, 800, 800]], 'dim': [[0]]}",1.1258125305175781e-05
+#75,decoupled_solo_r50_fpn_1x_coco,1,"{'input_tensor': [[3, 800, 800]], 'dim': [[0]]}",7.274150848388672e-06
+#76,decoupled_solo_r50_fpn_1x_coco,1,"{'input_tensor': [[1, 800, 800]], 'dim': [[0]]}",5.118846893310547e-06
+#77,decoupled_solo_r50_fpn_1x_coco,1,"{'input_tensor': [[6, 608, 1344]], 'dim': [[0]]}",1.0380744934082031e-05
+#78,decoupled_solo_r50_fpn_1x_coco,1,"{'input_tensor': [[2, 608, 1344]], 'dim': [[0]]}",6.287097930908203e-06
+#79,decoupled_solo_r50_fpn_1x_coco,2,"{'input_tensor': [[1, 608, 1344]], 'dim': [[0]]}",5.147457122802734e-06
+#80,simmim_swin-base_8xb256-coslr-100e_in1k-192,1,"{'input_tensor': [[24]], 'dim': [[0]]}",2.7618408203125e-05
+#81,upernet_swin_large_patch4_window7_512x512_pretrain_224x224_22K_160k_ade20k,1,"{'input_tensor': [[24]], 'dim': [[0]]}",2.3617744445800782e-05
+#82,deepfillv1_256x256_4x4_celeba,60,"{'input_tensor': [[4]], 'dim': [[0]]}",5.390644073486328e-06
+#83,configs--body--2d_kpt_sview_rgb_img--topdown_heatmap--coco--swin_b_p4_w7_coco_384x288.py,1,"{'input_tensor': [[24]], 'dim': [[0]]}",1.7330646514892578e-05
+#84,configs--body--3d_kpt_mview_rgb_img--voxelpose--campus--voxelpose_prn32x32x32_cpn80x80x20_campus_cam3.py,66,"{'input_tensor': [[3]], 'dim': [[0]]}",4.732608795166016e-06
+#85,conformer-tiny-p16_8xb128_in1k,1,"{'input_tensor': [[12]], 'dim': [[0]]}",1.0135173797607421e-05
+#86,bytetrack_yolox_x_crowdhuman_mot17-private-half,10,"{'input_tensor': [[4, 23625, 4]], 'dim': [[0]]}",8.158683776855468e-06
+#87,bytetrack_yolox_x_crowdhuman_mot17-private-half,5,"{'input_tensor': [[4, 23625, 1]], 'dim': [[0]]}",8.122920989990234e-06
+#88,bytetrack_yolox_x_crowdhuman_mot17-private-half,5,"{'input_tensor': [[4, 23625]], 'dim': [[0]]}",8.041858673095702e-06
+#89,configs--body--3d_kpt_mview_rgb_img--voxelpose--shelf--voxelpose_prn32x32x32_cpn48x48x12_shelf_cam5.py,50,"{'input_tensor': [[3]], 'dim': [[0]]}",6.8759918212890625e-06
+#90,retinanet_free_anchor_r50_fpn_1x_coco,2,"{'input_tensor': [[2, 163206, 80]], 'dim': [[0]]}",4.799365997314453e-06
+#91,retinanet_free_anchor_r50_fpn_1x_coco,2,"{'input_tensor': [[2, 163206, 4]], 'dim': [[0]]}",6.5851211547851565e-06
+#92,retinanet_free_anchor_r50_fpn_1x_coco,3,"{'input_tensor': [[2, 182403, 80]], 'dim': [[0]]}",4.773139953613281e-06
+#93,retinanet_free_anchor_r50_fpn_1x_coco,3,"{'input_tensor': [[2, 182403, 4]], 'dim': [[0]]}",6.299018859863282e-06
+#94,upernet_vit-b16_ln_mln_512x512_160k_ade20k,1,"{'input_tensor': [[12]], 'dim': [[0]]}",1.6145706176757812e-05
+#95,wgangp_GN_celeba-cropped_128_b64x1_160kiter,20,"{'input_tensor': [[4]], 'dim': [[0]]}",7.772445678710938e-06
+#96,wgangp_GN_celeba-cropped_128_b64x1_160kiter,5,"{'input_tensor': [[4, 3, 128, 128]], 'dim': [[0]]}",8.175373077392578e-06
+#97,wgangp_GN_celeba-cropped_128_b64x1_160kiter,20,"{'input_tensor': [[3, 128, 128]], 'dim': [[0]]}",7.01904296875e-06
+#98,wgangp_GN_celeba-cropped_128_b64x1_160kiter,10,"{'input_tensor': [[432]], 'dim': [[0]]}",0.0004242324829101562
+#99,fovea_align_r101_fpn_gn-head_4x4_2x_coco,75,"{'input_tensor': [[2]], 'dim': [[0]]}",4.169940948486328e-06
+#100,fovea_align_r101_fpn_gn-head_4x4_2x_coco,15,"{'input_tensor': [[2, 4]], 'dim': [[0]]}",4.215240478515625e-06
+#101,fovea_align_r101_fpn_gn-head_4x4_2x_coco,290,"{'input_tensor': [[4]], 'dim': [[0]]}",5.47647476196289e-06
+#102,fovea_align_r101_fpn_gn-head_4x4_2x_coco,30,"{'input_tensor': [[5]], 'dim': [[0]]}",5.98907470703125e-06
+#103,fovea_align_r101_fpn_gn-head_4x4_2x_coco,6,"{'input_tensor': [[5, 4]], 'dim': [[0]]}",6.093978881835937e-06
+#104,fovea_align_r101_fpn_gn-head_4x4_2x_coco,50,"{'input_tensor': [[3]], 'dim': [[0]]}",4.76837158203125e-06
+#105,fovea_align_r101_fpn_gn-head_4x4_2x_coco,10,"{'input_tensor': [[3, 4]], 'dim': [[0]]}",4.827976226806641e-06
+#106,fovea_align_r101_fpn_gn-head_4x4_2x_coco,6,"{'input_tensor': [[4, 4]], 'dim': [[0]]}",5.5694580078125e-06
+#107,fovea_align_r101_fpn_gn-head_4x4_2x_coco,95,"{'input_tensor': [[1]], 'dim': [[0]]}",3.516674041748047e-06
+#108,fovea_align_r101_fpn_gn-head_4x4_2x_coco,19,"{'input_tensor': [[1, 4]], 'dim': [[0]]}",3.5119056701660157e-06
+#109,fovea_align_r101_fpn_gn-head_4x4_2x_coco,10,"{'input_tensor': [[11]], 'dim': [[0]]}",9.6893310546875e-06
+#110,fovea_align_r101_fpn_gn-head_4x4_2x_coco,2,"{'input_tensor': [[11, 4]], 'dim': [[0]]}",9.818077087402344e-06
+#111,fovea_align_r101_fpn_gn-head_4x4_2x_coco,15,"{'input_tensor': [[10]], 'dim': [[0]]}",8.990764617919922e-06
+#112,fovea_align_r101_fpn_gn-head_4x4_2x_coco,3,"{'input_tensor': [[10, 4]], 'dim': [[0]]}",9.243488311767579e-06
+#113,fovea_align_r101_fpn_gn-head_4x4_2x_coco,25,"{'input_tensor': [[7]], 'dim': [[0]]}",7.238388061523437e-06
+#114,fovea_align_r101_fpn_gn-head_4x4_2x_coco,5,"{'input_tensor': [[7, 4]], 'dim': [[0]]}",7.326602935791016e-06
+#115,fovea_align_r101_fpn_gn-head_4x4_2x_coco,10,"{'input_tensor': [[8]], 'dim': [[0]]}",7.810592651367187e-06
+#116,fovea_align_r101_fpn_gn-head_4x4_2x_coco,2,"{'input_tensor': [[8, 4]], 'dim': [[0]]}",7.979869842529297e-06
+#117,fovea_align_r101_fpn_gn-head_4x4_2x_coco,10,"{'input_tensor': [[9]], 'dim': [[0]]}",8.397102355957031e-06
+#118,fovea_align_r101_fpn_gn-head_4x4_2x_coco,2,"{'input_tensor': [[9, 4]], 'dim': [[0]]}",8.58306884765625e-06
+#119,fovea_align_r101_fpn_gn-head_4x4_2x_coco,5,"{'input_tensor': [[6]], 'dim': [[0]]}",6.577968597412109e-06
+#120,fovea_align_r101_fpn_gn-head_4x4_2x_coco,1,"{'input_tensor': [[6, 4]], 'dim': [[0]]}",6.697177886962891e-06
+#121,configs--body--2d_kpt_sview_rgb_img--topdown_heatmap--coco--pvtv2-b2_coco_256x192.py,1,"{'input_tensor': [[16]], 'dim': [[0]]}",1.2769699096679688e-05
+#122,mask_rcnn_convnext-t_p4_w7_fpn_fp16_ms-crop_3x_coco,1,"{'input_tensor': [[18]], 'dim': [[0]]}",1.3940334320068359e-05
+#123,van-tiny_8xb128_in1k,1,"{'input_tensor': [[13]], 'dim': [[0]]}",1.079559326171875e-05
+#124,configs--body--2d_kpt_sview_rgb_img--topdown_heatmap--coco--swin_b_p4_w7_coco_256x192.py,1,"{'input_tensor': [[24]], 'dim': [[0]]}",1.7364025115966796e-05
+#125,cae_vit-base-p16_32xb64-fp16-coslr-300e_in1k,2,"{'input_tensor': [[4]], 'dim': [[0]]}",5.3739547729492185e-06
+#126,cae_vit-base-p16_32xb64-fp16-coslr-300e_in1k,5,"{'input_tensor': [[64, 3, 224, 224]], 'dim': [[0]]}",4.974126815795898e-05
+#127,dbnetpp_r50dcnv2_fpnc_100k_iter_synthtext,5,"{'input_tensor': [[4]], 'dim': [[0]]}",5.428791046142578e-06
+#128,tridentnet_r50_caffe_mstrain_3x_coco,27,"{'input_tensor': [[1]], 'dim': [[0]]}",3.5429000854492186e-06
+#129,centernet_resnet18_140e_coco,15,"{'input_tensor': [[2, 2]], 'dim': [[0]]}",4.298686981201172e-06
+#130,centernet_resnet18_140e_coco,798,"{'input_tensor': [[2]], 'dim': [[0]]}",4.141330718994141e-06
+#131,centernet_resnet18_140e_coco,5,"{'input_tensor': [[4, 2]], 'dim': [[0]]}",5.517005920410156e-06
+#132,centernet_resnet18_140e_coco,3,"{'input_tensor': [[5, 2]], 'dim': [[0]]}",6.062984466552734e-06
+#133,centernet_resnet18_140e_coco,13,"{'input_tensor': [[3, 2]], 'dim': [[0]]}",4.887580871582031e-06
+#134,centernet_resnet18_140e_coco,16,"{'input_tensor': [[1, 2]], 'dim': [[0]]}",3.521442413330078e-06
+#135,centernet_resnet18_140e_coco,2,"{'input_tensor': [[13, 2]], 'dim': [[0]]}",1.1379718780517577e-05
+#136,centernet_resnet18_140e_coco,4,"{'input_tensor': [[8, 2]], 'dim': [[0]]}",7.891654968261719e-06
+#137,centernet_resnet18_140e_coco,6,"{'input_tensor': [[6, 2]], 'dim': [[0]]}",6.673336029052734e-06
+#138,centernet_resnet18_140e_coco,1,"{'input_tensor': [[12, 2]], 'dim': [[0]]}",1.0468959808349609e-05
+#139,centernet_resnet18_140e_coco,3,"{'input_tensor': [[9, 2]], 'dim': [[0]]}",8.535385131835937e-06
+#140,centernet_resnet18_140e_coco,3,"{'input_tensor': [[11, 2]], 'dim': [[0]]}",9.822845458984376e-06
+#141,centernet_resnet18_140e_coco,1,"{'input_tensor': [[21, 2]], 'dim': [[0]]}",1.6095638275146486e-05
+#142,centernet_resnet18_140e_coco,3,"{'input_tensor': [[7, 2]], 'dim': [[0]]}",7.326602935791016e-06
+#143,centernet_resnet18_140e_coco,1,"{'input_tensor': [[18, 2]], 'dim': [[0]]}",1.4293193817138673e-05
+#144,centernet_resnet18_140e_coco,2,"{'input_tensor': [[10, 2]], 'dim': [[0]]}",9.293556213378906e-06
+#145,centernet_resnet18_140e_coco,1,"{'input_tensor': [[14, 2]], 'dim': [[0]]}",1.1749267578125e-05
+#146,centernet_resnet18_140e_coco,1,"{'input_tensor': [[19, 2]], 'dim': [[0]]}",1.4810562133789062e-05
+#147,relation-net_conv4_1xb105_cub_5way-1shot,5,"{'input_tensor': [[5]], 'dim': [[0]]}",6.031990051269531e-06
+#148,relation-net_conv4_1xb105_cub_5way-1shot,5,"{'input_tensor': [[80]], 'dim': [[0]]}",5.431890487670899e-05
+#149,panet_r18_fpem_ffm_600e_icdar2015,10,"{'input_tensor': [[8, 33856]], 'dim': [[0]]}",1.2114048004150391e-05
+#150,panet_r18_fpem_ffm_600e_icdar2015,5,"{'input_tensor': [[8, 4, 33856]], 'dim': [[0]]}",1.2576580047607422e-05
+#151,upernet_mae-base_fp16_512x512_160k_ade20k_ms,1,"{'input_tensor': [[12]], 'dim': [[0]]}",1.5730857849121095e-05
+#152,twins_pcpvt-s_uperhead_8x4_512x512_160k_ade20k,1,"{'input_tensor': [[16]], 'dim': [[0]]}",1.9507408142089842e-05
+#153,darts_subnet_1xb96_cifar10,800,"{'input_tensor': [[8]], 'dim': [[0]]}",7.960796356201172e-06
+#154,configs--body--3d_kpt_mview_rgb_img--voxelpose--panoptic--voxelpose_prn64x64x64_cpn80x80x20_panoptic_cam5.py,50,"{'input_tensor': [[3]], 'dim': [[0]]}",4.796981811523438e-06
+#155,realesrgan_c64b23g32_12x4_lr1e-4_400k_df2k_ost,180,"{'input_tensor': [[6]], 'dim': [[0]]}",6.556510925292969e-06
+#156,realesrgan_c64b23g32_12x4_lr1e-4_400k_df2k_ost,60,"{'input_tensor': [[128]], 'dim': [[0]]}",9.434938430786133e-05
+#157,realesrgan_c64b23g32_12x4_lr1e-4_400k_df2k_ost,60,"{'input_tensor': [[256]], 'dim': [[0]]}",0.00021152496337890626
+#158,realesrgan_c64b23g32_12x4_lr1e-4_400k_df2k_ost,30,"{'input_tensor': [[512]], 'dim': [[0]]}",0.0005463099479675293
+#159,realesrgan_c64b23g32_12x4_lr1e-4_400k_df2k_ost,90,"{'input_tensor': [[64]], 'dim': [[0]]}",4.4994354248046875e-05
+#160,realesrgan_c64b23g32_12x4_lr1e-4_400k_df2k_ost,60,"{'input_tensor': [[576]], 'dim': [[0]]}",0.0005646944046020508
+#161,dmnet_r50-d8_512x1024_80k_cityscapes,25,"{'input_tensor': [[1, 1024, 64, 128]], 'dim': [[0]]}",5.404949188232422e-06
+#162,dmnet_r50-d8_512x1024_80k_cityscapes,8,"{'input_tensor': [[74]], 'dim': [[0]]}",5.566120147705078e-05
+#163,dmnet_r50-d8_512x1024_80k_cityscapes,30,"{'input_tensor': [[1, 1, 1]], 'dim': [[0]]}",3.6191940307617187e-06
+#164,dmnet_r50-d8_512x1024_80k_cityscapes,30,"{'input_tensor': [[1, 1]], 'dim': [[0]]}",3.566741943359375e-06
+#165,dmnet_r50-d8_512x1024_80k_cityscapes,10,"{'input_tensor': [[6]], 'dim': [[0]]}",6.570816040039062e-06
+#166,dmnet_r50-d8_512x1024_80k_cityscapes,5,"{'input_tensor': [[1, 1024, 66, 130]], 'dim': [[0]]}",5.414485931396485e-06
+#167,dmnet_r50-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[63]], 'dim': [[0]]}",4.7178268432617186e-05
+#168,dmnet_r50-d8_512x1024_80k_cityscapes,30,"{'input_tensor': [[1, 3, 3]], 'dim': [[0]]}",3.6191940307617187e-06
+#169,dmnet_r50-d8_512x1024_80k_cityscapes,30,"{'input_tensor': [[3, 3]], 'dim': [[0]]}",4.868507385253907e-06
+#170,dmnet_r50-d8_512x1024_80k_cityscapes,10,"{'input_tensor': [[54]], 'dim': [[0]]}",3.714323043823242e-05
+#171,dmnet_r50-d8_512x1024_80k_cityscapes,5,"{'input_tensor': [[1, 1024, 68, 132]], 'dim': [[0]]}",5.142688751220703e-06
+#172,dmnet_r50-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[15]], 'dim': [[0]]}",1.2903213500976562e-05
+#173,dmnet_r50-d8_512x1024_80k_cityscapes,30,"{'input_tensor': [[1, 5, 5]], 'dim': [[0]]}",3.5953521728515625e-06
+#174,dmnet_r50-d8_512x1024_80k_cityscapes,30,"{'input_tensor': [[5, 5]], 'dim': [[0]]}",6.167888641357422e-06
+#175,dmnet_r50-d8_512x1024_80k_cityscapes,10,"{'input_tensor': [[150]], 'dim': [[0]]}",0.00011422157287597656
+#176,dmnet_r50-d8_512x1024_80k_cityscapes,5,"{'input_tensor': [[1, 1024, 70, 134]], 'dim': [[0]]}",5.4478645324707035e-06
+#177,dmnet_r50-d8_512x1024_80k_cityscapes,30,"{'input_tensor': [[1, 7, 7]], 'dim': [[0]]}",4.9591064453125e-06
+#178,dmnet_r50-d8_512x1024_80k_cityscapes,10,"{'input_tensor': [[216]], 'dim': [[0]]}",0.00017246723175048828
+#179,dmnet_r50-d8_512x1024_80k_cityscapes,6,"{'input_tensor': [[96]], 'dim': [[0]]}",6.813526153564452e-05
+#180,dmnet_r50-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[46]], 'dim': [[0]]}",3.2517910003662106e-05
+#181,dmnet_r50-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[14]], 'dim': [[0]]}",1.1458396911621094e-05
+#182,dmnet_r50-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[40]], 'dim': [[0]]}",2.6998519897460936e-05
+#183,dmnet_r50-d8_512x1024_80k_cityscapes,4,"{'input_tensor': [[12]], 'dim': [[0]]}",1.015186309814453e-05
+#184,dmnet_r50-d8_512x1024_80k_cityscapes,4,"{'input_tensor': [[109]], 'dim': [[0]]}",8.419990539550782e-05
+#185,dmnet_r50-d8_512x1024_80k_cityscapes,4,"{'input_tensor': [[47]], 'dim': [[0]]}",3.1230449676513674e-05
+#186,dmnet_r50-d8_512x1024_80k_cityscapes,6,"{'input_tensor': [[102]], 'dim': [[0]]}",7.210731506347656e-05
+#187,dmnet_r50-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[11]], 'dim': [[0]]}",9.577274322509766e-06
+#188,dmnet_r50-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[137]], 'dim': [[0]]}",9.985923767089843e-05
+#189,dmnet_r50-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[103]], 'dim': [[0]]}",7.208108901977539e-05
+#190,dmnet_r50-d8_512x1024_80k_cityscapes,6,"{'input_tensor': [[114]], 'dim': [[0]]}",8.032798767089844e-05
+#191,dmnet_r50-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[129]], 'dim': [[0]]}",9.533166885375977e-05
+#192,dmnet_r50-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[106]], 'dim': [[0]]}",7.411479949951172e-05
+#193,dmnet_r50-d8_512x1024_80k_cityscapes,4,"{'input_tensor': [[91]], 'dim': [[0]]}",6.29281997680664e-05
+#194,dmnet_r50-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[111]], 'dim': [[0]]}",7.757425308227539e-05
+#195,dmnet_r50-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[82]], 'dim': [[0]]}",6.381750106811524e-05
+#196,dmnet_r50-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[105]], 'dim': [[0]]}",7.532119750976563e-05
+#197,dmnet_r50-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[107]], 'dim': [[0]]}",7.692575454711914e-05
+#198,maskflownet_8x1_800k_flyingchairs_384x448,5,"{'input_tensor': [[2]], 'dim': [[0]]}",4.215240478515625e-06
+#199,siamese_rpn_r50_20e_lasot,28,"{'input_tensor': [[4]], 'dim': [[0]]}",5.507469177246094e-06
+#200,convnext-tiny_32xb128_in1k,1,"{'input_tensor': [[18]], 'dim': [[0]]}",1.4140605926513672e-05
+#201,masktrack_rcnn_r50_fpn_12e_youtubevis2019,1,"{'input_tensor': [[17]], 'dim': [[0]]}",4.683494567871094e-05
+#202,masktrack_rcnn_r50_fpn_12e_youtubevis2019,1,"{'input_tensor': [[13]], 'dim': [[0]]}",1.0979175567626952e-05
+#203,masktrack_rcnn_r50_fpn_12e_youtubevis2019,1,"{'input_tensor': [[22]], 'dim': [[0]]}",1.6520023345947267e-05
+#204,masktrack_rcnn_r50_fpn_12e_youtubevis2019,2,"{'input_tensor': [[32]], 'dim': [[0]]}",2.243518829345703e-05
+#205,dmnet_r50-d8_512x1024_40k_cityscapes,25,"{'input_tensor': [[1, 1024, 64, 128]], 'dim': [[0]]}",5.4454803466796875e-06
+#206,dmnet_r50-d8_512x1024_40k_cityscapes,10,"{'input_tensor': [[89]], 'dim': [[0]]}",6.548166275024414e-05
+#207,dmnet_r50-d8_512x1024_40k_cityscapes,30,"{'input_tensor': [[1, 1, 1]], 'dim': [[0]]}",3.612041473388672e-06
+#208,dmnet_r50-d8_512x1024_40k_cityscapes,30,"{'input_tensor': [[1, 1]], 'dim': [[0]]}",3.5333633422851563e-06
+#209,dmnet_r50-d8_512x1024_40k_cityscapes,10,"{'input_tensor': [[6]], 'dim': [[0]]}",6.694793701171875e-06
+#210,dmnet_r50-d8_512x1024_40k_cityscapes,5,"{'input_tensor': [[1, 1024, 66, 130]], 'dim': [[0]]}",5.47647476196289e-06
+#211,dmnet_r50-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[30]], 'dim': [[0]]}",2.4316310882568358e-05
+#212,dmnet_r50-d8_512x1024_40k_cityscapes,30,"{'input_tensor': [[1, 3, 3]], 'dim': [[0]]}",3.588199615478516e-06
+#213,dmnet_r50-d8_512x1024_40k_cityscapes,30,"{'input_tensor': [[3, 3]], 'dim': [[0]]}",4.918575286865234e-06
+#214,dmnet_r50-d8_512x1024_40k_cityscapes,10,"{'input_tensor': [[54]], 'dim': [[0]]}",3.664016723632813e-05
+#215,dmnet_r50-d8_512x1024_40k_cityscapes,5,"{'input_tensor': [[1, 1024, 68, 132]], 'dim': [[0]]}",5.4073333740234374e-06
+#216,dmnet_r50-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[16]], 'dim': [[0]]}",1.5196800231933594e-05
+#217,dmnet_r50-d8_512x1024_40k_cityscapes,30,"{'input_tensor': [[1, 5, 5]], 'dim': [[0]]}",3.6191940307617187e-06
+#218,dmnet_r50-d8_512x1024_40k_cityscapes,30,"{'input_tensor': [[5, 5]], 'dim': [[0]]}",6.079673767089844e-06
+#219,dmnet_r50-d8_512x1024_40k_cityscapes,10,"{'input_tensor': [[150]], 'dim': [[0]]}",0.00011180639266967773
+#220,dmnet_r50-d8_512x1024_40k_cityscapes,5,"{'input_tensor': [[1, 1024, 70, 134]], 'dim': [[0]]}",5.505084991455078e-06
+#221,dmnet_r50-d8_512x1024_40k_cityscapes,30,"{'input_tensor': [[1, 7, 7]], 'dim': [[0]]}",4.1985511779785155e-06
+#222,dmnet_r50-d8_512x1024_40k_cityscapes,10,"{'input_tensor': [[216]], 'dim': [[0]]}",0.00017462968826293946
+#223,dmnet_r50-d8_512x1024_40k_cityscapes,4,"{'input_tensor': [[71]], 'dim': [[0]]}",5.1364898681640624e-05
+#224,dmnet_r50-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[36]], 'dim': [[0]]}",2.7005672454833983e-05
+#225,dmnet_r50-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[11]], 'dim': [[0]]}",9.698867797851562e-06
+#226,dmnet_r50-d8_512x1024_40k_cityscapes,4,"{'input_tensor': [[69]], 'dim': [[0]]}",4.9035549163818356e-05
+#227,dmnet_r50-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[39]], 'dim': [[0]]}",2.641439437866211e-05
+#228,dmnet_r50-d8_512x1024_40k_cityscapes,4,"{'input_tensor': [[12]], 'dim': [[0]]}",1.0113716125488282e-05
+#229,dmnet_r50-d8_512x1024_40k_cityscapes,4,"{'input_tensor': [[91]], 'dim': [[0]]}",6.538867950439453e-05
+#230,dmnet_r50-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[31]], 'dim': [[0]]}",2.1908283233642578e-05
+#231,dmnet_r50-d8_512x1024_40k_cityscapes,4,"{'input_tensor': [[80]], 'dim': [[0]]}",5.677461624145508e-05
+#232,dmnet_r50-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[38]], 'dim': [[0]]}",2.5641918182373046e-05
+#233,dmnet_r50-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[9]], 'dim': [[0]]}",8.387565612792969e-06
+#234,dmnet_r50-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[127]], 'dim': [[0]]}",0.00011960744857788086
+#235,dmnet_r50-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[117]], 'dim': [[0]]}",8.39090347290039e-05
+#236,dmnet_r50-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[95]], 'dim': [[0]]}",6.746530532836915e-05
+#237,dmnet_r50-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[120]], 'dim': [[0]]}",8.646965026855469e-05
+#238,dmnet_r50-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[94]], 'dim': [[0]]}",6.574153900146485e-05
+#239,dmnet_r50-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[110]], 'dim': [[0]]}",7.802724838256836e-05
+#240,dmnet_r50-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[85]], 'dim': [[0]]}",5.996465682983398e-05
+#241,dmnet_r50-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[101]], 'dim': [[0]]}",7.301092147827149e-05
+#242,dmnet_r50-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[138]], 'dim': [[0]]}",0.00012980222702026366
+#243,dmnet_r50-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[104]], 'dim': [[0]]}",0.0005265522003173828
+#244,dmnet_r50-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[88]], 'dim': [[0]]}",6.677389144897461e-05
+#245,dmnet_r50-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[99]], 'dim': [[0]]}",7.332324981689454e-05
+#246,irrpwc_8x1_sshort_flyingchairsocc_384x448,5,"{'input_tensor': [[2]], 'dim': [[0]]}",4.210472106933594e-06
+#247,mask_rcnn_swin-t-p4-w7_fpn_1x_coco,1,"{'input_tensor': [[12]], 'dim': [[0]]}",1.0368824005126954e-05
+#248,pggan_celeba-cropped_128_g8_12Mimgs,20,"{'input_tensor': [[64]], 'dim': [[0]]}",4.6215057373046876e-05
+#249,pggan_celeba-cropped_128_g8_12Mimgs,30,"{'input_tensor': [[3, 4, 4]], 'dim': [[0]]}",4.951953887939453e-06
+#250,pggan_celeba-cropped_128_g8_12Mimgs,90,"{'input_tensor': [[4, 4]], 'dim': [[0]]}",5.500316619873047e-06
+#251,pggan_celeba-cropped_128_g8_12Mimgs,10,"{'input_tensor': [[288]], 'dim': [[0]]}",0.00024780988693237307
+#252,biggan_cifar10_32x32_b25x2_500k,12,"{'input_tensor': [[128]], 'dim': [[0]]}",9.519100189208984e-05
+#253,biggan_cifar10_32x32_b25x2_500k,250,"{'input_tensor': [[6]], 'dim': [[0]]}",6.537437438964844e-06
+#254,biggan_cifar10_32x32_b25x2_500k,430,"{'input_tensor': [[256]], 'dim': [[0]]}",0.00020926952362060547
+#255,biggan_cifar10_32x32_b25x2_500k,34,"{'input_tensor': [[3]], 'dim': [[0]]}",4.825592041015625e-06
+#256,biggan_cifar10_32x32_b25x2_500k,22,"{'input_tensor': [[27]], 'dim': [[0]]}",1.9211769104003906e-05
+#257,biggan_cifar10_32x32_b25x2_500k,22,"{'input_tensor': [[1]], 'dim': [[0]]}",3.54766845703125e-06
+#258,biggan_cifar10_32x32_b25x2_500k,22,"{'input_tensor': [[10]], 'dim': [[0]]}",9.007453918457032e-06
+#259,iconvsr_reds4,240,"{'input_tensor': [[3, 64, 64]], 'dim': [[0]]}",4.878044128417969e-06
+#260,iconvsr_reds4,192,"{'input_tensor': [[648]], 'dim': [[0]]}",0.0006328558921813965
+#261,iconvsr_reds4,20,"{'input_tensor': [[448]], 'dim': [[0]]}",0.0004016566276550293
+#262,iconvsr_reds4,60,"{'input_tensor': [[2, 4, 4]], 'dim': [[0]]}",4.1985511779785155e-06
+#263,iconvsr_reds4,480,"{'input_tensor': [[4, 4]], 'dim': [[0]]}",5.536079406738281e-06
+#264,iconvsr_reds4,20,"{'input_tensor': [[192]], 'dim': [[0]]}",0.00014033794403076172
+#265,iconvsr_reds4,60,"{'input_tensor': [[2, 8, 8]], 'dim': [[0]]}",4.150867462158203e-06
+#266,iconvsr_reds4,80,"{'input_tensor': [[432]], 'dim': [[0]]}",0.0003784537315368652
+#267,iconvsr_reds4,60,"{'input_tensor': [[2, 16, 16]], 'dim': [[0]]}",4.351139068603516e-06
+#268,iconvsr_reds4,60,"{'input_tensor': [[2, 32, 32]], 'dim': [[0]]}",4.246234893798828e-06
+#269,iconvsr_reds4,60,"{'input_tensor': [[2, 64, 64]], 'dim': [[0]]}",4.2748451232910156e-06
+#270,iconvsr_reds4,8,"{'input_tensor': [[647]], 'dim': [[0]]}",0.0006064343452453614
+#271,iconvsr_reds4,120,"{'input_tensor': [[3, 32, 32]], 'dim': [[0]]}",4.8613548278808595e-06
+#272,iconvsr_reds4,120,"{'input_tensor': [[3, 16, 16]], 'dim': [[0]]}",4.878044128417969e-06
+#273,iconvsr_reds4,120,"{'input_tensor': [[3, 8, 8]], 'dim': [[0]]}",4.849433898925781e-06
+#274,iconvsr_reds4,120,"{'input_tensor': [[3, 4, 4]], 'dim': [[0]]}",4.909038543701172e-06
+#275,iconvsr_reds4,40,"{'input_tensor': [[288]], 'dim': [[0]]}",0.00023399114608764647
+#276,flownetc_8x1_slong_flyingchairs_384x448,5,"{'input_tensor': [[2]], 'dim': [[0]]}",4.191398620605468e-06
+#277,tnt-s-p16_16xb64_in1k,1,"{'input_tensor': [[12]], 'dim': [[0]]}",1.0235309600830078e-05
+#278,centripetalnet_hourglass104_mstest_16x6_210e_coco,144,"{'input_tensor': [[4]], 'dim': [[0]]}",5.4168701171875e-06
+#279,sagan_32_wReLUinplace_lr-2e-4_ndisc5_cifar10_b64x1,410,"{'input_tensor': [[128]], 'dim': [[0]]}",9.473085403442382e-05
+#280,sagan_32_wReLUinplace_lr-2e-4_ndisc5_cifar10_b64x1,250,"{'input_tensor': [[6]], 'dim': [[0]]}",6.632804870605469e-06
+#281,sagan_32_wReLUinplace_lr-2e-4_ndisc5_cifar10_b64x1,336,"{'input_tensor': [[256]], 'dim': [[0]]}",0.0002096724510192871
+#282,sagan_32_wReLUinplace_lr-2e-4_ndisc5_cifar10_b64x1,166,"{'input_tensor': [[10]], 'dim': [[0]]}",9.04560089111328e-06
+#283,sagan_32_wReLUinplace_lr-2e-4_ndisc5_cifar10_b64x1,24,"{'input_tensor': [[32]], 'dim': [[0]]}",2.2339820861816407e-05
+#284,sagan_32_wReLUinplace_lr-2e-4_ndisc5_cifar10_b64x1,34,"{'input_tensor': [[3]], 'dim': [[0]]}",4.808902740478516e-06
+#285,sagan_32_wReLUinplace_lr-2e-4_ndisc5_cifar10_b64x1,22,"{'input_tensor': [[27]], 'dim': [[0]]}",1.926422119140625e-05
+#286,sagan_32_wReLUinplace_lr-2e-4_ndisc5_cifar10_b64x1,44,"{'input_tensor': [[16]], 'dim': [[0]]}",1.2786388397216797e-05
+#287,sagan_32_wReLUinplace_lr-2e-4_ndisc5_cifar10_b64x1,44,"{'input_tensor': [[64]], 'dim': [[0]]}",4.4679641723632814e-05
+#288,sagan_32_wReLUinplace_lr-2e-4_ndisc5_cifar10_b64x1,22,"{'input_tensor': [[1]], 'dim': [[0]]}",3.5333633422851563e-06
+#289,configs--body--2d_kpt_sview_rgb_img--topdown_heatmap--coco--swin_l_p4_w7_coco_256x192.py,1,"{'input_tensor': [[24]], 'dim': [[0]]}",1.7309188842773436e-05
+#290,singan_balloons,30,"{'input_tensor': [[1, 1, 92, 92]], 'dim': [[0]]}",3.597736358642578e-06
+#291,singan_balloons,30,"{'input_tensor': [[1, 92, 92]], 'dim': [[0]]}",3.6001205444335937e-06
+#292,singan_balloons,60,"{'input_tensor': [[36]], 'dim': [[0]]}",2.4535655975341796e-05
+#293,singan_balloons,15,"{'input_tensor': [[1, 3, 102, 102]], 'dim': [[0]]}",3.526210784912109e-06
+#294,singan_balloons,15,"{'input_tensor': [[3, 102, 102]], 'dim': [[0]]}",4.842281341552734e-06
+#295,singan_balloons,30,"{'input_tensor': [[108]], 'dim': [[0]]}",7.653713226318359e-05
+#296,fsaf_x101_64x4d_fpn_1x_coco,5,"{'input_tensor': [[7]], 'dim': [[0]]}",7.2050094604492185e-06
+#297,fsaf_x101_64x4d_fpn_1x_coco,5,"{'input_tensor': [[33]], 'dim': [[0]]}",2.2718906402587892e-05
+#298,fsaf_x101_64x4d_fpn_1x_coco,5,"{'input_tensor': [[28]], 'dim': [[0]]}",1.973867416381836e-05
+#299,fsaf_x101_64x4d_fpn_1x_coco,5,"{'input_tensor': [[8]], 'dim': [[0]]}",7.724761962890625e-06
+#300,fsaf_x101_64x4d_fpn_1x_coco,5,"{'input_tensor': [[23]], 'dim': [[0]]}",1.692056655883789e-05
+#301,solo_r50_fpn_1x_coco,2,"{'input_tensor': [[2, 800, 1216]], 'dim': [[0]]}",6.587505340576172e-06
+#302,solo_r50_fpn_1x_coco,24,"{'input_tensor': [[2]], 'dim': [[0]]}",5.89132308959961e-06
+#303,solo_r50_fpn_1x_coco,2,"{'input_tensor': [[2, 1216, 800]], 'dim': [[0]]}",6.458759307861328e-06
+#304,solo_r50_fpn_1x_coco,1,"{'input_tensor': [[15, 800, 1088]], 'dim': [[0]]}",1.3530254364013672e-05
+#305,solo_r50_fpn_1x_coco,4,"{'input_tensor': [[15]], 'dim': [[0]]}",1.2083053588867187e-05
+#306,solo_r50_fpn_1x_coco,2,"{'input_tensor': [[6, 800, 1088]], 'dim': [[0]]}",1.0325908660888672e-05
+#307,solo_r50_fpn_1x_coco,8,"{'input_tensor': [[6]], 'dim': [[0]]}",9.608268737792968e-06
+#308,solo_r50_fpn_1x_coco,1,"{'input_tensor': [[2, 800, 1088]], 'dim': [[0]]}",6.244182586669922e-06
+#309,solo_r50_fpn_1x_coco,3,"{'input_tensor': [[1, 800, 1088]], 'dim': [[0]]}",5.1164627075195315e-06
+#310,solo_r50_fpn_1x_coco,12,"{'input_tensor': [[1]], 'dim': [[0]]}",5.01394271850586e-06
+#311,solo_r50_fpn_1x_coco,2,"{'input_tensor': [[4, 832, 800]], 'dim': [[0]]}",8.10384750366211e-06
+#312,solo_r50_fpn_1x_coco,8,"{'input_tensor': [[4]], 'dim': [[0]]}",7.774829864501953e-06
+#313,solo_r50_fpn_1x_coco,2,"{'input_tensor': [[5, 832, 800]], 'dim': [[0]]}",9.052753448486328e-06
+#314,solo_r50_fpn_1x_coco,8,"{'input_tensor': [[5]], 'dim': [[0]]}",8.71896743774414e-06
+#315,solo_r50_fpn_1x_coco,1,"{'input_tensor': [[2, 832, 800]], 'dim': [[0]]}",6.279945373535156e-06
+#316,solo_r50_fpn_1x_coco,1,"{'input_tensor': [[12, 800, 1088]], 'dim': [[0]]}",1.3604164123535157e-05
+#317,solo_r50_fpn_1x_coco,4,"{'input_tensor': [[12]], 'dim': [[0]]}",1.0237693786621093e-05
+#318,solo_r50_fpn_1x_coco,1,"{'input_tensor': [[7, 800, 1088]], 'dim': [[0]]}",1.1303424835205077e-05
+#319,solo_r50_fpn_1x_coco,4,"{'input_tensor': [[7]], 'dim': [[0]]}",1.0528564453125e-05
+#320,solo_r50_fpn_1x_coco,1,"{'input_tensor': [[3, 800, 1088]], 'dim': [[0]]}",7.278919219970703e-06
+#321,solo_r50_fpn_1x_coco,4,"{'input_tensor': [[3]], 'dim': [[0]]}",6.818771362304688e-06
+#322,ssd300_coco,10,"{'input_tensor': [[1, 8732, 81]], 'dim': [[0]]}",5.125999450683594e-06
+#323,ssd300_coco,30,"{'input_tensor': [[1, 8732, 4]], 'dim': [[0]]}",5.071163177490234e-06
+#324,ssd300_coco,20,"{'input_tensor': [[1, 8732]], 'dim': [[0]]}",5.030632019042969e-06
+#325,stark_st1_r50_500e_lasot,60,"{'input_tensor': [[36]], 'dim': [[0]]}",3.9095878601074216e-05
+#326,mask2former_r50_lsj_8x2_50e_coco,5,"{'input_tensor': [[3, 2]], 'dim': [[0]]}",5.9199333190917965e-06
+#327,fsdetview_r101_c4_8xb4_voc-split1_base-training,5,"{'input_tensor': [[1]], 'dim': [[0]]}",3.516674041748047e-06
+#328,dmnet_r101-d8_512x1024_40k_cityscapes,25,"{'input_tensor': [[1, 1024, 64, 128]], 'dim': [[0]]}",3.826618194580078e-06
+#329,dmnet_r101-d8_512x1024_40k_cityscapes,4,"{'input_tensor': [[104]], 'dim': [[0]]}",7.457971572875977e-05
+#330,dmnet_r101-d8_512x1024_40k_cityscapes,30,"{'input_tensor': [[1, 1, 1]], 'dim': [[0]]}",3.6215782165527343e-06
+#331,dmnet_r101-d8_512x1024_40k_cityscapes,30,"{'input_tensor': [[1, 1]], 'dim': [[0]]}",3.578662872314453e-06
+#332,dmnet_r101-d8_512x1024_40k_cityscapes,10,"{'input_tensor': [[6]], 'dim': [[0]]}",6.651878356933593e-06
+#333,dmnet_r101-d8_512x1024_40k_cityscapes,5,"{'input_tensor': [[1, 1024, 66, 130]], 'dim': [[0]]}",3.910064697265625e-06
+#334,dmnet_r101-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[72]], 'dim': [[0]]}",5.079507827758789e-05
+#335,dmnet_r101-d8_512x1024_40k_cityscapes,30,"{'input_tensor': [[1, 3, 3]], 'dim': [[0]]}",3.612041473388672e-06
+#336,dmnet_r101-d8_512x1024_40k_cityscapes,30,"{'input_tensor': [[3, 3]], 'dim': [[0]]}",4.875659942626953e-06
+#337,dmnet_r101-d8_512x1024_40k_cityscapes,10,"{'input_tensor': [[54]], 'dim': [[0]]}",3.6785602569580076e-05
+#338,dmnet_r101-d8_512x1024_40k_cityscapes,5,"{'input_tensor': [[1, 1024, 68, 132]], 'dim': [[0]]}",4.425048828125e-06
+#339,dmnet_r101-d8_512x1024_40k_cityscapes,6,"{'input_tensor': [[11]], 'dim': [[0]]}",1.0731220245361328e-05
+#340,dmnet_r101-d8_512x1024_40k_cityscapes,30,"{'input_tensor': [[1, 5, 5]], 'dim': [[0]]}",3.4928321838378907e-06
+#341,dmnet_r101-d8_512x1024_40k_cityscapes,30,"{'input_tensor': [[5, 5]], 'dim': [[0]]}",6.1821937561035156e-06
+#342,dmnet_r101-d8_512x1024_40k_cityscapes,10,"{'input_tensor': [[150]], 'dim': [[0]]}",0.00011592626571655274
+#343,dmnet_r101-d8_512x1024_40k_cityscapes,5,"{'input_tensor': [[1, 1024, 70, 134]], 'dim': [[0]]}",0.003336679935455322
+#344,dmnet_r101-d8_512x1024_40k_cityscapes,30,"{'input_tensor': [[1, 7, 7]], 'dim': [[0]]}",7.2836875915527345e-06
+#345,dmnet_r101-d8_512x1024_40k_cityscapes,10,"{'input_tensor': [[216]], 'dim': [[0]]}",0.00033777713775634766
+#346,dmnet_r101-d8_512x1024_40k_cityscapes,4,"{'input_tensor': [[99]], 'dim': [[0]]}",0.0001378488540649414
+#347,dmnet_r101-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[60]], 'dim': [[0]]}",8.307456970214844e-05
+#348,dmnet_r101-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[12]], 'dim': [[0]]}",2.042531967163086e-05
+#349,dmnet_r101-d8_512x1024_40k_cityscapes,4,"{'input_tensor': [[88]], 'dim': [[0]]}",0.00012190818786621094
+#350,dmnet_r101-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[53]], 'dim': [[0]]}",5.0716400146484375e-05
+#351,dmnet_r101-d8_512x1024_40k_cityscapes,4,"{'input_tensor': [[93]], 'dim': [[0]]}",6.450653076171875e-05
+#352,dmnet_r101-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[49]], 'dim': [[0]]}",3.251314163208008e-05
+#353,dmnet_r101-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[8]], 'dim': [[0]]}",7.691383361816406e-06
+#354,dmnet_r101-d8_512x1024_40k_cityscapes,4,"{'input_tensor': [[106]], 'dim': [[0]]}",7.389068603515625e-05
+#355,dmnet_r101-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[58]], 'dim': [[0]]}",3.950119018554688e-05
+#356,dmnet_r101-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[153]], 'dim': [[0]]}",0.00011147499084472656
+#357,dmnet_r101-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[102]], 'dim': [[0]]}",7.213354110717774e-05
+#358,dmnet_r101-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[112]], 'dim': [[0]]}",7.897615432739258e-05
+#359,dmnet_r101-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[141]], 'dim': [[0]]}",0.00010281562805175781
+#360,dmnet_r101-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[110]], 'dim': [[0]]}",7.684707641601562e-05
+#361,dmnet_r101-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[81]], 'dim': [[0]]}",5.5985450744628905e-05
+#362,dmnet_r101-d8_512x1024_40k_cityscapes,4,"{'input_tensor': [[120]], 'dim': [[0]]}",8.412837982177735e-05
+#363,dmnet_r101-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[107]], 'dim': [[0]]}",7.476568222045898e-05
+#364,dmnet_r101-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[103]], 'dim': [[0]]}",7.182121276855469e-05
+#365,dmnet_r101-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[79]], 'dim': [[0]]}",5.4385662078857425e-05
+#366,dmnet_r101-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[84]], 'dim': [[0]]}",5.791187286376953e-05
+#367,dmnet_r101-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[135]], 'dim': [[0]]}",9.756326675415039e-05
+#368,dmnet_r101-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[94]], 'dim': [[0]]}",6.500482559204101e-05
+#369,dmnet_r101-d8_512x1024_40k_cityscapes,2,"{'input_tensor': [[90]], 'dim': [[0]]}",6.245136260986328e-05
+#370,mae_vit-base-p16_8xb512-coslr-400e_in1k,10,"{'input_tensor': [[216]], 'dim': [[0]]}",0.0002596926689147949
+#371,mae_vit-base-p16_8xb512-coslr-400e_in1k,5,"{'input_tensor': [[36]], 'dim': [[0]]}",2.4561882019042968e-05
+#372,cornernet_hourglass104_mstest_32x3_210e_coco,86,"{'input_tensor': [[4]], 'dim': [[0]]}",5.4812431335449215e-06
+#373,dpt_vit-b16_512x512_160k_ade20k,1,"{'input_tensor': [[12]], 'dim': [[0]]}",1.0142326354980469e-05
+#374,spos_supernet_shufflenetv2_8xb128_in1k,40,"{'input_tensor': [[4]], 'dim': [[0]]}",5.37872314453125e-06
+#375,segmenter_vit-l_mask_8x1_640x640_160k_ade20k,1,"{'input_tensor': [[24]], 'dim': [[0]]}",1.730203628540039e-05
+#376,segmenter_vit-l_mask_8x1_640x640_160k_ade20k,1,"{'input_tensor': [[2]], 'dim': [[0]]}",4.134178161621094e-06
+#377,configs--body--2d_kpt_sview_rgb_img--topdown_heatmap--coco--swin_b_p4_w7_fpn_coco_256x192.py,1,"{'input_tensor': [[24]], 'dim': [[0]]}",1.7325878143310547e-05
+#378,retinanet_effb3_fpn_crop896_8x4_1x_coco,1,"{'input_tensor': [[26]], 'dim': [[0]]}",1.8351078033447265e-05
+#379,segmenter_vit-t_mask_8x1_512x512_160k_ade20k,1,"{'input_tensor': [[12]], 'dim': [[0]]}",1.009225845336914e-05
+#380,segmenter_vit-t_mask_8x1_512x512_160k_ade20k,1,"{'input_tensor': [[2]], 'dim': [[0]]}",4.100799560546875e-06
+#381,twins-pcpvt-small_8xb128_in1k,1,"{'input_tensor': [[16]], 'dim': [[0]]}",1.2786388397216797e-05
+#382,dmnet_r101-d8_769x769_80k_cityscapes,25,"{'input_tensor': [[1, 1024, 97, 97]], 'dim': [[0]]}",3.826618194580078e-06
+#383,dmnet_r101-d8_769x769_80k_cityscapes,6,"{'input_tensor': [[112]], 'dim': [[0]]}",8.224725723266602e-05
+#384,dmnet_r101-d8_769x769_80k_cityscapes,30,"{'input_tensor': [[1, 1, 1]], 'dim': [[0]]}",3.6215782165527343e-06
+#385,dmnet_r101-d8_769x769_80k_cityscapes,30,"{'input_tensor': [[1, 1]], 'dim': [[0]]}",3.5715103149414064e-06
+#386,dmnet_r101-d8_769x769_80k_cityscapes,10,"{'input_tensor': [[6]], 'dim': [[0]]}",6.515979766845703e-06
+#387,dmnet_r101-d8_769x769_80k_cityscapes,5,"{'input_tensor': [[1, 1024, 99, 99]], 'dim': [[0]]}",3.824234008789062e-06
+#388,dmnet_r101-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[57]], 'dim': [[0]]}",3.9649009704589846e-05
+#389,dmnet_r101-d8_769x769_80k_cityscapes,30,"{'input_tensor': [[1, 3, 3]], 'dim': [[0]]}",3.5905838012695314e-06
+#390,dmnet_r101-d8_769x769_80k_cityscapes,30,"{'input_tensor': [[3, 3]], 'dim': [[0]]}",4.911422729492188e-06
+#391,dmnet_r101-d8_769x769_80k_cityscapes,14,"{'input_tensor': [[54]], 'dim': [[0]]}",3.60870361328125e-05
+#392,dmnet_r101-d8_769x769_80k_cityscapes,5,"{'input_tensor': [[1, 1024, 101, 101]], 'dim': [[0]]}",3.826618194580078e-06
+#393,dmnet_r101-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[16]], 'dim': [[0]]}",1.3647079467773438e-05
+#394,dmnet_r101-d8_769x769_80k_cityscapes,30,"{'input_tensor': [[1, 5, 5]], 'dim': [[0]]}",3.5619735717773436e-06
+#395,dmnet_r101-d8_769x769_80k_cityscapes,30,"{'input_tensor': [[5, 5]], 'dim': [[0]]}",6.222724914550782e-06
+#396,dmnet_r101-d8_769x769_80k_cityscapes,10,"{'input_tensor': [[150]], 'dim': [[0]]}",0.00011301040649414062
+#397,dmnet_r101-d8_769x769_80k_cityscapes,5,"{'input_tensor': [[1, 1024, 103, 103]], 'dim': [[0]]}",3.795623779296875e-06
+#398,dmnet_r101-d8_769x769_80k_cityscapes,30,"{'input_tensor': [[1, 7, 7]], 'dim': [[0]]}",3.564357757568359e-06
+#399,dmnet_r101-d8_769x769_80k_cityscapes,10,"{'input_tensor': [[216]], 'dim': [[0]]}",0.00017170429229736327
+#400,dmnet_r101-d8_769x769_80k_cityscapes,4,"{'input_tensor': [[100]], 'dim': [[0]]}",7.087230682373047e-05
+#401,dmnet_r101-d8_769x769_80k_cityscapes,4,"{'input_tensor': [[10]], 'dim': [[0]]}",9.086132049560547e-06
+#402,dmnet_r101-d8_769x769_80k_cityscapes,8,"{'input_tensor': [[95]], 'dim': [[0]]}",6.624221801757812e-05
+#403,dmnet_r101-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[56]], 'dim': [[0]]}",3.697633743286133e-05
+#404,dmnet_r101-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[12]], 'dim': [[0]]}",1.0249614715576172e-05
+#405,dmnet_r101-d8_769x769_80k_cityscapes,4,"{'input_tensor': [[109]], 'dim': [[0]]}",7.619142532348633e-05
+#406,dmnet_r101-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[59]], 'dim': [[0]]}",3.911733627319336e-05
+#407,dmnet_r101-d8_769x769_80k_cityscapes,4,"{'input_tensor': [[105]], 'dim': [[0]]}",7.470846176147461e-05
+#408,dmnet_r101-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[9]], 'dim': [[0]]}",8.373260498046874e-06
+#409,dmnet_r101-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[129]], 'dim': [[0]]}",9.627103805541993e-05
+#410,dmnet_r101-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[123]], 'dim': [[0]]}",9.164333343505859e-05
+#411,dmnet_r101-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[101]], 'dim': [[0]]}",7.223129272460937e-05
+#412,dmnet_r101-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[110]], 'dim': [[0]]}",7.86280632019043e-05
+#413,dmnet_r101-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[117]], 'dim': [[0]]}",8.35132598876953e-05
+#414,dmnet_r101-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[85]], 'dim': [[0]]}",5.922555923461914e-05
+#415,dmnet_r101-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[127]], 'dim': [[0]]}",0.00012738704681396483
+#416,dmnet_r101-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[131]], 'dim': [[0]]}",9.55963134765625e-05
+#417,dmnet_r101-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[102]], 'dim': [[0]]}",7.157087326049805e-05
+#418,dmnet_r101-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[82]], 'dim': [[0]]}",5.7036876678466794e-05
+#419,dmnet_r101-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[128]], 'dim': [[0]]}",9.399652481079102e-05
+#420,dmnet_r101-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[79]], 'dim': [[0]]}",5.491018295288086e-05
+#421,solov2_light_r18_fpn_3x_coco,2,"{'input_tensor': [[1, 640, 352]], 'dim': [[0]]}",3.819465637207031e-06
+#422,solov2_light_r18_fpn_3x_coco,48,"{'input_tensor': [[1]], 'dim': [[0]]}",3.5309791564941407e-06
+#423,solov2_light_r18_fpn_3x_coco,3,"{'input_tensor': [[2, 640, 352]], 'dim': [[0]]}",4.394054412841797e-06
+#424,solov2_light_r18_fpn_3x_coco,44,"{'input_tensor': [[2]], 'dim': [[0]]}",4.086494445800781e-06
+#425,solov2_light_r18_fpn_3x_coco,1,"{'input_tensor': [[10, 512, 480]], 'dim': [[0]]}",1.009225845336914e-05
+#426,solov2_light_r18_fpn_3x_coco,8,"{'input_tensor': [[10]], 'dim': [[0]]}",9.007453918457032e-06
+#427,solov2_light_r18_fpn_3x_coco,1,"{'input_tensor': [[2, 512, 480]], 'dim': [[0]]}",4.296302795410156e-06
+#428,solov2_light_r18_fpn_3x_coco,5,"{'input_tensor': [[2, 128, 40, 40]], 'dim': [[0]]}",4.281997680664063e-06
+#429,solov2_light_r18_fpn_3x_coco,5,"{'input_tensor': [[2, 128, 36, 36]], 'dim': [[0]]}",4.229545593261718e-06
+#430,solov2_light_r18_fpn_3x_coco,5,"{'input_tensor': [[2, 128, 24, 24]], 'dim': [[0]]}",4.229545593261718e-06
+#431,solov2_light_r18_fpn_3x_coco,5,"{'input_tensor': [[2, 128, 16, 16]], 'dim': [[0]]}",4.1961669921875e-06
+#432,solov2_light_r18_fpn_3x_coco,5,"{'input_tensor': [[2, 128, 12, 12]], 'dim': [[0]]}",4.2009353637695315e-06
+#433,solov2_light_r18_fpn_3x_coco,2,"{'input_tensor': [[1, 512, 768]], 'dim': [[0]]}",3.6454200744628904e-06
+#434,solov2_light_r18_fpn_3x_coco,1,"{'input_tensor': [[12, 512, 768]], 'dim': [[0]]}",1.1303424835205077e-05
+#435,solov2_light_r18_fpn_3x_coco,4,"{'input_tensor': [[12]], 'dim': [[0]]}",1.0118484497070312e-05
+#436,solov2_light_r18_fpn_3x_coco,1,"{'input_tensor': [[16, 512, 768]], 'dim': [[0]]}",1.413106918334961e-05
+#437,solov2_light_r18_fpn_3x_coco,4,"{'input_tensor': [[16]], 'dim': [[0]]}",1.2640953063964844e-05
+#438,solov2_light_r18_fpn_3x_coco,1,"{'input_tensor': [[6, 512, 768]], 'dim': [[0]]}",6.847381591796875e-06
+#439,solov2_light_r18_fpn_3x_coco,4,"{'input_tensor': [[6]], 'dim': [[0]]}",6.5827369689941405e-06
+#440,solov2_light_r18_fpn_3x_coco,2,"{'input_tensor': [[2, 480, 640]], 'dim': [[0]]}",4.329681396484375e-06
+#441,solov2_light_r18_fpn_3x_coco,2,"{'input_tensor': [[3, 704, 448]], 'dim': [[0]]}",4.961490631103515e-06
+#442,solov2_light_r18_fpn_3x_coco,12,"{'input_tensor': [[3]], 'dim': [[0]]}",4.842281341552734e-06
+#443,solov2_light_r18_fpn_3x_coco,1,"{'input_tensor': [[2, 704, 448]], 'dim': [[0]]}",4.231929779052734e-06
+#444,solov2_light_r18_fpn_3x_coco,1,"{'input_tensor': [[1, 704, 448]], 'dim': [[0]]}",3.6025047302246092e-06
+#445,solov2_light_r18_fpn_3x_coco,2,"{'input_tensor': [[1, 736, 480]], 'dim': [[0]]}",3.6954879760742188e-06
+#446,solov2_light_r18_fpn_3x_coco,2,"{'input_tensor': [[2, 736, 480]], 'dim': [[0]]}",4.286766052246094e-06
+#447,solov2_light_r18_fpn_3x_coco,1,"{'input_tensor': [[1, 608, 448]], 'dim': [[0]]}",3.650188446044922e-06
+#448,solov2_light_r18_fpn_3x_coco,2,"{'input_tensor': [[1, 480, 352]], 'dim': [[0]]}",3.662109375e-06
+#449,solov2_light_r18_fpn_3x_coco,1,"{'input_tensor': [[2, 480, 352]], 'dim': [[0]]}",4.372596740722656e-06
+#450,solov2_light_r18_fpn_3x_coco,1,"{'input_tensor': [[10, 416, 576]], 'dim': [[0]]}",1.008749008178711e-05
+#451,solov2_light_r18_fpn_3x_coco,1,"{'input_tensor': [[13, 416, 576]], 'dim': [[0]]}",1.2028217315673829e-05
+#452,solov2_light_r18_fpn_3x_coco,4,"{'input_tensor': [[13]], 'dim': [[0]]}",1.0652542114257812e-05
+#453,solov2_light_r18_fpn_3x_coco,1,"{'input_tensor': [[3, 416, 576]], 'dim': [[0]]}",4.951953887939453e-06
+#454,solov2_light_r18_fpn_3x_coco,2,"{'input_tensor': [[1, 416, 576]], 'dim': [[0]]}",3.674030303955078e-06
+#455,solov2_light_r18_fpn_3x_coco,1,"{'input_tensor': [[2, 416, 576]], 'dim': [[0]]}",4.286766052246094e-06
+#456,scnet_x101_64x4d_fpn_20e_coco,20,"{'input_tensor': [[2]], 'dim': [[0]]}",4.134178161621094e-06
+#457,maskflownets_8x1_slong_flyingchairs_384x448,5,"{'input_tensor': [[2]], 'dim': [[0]]}",4.141330718994141e-06
+#458,basicvsr_reds4,240,"{'input_tensor': [[3, 64, 64]], 'dim': [[0]]}",4.854202270507812e-06
+#459,basicvsr_reds4,200,"{'input_tensor': [[648]], 'dim': [[0]]}",0.0006625509262084961
+#460,basicvsr_reds4,20,"{'input_tensor': [[448]], 'dim': [[0]]}",0.00041458606719970705
+#461,basicvsr_reds4,60,"{'input_tensor': [[2, 4, 4]], 'dim': [[0]]}",4.193782806396484e-06
+#462,basicvsr_reds4,480,"{'input_tensor': [[4, 4]], 'dim': [[0]]}",5.5241584777832035e-06
+#463,basicvsr_reds4,20,"{'input_tensor': [[192]], 'dim': [[0]]}",0.0001425313949584961
+#464,basicvsr_reds4,60,"{'input_tensor': [[2, 8, 8]], 'dim': [[0]]}",4.312992095947266e-06
+#465,basicvsr_reds4,80,"{'input_tensor': [[432]], 'dim': [[0]]}",0.00041710615158081055
+#466,basicvsr_reds4,60,"{'input_tensor': [[2, 16, 16]], 'dim': [[0]]}",4.210472106933594e-06
+#467,basicvsr_reds4,60,"{'input_tensor': [[2, 32, 32]], 'dim': [[0]]}",4.229545593261718e-06
+#468,basicvsr_reds4,60,"{'input_tensor': [[2, 64, 64]], 'dim': [[0]]}",4.2366981506347655e-06
+#469,basicvsr_reds4,120,"{'input_tensor': [[3, 32, 32]], 'dim': [[0]]}",4.925727844238281e-06
+#470,basicvsr_reds4,120,"{'input_tensor': [[3, 16, 16]], 'dim': [[0]]}",4.799365997314453e-06
+#471,basicvsr_reds4,120,"{'input_tensor': [[3, 8, 8]], 'dim': [[0]]}",4.8971176147460935e-06
+#472,basicvsr_reds4,120,"{'input_tensor': [[3, 4, 4]], 'dim': [[0]]}",4.794597625732422e-06
+#473,basicvsr_reds4,40,"{'input_tensor': [[288]], 'dim': [[0]]}",0.0002480030059814453
+#474,cyclegan_lsgan_id0_resnet_in_facades_b1x1_80k,10,"{'input_tensor': [[1, 3, 256, 256]], 'dim': [[0]]}",3.6215782165527343e-06
+#475,upernet_convnext_tiny_fp16_512x512_160k_ade20k,1,"{'input_tensor': [[18]], 'dim': [[0]]}",1.414775848388672e-05
+#476,stylegan3_t_ada_fp16_gamma6.6_metfaces_1024_b4x8_small,15,"{'input_tensor': [[4]], 'dim': [[0]]}",5.385875701904297e-06
+#477,basicvsr_plusplus_c64n7_8x1_600k_reds4,240,"{'input_tensor': [[3, 64, 64]], 'dim': [[0]]}",4.835128784179688e-06
+#478,basicvsr_plusplus_c64n7_8x1_600k_reds4,200,"{'input_tensor': [[648]], 'dim': [[0]]}",0.0006688451766967774
+#479,basicvsr_plusplus_c64n7_8x1_600k_reds4,20,"{'input_tensor': [[232]], 'dim': [[0]]}",0.00018185853958129882
+#480,basicvsr_plusplus_c64n7_8x1_600k_reds4,20,"{'input_tensor': [[928]], 'dim': [[0]]}",0.0011934399604797362
+#481,basicvsr_plusplus_c64n7_8x1_600k_reds4,60,"{'input_tensor': [[2, 8, 8]], 'dim': [[0]]}",4.396438598632813e-06
+#482,basicvsr_plusplus_c64n7_8x1_600k_reds4,80,"{'input_tensor': [[432]], 'dim': [[0]]}",0.0004058384895324707
+#483,basicvsr_plusplus_c64n7_8x1_600k_reds4,60,"{'input_tensor': [[2, 16, 16]], 'dim': [[0]]}",4.3082237243652344e-06
+#484,basicvsr_plusplus_c64n7_8x1_600k_reds4,60,"{'input_tensor': [[2, 32, 32]], 'dim': [[0]]}",4.258155822753906e-06
+#485,basicvsr_plusplus_c64n7_8x1_600k_reds4,60,"{'input_tensor': [[2, 64, 64]], 'dim': [[0]]}",4.298686981201172e-06
+#486,basicvsr_plusplus_c64n7_8x1_600k_reds4,120,"{'input_tensor': [[3, 32, 32]], 'dim': [[0]]}",4.880428314208984e-06
+#487,basicvsr_plusplus_c64n7_8x1_600k_reds4,120,"{'input_tensor': [[3, 16, 16]], 'dim': [[0]]}",4.84466552734375e-06
+#488,basicvsr_plusplus_c64n7_8x1_600k_reds4,120,"{'input_tensor': [[3, 8, 8]], 'dim': [[0]]}",4.9328804016113284e-06
+#489,basicvsr_plusplus_c64n7_8x1_600k_reds4,120,"{'input_tensor': [[3, 4, 4]], 'dim': [[0]]}",4.847049713134765e-06
+#490,basicvsr_plusplus_c64n7_8x1_600k_reds4,360,"{'input_tensor': [[4, 4]], 'dim': [[0]]}",5.548000335693359e-06
+#491,basicvsr_plusplus_c64n7_8x1_600k_reds4,40,"{'input_tensor': [[288]], 'dim': [[0]]}",0.0002447319030761719
+#492,twins_pcpvt-s_fpn_fpnhead_8x4_512x512_80k_ade20k,1,"{'input_tensor': [[16]], 'dim': [[0]]}",1.2738704681396484e-05
+#493,maskformer_r50_mstrain_16x1_75e_coco,1,"{'input_tensor': [[1, 1, 736, 974]], 'dim': [[0]]}",3.643035888671875e-06
+#494,maskformer_r50_mstrain_16x1_75e_coco,1,"{'input_tensor': [[7]], 'dim': [[0]]}",8.018016815185547e-06
+#495,maskformer_r50_mstrain_16x1_75e_coco,5,"{'input_tensor': [[6, 1, 100, 134]], 'dim': [[0]]}",7.071495056152344e-06
+#496,maskformer_r50_mstrain_16x1_75e_coco,1,"{'input_tensor': [[6, 1, 100, 184, 244]], 'dim': [[0]]}",7.526874542236328e-06
+#497,maskformer_r50_mstrain_16x1_75e_coco,1,"{'input_tensor': [[1, 1, 608, 657]], 'dim': [[0]]}",3.6907196044921876e-06
+#498,maskformer_r50_mstrain_16x1_75e_coco,1,"{'input_tensor': [[13]], 'dim': [[0]]}",1.1630058288574219e-05
+#499,maskformer_r50_mstrain_16x1_75e_coco,1,"{'input_tensor': [[6, 1, 100, 152, 165]], 'dim': [[0]]}",7.796287536621094e-06
+#500,maskformer_r50_mstrain_16x1_75e_coco,1,"{'input_tensor': [[1, 1, 725, 640]], 'dim': [[0]]}",3.993511199951172e-06
+#501,maskformer_r50_mstrain_16x1_75e_coco,1,"{'input_tensor': [[6]], 'dim': [[0]]}",6.685256958007812e-06
+#502,maskformer_r50_mstrain_16x1_75e_coco,1,"{'input_tensor': [[6, 1, 100, 182, 160]], 'dim': [[0]]}",7.255077362060547e-06
+#503,maskformer_r50_mstrain_16x1_75e_coco,1,"{'input_tensor': [[1, 1, 768, 1024]], 'dim': [[0]]}",3.7288665771484376e-06
+#504,maskformer_r50_mstrain_16x1_75e_coco,1,"{'input_tensor': [[5]], 'dim': [[0]]}",6.008148193359375e-06
+#505,maskformer_r50_mstrain_16x1_75e_coco,1,"{'input_tensor': [[6, 1, 100, 192, 256]], 'dim': [[0]]}",7.2813034057617185e-06
+#506,maskformer_r50_mstrain_16x1_75e_coco,1,"{'input_tensor': [[1, 1, 480, 700]], 'dim': [[0]]}",3.771781921386719e-06
+#507,maskformer_r50_mstrain_16x1_75e_coco,1,"{'input_tensor': [[8]], 'dim': [[0]]}",8.189678192138672e-06
+#508,maskformer_r50_mstrain_16x1_75e_coco,1,"{'input_tensor': [[6, 1, 100, 120, 175]], 'dim': [[0]]}",7.250308990478516e-06
+#509,maskformer_r50_mstrain_16x1_75e_coco,12,"{'input_tensor': [[713]], 'dim': [[0]]}",0.0007485508918762207
+#510,maskformer_r50_mstrain_16x1_75e_coco,12,"{'input_tensor': [[399]], 'dim': [[0]]}",0.00037316083908081057
+#511,maskformer_r50_mstrain_16x1_75e_coco,12,"{'input_tensor': [[460]], 'dim': [[0]]}",0.00046056032180786133
+#512,maskformer_r50_mstrain_16x1_75e_coco,12,"{'input_tensor': [[768]], 'dim': [[0]]}",0.0008296036720275879
+#513,maskformer_r50_mstrain_16x1_75e_coco,12,"{'input_tensor': [[330]], 'dim': [[0]]}",0.0002997159957885742
+#514,queryinst_r101_fpn_300_proposals_crop_mstrain_480-800_3x_coco,30,"{'input_tensor': [[2, 300, 256]], 'dim': [[0]]}",4.4202804565429685e-06
+#515,detr_r50_8x2_150e_coco,5,"{'input_tensor': [[6, 2, 100, 81]], 'dim': [[0]]}",6.859302520751953e-06
+#516,detr_r50_8x2_150e_coco,5,"{'input_tensor': [[6, 2, 100, 4]], 'dim': [[0]]}",6.816387176513672e-06
+#517,detr_r50_8x2_150e_coco,30,"{'input_tensor': [[2, 100, 4]], 'dim': [[0]]}",4.1961669921875e-06
+#518,detr_r50_8x2_150e_coco,24,"{'input_tensor': [[782]], 'dim': [[0]]}",0.0008262991905212402
+#519,detr_r50_8x2_150e_coco,12,"{'input_tensor': [[2, 840]], 'dim': [[0]]}",4.296302795410156e-06
+#520,detr_r50_8x2_150e_coco,36,"{'input_tensor': [[12]], 'dim': [[0]]}",1.03759765625e-05
+#521,detr_r50_8x2_150e_coco,12,"{'input_tensor': [[2, 600]], 'dim': [[0]]}",4.2748451232910156e-06
+#522,detr_r50_8x2_150e_coco,12,"{'input_tensor': [[2, 805]], 'dim': [[0]]}",4.2009353637695315e-06
+#523,upernet_mae-base_fp16_8x2_512x512_160k_ade20k,1,"{'input_tensor': [[12]], 'dim': [[0]]}",1.0135173797607421e-05
+#524,styleganv1_ffhq_256_g8_25Mimg,200,"{'input_tensor': [[32]], 'dim': [[0]]}",2.2296905517578124e-05
+#525,styleganv1_ffhq_256_g8_25Mimg,300,"{'input_tensor': [[3, 8, 8]], 'dim': [[0]]}",4.906654357910156e-06
+#526,styleganv1_ffhq_256_g8_25Mimg,100,"{'input_tensor': [[648]], 'dim': [[0]]}",0.0006758928298950196
+#527,meta-rcnn_r101_c4_8xb4_voc-split1_base-training,5,"{'input_tensor': [[1]], 'dim': [[0]]}",3.6478042602539064e-06
+#528,swav_resnet50_8xb32-mcrop-2-6-coslr-200e_in1k-224-96,5,"{'input_tensor': [[2]], 'dim': [[0]]}",4.1270256042480466e-06
+#529,configs--wholebody--2d_kpt_sview_rgb_img--topdown_heatmap--coco-wholebody--tcformer_coco_wholebody_256x192.py,1,"{'input_tensor': [[16]], 'dim': [[0]]}",1.2793540954589843e-05
+#530,retinanet_pvt-l_fpn_1x_coco,1,"{'input_tensor': [[41]], 'dim': [[0]]}",2.7534961700439452e-05
+#531,configs--body--2d_kpt_sview_rgb_img--topdown_heatmap--coco--swin_t_p4_w7_coco_256x192.py,1,"{'input_tensor': [[12]], 'dim': [[0]]}",1.016855239868164e-05
+#532,yolox_tiny_8x8_300e_coco,5,"{'input_tensor': [[8, 8400, 80]], 'dim': [[0]]}",8.647441864013673e-06
+#533,yolox_tiny_8x8_300e_coco,5,"{'input_tensor': [[8, 8400]], 'dim': [[0]]}",8.358955383300782e-06
+#534,yolox_tiny_8x8_300e_coco,10,"{'input_tensor': [[8, 8400, 4]], 'dim': [[0]]}",8.335113525390625e-06
+#535,deepfillv2_256x256_8x2_celeba,30,"{'input_tensor': [[100]], 'dim': [[0]]}",6.495475769042969e-05
+#536,deepfillv2_256x256_8x2_celeba,30,"{'input_tensor': [[64]], 'dim': [[0]]}",4.21142578125e-05
+#537,deepfillv2_256x256_8x2_celeba,150,"{'input_tensor': [[6]], 'dim': [[0]]}",6.5469741821289065e-06
+#538,deepfillv2_256x256_8x2_celeba,30,"{'input_tensor': [[128]], 'dim': [[0]]}",9.020090103149414e-05
+#539,deepfillv2_256x256_8x2_celeba,120,"{'input_tensor': [[256]], 'dim': [[0]]}",0.0002184629440307617
+#540,gca_r34_4x10_200k_comp1k,100,"{'input_tensor': [[2]], 'dim': [[0]]}",4.251003265380859e-06
+#541,gca_r34_4x10_200k_comp1k,20,"{'input_tensor': [[54]], 'dim': [[0]]}",3.543615341186523e-05
+#542,gca_r34_4x10_200k_comp1k,120,"{'input_tensor': [[32]], 'dim': [[0]]}",2.2079944610595703e-05
+#543,gca_r34_4x10_200k_comp1k,80,"{'input_tensor': [[288]], 'dim': [[0]]}",0.00025414466857910157
+#544,gca_r34_4x10_200k_comp1k,180,"{'input_tensor': [[64]], 'dim': [[0]]}",4.1620731353759764e-05
+#545,gca_r34_4x10_200k_comp1k,10,"{'input_tensor': [[27]], 'dim': [[0]]}",1.932382583618164e-05
+#546,gca_r34_4x10_200k_comp1k,10,"{'input_tensor': [[16]], 'dim': [[0]]}",1.2662410736083984e-05
+#547,gca_r34_4x10_200k_comp1k,10,"{'input_tensor': [[144]], 'dim': [[0]]}",0.00010396003723144532
+#548,gca_r34_4x10_200k_comp1k,210,"{'input_tensor': [[128]], 'dim': [[0]]}",9.10806655883789e-05
+#549,gca_r34_4x10_200k_comp1k,140,"{'input_tensor': [[576]], 'dim': [[0]]}",0.0006062436103820801
+#550,gca_r34_4x10_200k_comp1k,360,"{'input_tensor': [[6]], 'dim': [[0]]}",6.5851211547851565e-06
+#551,gca_r34_4x10_200k_comp1k,180,"{'input_tensor': [[256]], 'dim': [[0]]}",0.00021917343139648437
+#552,gca_r34_4x10_200k_comp1k,80,"{'input_tensor': [[512]], 'dim': [[0]]}",0.0005063271522521973
+#553,detnas_supernet_frcnn_shufflenetv2_fpn_1x_coco,40,"{'input_tensor': [[4]], 'dim': [[0]]}",5.495548248291016e-06
+#554,configs--body--2d_kpt_sview_rgb_img--topdown_heatmap--coco--swin_b_p4_w7_fpn_coco_384x288.py,1,"{'input_tensor': [[24]], 'dim': [[0]]}",1.753091812133789e-05
+#555,liteflownet2_8x1_500k_flyingthing3d_subset_384x768,5,"{'input_tensor': [[2]], 'dim': [[0]]}",4.138946533203125e-06
+#556,abinet_academic,35,"{'input_tensor': [[1, 26, 38]], 'dim': [[0]]}",3.6025047302246092e-06
+#557,abinet_academic,1,"{'input_tensor': [[4]], 'dim': [[0]]}",5.4836273193359375e-06
+#558,abinet_academic,60,"{'input_tensor': [[26]], 'dim': [[0]]}",1.865386962890625e-05
+#559,seg_r31_1by16_fpnocr_toy_dataset,10,"{'input_tensor': [[38]], 'dim': [[0]]}",2.559185028076172e-05
+#560,deformable_detr_refine_r50_16x2_50e_coco,5,"{'input_tensor': [[4, 2]], 'dim': [[0]]}",5.488395690917969e-06
+#561,deformable_detr_refine_r50_16x2_50e_coco,20,"{'input_tensor': [[2]], 'dim': [[0]]}",4.1294097900390626e-06
+#562,deformable_detr_refine_r50_16x2_50e_coco,5,"{'input_tensor': [[6, 2, 300, 80]], 'dim': [[0]]}",6.895065307617188e-06
+#563,deformable_detr_refine_r50_16x2_50e_coco,5,"{'input_tensor': [[6, 2, 300, 4]], 'dim': [[0]]}",6.716251373291016e-06
+#564,deformable_detr_refine_r50_16x2_50e_coco,30,"{'input_tensor': [[2, 300, 4]], 'dim': [[0]]}",4.3058395385742184e-06
+#565,dmnet_r101-d8_769x769_40k_cityscapes,25,"{'input_tensor': [[1, 1024, 97, 97]], 'dim': [[0]]}",5.53131103515625e-06
+#566,dmnet_r101-d8_769x769_40k_cityscapes,4,"{'input_tensor': [[84]], 'dim': [[0]]}",5.482912063598633e-05
+#567,dmnet_r101-d8_769x769_40k_cityscapes,30,"{'input_tensor': [[1, 1, 1]], 'dim': [[0]]}",3.6001205444335937e-06
+#568,dmnet_r101-d8_769x769_40k_cityscapes,30,"{'input_tensor': [[1, 1]], 'dim': [[0]]}",3.6001205444335937e-06
+#569,dmnet_r101-d8_769x769_40k_cityscapes,10,"{'input_tensor': [[6]], 'dim': [[0]]}",6.573200225830078e-06
+#570,dmnet_r101-d8_769x769_40k_cityscapes,5,"{'input_tensor': [[1, 1024, 99, 99]], 'dim': [[0]]}",5.505084991455078e-06
+#571,dmnet_r101-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[40]], 'dim': [[0]]}",2.8052330017089843e-05
+#572,dmnet_r101-d8_769x769_40k_cityscapes,30,"{'input_tensor': [[1, 3, 3]], 'dim': [[0]]}",3.6716461181640626e-06
+#573,dmnet_r101-d8_769x769_40k_cityscapes,30,"{'input_tensor': [[3, 3]], 'dim': [[0]]}",4.813671112060547e-06
+#574,dmnet_r101-d8_769x769_40k_cityscapes,12,"{'input_tensor': [[54]], 'dim': [[0]]}",3.556251525878906e-05
+#575,dmnet_r101-d8_769x769_40k_cityscapes,5,"{'input_tensor': [[1, 1024, 101, 101]], 'dim': [[0]]}",3.998279571533203e-06
+#576,dmnet_r101-d8_769x769_40k_cityscapes,4,"{'input_tensor': [[8]], 'dim': [[0]]}",8.189678192138672e-06
+#577,dmnet_r101-d8_769x769_40k_cityscapes,30,"{'input_tensor': [[1, 5, 5]], 'dim': [[0]]}",3.592967987060547e-06
+#578,dmnet_r101-d8_769x769_40k_cityscapes,30,"{'input_tensor': [[5, 5]], 'dim': [[0]]}",6.165504455566406e-06
+#579,dmnet_r101-d8_769x769_40k_cityscapes,10,"{'input_tensor': [[150]], 'dim': [[0]]}",0.00011298894882202149
+#580,dmnet_r101-d8_769x769_40k_cityscapes,5,"{'input_tensor': [[1, 1024, 103, 103]], 'dim': [[0]]}",4.909038543701172e-06
+#581,dmnet_r101-d8_769x769_40k_cityscapes,30,"{'input_tensor': [[1, 7, 7]], 'dim': [[0]]}",3.604888916015625e-06
+#582,dmnet_r101-d8_769x769_40k_cityscapes,10,"{'input_tensor': [[216]], 'dim': [[0]]}",0.0001787281036376953
+#583,dmnet_r101-d8_769x769_40k_cityscapes,4,"{'input_tensor': [[90]], 'dim': [[0]]}",5.731821060180664e-05
+#584,dmnet_r101-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[45]], 'dim': [[0]]}",3.0002593994140626e-05
+#585,dmnet_r101-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[11]], 'dim': [[0]]}",9.686946868896485e-06
+#586,dmnet_r101-d8_769x769_40k_cityscapes,4,"{'input_tensor': [[80]], 'dim': [[0]]}",5.100727081298828e-05
+#587,dmnet_r101-d8_769x769_40k_cityscapes,4,"{'input_tensor': [[88]], 'dim': [[0]]}",5.583047866821289e-05
+#588,dmnet_r101-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[47]], 'dim': [[0]]}",3.160953521728516e-05
+#589,dmnet_r101-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[10]], 'dim': [[0]]}",8.943080902099609e-06
+#590,dmnet_r101-d8_769x769_40k_cityscapes,4,"{'input_tensor': [[99]], 'dim': [[0]]}",6.42085075378418e-05
+#591,dmnet_r101-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[56]], 'dim': [[0]]}",3.683090209960937e-05
+#592,dmnet_r101-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[9]], 'dim': [[0]]}",8.416175842285156e-06
+#593,dmnet_r101-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[103]], 'dim': [[0]]}",6.786346435546875e-05
+#594,dmnet_r101-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[68]], 'dim': [[0]]}",4.430055618286133e-05
+#595,dmnet_r101-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[119]], 'dim': [[0]]}",8.131504058837891e-05
+#596,dmnet_r101-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[89]], 'dim': [[0]]}",5.63812255859375e-05
+#597,dmnet_r101-d8_769x769_40k_cityscapes,4,"{'input_tensor': [[82]], 'dim': [[0]]}",5.1965713500976564e-05
+#598,dmnet_r101-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[129]], 'dim': [[0]]}",9.100198745727539e-05
+#599,dmnet_r101-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[120]], 'dim': [[0]]}",8.150100708007812e-05
+#600,dmnet_r101-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[75]], 'dim': [[0]]}",4.8100948333740234e-05
+#601,dmnet_r101-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[135]], 'dim': [[0]]}",9.555339813232421e-05
+#602,dmnet_r101-d8_769x769_40k_cityscapes,4,"{'input_tensor': [[96]], 'dim': [[0]]}",6.125450134277344e-05
+#603,dmnet_r101-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[140]], 'dim': [[0]]}",9.907960891723633e-05
+#604,dmnet_r101-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[111]], 'dim': [[0]]}",7.364511489868164e-05
+#605,dmnet_r101-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[125]], 'dim': [[0]]}",8.673906326293945e-05
+#606,swin-base_16xb64_cifar10,1,"{'input_tensor': [[24]], 'dim': [[0]]}",1.7435550689697265e-05
+#607,ssdlite_mobilenetv2_scratch_600e_coco,5,"{'input_tensor': [[24, 3234, 81]], 'dim': [[0]]}",2.8598308563232423e-05
+#608,ssdlite_mobilenetv2_scratch_600e_coco,15,"{'input_tensor': [[24, 3234, 4]], 'dim': [[0]]}",2.8510093688964843e-05
+#609,ssdlite_mobilenetv2_scratch_600e_coco,10,"{'input_tensor': [[24, 3234]], 'dim': [[0]]}",2.8254985809326173e-05
+#610,dmnet_r50-d8_512x512_80k_ade20k,25,"{'input_tensor': [[1, 2048, 64, 64]], 'dim': [[0]]}",5.288124084472656e-06
+#611,dmnet_r50-d8_512x512_80k_ade20k,4,"{'input_tensor': [[129]], 'dim': [[0]]}",9.645938873291015e-05
+#612,dmnet_r50-d8_512x512_80k_ade20k,30,"{'input_tensor': [[1, 1, 1]], 'dim': [[0]]}",3.6191940307617187e-06
+#613,dmnet_r50-d8_512x512_80k_ade20k,30,"{'input_tensor': [[1, 1]], 'dim': [[0]]}",3.616809844970703e-06
+#614,dmnet_r50-d8_512x512_80k_ade20k,12,"{'input_tensor': [[6]], 'dim': [[0]]}",6.5135955810546876e-06
+#615,dmnet_r50-d8_512x512_80k_ade20k,5,"{'input_tensor': [[1, 2048, 66, 66]], 'dim': [[0]]}",5.354881286621094e-06
+#616,dmnet_r50-d8_512x512_80k_ade20k,2,"{'input_tensor': [[53]], 'dim': [[0]]}",3.953218460083008e-05
+#617,dmnet_r50-d8_512x512_80k_ade20k,30,"{'input_tensor': [[1, 3, 3]], 'dim': [[0]]}",3.573894500732422e-06
+#618,dmnet_r50-d8_512x512_80k_ade20k,30,"{'input_tensor': [[3, 3]], 'dim': [[0]]}",4.925727844238281e-06
+#619,dmnet_r50-d8_512x512_80k_ade20k,10,"{'input_tensor': [[54]], 'dim': [[0]]}",3.5250186920166014e-05
+#620,dmnet_r50-d8_512x512_80k_ade20k,5,"{'input_tensor': [[1, 2048, 68, 68]], 'dim': [[0]]}",5.550384521484375e-06
+#621,dmnet_r50-d8_512x512_80k_ade20k,6,"{'input_tensor': [[8]], 'dim': [[0]]}",9.512901306152343e-06
+#622,dmnet_r50-d8_512x512_80k_ade20k,30,"{'input_tensor': [[1, 5, 5]], 'dim': [[0]]}",3.6573410034179687e-06
+#623,dmnet_r50-d8_512x512_80k_ade20k,30,"{'input_tensor': [[5, 5]], 'dim': [[0]]}",6.079673767089844e-06
+#624,dmnet_r50-d8_512x512_80k_ade20k,10,"{'input_tensor': [[150]], 'dim': [[0]]}",0.00011004209518432617
+#625,dmnet_r50-d8_512x512_80k_ade20k,5,"{'input_tensor': [[1, 2048, 70, 70]], 'dim': [[0]]}",3.98397445678711e-06
+#626,dmnet_r50-d8_512x512_80k_ade20k,30,"{'input_tensor': [[1, 7, 7]], 'dim': [[0]]}",3.6287307739257814e-06
+#627,dmnet_r50-d8_512x512_80k_ade20k,10,"{'input_tensor': [[216]], 'dim': [[0]]}",0.00018324375152587892
+#628,dmnet_r50-d8_512x512_80k_ade20k,4,"{'input_tensor': [[110]], 'dim': [[0]]}",7.354497909545899e-05
+#629,dmnet_r50-d8_512x512_80k_ade20k,4,"{'input_tensor': [[43]], 'dim': [[0]]}",2.885103225708008e-05
+#630,dmnet_r50-d8_512x512_80k_ade20k,4,"{'input_tensor': [[121]], 'dim': [[0]]}",8.493185043334961e-05
+#631,dmnet_r50-d8_512x512_80k_ade20k,2,"{'input_tensor': [[39]], 'dim': [[0]]}",2.6404857635498047e-05
+#632,dmnet_r50-d8_512x512_80k_ade20k,6,"{'input_tensor': [[104]], 'dim': [[0]]}",6.847143173217773e-05
+#633,dmnet_r50-d8_512x512_80k_ade20k,2,"{'input_tensor': [[10]], 'dim': [[0]]}",9.002685546875e-06
+#634,dmnet_r50-d8_512x512_80k_ade20k,4,"{'input_tensor': [[89]], 'dim': [[0]]}",5.6617259979248047e-05
+#635,dmnet_r50-d8_512x512_80k_ade20k,2,"{'input_tensor': [[58]], 'dim': [[0]]}",3.757715225219727e-05
+#636,dmnet_r50-d8_512x512_80k_ade20k,2,"{'input_tensor': [[115]], 'dim': [[0]]}",7.796049118041992e-05
+#637,dmnet_r50-d8_512x512_80k_ade20k,4,"{'input_tensor': [[86]], 'dim': [[0]]}",5.466461181640625e-05
+#638,dmnet_r50-d8_512x512_80k_ade20k,4,"{'input_tensor': [[118]], 'dim': [[0]]}",8.009672164916992e-05
+#639,dmnet_r50-d8_512x512_80k_ade20k,4,"{'input_tensor': [[91]], 'dim': [[0]]}",5.7559013366699216e-05
+#640,dmnet_r50-d8_512x512_80k_ade20k,4,"{'input_tensor': [[108]], 'dim': [[0]]}",7.110834121704102e-05
+#641,dmnet_r50-d8_512x512_80k_ade20k,4,"{'input_tensor': [[93]], 'dim': [[0]]}",5.875349044799805e-05
+#642,dmnet_r50-d8_512x512_80k_ade20k,2,"{'input_tensor': [[114]], 'dim': [[0]]}",7.56978988647461e-05
+#643,dmnet_r50-d8_512x512_80k_ade20k,2,"{'input_tensor': [[125]], 'dim': [[0]]}",8.737087249755859e-05
+#644,dmnet_r50-d8_512x512_80k_ade20k,2,"{'input_tensor': [[106]], 'dim': [[0]]}",6.921768188476562e-05
+#645,pisa_ssd300_coco,3,"{'input_tensor': [[19]], 'dim': [[0]]}",1.4455318450927735e-05
+#646,pisa_ssd300_coco,2,"{'input_tensor': [[26]], 'dim': [[0]]}",1.8553733825683592e-05
+#647,pisa_ssd300_coco,22,"{'input_tensor': [[2]], 'dim': [[0]]}",4.179477691650391e-06
+#648,pisa_ssd300_coco,42,"{'input_tensor': [[1]], 'dim': [[0]]}",3.554821014404297e-06
+#649,pisa_ssd300_coco,3,"{'input_tensor': [[5]], 'dim': [[0]]}",6.015300750732422e-06
+#650,pisa_ssd300_coco,5,"{'input_tensor': [[3]], 'dim': [[0]]}",4.873275756835938e-06
+#651,pisa_ssd300_coco,1,"{'input_tensor': [[16]], 'dim': [[0]]}",1.287698745727539e-05
+#652,pisa_ssd300_coco,5,"{'input_tensor': [[8, 8732, 81]], 'dim': [[0]]}",8.726119995117188e-06
+#653,pisa_ssd300_coco,15,"{'input_tensor': [[8, 8732, 4]], 'dim': [[0]]}",8.351802825927735e-06
+#654,pisa_ssd300_coco,10,"{'input_tensor': [[8, 8732]], 'dim': [[0]]}",8.265972137451172e-06
+#655,pisa_ssd300_coco,1,"{'input_tensor': [[18]], 'dim': [[0]]}",1.4033317565917969e-05
+#656,pisa_ssd300_coco,1,"{'input_tensor': [[7]], 'dim': [[0]]}",7.131099700927734e-06
+#657,pisa_ssd300_coco,1,"{'input_tensor': [[11]], 'dim': [[0]]}",9.601116180419923e-06
+#658,pisa_ssd300_coco,1,"{'input_tensor': [[24]], 'dim': [[0]]}",1.7321109771728517e-05
+#659,pisa_ssd300_coco,2,"{'input_tensor': [[8]], 'dim': [[0]]}",7.853507995605468e-06
+#660,pisa_ssd300_coco,4,"{'input_tensor': [[4]], 'dim': [[0]]}",5.37872314453125e-06
+#661,pisa_ssd300_coco,1,"{'input_tensor': [[12]], 'dim': [[0]]}",1.0182857513427735e-05
+#662,pisa_ssd300_coco,1,"{'input_tensor': [[15]], 'dim': [[0]]}",1.2042522430419921e-05
+#663,pisa_ssd300_coco,1,"{'input_tensor': [[14]], 'dim': [[0]]}",1.1398792266845704e-05
+#664,pisa_ssd300_coco,1,"{'input_tensor': [[21]], 'dim': [[0]]}",1.5799999237060546e-05
+#665,pisa_ssd300_coco,2,"{'input_tensor': [[6]], 'dim': [[0]]}",6.580352783203125e-06
+#666,pisa_ssd300_coco,1,"{'input_tensor': [[10]], 'dim': [[0]]}",9.071826934814452e-06
+#667,sngan_proj_32_wReLUinplace_lr-2e-4_ndisc5_cifar10_b64x1,22,"{'input_tensor': [[27]], 'dim': [[0]]}",1.9178390502929687e-05
+#668,sngan_proj_32_wReLUinplace_lr-2e-4_ndisc5_cifar10_b64x1,286,"{'input_tensor': [[128]], 'dim': [[0]]}",9.048938751220704e-05
+#669,sngan_proj_32_wReLUinplace_lr-2e-4_ndisc5_cifar10_b64x1,154,"{'input_tensor': [[6]], 'dim': [[0]]}",6.551742553710938e-06
+#670,sngan_proj_32_wReLUinplace_lr-2e-4_ndisc5_cifar10_b64x1,22,"{'input_tensor': [[3]], 'dim': [[0]]}",4.744529724121093e-06
+#671,sngan_proj_32_wReLUinplace_lr-2e-4_ndisc5_cifar10_b64x1,22,"{'input_tensor': [[1]], 'dim': [[0]]}",3.5047531127929686e-06
+#672,sngan_proj_32_wReLUinplace_lr-2e-4_ndisc5_cifar10_b64x1,22,"{'input_tensor': [[10]], 'dim': [[0]]}",9.081363677978516e-06
+#673,mspie-stylegan2_c1_config-g_ffhq_256-512_b3x8_1100k,10,"{'input_tensor': [[1, 512, 4, 4]], 'dim': [[0]]}",3.5309791564941407e-06
+#674,mspie-stylegan2_c1_config-g_ffhq_256-512_b3x8_1100k,60,"{'input_tensor': [[4, 4]], 'dim': [[0]]}",5.528926849365235e-06
+#675,mspie-stylegan2_c1_config-g_ffhq_256-512_b3x8_1100k,20,"{'input_tensor': [[96]], 'dim': [[0]]}",6.170034408569336e-05
+#676,mspie-stylegan2_c1_config-g_ffhq_256-512_b3x8_1100k,3600,"{'input_tensor': [[3, 3]], 'dim': [[0]]}",4.92095947265625e-06
+#677,mspie-stylegan2_c1_config-g_ffhq_256-512_b3x8_1100k,200,"{'input_tensor': [[324]], 'dim': [[0]]}",0.0002860188484191895
+#678,mspie-stylegan2_c1_config-g_ffhq_256-512_b3x8_1100k,12,"{'input_tensor': [[1, 512, 8, 8]], 'dim': [[0]]}",3.607273101806641e-06
+#679,mspie-stylegan2_c1_config-g_ffhq_256-512_b3x8_1100k,180,"{'input_tensor': [[216]], 'dim': [[0]]}",0.00017710447311401368
+#680,mspie-stylegan2_c1_config-g_ffhq_256-512_b3x8_1100k,12,"{'input_tensor': [[1, 512, 16, 16]], 'dim': [[0]]}",3.669261932373047e-06
+#681,mspie-stylegan2_c1_config-g_ffhq_256-512_b3x8_1100k,6,"{'input_tensor': [[1, 512, 32, 32]], 'dim': [[0]]}",3.650188446044922e-06
+#682,mspie-stylegan2_c1_config-g_ffhq_256-512_b3x8_1100k,15,"{'input_tensor': [[1, 512, 6, 6]], 'dim': [[0]]}",3.5905838012695314e-06
+#683,mspie-stylegan2_c1_config-g_ffhq_256-512_b3x8_1100k,90,"{'input_tensor': [[6, 6]], 'dim': [[0]]}",6.721019744873047e-06
+#684,mspie-stylegan2_c1_config-g_ffhq_256-512_b3x8_1100k,18,"{'input_tensor': [[1, 512, 12, 12]], 'dim': [[0]]}",3.5572052001953125e-06
+#685,mspie-stylegan2_c1_config-g_ffhq_256-512_b3x8_1100k,18,"{'input_tensor': [[1, 512, 24, 24]], 'dim': [[0]]}",3.6787986755371093e-06
+#686,mspie-stylegan2_c1_config-g_ffhq_256-512_b3x8_1100k,9,"{'input_tensor': [[1, 512, 48, 48]], 'dim': [[0]]}",3.7026405334472655e-06
+#687,npid_resnet50_8xb32-steplr-200e_in1k,1,"{'input_tensor': [[1281167]], 'dim': [[0]]}",2.518639922142029
+#688,liteflownet_8x1_500k_flyingthings3d_subset_384x768,5,"{'input_tensor': [[2]], 'dim': [[0]]}",0.0014783692359924315
+#689,configs--body--3d_kpt_mview_rgb_img--voxelpose--shelf--voxelpose_prn64x64x64_cpn80x80x20_shelf_cam5.py,50,"{'input_tensor': [[3]], 'dim': [[0]]}",8.912086486816407e-06
+#690,flownets_8x1_slong_flyingchairs_384x448,5,"{'input_tensor': [[2]], 'dim': [[0]]}",7.596015930175781e-06
+#691,dmnet_r101-d8_512x512_160k_ade20k,25,"{'input_tensor': [[1, 2048, 64, 64]], 'dim': [[0]]}",5.600452423095703e-06
+#692,dmnet_r101-d8_512x512_160k_ade20k,6,"{'input_tensor': [[96]], 'dim': [[0]]}",6.48808479309082e-05
+#693,dmnet_r101-d8_512x512_160k_ade20k,30,"{'input_tensor': [[1, 1, 1]], 'dim': [[0]]}",3.559589385986328e-06
+#694,dmnet_r101-d8_512x512_160k_ade20k,30,"{'input_tensor': [[1, 1]], 'dim': [[0]]}",3.6334991455078126e-06
+#695,dmnet_r101-d8_512x512_160k_ade20k,10,"{'input_tensor': [[6]], 'dim': [[0]]}",6.587505340576172e-06
+#696,dmnet_r101-d8_512x512_160k_ade20k,5,"{'input_tensor': [[1, 2048, 66, 66]], 'dim': [[0]]}",5.071163177490234e-06
+#697,dmnet_r101-d8_512x512_160k_ade20k,4,"{'input_tensor': [[47]], 'dim': [[0]]}",3.257513046264648e-05
+#698,dmnet_r101-d8_512x512_160k_ade20k,30,"{'input_tensor': [[1, 3, 3]], 'dim': [[0]]}",3.6406517028808593e-06
+#699,dmnet_r101-d8_512x512_160k_ade20k,30,"{'input_tensor': [[3, 3]], 'dim': [[0]]}",4.801750183105469e-06
+#700,dmnet_r101-d8_512x512_160k_ade20k,10,"{'input_tensor': [[54]], 'dim': [[0]]}",3.647804260253906e-05
+#701,dmnet_r101-d8_512x512_160k_ade20k,5,"{'input_tensor': [[1, 2048, 68, 68]], 'dim': [[0]]}",5.495548248291016e-06
+#702,dmnet_r101-d8_512x512_160k_ade20k,2,"{'input_tensor': [[11]], 'dim': [[0]]}",9.877681732177734e-06
+#703,dmnet_r101-d8_512x512_160k_ade20k,30,"{'input_tensor': [[1, 5, 5]], 'dim': [[0]]}",8.325576782226563e-06
+#704,dmnet_r101-d8_512x512_160k_ade20k,30,"{'input_tensor': [[5, 5]], 'dim': [[0]]}",6.139278411865234e-06
+#705,dmnet_r101-d8_512x512_160k_ade20k,10,"{'input_tensor': [[150]], 'dim': [[0]]}",0.00012643337249755858
+#706,dmnet_r101-d8_512x512_160k_ade20k,5,"{'input_tensor': [[1, 2048, 70, 70]], 'dim': [[0]]}",4.0149688720703125e-06
+#707,dmnet_r101-d8_512x512_160k_ade20k,30,"{'input_tensor': [[1, 7, 7]], 'dim': [[0]]}",3.6907196044921876e-06
+#708,dmnet_r101-d8_512x512_160k_ade20k,10,"{'input_tensor': [[216]], 'dim': [[0]]}",0.00017594099044799806
+#709,dmnet_r101-d8_512x512_160k_ade20k,4,"{'input_tensor': [[98]], 'dim': [[0]]}",6.38580322265625e-05
+#710,dmnet_r101-d8_512x512_160k_ade20k,2,"{'input_tensor': [[61]], 'dim': [[0]]}",4.087209701538086e-05
+#711,dmnet_r101-d8_512x512_160k_ade20k,2,"{'input_tensor': [[9]], 'dim': [[0]]}",8.320808410644531e-06
+#712,dmnet_r101-d8_512x512_160k_ade20k,4,"{'input_tensor': [[70]], 'dim': [[0]]}",4.6782493591308593e-05
+#713,dmnet_r101-d8_512x512_160k_ade20k,2,"{'input_tensor': [[44]], 'dim': [[0]]}",3.472805023193359e-05
+#714,dmnet_r101-d8_512x512_160k_ade20k,2,"{'input_tensor': [[10]], 'dim': [[0]]}",9.024143218994141e-06
+#715,dmnet_r101-d8_512x512_160k_ade20k,4,"{'input_tensor': [[81]], 'dim': [[0]]}",5.3517818450927734e-05
+#716,dmnet_r101-d8_512x512_160k_ade20k,2,"{'input_tensor': [[56]], 'dim': [[0]]}",3.752708435058594e-05
+#717,dmnet_r101-d8_512x512_160k_ade20k,4,"{'input_tensor': [[13]], 'dim': [[0]]}",1.0712146759033203e-05
+#718,dmnet_r101-d8_512x512_160k_ade20k,4,"{'input_tensor': [[79]], 'dim': [[0]]}",5.400419235229492e-05
+#719,dmnet_r101-d8_512x512_160k_ade20k,4,"{'input_tensor': [[101]], 'dim': [[0]]}",6.621599197387696e-05
+#720,dmnet_r101-d8_512x512_160k_ade20k,2,"{'input_tensor': [[89]], 'dim': [[0]]}",5.850791931152344e-05
+#721,dmnet_r101-d8_512x512_160k_ade20k,4,"{'input_tensor': [[123]], 'dim': [[0]]}",0.00010339498519897461
+#722,dmnet_r101-d8_512x512_160k_ade20k,4,"{'input_tensor': [[118]], 'dim': [[0]]}",7.597446441650391e-05
+#723,dmnet_r101-d8_512x512_160k_ade20k,2,"{'input_tensor': [[105]], 'dim': [[0]]}",6.779193878173828e-05
+#724,dmnet_r101-d8_512x512_160k_ade20k,2,"{'input_tensor': [[131]], 'dim': [[0]]}",0.00010596990585327149
+#725,dmnet_r101-d8_512x512_160k_ade20k,2,"{'input_tensor': [[127]], 'dim': [[0]]}",0.00010892868041992187
+#726,dmnet_r101-d8_512x512_160k_ade20k,2,"{'input_tensor': [[93]], 'dim': [[0]]}",6.059885025024414e-05
+#727,dmnet_r101-d8_512x512_160k_ade20k,2,"{'input_tensor': [[142]], 'dim': [[0]]}",0.00011552095413208007
+#728,dmnet_r101-d8_512x512_160k_ade20k,2,"{'input_tensor': [[110]], 'dim': [[0]]}",7.078409194946289e-05
+#729,dmnet_r101-d8_512x512_160k_ade20k,2,"{'input_tensor': [[124]], 'dim': [[0]]}",9.757280349731445e-05
+#730,dmnet_r50-d8_769x769_40k_cityscapes,25,"{'input_tensor': [[1, 1024, 97, 97]], 'dim': [[0]]}",4.8065185546875e-06
+#731,dmnet_r50-d8_769x769_40k_cityscapes,4,"{'input_tensor': [[129]], 'dim': [[0]]}",0.00010306358337402343
+#732,dmnet_r50-d8_769x769_40k_cityscapes,30,"{'input_tensor': [[1, 1, 1]], 'dim': [[0]]}",5.91278076171875e-06
+#733,dmnet_r50-d8_769x769_40k_cityscapes,30,"{'input_tensor': [[1, 1]], 'dim': [[0]]}",3.643035888671875e-06
+#734,dmnet_r50-d8_769x769_40k_cityscapes,10,"{'input_tensor': [[6]], 'dim': [[0]]}",6.456375122070312e-06
+#735,dmnet_r50-d8_769x769_40k_cityscapes,5,"{'input_tensor': [[1, 1024, 99, 99]], 'dim': [[0]]}",4.413127899169922e-06
+#736,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[52]], 'dim': [[0]]}",3.554344177246094e-05
+#737,dmnet_r50-d8_769x769_40k_cityscapes,30,"{'input_tensor': [[1, 3, 3]], 'dim': [[0]]}",3.6525726318359376e-06
+#738,dmnet_r50-d8_769x769_40k_cityscapes,30,"{'input_tensor': [[3, 3]], 'dim': [[0]]}",4.8971176147460935e-06
+#739,dmnet_r50-d8_769x769_40k_cityscapes,10,"{'input_tensor': [[54]], 'dim': [[0]]}",3.637790679931641e-05
+#740,dmnet_r50-d8_769x769_40k_cityscapes,5,"{'input_tensor': [[1, 1024, 101, 101]], 'dim': [[0]]}",5.512237548828125e-06
+#741,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[10]], 'dim': [[0]]}",1.3375282287597657e-05
+#742,dmnet_r50-d8_769x769_40k_cityscapes,30,"{'input_tensor': [[1, 5, 5]], 'dim': [[0]]}",5.025863647460937e-06
+#743,dmnet_r50-d8_769x769_40k_cityscapes,30,"{'input_tensor': [[5, 5]], 'dim': [[0]]}",8.87155532836914e-06
+#744,dmnet_r50-d8_769x769_40k_cityscapes,10,"{'input_tensor': [[150]], 'dim': [[0]]}",0.0001304936408996582
+#745,dmnet_r50-d8_769x769_40k_cityscapes,5,"{'input_tensor': [[1, 1024, 103, 103]], 'dim': [[0]]}",5.571842193603516e-06
+#746,dmnet_r50-d8_769x769_40k_cityscapes,30,"{'input_tensor': [[1, 7, 7]], 'dim': [[0]]}",5.040168762207031e-06
+#747,dmnet_r50-d8_769x769_40k_cityscapes,10,"{'input_tensor': [[216]], 'dim': [[0]]}",0.00018582582473754882
+#748,dmnet_r50-d8_769x769_40k_cityscapes,6,"{'input_tensor': [[107]], 'dim': [[0]]}",6.95657730102539e-05
+#749,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[45]], 'dim': [[0]]}",3.0965805053710936e-05
+#750,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[12]], 'dim': [[0]]}",1.0175704956054687e-05
+#751,dmnet_r50-d8_769x769_40k_cityscapes,4,"{'input_tensor': [[92]], 'dim': [[0]]}",6.18147850036621e-05
+#752,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[36]], 'dim': [[0]]}",2.5403499603271484e-05
+#753,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[9]], 'dim': [[0]]}",8.275508880615235e-06
+#754,dmnet_r50-d8_769x769_40k_cityscapes,6,"{'input_tensor': [[101]], 'dim': [[0]]}",6.744623184204101e-05
+#755,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[42]], 'dim': [[0]]}",2.8955936431884766e-05
+#756,dmnet_r50-d8_769x769_40k_cityscapes,4,"{'input_tensor': [[11]], 'dim': [[0]]}",9.467601776123047e-06
+#757,dmnet_r50-d8_769x769_40k_cityscapes,4,"{'input_tensor': [[83]], 'dim': [[0]]}",5.450963973999023e-05
+#758,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[34]], 'dim': [[0]]}",2.4213790893554688e-05
+#759,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[123]], 'dim': [[0]]}",0.00010053634643554688
+#760,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[104]], 'dim': [[0]]}",6.744384765625e-05
+#761,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[100]], 'dim': [[0]]}",6.678342819213868e-05
+#762,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[103]], 'dim': [[0]]}",6.670713424682618e-05
+#763,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[82]], 'dim': [[0]]}",5.380153656005859e-05
+#764,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[87]], 'dim': [[0]]}",5.6977272033691404e-05
+#765,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[117]], 'dim': [[0]]}",7.516860961914062e-05
+#766,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[97]], 'dim': [[0]]}",6.296873092651368e-05
+#767,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[98]], 'dim': [[0]]}",7.190704345703126e-05
+#768,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[106]], 'dim': [[0]]}",6.888628005981445e-05
+#769,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[96]], 'dim': [[0]]}",6.435155868530274e-05
+#770,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[73]], 'dim': [[0]]}",4.8675537109375e-05
+#771,dmnet_r50-d8_769x769_40k_cityscapes,2,"{'input_tensor': [[116]], 'dim': [[0]]}",7.687807083129883e-05
+#772,dmnet_r101-d8_512x512_80k_ade20k,25,"{'input_tensor': [[1, 2048, 64, 64]], 'dim': [[0]]}",5.507469177246094e-06
+#773,dmnet_r101-d8_512x512_80k_ade20k,4,"{'input_tensor': [[103]], 'dim': [[0]]}",7.271528244018555e-05
+#774,dmnet_r101-d8_512x512_80k_ade20k,30,"{'input_tensor': [[1, 1, 1]], 'dim': [[0]]}",3.6025047302246092e-06
+#775,dmnet_r101-d8_512x512_80k_ade20k,30,"{'input_tensor': [[1, 1]], 'dim': [[0]]}",3.6025047302246092e-06
+#776,dmnet_r101-d8_512x512_80k_ade20k,12,"{'input_tensor': [[6]], 'dim': [[0]]}",6.52313232421875e-06
+#777,dmnet_r101-d8_512x512_80k_ade20k,5,"{'input_tensor': [[1, 2048, 66, 66]], 'dim': [[0]]}",5.536079406738281e-06
+#778,dmnet_r101-d8_512x512_80k_ade20k,2,"{'input_tensor': [[44]], 'dim': [[0]]}",3.0553340911865236e-05
+#779,dmnet_r101-d8_512x512_80k_ade20k,30,"{'input_tensor': [[1, 3, 3]], 'dim': [[0]]}",3.62396240234375e-06
+#780,dmnet_r101-d8_512x512_80k_ade20k,30,"{'input_tensor': [[3, 3]], 'dim': [[0]]}",4.813671112060547e-06
+#781,dmnet_r101-d8_512x512_80k_ade20k,10,"{'input_tensor': [[54]], 'dim': [[0]]}",3.6458969116210935e-05
+#782,dmnet_r101-d8_512x512_80k_ade20k,5,"{'input_tensor': [[1, 2048, 68, 68]], 'dim': [[0]]}",5.509853363037109e-06
+#783,dmnet_r101-d8_512x512_80k_ade20k,30,"{'input_tensor': [[1, 5, 5]], 'dim': [[0]]}",3.6144256591796875e-06
+#784,dmnet_r101-d8_512x512_80k_ade20k,30,"{'input_tensor': [[5, 5]], 'dim': [[0]]}",6.101131439208984e-06
+#785,dmnet_r101-d8_512x512_80k_ade20k,10,"{'input_tensor': [[150]], 'dim': [[0]]}",0.00011686086654663085
+#786,dmnet_r101-d8_512x512_80k_ade20k,5,"{'input_tensor': [[1, 2048, 70, 70]], 'dim': [[0]]}",5.428791046142578e-06
+#787,dmnet_r101-d8_512x512_80k_ade20k,30,"{'input_tensor': [[1, 7, 7]], 'dim': [[0]]}",3.6001205444335937e-06
+#788,dmnet_r101-d8_512x512_80k_ade20k,10,"{'input_tensor': [[216]], 'dim': [[0]]}",0.0001776289939880371
+#789,dmnet_r101-d8_512x512_80k_ade20k,6,"{'input_tensor': [[109]], 'dim': [[0]]}",0.00012928485870361328
+#790,dmnet_r101-d8_512x512_80k_ade20k,2,"{'input_tensor': [[47]], 'dim': [[0]]}",6.089687347412109e-05
+#791,dmnet_r101-d8_512x512_80k_ade20k,4,"{'input_tensor': [[14]], 'dim': [[0]]}",2.1321773529052736e-05
+#792,dmnet_r101-d8_512x512_80k_ade20k,4,"{'input_tensor': [[95]], 'dim': [[0]]}",0.00011462688446044921
+#793,dmnet_r101-d8_512x512_80k_ade20k,2,"{'input_tensor': [[57]], 'dim': [[0]]}",6.966114044189453e-05
+#794,dmnet_r101-d8_512x512_80k_ade20k,4,"{'input_tensor': [[11]], 'dim': [[0]]}",1.783609390258789e-05
+#795,dmnet_r101-d8_512x512_80k_ade20k,6,"{'input_tensor': [[118]], 'dim': [[0]]}",9.448766708374023e-05
+#796,dmnet_r101-d8_512x512_80k_ade20k,2,"{'input_tensor': [[46]], 'dim': [[0]]}",3.1585693359375e-05
+#797,dmnet_r101-d8_512x512_80k_ade20k,4,"{'input_tensor': [[110]], 'dim': [[0]]}",7.11822509765625e-05
+#798,dmnet_r101-d8_512x512_80k_ade20k,2,"{'input_tensor': [[37]], 'dim': [[0]]}",2.6006698608398437e-05
+#799,dmnet_r101-d8_512x512_80k_ade20k,2,"{'input_tensor': [[99]], 'dim': [[0]]}",6.443023681640625e-05
+#800,dmnet_r101-d8_512x512_80k_ade20k,2,"{'input_tensor': [[86]], 'dim': [[0]]}",5.651473999023437e-05
+#801,dmnet_r101-d8_512x512_80k_ade20k,2,"{'input_tensor': [[125]], 'dim': [[0]]}",9.999275207519531e-05
+#802,dmnet_r101-d8_512x512_80k_ade20k,2,"{'input_tensor': [[113]], 'dim': [[0]]}",7.292747497558594e-05
+#803,dmnet_r101-d8_512x512_80k_ade20k,2,"{'input_tensor': [[117]], 'dim': [[0]]}",7.679462432861329e-05
+#804,dmnet_r101-d8_512x512_80k_ade20k,2,"{'input_tensor': [[116]], 'dim': [[0]]}",7.439613342285157e-05
+#805,dmnet_r101-d8_512x512_80k_ade20k,2,"{'input_tensor': [[123]], 'dim': [[0]]}",9.40561294555664e-05
+#806,dmnet_r101-d8_512x512_80k_ade20k,2,"{'input_tensor': [[88]], 'dim': [[0]]}",5.888938903808594e-05
+#807,dmnet_r101-d8_512x512_80k_ade20k,2,"{'input_tensor': [[112]], 'dim': [[0]]}",9.369134902954102e-05
+#808,dmnet_r101-d8_512x512_80k_ade20k,2,"{'input_tensor': [[120]], 'dim': [[0]]}",7.695198059082031e-05
+#809,dmnet_r101-d8_512x512_80k_ade20k,2,"{'input_tensor': [[89]], 'dim': [[0]]}",5.830526351928711e-05
+#810,dmnet_r101-d8_512x512_80k_ade20k,2,"{'input_tensor': [[102]], 'dim': [[0]]}",6.613969802856446e-05
+#811,dmnet_r101-d8_512x512_80k_ade20k,2,"{'input_tensor': [[139]], 'dim': [[0]]}",0.00010505914688110351
+#812,stylegan2_c2_lsun-cat_256_b4x8_800k,25,"{'input_tensor': [[1, 512, 4, 4]], 'dim': [[0]]}",3.705024719238281e-06
+#813,stylegan2_c2_lsun-cat_256_b4x8_800k,150,"{'input_tensor': [[4, 4]], 'dim': [[0]]}",5.4168701171875e-06
+#814,stylegan2_c2_lsun-cat_256_b4x8_800k,50,"{'input_tensor': [[96]], 'dim': [[0]]}",6.444692611694336e-05
+#815,stylegan2_c2_lsun-cat_256_b4x8_800k,3780,"{'input_tensor': [[3, 3]], 'dim': [[0]]}",4.8232078552246095e-06
+#816,stylegan2_c2_lsun-cat_256_b4x8_800k,210,"{'input_tensor': [[324]], 'dim': [[0]]}",0.00023975133895874024
+#817,stylegan2_c2_lsun-cat_256_b4x8_800k,25,"{'input_tensor': [[1, 512, 8, 8]], 'dim': [[0]]}",3.5905838012695314e-06
+#818,stylegan2_c2_lsun-cat_256_b4x8_800k,160,"{'input_tensor': [[216]], 'dim': [[0]]}",0.00016135931015014648
+#819,stylegan2_c2_lsun-cat_256_b4x8_800k,25,"{'input_tensor': [[1, 512, 16, 16]], 'dim': [[0]]}",6.1082839965820315e-06
+#820,stylegan2_c2_lsun-cat_256_b4x8_800k,15,"{'input_tensor': [[1, 512, 32, 32]], 'dim': [[0]]}",5.724430084228516e-06
+#821,stylegan2_c2_lsun-cat_256_b4x8_800k,5,"{'input_tensor': [[1, 512, 33, 33]], 'dim': [[0]]}",5.927085876464844e-06
+#822,stylegan2_c2_lsun-cat_256_b4x8_800k,5,"{'input_tensor': [[1, 512, 17, 17]], 'dim': [[0]]}",5.273818969726563e-06
+#823,stylegan2_c2_lsun-cat_256_b4x8_800k,5,"{'input_tensor': [[1, 512, 9, 9]], 'dim': [[0]]}",5.1903724670410155e-06
+#824,dmnet_r50-d8_769x769_80k_cityscapes,25,"{'input_tensor': [[1, 1024, 97, 97]], 'dim': [[0]]}",4.8828125e-06
+#825,dmnet_r50-d8_769x769_80k_cityscapes,4,"{'input_tensor': [[96]], 'dim': [[0]]}",6.335496902465821e-05
+#826,dmnet_r50-d8_769x769_80k_cityscapes,30,"{'input_tensor': [[1, 1, 1]], 'dim': [[0]]}",3.607273101806641e-06
+#827,dmnet_r50-d8_769x769_80k_cityscapes,30,"{'input_tensor': [[1, 1]], 'dim': [[0]]}",3.6764144897460937e-06
+#828,dmnet_r50-d8_769x769_80k_cityscapes,10,"{'input_tensor': [[6]], 'dim': [[0]]}",6.515979766845703e-06
+#829,dmnet_r50-d8_769x769_80k_cityscapes,5,"{'input_tensor': [[1, 1024, 99, 99]], 'dim': [[0]]}",5.733966827392578e-06
+#830,dmnet_r50-d8_769x769_80k_cityscapes,12,"{'input_tensor': [[54]], 'dim': [[0]]}",5.582571029663086e-05
+#831,dmnet_r50-d8_769x769_80k_cityscapes,30,"{'input_tensor': [[1, 3, 3]], 'dim': [[0]]}",3.588199615478516e-06
+#832,dmnet_r50-d8_769x769_80k_cityscapes,30,"{'input_tensor': [[3, 3]], 'dim': [[0]]}",4.8589706420898435e-06
+#833,dmnet_r50-d8_769x769_80k_cityscapes,5,"{'input_tensor': [[1, 1024, 101, 101]], 'dim': [[0]]}",4.067420959472656e-06
+#834,dmnet_r50-d8_769x769_80k_cityscapes,6,"{'input_tensor': [[13]], 'dim': [[0]]}",1.0879039764404297e-05
+#835,dmnet_r50-d8_769x769_80k_cityscapes,30,"{'input_tensor': [[1, 5, 5]], 'dim': [[0]]}",3.528594970703125e-06
+#836,dmnet_r50-d8_769x769_80k_cityscapes,30,"{'input_tensor': [[5, 5]], 'dim': [[0]]}",6.098747253417968e-06
+#837,dmnet_r50-d8_769x769_80k_cityscapes,10,"{'input_tensor': [[150]], 'dim': [[0]]}",0.00011282205581665039
+#838,dmnet_r50-d8_769x769_80k_cityscapes,5,"{'input_tensor': [[1, 1024, 103, 103]], 'dim': [[0]]}",4.019737243652344e-06
+#839,dmnet_r50-d8_769x769_80k_cityscapes,30,"{'input_tensor': [[1, 7, 7]], 'dim': [[0]]}",3.592967987060547e-06
+#840,dmnet_r50-d8_769x769_80k_cityscapes,10,"{'input_tensor': [[216]], 'dim': [[0]]}",0.00015766620635986327
+#841,dmnet_r50-d8_769x769_80k_cityscapes,4,"{'input_tensor': [[84]], 'dim': [[0]]}",5.537271499633789e-05
+#842,dmnet_r50-d8_769x769_80k_cityscapes,4,"{'input_tensor': [[52]], 'dim': [[0]]}",3.505706787109375e-05
+#843,dmnet_r50-d8_769x769_80k_cityscapes,4,"{'input_tensor': [[70]], 'dim': [[0]]}",4.638671875e-05
+#844,dmnet_r50-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[58]], 'dim': [[0]]}",3.876686096191406e-05
+#845,dmnet_r50-d8_769x769_80k_cityscapes,6,"{'input_tensor': [[105]], 'dim': [[0]]}",6.839275360107422e-05
+#846,dmnet_r50-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[57]], 'dim': [[0]]}",3.8268566131591795e-05
+#847,dmnet_r50-d8_769x769_80k_cityscapes,4,"{'input_tensor': [[11]], 'dim': [[0]]}",9.467601776123047e-06
+#848,dmnet_r50-d8_769x769_80k_cityscapes,4,"{'input_tensor': [[90]], 'dim': [[0]]}",5.881309509277344e-05
+#849,dmnet_r50-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[122]], 'dim': [[0]]}",9.01484489440918e-05
+#850,dmnet_r50-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[118]], 'dim': [[0]]}",7.54690170288086e-05
+#851,dmnet_r50-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[124]], 'dim': [[0]]}",9.195327758789063e-05
+#852,dmnet_r50-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[113]], 'dim': [[0]]}",7.282257080078125e-05
+#853,dmnet_r50-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[111]], 'dim': [[0]]}",7.134675979614258e-05
+#854,dmnet_r50-d8_769x769_80k_cityscapes,4,"{'input_tensor': [[136]], 'dim': [[0]]}",0.00010151386260986327
+#855,dmnet_r50-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[123]], 'dim': [[0]]}",9.173154830932617e-05
+#856,dmnet_r50-d8_769x769_80k_cityscapes,4,"{'input_tensor': [[109]], 'dim': [[0]]}",7.04193115234375e-05
+#857,dmnet_r50-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[127]], 'dim': [[0]]}",9.430885314941406e-05
+#858,dmnet_r50-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[121]], 'dim': [[0]]}",8.922815322875977e-05
+#859,dmnet_r50-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[144]], 'dim': [[0]]}",0.00010752677917480469
+#860,dmnet_r50-d8_769x769_80k_cityscapes,2,"{'input_tensor': [[112]], 'dim': [[0]]}",7.219552993774414e-05
+#861,dmnet_r101-d8_512x1024_80k_cityscapes,25,"{'input_tensor': [[1, 1024, 64, 128]], 'dim': [[0]]}",5.578994750976562e-06
+#862,dmnet_r101-d8_512x1024_80k_cityscapes,4,"{'input_tensor': [[97]], 'dim': [[0]]}",6.465196609497071e-05
+#863,dmnet_r101-d8_512x1024_80k_cityscapes,30,"{'input_tensor': [[1, 1, 1]], 'dim': [[0]]}",3.5953521728515625e-06
+#864,dmnet_r101-d8_512x1024_80k_cityscapes,30,"{'input_tensor': [[1, 1]], 'dim': [[0]]}",3.54766845703125e-06
+#865,dmnet_r101-d8_512x1024_80k_cityscapes,10,"{'input_tensor': [[6]], 'dim': [[0]]}",6.494522094726562e-06
+#866,dmnet_r101-d8_512x1024_80k_cityscapes,5,"{'input_tensor': [[1, 1024, 66, 130]], 'dim': [[0]]}",5.578994750976562e-06
+#867,dmnet_r101-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[43]], 'dim': [[0]]}",3.2863616943359376e-05
+#868,dmnet_r101-d8_512x1024_80k_cityscapes,30,"{'input_tensor': [[1, 3, 3]], 'dim': [[0]]}",3.6191940307617187e-06
+#869,dmnet_r101-d8_512x1024_80k_cityscapes,30,"{'input_tensor': [[3, 3]], 'dim': [[0]]}",4.8232078552246095e-06
+#870,dmnet_r101-d8_512x1024_80k_cityscapes,10,"{'input_tensor': [[54]], 'dim': [[0]]}",3.63922119140625e-05
+#871,dmnet_r101-d8_512x1024_80k_cityscapes,5,"{'input_tensor': [[1, 1024, 68, 132]], 'dim': [[0]]}",5.488395690917969e-06
+#872,dmnet_r101-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[15]], 'dim': [[0]]}",1.214742660522461e-05
+#873,dmnet_r101-d8_512x1024_80k_cityscapes,30,"{'input_tensor': [[1, 5, 5]], 'dim': [[0]]}",3.6096572875976564e-06
+#874,dmnet_r101-d8_512x1024_80k_cityscapes,30,"{'input_tensor': [[5, 5]], 'dim': [[0]]}",6.008148193359375e-06
+#875,dmnet_r101-d8_512x1024_80k_cityscapes,10,"{'input_tensor': [[150]], 'dim': [[0]]}",0.00011113405227661133
+#876,dmnet_r101-d8_512x1024_80k_cityscapes,5,"{'input_tensor': [[1, 1024, 70, 134]], 'dim': [[0]]}",5.40018081665039e-06
+#877,dmnet_r101-d8_512x1024_80k_cityscapes,30,"{'input_tensor': [[1, 7, 7]], 'dim': [[0]]}",4.994869232177734e-06
+#878,dmnet_r101-d8_512x1024_80k_cityscapes,10,"{'input_tensor': [[216]], 'dim': [[0]]}",0.0001575160026550293
+#879,dmnet_r101-d8_512x1024_80k_cityscapes,4,"{'input_tensor': [[99]], 'dim': [[0]]}",6.44397735595703e-05
+#880,dmnet_r101-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[47]], 'dim': [[0]]}",3.204345703125e-05
+#881,dmnet_r101-d8_512x1024_80k_cityscapes,4,"{'input_tensor': [[13]], 'dim': [[0]]}",1.0688304901123046e-05
+#882,dmnet_r101-d8_512x1024_80k_cityscapes,4,"{'input_tensor': [[85]], 'dim': [[0]]}",5.568981170654297e-05
+#883,dmnet_r101-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[53]], 'dim': [[0]]}",3.591537475585937e-05
+#884,dmnet_r101-d8_512x1024_80k_cityscapes,4,"{'input_tensor': [[14]], 'dim': [[0]]}",1.1334419250488281e-05
+#885,dmnet_r101-d8_512x1024_80k_cityscapes,4,"{'input_tensor': [[96]], 'dim': [[0]]}",6.242275238037109e-05
+#886,dmnet_r101-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[60]], 'dim': [[0]]}",4.026651382446289e-05
+#887,dmnet_r101-d8_512x1024_80k_cityscapes,4,"{'input_tensor': [[95]], 'dim': [[0]]}",6.18147850036621e-05
+#888,dmnet_r101-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[48]], 'dim': [[0]]}",3.270864486694336e-05
+#889,dmnet_r101-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[106]], 'dim': [[0]]}",6.84952735900879e-05
+#890,dmnet_r101-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[130]], 'dim': [[0]]}",9.560346603393555e-05
+#891,dmnet_r101-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[90]], 'dim': [[0]]}",5.91278076171875e-05
+#892,dmnet_r101-d8_512x1024_80k_cityscapes,4,"{'input_tensor': [[113]], 'dim': [[0]]}",7.287025451660156e-05
+#893,dmnet_r101-d8_512x1024_80k_cityscapes,6,"{'input_tensor': [[115]], 'dim': [[0]]}",7.408857345581055e-05
+#894,dmnet_r101-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[72]], 'dim': [[0]]}",4.791975021362305e-05
+#895,dmnet_r101-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[128]], 'dim': [[0]]}",9.565830230712891e-05
+#896,dmnet_r101-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[123]], 'dim': [[0]]}",9.714841842651368e-05
+#897,dmnet_r101-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[127]], 'dim': [[0]]}",0.00010795354843139649
+#898,dmnet_r101-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[122]], 'dim': [[0]]}",0.00010940074920654297
+#899,dmnet_r101-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[124]], 'dim': [[0]]}",0.00011711835861206055
+#900,dmnet_r101-d8_512x1024_80k_cityscapes,2,"{'input_tensor': [[91]], 'dim': [[0]]}",5.925655364990234e-05
+#901,pwcnet_8x1_slong_flyingchairs_384x448,5,"{'input_tensor': [[2]], 'dim': [[0]]}",4.17470932006836e-06
+#902,proto-net_conv4_1xb105_cub_5way-1shot,5,"{'input_tensor': [[80]], 'dim': [[0]]}",5.253076553344727e-05
+#903,matching-net_conv4_1xb105_cub_5way-1shot,5,"{'input_tensor': [[80]], 'dim': [[0]]}",5.239248275756836e-05
+#904,configs--body--3d_kpt_mview_rgb_img--voxelpose--campus--voxelpose_prn64x64x64_cpn80x80x20_campus_cam3.py,42,"{'input_tensor': [[3]], 'dim': [[0]]}",4.756450653076172e-06

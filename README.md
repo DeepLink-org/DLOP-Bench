@@ -1,17 +1,43 @@
 # Long Tail Bench
+````````````````````````````````````````````````````````````````````````````````````````
+针对算子性能报告更改/新增了如下文件:
+    DLOP-Bench/run.sh:测试算子的运行脚本，根据需要直接解掉对应注释即可；
 
-############################################################################################
+    DLOP-Bench/op_csv:其中包含了每个对应算子的参数信息和调用信息;
+
+    DLOP-Benc/tmp:其中保存每个对应算子的性能测试结果;
+
+    DLOP-Bench/scripts:其中包含了每个对应算子的画图脚本，从DLOP-Benc/tmp中读取对应算子的测试结果，生成相应图片在DLOP-Benc/pictures中;
+
+    DLOP-Bench/pictures:其中保存每个对应算子所生成的图片;
+
+    同时，更新了每个算子测试时所用到的包含算子参数信息的json文件,从parameter仓库获取.
+
+    测试流程:
+        根据算子更改运行脚本；
+
+        根据算子信息更改DLOP-Bench/long_tail_bench/core/engine.py中函数new_make_data中的参数个数信息，
+        以及函数perf_per_case中readCSV的路径名(对应DLOP-Bench/op_csv中的csv),
+        以及writeCSV的路径名(对应DLOP-Benc/tmp文件夹,文件名按算子自定义)；
+
+        运行脚本run.sh,会在DLOP-Benc/tmp中生成结果；
+
+        根据算子执行DLOP-Bench/scripts中的画图脚本，在DLOP-Bench/pictures中生成对应结果图片.
+````````````````````````````````````````````````````````````````````````````````````````
 
 要在不同机器上测试不同算子，针对每一个算子只需要更改四个地方。
 目前是在实验室S集群上运行cat算子的状态，以将其更改为index_select算子为例：
 1：首先更改运行脚本WAIC/DLOP-Bench/run.sh，将cat对应的行注释掉，再将index_select对应的行解掉注释；
+
 2: 依据DLOP-Bench/long_tail_bench/samples/basic/index_select/__init__.py:line20:requires_grad=[False] * 3中的数字3，将DLOP-Bench/long_tail_bench/core/engine.py:line184:args = executer.generate_args(args_cases[0], [False]*2, np_args_generator)中的数字2替换为3，不同算子依赖不同的DLOP-Bench/long_tail_bench/samples/basic/op_name/__init__.py；
+
 3：更改DLOP-Bench/long_tail_bench/core/engine.py:line298:with open("/mnt/lustre/zhoushenglong/WAIC/DLOP-Bench/op_csv/cat.csv") as readCSV:中的文件名cat.csv为index_select.csv，此处是为了读取不同算子的相关数据，与机器型号无关，直接改文件名即可；
+
 4: 更改DLOP-Bench/long_tail_bench/core/engine.py:line300:with open("./tmp/cat_A100.csv", "w") as writeCSV:中的文件名cat_A100为index_select_A100，此处是为了生成不同算子的结果，A100为具体的机器型号，如机器为V100，则应为cat_V100到index_select_V100，一定要根据具体机器进行修改，否则不同机器生成的结果会被覆盖掉。
 
 note：涉及到路径的地方均为相对路径，只需要根据自己的机器更改为绝对路径即可。
 
-############################################################################################
+````````````````````````````````````````````````````````````````````````````````````````
 
 A benchmark for long tail operators in deep learning. Deep neural networks have brought significant innovations in many domains, such as computer vision, natural language processing, and speech recognition. To this end, many new operators have also been developed to attain better accuracy in the specific domain, such as the operators about anchors in object detection and operators about agent-environment interaction in reinforcement learning. We name the new operator which has no corresponding implementation in the device compute library and has to be composed of meta-operations and control flow in python interpreter as long-tail operators. This is inspired by the meaning of long tail phenomenon in business and statistics that products with small sales but many types, not valued originally, in fact, have a huge total amount. Benchmark suite is the quantitative foundation for the improvement of related research and industry, which plays a very important role in pushing technology development. Unfortunately, there have been no representative benchmark suites that can present the importance of long-tail operators and help guide to switch the focus of compiler researchers and chip vendors from ordinary neural network operators to them. LongTail-Bench is proposed to fill the gap, which can help to evaluate the existing deep learning systems from underlying hardware up to the algorithm, and further guide the research directions of the algorithm, compiler, and chip researchers.
 
