@@ -1,3 +1,13 @@
+# update
+一些op下面添加了两个script
+topk.py： 通过json统计出出现次数最多的topk config
+flops_cnt.py : 生成flops/memory access的直方图
+
+
+
+
+
+
 # Long Tail Bench
 
 A benchmark for long tail operators in deep learning. Deep neural networks have brought significant innovations in many domains, such as computer vision, natural language processing, and speech recognition. To this end, many new operators have also been developed to attain better accuracy in the specific domain, such as the operators about anchors in object detection and operators about agent-environment interaction in reinforcement learning. We name the new operator which has no corresponding implementation in the device compute library and has to be composed of meta-operations and control flow in python interpreter as long-tail operators. This is inspired by the meaning of long tail phenomenon in business and statistics that products with small sales but many types, not valued originally, in fact, have a huge total amount. Benchmark suite is the quantitative foundation for the improvement of related research and industry, which plays a very important role in pushing technology development. Unfortunately, there have been no representative benchmark suites that can present the importance of long-tail operators and help guide to switch the focus of compiler researchers and chip vendors from ordinary neural network operators to them. LongTail-Bench is proposed to fill the gap, which can help to evaluate the existing deep learning systems from underlying hardware up to the algorithm, and further guide the research directions of the algorithm, compiler, and chip researchers.
