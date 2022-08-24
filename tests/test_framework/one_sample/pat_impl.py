@@ -1,5 +1,5 @@
 import torch
-from long_tail_bench.core.executer import Executer
+from bench.core.executer import Executer
 from tests.test_framework.one_sample.common import count_plus_one
 
 

@@ -1,5 +1,5 @@
 import os
-from long_tail_bench.core.file_io.json_helper import JsonHelper
+from bench.core.file_io.json_helper import JsonHelper
 
 
 class TestJsonHelper(object):

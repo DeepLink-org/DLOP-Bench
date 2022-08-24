@@ -1,7 +1,7 @@
 import os
 import shutil
 import torch
-from long_tail_bench.tools import grip
+from bench.tools import grip
 
 
 @grip(dist_dir="./")

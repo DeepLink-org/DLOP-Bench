@@ -1,5 +1,5 @@
 from tests.test_framework.one_sample import test_sample_name, registry
-from long_tail_bench.common.settings import FRAMEWORK, Settings
+from bench.common.settings import FRAMEWORK, Settings
 
 
 class TestExecuter(object):

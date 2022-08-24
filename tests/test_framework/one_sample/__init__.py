@@ -1,6 +1,6 @@
 import numpy as np
-from long_tail_bench.common import SampleConfig, register_sample
-from long_tail_bench.core import registry
+from bench.common import SampleConfig, register_sample
+from bench.core import registry
 from tests.test_framework.one_sample.common import reset_count, count
 
 

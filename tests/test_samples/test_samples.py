@@ -4,12 +4,12 @@ import shutil
 import argparse
 from enum import Enum
 from posix import listdir
-from long_tail_bench.core.engine import Engine
-from long_tail_bench.common.settings import FRAMEWORK, Settings
-from long_tail_bench.core import registry
+from bench.core.engine import Engine
+from bench.common.settings import FRAMEWORK, Settings
+from bench.core import registry
 
 # Register all cases
-from long_tail_bench import samples  # noqa
+from bench import samples  # noqa
 
 
 class TaskType(Enum):

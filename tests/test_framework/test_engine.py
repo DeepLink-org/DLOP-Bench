@@ -1,6 +1,6 @@
 import os
-from long_tail_bench.core.engine import Engine
-from long_tail_bench.common.settings import FRAMEWORK, Settings
+from bench.core.engine import Engine
+from bench.common.settings import FRAMEWORK, Settings
 from tests.test_framework.one_sample import (
     test_sample_name,
     registry,
