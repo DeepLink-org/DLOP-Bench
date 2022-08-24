@@ -6,7 +6,7 @@ from bench.core.executer import Executer
 
 def unfold(input, kernel_size, dilation, padding, stride):
     ret = torch.nn.functional.unfold(input, kernel_size, dilation, padding, stride)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 

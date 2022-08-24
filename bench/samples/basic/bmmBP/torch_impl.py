@@ -6,7 +6,7 @@ from bench.core.executer import Executer
 
 def bmm(input, mat2): 
     ret = torch.bmm(input, mat2)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 

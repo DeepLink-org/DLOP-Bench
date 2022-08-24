@@ -18,8 +18,8 @@ def get_sample_config():
     return SampleConfig(
         args_cases=args_cases_,
         requires_grad=[False] * 1,
-        backward=[False],
-        performance_iters=100, # bug : crush when equal 1000
+        backward=False,
+        performance_iters=1000,
         save_timeline=False,
         source=SampleSource.MMDET,
         url="",  # noqa

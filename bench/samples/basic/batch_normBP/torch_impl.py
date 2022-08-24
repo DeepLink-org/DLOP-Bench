@@ -5,10 +5,10 @@ from bench.core.executer import Executer
 
 def batch_norm(input, running_mean, running_var, weight, bias, 
             training, momentum, eps):
-    output = functional.batch_norm(input, running_mean, running_var,
+    ret = functional.batch_norm(input, running_mean, running_var,
                                     weight, bias, training, momentum, eps)
-    output.backward(output)
-    return output
+    ret.backward(torch.ones_like(ret))
+    return ret
 
 
 def args_adaptor(np_args):

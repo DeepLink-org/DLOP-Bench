@@ -3,9 +3,9 @@ from bench.core.executer import Executer
 
 
 def cdist(x1, x2, p_):
-    output = torch.cdist(x1, x2, p=p_)
-    output.backward(output)
-    return output
+    ret = torch.cdist(x1, x2, p=p_)
+    ret.backward(torch.ones_like(ret))
+    return ret
 
 
 def args_adaptor(np_args):

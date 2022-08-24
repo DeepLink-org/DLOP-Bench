@@ -6,7 +6,7 @@ from bench.core.executer import Executer
 
 def square(input_torch):
     ret = torch.square(input_torch)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 def args_adaptor(np_args):

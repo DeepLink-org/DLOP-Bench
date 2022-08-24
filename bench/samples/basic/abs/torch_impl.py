@@ -2,12 +2,12 @@ import torch
 import torch.nn
 from bench.core.executer import Executer
 
-def abs(abs_0):
-    return torch.abs(abs_0)
+def abs(abs_0_torch):
+    return torch.abs(abs_0_torch)
 
 def args_adaptor(np_args):
-    abs_0 = torch.from_numpy(np_args[0]).cuda()
-    return [abs_0]
+    abs_0_torch = torch.from_numpy(np_args[0]).cuda()
+    return [abs_0_torch]
 
 
 def executer_creator():

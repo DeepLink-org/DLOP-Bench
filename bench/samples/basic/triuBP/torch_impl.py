@@ -7,7 +7,7 @@ from bench.core.executer import Executer
 
 def triu(input_image, out_image):
     ret = torch.triu(input_image, diagonal=out_image).cuda()
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 def args_adaptor(np_args):

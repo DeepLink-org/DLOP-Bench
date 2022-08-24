@@ -6,7 +6,7 @@ from bench.core.executer import Executer
 
 def baddbmm(input, batch1, batch2):
     ret = torch.baddbmm(input, batch1, batch2)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 def args_adaptor(np_args):

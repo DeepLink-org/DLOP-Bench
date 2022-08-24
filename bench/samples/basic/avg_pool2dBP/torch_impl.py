@@ -9,7 +9,7 @@ def avg_pool2d(input_image, kernel_size_image,\
     ret = torch.nn.functional.avg_pool2d(input_image, kernel_size_image,\
         stride_image, padding_image, ceil_mode_image, count_include_pad_image,\
         divisor_override_image)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 def args_adaptor(np_args):

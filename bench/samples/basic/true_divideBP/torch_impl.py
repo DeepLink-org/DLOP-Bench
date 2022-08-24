@@ -6,7 +6,7 @@ from bench.core.executer import Executer
 
 def true_divide(input_image, other_image):
     ret = torch.true_divide(input_image, other_image)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 def args_adaptor(np_args):

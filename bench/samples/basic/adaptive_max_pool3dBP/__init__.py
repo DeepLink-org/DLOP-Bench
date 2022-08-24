@@ -18,7 +18,7 @@ def get_sample_config():
     return SampleConfig(
         args_cases=args_cases_,
         requires_grad=[False] * 3,
-        backward=[False],
+        backward=False,
         performance_iters=1000,
         save_timeline=False,
         source=SampleSource.MMDET,
@@ -26,8 +26,8 @@ def get_sample_config():
         tags=[SampleTag.ViewAttribute],
     )
 
-def gen_np_args(input_, output_size_, return_indices_):
-    input_image_np = np.random.random(input_)
+def gen_np_args(input_size, output_size_, return_indices_):
+    input_image_np = np.random.random(input_size)
     output_size = output_size_
     return_indices = return_indices_
     return [input_image_np, output_size, return_indices]
