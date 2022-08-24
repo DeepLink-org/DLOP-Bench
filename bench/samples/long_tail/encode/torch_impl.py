@@ -3,8 +3,6 @@ import torch
 from bench.core.executer import Executer
 
 
-# encode results:
-# parrots: s1 ~ s5 pass
 def center_size(boxes):
     """ Convert prior_boxes to (cx, cy, w, h)
     representation for comparison to center-size form ground truth data.
