@@ -1,3 +1,5 @@
+# Copyright(c) OpenMMLab. All Rights Reserved.
+# Copied from
 import cv2
 import torch
 import numpy as np

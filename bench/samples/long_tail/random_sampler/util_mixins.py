@@ -1,3 +1,5 @@
+# Copyright(c) OpenMMLab. All Rights Reserved.
+# Copied from
 """This module defines the :class:`NiceRepr` mixin class, which defines a
 ``__repr__`` and ``__str__`` method that only depend on a custom ``__nice__``
 method, which you must define. This means you only have to overload one

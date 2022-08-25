@@ -1,3 +1,5 @@
+# Copyright(c) OpenMMLab. All Rights Reserved.
+# Copied from
 from jax import numpy as np
 from jax import device_put
 from bench.core.executer import Executer

@@ -1,3 +1,5 @@
+# Copyright(c) OpenMMLab. All Rights Reserved.
+# Copied from
 import torch
 import numpy as np
 from bench.core.executer import Executer

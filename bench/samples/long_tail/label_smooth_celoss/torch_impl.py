@@ -1,3 +1,5 @@
+# Copyright(c) OpenMMLab. All Rights Reserved.
+# Copied from
 import torch
 import torch.nn.functional as F
 from torch.nn.modules.loss import _Loss

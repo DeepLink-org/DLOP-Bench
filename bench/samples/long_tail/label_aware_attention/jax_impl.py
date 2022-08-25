@@ -1,3 +1,5 @@
+# Copyright(c) OpenMMLab. All Rights Reserved.
+# Copied from
 import jax
 import jax.numpy as jnp
 from jax import device_put

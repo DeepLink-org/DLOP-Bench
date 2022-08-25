@@ -1,3 +1,5 @@
+# Copyright(c) OpenMMLab. All Rights Reserved.
+# Copied from
 from bench.common.types import FrameType
 import torch
 import torch.nn as nn

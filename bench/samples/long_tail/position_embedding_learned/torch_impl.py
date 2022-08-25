@@ -1,3 +1,5 @@
+# Copyright(c) OpenMMLab. All Rights Reserved.
+# Copied from
 import torch
 from torch import Tensor
 import torch.nn as nn

@@ -1,3 +1,5 @@
+# Copyright(c) OpenMMLab. All Rights Reserved.
+# Copied from
 from bench.common import (
     SampleConfig,
     register_sample,

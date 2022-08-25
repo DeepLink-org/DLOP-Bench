@@ -1,3 +1,5 @@
+# Copyright(c) OpenMMLab. All Rights Reserved.
+# Copied from
 from bench.samples.random_sampler.assign_result import AssignResult
 import torch
 from abc import ABCMeta, abstractmethod

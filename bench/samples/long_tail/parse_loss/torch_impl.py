@@ -1,3 +1,5 @@
+# Copyright(c) OpenMMLab. All Rights Reserved.
+# Copied from
 import torch
 import torch.distributed as dist
 from bench.core.executer import Executer

@@ -1,3 +1,5 @@
+# Copyright(c) OpenMMLab. All Rights Reserved.
+# Copied from
 import numpy as np
 import tensorflow as tf
 from bench.core.executer import Executer
