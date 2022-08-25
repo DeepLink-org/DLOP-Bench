@@ -42,24 +42,24 @@ FRAMEWORK=torch python ./bench/api/api.py -c aeloss -st 1
 
 
 # run one sample
-FRAMEWORK=parrots python ./bench/api/api.py -c tblr2bbox
+FRAMEWORK=torch python ./bench/api/api.py -c tblr2bbox
 # run several samples
-FRAMEWORK=parrots python ./bench/api/api.py -c tblr2bbox,bbox2delta
+FRAMEWORK=torch python ./bench/api/api.py -c tblr2bbox,bbox2delta
 # run all samples
-FRAMEWORK=parrots python ./bench/api/api.py
+FRAMEWORK=torch python ./bench/api/api.py
 # run several stages, 1: eager stage, 2: fixed shape jit stage, 3: fixed shape coder stage,
-# 4: dynamic shape jit stage, 5: dynamic shape coder stage, 2、3、4 just for parrots compiler
-FRAMEWORK=parrots python ./bench/api/api.py -st 1,2,3
+# 4: dynamic shape jit stage, 5: dynamic shape coder stage, 
+FRAMEWORK=torch python ./bench/api/api.py -st 1,2,3
 # show all tags
-FRAMEWORK=parrots python ./bench/api/api.py -sg
+FRAMEWORK=torch python ./bench/api/api.py -sg
 # show samples of one tag
-FRAMEWORK=parrots python ./bench/api/api.py -sot AdvancedIndexing
+FRAMEWORK=torch python ./bench/api/api.py -sot AdvancedIndexing
 # show features of the running samples, including sample source, url and semantic tags
-FRAMEWORK=parrots python ./bench/api/api.py -c bbox2delta -sc
+FRAMEWORK=torch python ./bench/api/api.py -c bbox2delta -sc
 # transform results recorded to excel, it will create csv or xlsx file in directory ./bench/results/
-FRAMEWORK=parrots python ./bench/api/export_result_to_excel.py
+FRAMEWORK=torch python ./bench/api/export_result_to_excel.py
 # benchmark debug
-FRAMEWORK=parrots BENCH_DEBUG=1 python ./bench/api/api.py
+FRAMEWORK=torch BENCH_DEBUG=1 python ./bench/api/api.py
 
 ```
 These apis can also be used in backend torch, tensorflow, or xla, just set corresponding FRAMEWORK environment:
