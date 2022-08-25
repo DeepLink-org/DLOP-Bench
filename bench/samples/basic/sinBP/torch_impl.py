@@ -5,7 +5,7 @@ from bench.core.executer import Executer
 def sin(sin_0):
     sin.requires_grad = True
     ret = torch.sin(sin_0)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 def args_adaptor(np_args):

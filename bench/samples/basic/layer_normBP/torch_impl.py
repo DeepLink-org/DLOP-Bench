@@ -6,7 +6,7 @@ from bench.core.executer import Executer
 
 def layer_norm(input, normalized_shape, weight, bias, eps):
     output = functional.layer_norm(input, normalized_shape, weight, bias, eps)
-    output.backward(output)
+    output.backward(torch.ones_like(output))
     return output
 
 

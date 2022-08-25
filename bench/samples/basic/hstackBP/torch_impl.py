@@ -14,7 +14,7 @@ def hstack(input_image, out_image):
     
     # CORRECT input: sequence of tensors to concatenate
     ret = torch.hstack((input_image, out_image))
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 def args_adaptor(np_args):

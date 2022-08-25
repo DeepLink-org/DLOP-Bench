@@ -6,7 +6,7 @@ from bench.core.executer import Executer
 
 def grid_sample(input_torch, grid_torch, mode, padding_mode, align_coners):
     ret = torch.nn.functional.grid_sample(input_torch, grid_torch, mode=mode, padding_mode=padding_mode, align_corners=align_coners)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 

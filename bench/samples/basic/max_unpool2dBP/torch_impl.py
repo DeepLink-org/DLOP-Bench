@@ -9,7 +9,7 @@ def max_unpool2d(input_size_image, indices_image, kernel_size_image, \
 
     ret = torch.nn.functional.max_unpool2d(input_size_image, indices_image, kernel_size_image, \
         stride_image, padding_image).cuda()
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
 
     return ret
 

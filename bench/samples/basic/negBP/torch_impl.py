@@ -5,7 +5,7 @@ from bench.core.executer import Executer
 def neg(neg_0):
     neg.requires_grad = True
     ret = torch.neg(neg_0)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 def args_adaptor(np_args):

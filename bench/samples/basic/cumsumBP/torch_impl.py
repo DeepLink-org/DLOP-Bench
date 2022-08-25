@@ -7,7 +7,7 @@ from bench.core.executer import Executer
 def cumsum(input_image, dim):
     input_image.requires_grad = True
     ret = torch.cumsum(input_image, dim=dim)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 

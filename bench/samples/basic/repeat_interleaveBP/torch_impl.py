@@ -7,7 +7,7 @@ from bench.core.executer import Executer
 def repeat_interleave(input_tensor, repeats, dim):
     output_tensor = input_tensor.repeat_interleave(repeats, dim)
     output_tensor.requires_grad = True
-    output_tensor.backward(output_tensor)
+    output_tensor.backward(torch.ones_like(output_tensor))
     return output_tensor
 
 def args_adaptor(np_args):

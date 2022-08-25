@@ -7,7 +7,7 @@ from bench.core.executer import Executer
 def expand(input_tensor, expand_shape):
     input_tensor.requires_grad=True
     output_tensor = input_tensor.expand(expand_shape)
-    output_tensor.backward(output_tensor)
+    output_tensor.backward(torch.ones_like(output_tensor))
     return output_tensor
 
 def args_adaptor(np_args):

@@ -126,7 +126,7 @@ class Engine(object):
         ret = executer.execute(func_args)
         if isinstance(ret, (int, float, str, tensor_type())):
             ret = (ret,)
-        elif isinstance(ret, (dict, collections.Mapping)):
+        elif isinstance(ret, (dict, collections.abc.Mapping)):
             pass
         elif isinstance(ret, tuple(custom_class_manager.get_custom_classes())):
             ret = unfold_custom_class(ret)

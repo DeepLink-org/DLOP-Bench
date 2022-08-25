@@ -5,7 +5,7 @@ from bench.core.executer import Executer
 
 def group_norm(input, num_groups, weight, bias, eps):
     output = torch.group_norm(input, num_groups, weight, bias, eps)
-    output.backward(output)
+    output.backward(torch.ones_like(output))
     return output
 
 

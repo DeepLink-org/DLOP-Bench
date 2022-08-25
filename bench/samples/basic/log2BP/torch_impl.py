@@ -5,7 +5,7 @@ from bench.core.executer import Executer
 def log2(log2_0):
     log2.requires_grad = True
     ret = torch.log2(log2_0)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 def args_adaptor(np_args):

@@ -6,7 +6,7 @@ from bench.core.executer import Executer
 
 def ger(input, vec2):
     ret = torch.ger(input, vec2)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 def args_adaptor(np_args):

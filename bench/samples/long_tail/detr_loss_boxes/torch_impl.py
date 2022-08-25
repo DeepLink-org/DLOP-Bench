@@ -2,9 +2,9 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 from bench.core.executer import Executer
-from bench.samples.generalized_box_iou.pat_impl import (
+from bench.samples.long_tail.generalized_box_iou.torch_impl import (
     generalized_box_iou, )  # noqa
-from bench.samples.box_cxcywh_to_xyxy.pat_impl import (
+from bench.samples.long_tail.box_cxcywh_to_xyxy.torch_impl import (
     box_cxcywh_to_xyxy, )  # noqa
 
 

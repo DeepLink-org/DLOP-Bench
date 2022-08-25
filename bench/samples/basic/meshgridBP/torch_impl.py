@@ -9,7 +9,7 @@ def meshgrid(*inputs):
         input_image.requires_grad = True
     ret = torch.meshgrid(inputs)
     for i in range(len(inputs)):
-        ret[i].backward(ret)
+        ret[i].backward(torch.ones_like(ret))
     return ret
 
 def args_adaptor(np_args):

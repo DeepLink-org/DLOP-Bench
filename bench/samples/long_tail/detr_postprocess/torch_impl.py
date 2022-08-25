@@ -1,8 +1,7 @@
 import torch
 from torch import nn
 import torch.nn.functional as F
-from bench.samples.box_cxcywh_to_xyxy.torch_impl import (
-    box_cxcywh_to_xyxy, )  # noqa
+from bench.samples.long_tail.box_cxcywh_to_xyxy.torch_impl import (box_cxcywh_to_xyxy, )  # noqa
 from bench.core.executer import Executer
 
 

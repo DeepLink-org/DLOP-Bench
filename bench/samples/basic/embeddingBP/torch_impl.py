@@ -5,7 +5,7 @@ from bench.core.executer import Executer
 
 def embedding(input, weight, padding_idx, max_norm, norm_type, scale_grad_by_freq, sparse):
     ret = torch.nn.functional.embedding(input, weight, padding_idx, max_norm, norm_type, scale_grad_by_freq, sparse)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 

@@ -6,7 +6,7 @@ from bench.core.executer import Executer
 
 def kl_div(input_torch, target_torch, reduction):
     ret = torch.nn.functional.kl_div(input_torch, target_torch, reduction=reduction)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 def args_adaptor(np_args):

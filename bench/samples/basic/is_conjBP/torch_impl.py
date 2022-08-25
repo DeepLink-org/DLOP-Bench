@@ -5,7 +5,7 @@ from bench.core.executer import Executer
 def is_conj(is_conj_0):
     is_conj.requires_grad = True
     ret = torch.is_conj(is_conj_0)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 def args_adaptor(np_args):
