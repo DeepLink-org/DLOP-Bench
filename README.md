@@ -25,14 +25,22 @@ From the operator level, this benchmark suite can provide a more microscopic ass
 
 ## Getting Started Instruction
 
-This is parrots running command demo that illustrates how you can use LongTail-Bench to test samples performance. These apis can also be used in backend torch or xla, just set corresponding FRAMEWORK environment:
+This is a command demo that illustrates how you can use DLOP-Bench to test samples performance. 
+```bash
+git clone git@github.com:OpenComputeLab/DLOP-Bench.git
 
 ```bash
-# prepare parrots environmant
-source pat_latest
-# config long tail bench PYTHONPATH
-cd LongTail-Bench
+# config bench PYTHONPATH
+cd bench
 export PYTHONPATH=./bench:$PYTHONPATH
+If you want to test sample performance using torch backend, you can see the demo as follows:
+```bash
+# prepare pytorch environment, python 3 & torch 1.10 or 1.12 best
+pip3 install torch 
+# run the operator tblr2bbox using torch backend in eager mode
+FRAMEWORK=torch python ./bench/api/api.py -c aeloss -st 1
+```
+
 # run one sample
 FRAMEWORK=parrots python ./bench/api/api.py -c tblr2bbox
 # run several samples
@@ -50,32 +58,21 @@ FRAMEWORK=parrots python ./bench/api/api.py -sot AdvancedIndexing
 FRAMEWORK=parrots python ./bench/api/api.py -c bbox2delta -sc
 # transform results recorded to excel, it will create csv or xlsx file in directory ./bench/results/
 FRAMEWORK=parrots python ./bench/api/export_result_to_excel.py
-# parrots PAT debug
-FRAMEWORK=parrots PARROTS_PAT_DEBUG=1 python ./bench/api/api.py
 # benchmark debug
 FRAMEWORK=parrots BENCH_DEBUG=1 python ./bench/api/api.py
 
 ```
+These apis can also be used in backend torch, tensorflow, or xla, just set corresponding FRAMEWORK environment:
+If you want to test sample performance using tensorflow, or XLA backend, you can see the demo as follows:
 
-If you want to test sample performance using torch backend, you can see the demo as follows:
-
-```bash
-# prepare pytorch environment, torch 1.3 best
-...
-# config long tail bench PYTHONPATH
-cd LongTail-Bench
-export PYTHONPATH=./bench:$PYTHONPATH
-# run parrots sample implementation using torch backend in that torch samples implementation are equal to parrots' nearly
-FRAMEWORK=torch SAMPLE_IMPL=parrots srun -p pat_dev --gres=gpu:1 python ./bench/api/api.py -st 1
-```
 
 XLA running demo as follows:
 
 ```bash
 # prepare xla environment
 ...
-# config long tail bench PYTHONPATH
-cd LongTail-Bench
+# config bench PYTHONPATH
+cd bench
 export PYTHONPATH=./bench:$PYTHONPATH
 # run xla samples
 FRAMEWORK=xla TF_XLA_FLAGS=--tf_xla_auto_jit=2 XLA_FLAGS=--xla_gpu_cuda_data_dir=.../cuda-10.1 python ./bench/api/api.py -st 1
