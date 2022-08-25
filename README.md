@@ -25,9 +25,21 @@ From the operator level, this benchmark suite can provide a more microscopic ass
 
 ## Getting Started Instruction
 
-This is a command demo that illustrates how you can use DLOP-Bench to test samples performance. 
+
+First, download the latest source code:
 ```bash
 git clone git@github.com:OpenComputeLab/DLOP-Bench.git
+```
+
+To show the structure of source code, we can use the following command:
+```bash
+cd DLOP-Bench
+tree -d -L 1 ./bench
+```
+The implementation functions of basic and long tail operators are located in ./bench/samples/.
+
+
+Here is a command demo that illustrates how you can use DLOP-Bench to test samples performance.
 
 ```bash
 # config bench PYTHONPATH
