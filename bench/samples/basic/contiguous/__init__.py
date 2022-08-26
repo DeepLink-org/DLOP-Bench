@@ -20,7 +20,7 @@ def get_sample_config():
     return SampleConfig(
         args_cases=args_cases_,
         requires_grad=[False] * 1,
-        backward=[False],
+        backward=False,
         performance_iters=100,
         save_timeline=False,
         source=SampleSource.MMDET,

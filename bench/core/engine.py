@@ -15,9 +15,7 @@ from bench.core.registrator import custom_class_manager
 
 import csv
 
-import torch
 import numpy as np
-from torch.profiler import profile
 
 
 class Engine(object):
@@ -149,28 +147,23 @@ class Engine(object):
         self,
         executer,
         sample_config,
-        just_one=False,
+        index=0,
         case_name=None,
         np_args_generator=None,
     ):
-        if self._origin_func_args is None:
-            if self._settings.framework_compare_mode:
-                np_func_args = self.read_args_from_pickle(case_name)
-                self._origin_func_args = [
-                    executer.adapt_args(np_args)
-                    for np_args in np_func_args  # noqa
-                ]
-            else:
-                self._origin_func_args = [
-                    executer.generate_args(
-                        case, sample_config.requires_grad, np_args_generator
-                    )
-                    for case in sample_config.args_cases
-                ]
-        num = 1 if just_one else len(self._origin_func_args)
+        if self._settings.framework_compare_mode:
+            np_func_args = self.read_args_from_pickle(case_name)
+            self._origin_func_args = [
+                executer.adapt_args(np_func_args[index])
+            ]
+        else:
+            self._origin_func_args = [
+                executer.generate_args(
+                    sample_config.args_cases[index], sample_config.requires_grad, np_args_generator
+                )
+            ]
         return [
-            executer.clone_func_args(args)
-            for args in self._origin_func_args[0:num]
+            executer.clone_func_args(self._origin_func_args[0])
         ]
 
     def run_per_mode(
@@ -188,11 +181,11 @@ class Engine(object):
         self.warmup(executer, sample_config, np_args_generator)
 
         # performance for all shapes
-        samples_perf, samples_torch_profile = self.performance_all(
+        samples_perf, samples_profile = self.performance_all(
             executer, sample_config, case_name, np_args_generator
         )  # noqa
 
-        self.save_performance_all(case_name, samples_perf, samples_torch_profile)
+        self.save_performance_all(case_name, samples_perf, samples_profile)
         
         self.performance(
             executer, sample_config, stage_mode, np_args_generator
@@ -213,14 +206,19 @@ class Engine(object):
         case_name=None,
         np_args_generator=None,
     ):
-        func_args = self.make_data(
-            executer,
-            sample_config,
-            case_name=case_name,
-            np_args_generator=np_args_generator,
-        )  # noqa
+        
+        if stage_mode == self._stage_modes.S1 and self._settings.framework_compare_mode == False:
+            return
+            
         for idx in range(len(func_args)):
-            ret = self.run_per_iter(executer, func_args[idx], sample_config)
+            func_args = self.make_data(
+                executer,
+                sample_config,
+                index = idx,
+                case_name=case_name,
+                np_args_generator=np_args_generator,
+            )  # noqa
+            ret = self.run_per_iter(executer, func_args[0], sample_config)
             if stage_mode not in self._rets:
                 self._rets[stage_mode] = {}
             self._rets[stage_mode][idx] = ret
@@ -251,7 +249,6 @@ class Engine(object):
             func_args = self.make_data(
                 executer,
                 sample_config,
-                just_one=True,
                 np_args_generator=np_args_generator,
             )
             self.run_per_iter(executer, func_args[0], sample_config)
@@ -264,7 +261,6 @@ class Engine(object):
             self.make_data(
                 executer,
                 sample_config,
-                just_one=True,
                 np_args_generator=np_args_generator,
             )[0]
             for _ in range(iters)
@@ -287,34 +283,32 @@ class Engine(object):
         samples_perf = {
             "item_"+str(i): []
             for i in range(item_num)
-            }
+        }
         samples_perf.update({"time_cost": []})
-        samples_torch_profile = []
-        func_args = self.make_data(
-            executer,
-            sample_config,
-            case_name=case_name,
-            np_args_generator=np_args_generator,
-        )  # noqa
+        samples_profile = []
+        
 
         for idx in range(len(func_args)):
-            with profile(
-                activities=[torch.profiler.ProfilerActivity.CPU, torch.profiler.ProfilerActivity.CUDA],
-                profile_memory=True,
-                record_shapes=True,
-                with_stack=True,
-                with_flops=True,
-            ) as profiler:
-                time_start = time.time()
-                self.run_per_iter(executer, func_args[idx], sample_config)
-                time_cost = time.time() - time_start
-                profiler.step()
+            func_args = self.make_data(
+                executer,
+                sample_config,
+                index=idx,
+                case_name=case_name,
+                np_args_generator=np_args_generator,
+            )  # noqa
             
-            for item_i in range(item_num):
-                samples_perf["item_"+str(item_i)].append(sample_config.args_cases[idx][item_i])
-            samples_perf["time_cost"].append(str(time_cost))
-            samples_torch_profile.append(profiler.key_averages().table(sort_by="self_cuda_time_total", row_limit=-1))
-        return samples_perf, samples_torch_profile
+            profile = self.run_per_iter(executer, func_args[0], sample_config)
+            
+            if profile != None:
+                time_cost = profile[0]
+                profile_data = profile[1]
+                for item_i in range(item_num):
+                    samples_perf["item_"+str(item_i)].append(sample_config.args_cases[idx][item_i])
+                samples_perf["time_cost"].append(str(time_cost))
+                samples_profile.append(profile_data)
+        if not DEVICE_CPU:
+            executer.synchronize()
+        return samples_perf, samples_profile
 
     def timeline(
         self, executer, sample_config, case_name, stage_mode, np_args_generator
@@ -330,7 +324,6 @@ class Engine(object):
             func_args = self.make_data(
                 executer,
                 sample_config,
-                just_one=True,
                 np_args_generator=np_args_generator,
             )
             self.run_per_iter(executer, func_args[0], sample_config)
@@ -348,7 +341,7 @@ class Engine(object):
         }
         json_helper.save(content)
     
-    def save_performance_all(self, case_name, samples_perf, samples_torch_profile):
+    def save_performance_all(self, case_name, samples_perf, samples_profile):
         with open("./perf_result/"+case_name+"_perf.csv", 'w', newline="") as w:
             item_num = len(samples_perf.keys())
             field_names = [
@@ -374,7 +367,7 @@ class Engine(object):
                     for item in samples_perf.keys()
             }
                 w.write(str(dic))
-                w.write(samples_torch_profile[i]+"\n")
+                w.write("\n"+samples_profile[i]+"\n")
                 
             w.close()
             
