@@ -27,7 +27,7 @@ def map_roi_levels(rois, num_levels=4, finest_scale=56):
 
 
 def args_adaptor(np_args):
-    rois = torch.form_numpy(np_args[0]).cuda()
+    rois = torch.from_numpy(np_args[0]).cuda()
     return [rois, np_args[1], np_args[2]]
 
 
