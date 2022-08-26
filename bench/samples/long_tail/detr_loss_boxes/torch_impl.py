@@ -1,3 +1,6 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+# Modified from OpenMMLab.
+
 import torch
 from torch import nn
 import torch.nn.functional as F

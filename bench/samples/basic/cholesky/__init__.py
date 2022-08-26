@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 from inspect import trace
 import traceback
 from bench.common import (

@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 from functools import reduce
 import torch
 from bench.core.executer import Executer

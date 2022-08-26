@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 from tracemalloc import start
 import torch
 import torch.nn

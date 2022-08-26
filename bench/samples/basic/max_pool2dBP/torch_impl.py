@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 from math import ceil
 import torch
 import torch.nn

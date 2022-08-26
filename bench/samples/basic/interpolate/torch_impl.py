@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 import torch.nn.functional as F
 import numpy as np
