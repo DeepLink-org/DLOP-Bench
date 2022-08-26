@@ -2,6 +2,28 @@ from .types import SampleSource
 
 
 class SampleConfig(object):
+    """Standard execution config of a sample.
+
+    Args:
+        args_cases(list): Multiple sets of hyperparameters used to generate
+            numpy data args.
+        requires_grad(list[bool]): The requires_grad state of tensors needed in
+            sample function input args.
+        backward(bool | list(bool)): This indicates whether the sample function
+            output do backward.
+        warm_up_iters(int): The warm up running iters before record sample time
+            performance.
+        performance_iters(int): The running iters when record sample time 
+            performance.
+        timeline_iters(int): The running iters when generate timeline profile file.
+        save_timeline(bool): This indicates whether to generate timeline profile
+            file.
+        rtol(float): The rtol arg used in torch or numpy allclose function.
+        atol(float): The atol arg used in torch or numpy allclode function.
+        source(SampleSource): Which framework samples come from.
+        url(str): Where samples come from.
+        tags(list[SampleTag]): Features the sample have.
+    """
     def __init__(self,
                  args_cases=[],
                  requires_grad=[],
@@ -80,6 +102,8 @@ class SampleConfig(object):
         return self._source.value, self._url, tags
 
     def show(self):
+        """Print sample source, url and tags.
+        """
         source, url, tags = self.show_info()
         print("source:", source)
         print("url:", url)

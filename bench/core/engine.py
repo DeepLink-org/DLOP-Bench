@@ -21,6 +21,17 @@ from torch.profiler import profile
 
 
 class Engine(object):
+    """Benchmark execution engine.
+
+    Args:
+        frame_type(FrameType): Backend framework type.
+        settings(Settings): Benchmark settings.
+        registry(Registry): Sample CaseFetcher manager.
+        run_case_names(list): Sample names to run.
+        run_stages(list): Stage number to execute.
+        show_config(bool): Whether to show sample config.
+        parrots_exec_mode(PatExecMode): Parrots runtime mode.
+    """
     def __init__(
         self,
         frame_type,
@@ -48,6 +59,8 @@ class Engine(object):
         self._parrots_exec_mode = parrots_exec_mode
 
     def is_enable(self, case_name):
+        """Whether the sample should run.
+        """
         if not self._run_case_names:
             return True
         if case_name in self._run_case_names:
@@ -56,6 +69,7 @@ class Engine(object):
             return False
 
     def stage_modes_to_run(self):
+        """Transform stage index to corresponding stage mode."""
         if self._run_stages_idxes is None:
             return self._stage_modes
 
@@ -63,6 +77,7 @@ class Engine(object):
         return [stage_modes[idx] for idx in self._run_stages_idxes]
 
     def run(self):
+        """Enumerate samples and execute it in a process."""
         for case_name in self._registry.key_iters():
             if not self.is_enable(case_name):
                 continue
@@ -77,6 +92,13 @@ class Engine(object):
             self.check_unknown_error(case_name, self._json_helper)
 
     def run_modes(self, case_name, case_fetcher):
+        """Run all specified stage modes of a sample.
+
+        Args:
+            case_name(str): Sample name.
+            case_fetcher(CaseFetcher): Get sample execution 
+                related functions by it.
+        """
         print(case_name, ":")
         sample_config = case_fetcher.sample_config_getter()
         if self._show_config:
@@ -120,8 +142,14 @@ class Engine(object):
             self.save_performance(case_name, self._json_helper, sample_config)
 
     def run_per_iter(self, executer, func_args, sample_config):
-        """
-        attention: it returns a tuple.
+        """Run one iter using the sample executer.
+
+        Args:
+            executer(subclass of BaseCaseExecuter):  Sample backend executer.
+            func_args(list): Tensor args of sample execution function.
+            sample_config(SampleConfig): Sample execution config.
+        Returns:
+            tuple: Sample execution function results.
         """
         ret = executer.execute(func_args)
         if isinstance(ret, (int, float, str, tensor_type())):
@@ -153,6 +181,18 @@ class Engine(object):
         case_name=None,
         np_args_generator=None,
     ):
+        """Generate sample execution function inputs.
+
+        Args:
+            executer(subclass of BaseCaseExecuter):  Sample backend executer.
+            sample_config(SampleConfig): Sample execution config.
+            just_one(bool): Clone one or all origin func args.
+            case_name(str): Sample name.
+            np_args_generator(Function): The function to generate
+                numpy sample inputs.
+        Returns:
+            list: Sample execution function args.
+        """
         if self._origin_func_args is None:
             if self._settings.framework_compare_mode:
                 np_func_args = self.read_args_from_pickle(case_name)
@@ -176,6 +216,17 @@ class Engine(object):
     def run_per_mode(
         self, case_name, stage_mode, executer, sample_config, np_args_generator
     ):
+        """Run one stage mode of a sample.
+
+        Args:
+            case_name(str): Sample name.
+            stage_mode(PatModes| TorchModes| TFModes| JAXModes): Running stages
+                of different backend.
+            executer(subclass of BaseCaseExecuter): Sample backend executer.
+                sample_config(SampleConfig): Sample execution config.
+            np_args_generator(Function): The function to generate
+                numpy sample inputs.
+        """
         if not DEVICE_CPU:
             executer.synchronize()
         executer.prepare(stage_mode)
@@ -213,6 +264,17 @@ class Engine(object):
         case_name=None,
         np_args_generator=None,
     ):
+        """Check whether the results are equal to stage1.
+
+        Args:
+            executer(subclass of BaseCaseExecuter):  Sample backend executer.
+            sample_config(SampleConfig): Sample execution config.
+            stage_mode(PatModes| TorchModes| TFModes| JAXModes): Running stages
+                of different backend.
+            case_name(str): Sample name.
+            np_args_generator(Function): The function to generate
+                numpy format sample inputs.
+        """
         func_args = self.make_data(
             executer,
             sample_config,
@@ -247,6 +309,14 @@ class Engine(object):
             self.save_res_to_pickle(case_name, trans_to_np(rets))
 
     def warmup(self, executer, sample_config, np_args_generator):
+        """Warm up before recording sample performance.
+
+        Args:
+            executer(subclass of BaseCaseExecuter):  Sample backend executer.
+            sample_config(SampleConfig): Sample execution config.
+            np_args_generator(Function): The function to generate
+                numpy format sample inputs.
+        """
         for _ in range(sample_config.warm_up_iters):
             func_args = self.make_data(
                 executer,
@@ -259,6 +329,16 @@ class Engine(object):
     def performance(
         self, executer, sample_config, stage_mode, np_args_generator
     ):
+        """Record sample performance.
+
+        Args:
+            executer(subclass of BaseCaseExecuter):  Sample backend executer.
+            sample_config(SampleConfig): Sample execution config.
+            stage_mode(PatModes| TorchModes| TFModes| JAXModes): Running stages
+                of different backend.
+            np_args_generator(Function): The function to generate
+                numpy format sample inputs.
+        """
         iters = sample_config.performance_iters
         func_args = [
             self.make_data(
@@ -319,6 +399,17 @@ class Engine(object):
     def timeline(
         self, executer, sample_config, case_name, stage_mode, np_args_generator
     ):
+        """Record sample performance.
+
+        Args:
+            executer(subclass of BaseCaseExecuter):  Sample backend executer.
+            sample_config(SampleConfig): Sample execution config.
+            case_name(str): Sample name.
+            stage_mode(PatModes| TorchModes| TFModes| JAXModes): Running stages
+                of different backend.
+            np_args_generator(Function): The function to generate
+                numpy format sample inputs.
+        """
         if not sample_config.save_timeline:
             return
 
@@ -337,6 +428,8 @@ class Engine(object):
         executer.save_timeline_end()
 
     def save_performance(self, case_name, json_helper, sample_config):
+        """Save sample performance info to json file.
+        """
         content = json_helper.read()
         source, url, tags = sample_config.show_info()
         content[case_name] = {
@@ -380,6 +473,7 @@ class Engine(object):
             
     
     def check_unknown_error(self, case_name, json_helper):
+        """Check whether there is unknown error."""
         last_mode = None
         for stage_mode in self._stage_modes:
             last_mode = stage_mode
@@ -394,6 +488,7 @@ class Engine(object):
             json_helper.save(content)
 
     def save_res_to_pickle(self, case_name, res):
+        """Save sample function execution results to pickle file"""
         pickle_path = os.path.join(
             self._settings.sample_func_output_pickle_dir, case_name + ".pkl"
         )
@@ -401,6 +496,7 @@ class Engine(object):
             pickle.dump(res, f)
 
     def read_args_from_pickle(self, case_name):
+        """Read sample function inputs from pickle file."""
         pickle_path = os.path.join(
             self._settings.sample_func_input_pickle_dir, case_name + ".pkl"
         )

@@ -4,13 +4,38 @@ from bench.core.executer import Executer
 
 def tblr2bboxes(priors,
                 tblr,
-                normalizer=torch.FloatTensor([4.0]).cuda(),
-                normalize_by_wh=torch.IntTensor([1]).cuda(),
-                max_shape=torch.IntTensor([0]).cuda()):
-    '''if not isinstance(normalizer, float):
+                normalizer=4.0,
+                normalize_by_wh=True,
+                max_shape=None):
+    """Decode tblr outputs to prediction boxes.
+
+    The process includes 3 steps: 1) De-normalize tblr coordinates by
+    multiplying it with `normalizer`; 2) De-normalize tblr coordinates by the
+    prior bbox width and height if `normalize_by_wh` is `True`; 3) Convert
+    tblr (top, bottom, left, right) pair relative to the center of priors back
+    to (xmin, ymin, xmax, ymax) coordinate.
+
+    Args:
+        priors (Tensor): Prior boxes in point form (x0, y0, x1, y1)
+          Shape: (n,4).
+        tblr (Tensor): Coords of network output in tblr form
+          Shape: (n, 4).
+        normalizer (Sequence[float] | float): Normalization parameter of
+          encoded boxes. By list, it represents the normalization factors at
+          tblr dims. By float, it is the unified normalization factor at all
+          dims. Default: 4.0
+        normalize_by_wh (bool): Whether the tblr coordinates have been
+          normalized by the side length (wh) of prior bboxes.
+        max_shape (tuple, optional): Shape of the image. Decoded bboxes
+          exceeding which will be clamped.
+
+    Return:
+        encoded boxes (Tensor), Shape: (n, 4)
+    """
+    if not isinstance(normalizer, float):
         normalizer = torch.tensor(normalizer, device=priors.device)
-        assert len(normalizer) == 4, 'Normalizer must have length = 4'
-    assert priors.size(0) == tblr.size(0)'''
+        assert len(normalizer) == 4, "Normalizer must have length = 4"
+    assert priors.size(0) == tblr.size(0)
     loc_decode = tblr * normalizer
     prior_centers = (priors[:, 0:2] + priors[:, 2:4]) / 2
     if normalize_by_wh:
@@ -25,7 +50,6 @@ def tblr2bboxes(priors,
     ymax = prior_centers[:, 1].unsqueeze(1) + bottom
     boxes = torch.cat((xmin, ymin, xmax, ymax), dim=1)
     if max_shape is not None:
-        return boxes
         boxes[:, 0].clamp_(min=0, max=max_shape[1])
         boxes[:, 1].clamp_(min=0, max=max_shape[0])
         boxes[:, 2].clamp_(min=0, max=max_shape[1])
@@ -35,7 +59,7 @@ def tblr2bboxes(priors,
 
 def args_adaptor(np_args):
     priors = torch.from_numpy(np_args[0]).cuda()
-    tblr = torch.from_numpy(np_args[1]).cdua()
+    tblr = torch.from_numpy(np_args[1]).cuda()
 
     return [priors, tblr]
 

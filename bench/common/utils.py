@@ -8,6 +8,14 @@ from bench.core import CaseFetcher, registry
 
 
 def random_shape(dims, max_num_per_dim=10):
+    """Generate shape randomly.
+    
+    Args:
+        dims(int): Shape dimensions.
+        max_num_per_dim(int): Max number of every dimension.
+    Returns:
+        tuple: Shape generated randomly.
+    """
     assert type(dims) == int
     assert dims > 0
     assert max_num_per_dim >= 1
@@ -16,6 +24,14 @@ def random_shape(dims, max_num_per_dim=10):
 
 
 def import_impl(sample_module_name, impl):
+    """Import different sample implement according to `impl`.
+
+    Args:
+        sample_module_name(str): Sample module location.
+        impl(str): Sample implement file name without suffix.
+    Returns:
+        ModuleType: Python sys module.
+    """
     import_str = sample_module_name + "." + impl
     try:
         __import__(import_str)
@@ -26,6 +42,13 @@ def import_impl(sample_module_name, impl):
 
 
 def trans_to_np(val):
+    """Transform tensor or tensors in container to numpy.
+
+    Args:
+        val(tensor | list| tuple| set| frozenset| dict): value to transform.
+    Returns:
+        numpy.ndarray |val type: numpy value transformed.
+    """
     if isinstance(val, (list, tuple)):
         return tuple(trans_to_np(v) for v in val)
     elif isinstance(val, (set, frozenset)):
@@ -39,6 +62,13 @@ def trans_to_np(val):
 
 
 def auto_import(sample_module_name):
+    """Import sample automatically according to `FRAMEWORK`
+
+    Args:
+        sample_module_name(str): Sample module location.
+    Returns:
+        ModuleType: Python sys module.
+    """
     impl = FRAMEWORK if SAMPLE_IMPL is None else SAMPLE_IMPL
     if impl is FrameType.Parrots:
         return import_impl(sample_module_name, "pat_impl")
@@ -53,6 +83,12 @@ def auto_import(sample_module_name):
 
 
 def auto_register(sample_dirpath, sample_module_name):
+    """Import all samples, execute the `__init__.py` in all samples.
+
+    Args:
+        sample_dirpath(str): Sample directory path.
+        sample_module_name(str): Sample module location.
+    """
     for _, dirs, _ in os.walk(sample_dirpath):
         for dir in dirs:
             if dir == "__pycache__":
@@ -61,6 +97,13 @@ def auto_register(sample_dirpath, sample_module_name):
 
 
 def register_sample(sample_module_name, get_sample_config, gen_np_args=None):
+    """Register one sample to registry.
+
+    Args:
+        sample_module_name(str): Sample module location.
+        get_sample_config(Function): Sample get_sample_config function.
+        gen_np_args(Function): Sample gen_np_args function.
+    """
     backend = auto_import(sample_module_name)
     sample_name = str(sample_module_name).split(".")[-1]
     if backend is not None:

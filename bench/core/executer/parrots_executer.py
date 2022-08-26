@@ -40,6 +40,8 @@ PAT_MODES_TO_JIT_ARGS = {
 
 
 def log_debug_info():
+    """Log debug info using parrots backend.
+    """
     runtime.exec_mode = "SYNC"
     os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
     os.environ["PARROTS_BT_DEPTH"] = "15"
@@ -49,28 +51,61 @@ def log_debug_info():
 
 
 def tensor_type():
+    """Tensor type of parrots.
+
+    Returns:
+        parrots.DArray: Parrots backend tensor type.
+    """
     return parrots.DArray
 
 
 def trans_tensor_to_np(tensor):
+    """Transform parrots tensor to numpy.
+
+    Returns:
+        numpy.ndarray: numpy format tensor value.
+    """
     assert isinstance(tensor, tensor_type())
     return tensor.ndarray()
 
 
 def set_runtime_exec_mode(mode):
+    """Set parrots runtime exec mode.
+
+    Args:
+        mode(str): `SYNC` or `ASYNC`.
+    """
     assert mode in ["SYNC", "ASYNC"]
     runtime.exec_mode = mode
 
 
 def get_runtime_exec_mode():
+    """Get parrots runtime exec mode.
+    
+    Args:
+        mode(str): `SYNC` or `ASYNC`.
+    """
     return runtime.exec_mode
 
 
 class ParrotsExecuter(TorchAPIExecuter):
+    """Executer class of parrots backend.
+
+    Args:
+        core_func(Function): Sample origin execution function.
+        args_adaptor(Function): Sample args adaptor function, 
+            it transform numpy inputs to tensor.
+    """
     def __init__(self, core_func, args_generator):
         super().__init__(core_func, args_generator)
 
     def prepare(self, stage_mode):
+        """Prepare sample func to execute. Compile origin func
+        using parrots jit when it is not stage1.
+        
+        Args:
+            stage_mode(PatModes): Parrots stage.
+        """
         stage_args = PAT_MODES_TO_JIT_ARGS[stage_mode]
         self._execute_func = (
             self._origin_func
@@ -79,12 +114,24 @@ class ParrotsExecuter(TorchAPIExecuter):
         )
 
     def correctness_input_types(self):
+        """Tensor or container types.
+        """
         return (torch.Tensor, tuple, list, dict, OrderedDict, FrozenDict)
 
     def correctness_dict_types(self):
+        """Dict types.
+        """
         return (dict, OrderedDict, FrozenDict)
 
     def assert_tensor_eq(self, tensor_a, tensor_b, rtol, atol):
+        """Check whether the two parrots tensor values are equal.
+
+        Args:
+            tensor_a(parrots.DArray): Parrots tensor.
+            tensor_b(parrots.DArray): Parrots tensor.
+            rtol(float): rtol arg used in parrots allclose.
+            atol(float): atol args used in parrots allclose.
+        """
         assert isinstance(tensor_a, torch.Tensor), type(tensor_a)
         assert isinstance(tensor_b, torch.Tensor), type(tensor_b)
         assert tensor_a.dtype == tensor_b.dtype
@@ -100,6 +147,13 @@ class ParrotsExecuter(TorchAPIExecuter):
             )
 
     def save_timeline_start(self, case_name, stage_mode, saving_path):
+        """Start record timeline.
+        
+        Args:
+            case_name(str): Sample name.
+            stage_mode(PatModes): Parrots stage.
+            saving_path(str): The path to save timeline.
+        """
         self._timeline_saving_path = self.gen_timeline_saving_path(
             case_name, stage_mode, saving_path, ".txt"
         )
@@ -111,9 +165,18 @@ class ParrotsExecuter(TorchAPIExecuter):
         )
 
     def save_timeline_end(self):
+        """End record timeline."""
         parrots.runtime.profile(enable=False)
 
     def register_custom_class(self, obj):
+        """Register custom class.
+
+        Args:
+            obj(Any): User custom class used in 
+                sample execution function inputs or outputs.
+        Returns:
+            ParrotsExecuter: self.
+        """
         assert obj is not None
         register_custom_class(obj)
         custom_class_manager.register_class(obj)

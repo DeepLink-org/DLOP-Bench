@@ -12,6 +12,7 @@ int_types = [
 
 
 class NameGenerator(object):
+    """A single instance to generate variable names."""
     _count = 0
     _instance = None
     _list_alphabet = list(string.ascii_lowercase)
@@ -23,6 +24,7 @@ class NameGenerator(object):
 
     @classmethod
     def get_a_name(cls):
+        """Generate a name."""
         assert cls._count < len(cls._list_alphabet)
         name = cls._list_alphabet[cls._count]
         cls._count = cls._count + 1
@@ -33,6 +35,7 @@ name_generator = NameGenerator()
 
 
 def get_init_import():
+    """import string in sample init file."""
     return """from bench.common import (
                 SampleConfig,
                 register_sample,
@@ -43,11 +46,13 @@ import numpy as np"""
 
 
 def get_impl_import():
+    """import string in sample impl file."""
     return """import torch
 from bench.core.executer import Executer"""
 
 
 def get_sample_config(out_len, in_len):
+    """Generate sample `get_sample_config` function."""
     return """def get_sample_config():
                   return SampleConfig(
                     args_cases=[],
@@ -62,6 +67,7 @@ def get_sample_config(out_len, in_len):
 
 
 def gen_base_np(shape, dtype):
+    """get numpy generating code."""
     name = name_generator.get_a_name()
     s_shape = [str(d) for d in shape]
     if dtype in float_types:
@@ -77,6 +83,7 @@ def gen_base_np(shape, dtype):
 
 
 def gen_np_args(inputs):
+    """Generate sample `gen_np_args` function."""
     names = []
     core_codes = []
     for at in inputs:
@@ -89,10 +96,12 @@ def gen_np_args(inputs):
 
 
 def get_register_sample():
+    """Return sample registering code."""
     return """register_sample(__name__, get_sample_config, gen_np_args)"""
 
 
 def get_args_adaptor(inputs, names):
+    """Generate sample `args_adaptor` code."""
     core_codes = []
     for idx, at in enumerate(inputs):
         core_codes.append("{} = torch.from_numpy(np_args[{}]).cuda()".format(
@@ -104,5 +113,6 @@ def get_args_adaptor(inputs, names):
 
 
 def gen_executer_creator(entry_name):
+    """Generate sample `executer_creator` code."""
     return """def executer_creator():
     return Executer({}, args_adaptor)""".format(entry_name)

@@ -89,13 +89,13 @@ def sigmoid_focal_loss(
     return loss
 
 
-def args_generator(M, N):
-    shape = (M, N)
-    pred = torch.randn(shape, device="cuda")
-    target = torch.randn(shape, device="cuda")
+def args_adaptor(np_args):
+    pred = torch.from_numpy(np_args[0]).cuda()
+    target = torch.from_numpy(np_args[1]).cuda()
     pred.requires_grad = True
+
     return [pred, target]
 
 
 def executer_creator():
-    return Executer(sigmoid_focal_loss, args_generator)
+    return Executer(sigmoid_focal_loss, args_adaptor)

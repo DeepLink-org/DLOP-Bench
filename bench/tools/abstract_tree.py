@@ -3,7 +3,11 @@ from bench.common import build_pytree
 
 
 class AbstractTensor(object):
-
+    """The obejct to represent abstract tensor.
+    
+    Args:
+        tensor: different tensor instances.
+    """
     def __init__(self, tensor):
         self.shape = list(tensor.shape)
         self.dtype = tensor.dtype
@@ -11,6 +15,7 @@ class AbstractTensor(object):
 
 
 def abstract_tree(args):
+    """Transform tensors in args to AbstractTensor."""
     abstract_tensors = []
 
     def abstract_leaf(leaf):
