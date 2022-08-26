@@ -31,7 +31,7 @@ def gen_np_args(M, N, K, J):
     boxes2 = boxes2.astype(np.float32)
 
     mask = np.random.randint(M, N, (K, J))
-    mask = mask.astype(np.float32)
+    mask = mask.astype(np.long)
 
     return [boxes1, boxes2, mask]
 
