@@ -1,5 +1,6 @@
 import os
 import csv
+import shutil
 from bench.common.settings import BENCH_DEBUG
 
 
@@ -10,7 +11,7 @@ class CsvHelper(object):
 
     def create(self):
         if os.path.exists(self._dir_path):
-            os.rmdir(self._dir_path)
+            shutil.rmtree(self._dir_path)
         os.mkdir(self._dir_path)
         
         if not os.path.exists(self._dir_path):
