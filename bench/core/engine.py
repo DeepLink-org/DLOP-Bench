@@ -365,7 +365,7 @@ class Engine(object):
                 item: samples_time[item][i]
                 for item in samples_time.keys()
             }
-            profile_content = profile_content + str(dic) + "\n" + samples_profile[i]+"\n"
+            profile_content = profile_content + str(dic) + "\n" + samples_profile[i]+"\n" + "+" * 200
             
         csv_helper_time.save(case_name, csv_field_names, length, time_content)
         txt_helper_frofile.save(case_name, profile_content)
