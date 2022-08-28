@@ -24,7 +24,7 @@ def get_sample_config():
         args_cases=args_cases_,
         requires_grad=[False] * len(arg_data),
         backward=False,
-        performance_iters=1000,
+        performance_iters=100,
         save_timeline=False,
         source=SampleSource.MMDET,
         url="",  # noqa
