@@ -50,6 +50,10 @@ class Settings(object):
         self._FRAMEWORK_COMPARE_MODE = framework_compare_mode
         self._RESULT_JSON_FILEPATH = os.path.join(self._RESULT_DIR,
                                                   FRAMEWORK.value + ".json")
+        self._TIME_JSON_FILEPATH = os.path.join(self._TIME_COST_DIR,
+                                                  FRAMEWORK.value + ".json")
+        self._PROFILER_JSON_FILEPATH = os.path.join(self._PROFILER_DIR,
+                                                  FRAMEWORK.value + ".json")
         self._SAMPLE_FUNC_OUTPUT_PICKLE_DIR = os.path.join(
             self._TEMP_DIR, "outputs_" + FRAMEWORK.value)
         self._SAMPLE_FUNC_INPUT_PICKLE_DIR = os.path.join(

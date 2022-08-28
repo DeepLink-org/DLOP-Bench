@@ -147,5 +147,6 @@ results/*.txt
 results/*.json
 results/*.tar.gz
 
+results
 perf_result
 profiler_result
