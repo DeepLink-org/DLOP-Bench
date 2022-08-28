@@ -185,7 +185,7 @@ class TorchExecuter(TorchAPIExecuter):
                 with_flops=True,
         ) as profiler:
             start = time.time()
-            func(func_args)
+            func(*func_args)
             time_cost = time.time() - start
             profiler.step()
         profile_data = profiler.key_averages().table(sort_by="self_cuda_time_total", row_limit=-1)
