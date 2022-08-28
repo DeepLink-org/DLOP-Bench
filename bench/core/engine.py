@@ -17,6 +17,8 @@ import csv
 
 import numpy as np
 
+from bench.core.file_io import json_helper
+
 
 class Engine(object):
     def __init__(
@@ -187,7 +189,7 @@ class Engine(object):
             executer, sample_config, case_name, np_args_generator
         )  # noqa
 
-        self.save_performance_all(case_name, samples_perf, samples_profile)
+        self.save_performance_all(case_name, self._json_helper_time, self._json_helper_profile,samples_perf, samples_profile)
         
         self.performance(
             executer, sample_config, stage_mode, np_args_generator
@@ -342,35 +344,37 @@ class Engine(object):
         }
         json_helper.save(content)
     
-    def save_performance_all(self, case_name, samples_perf, samples_profile):
-        with open("./time_results/"+case_name+"_time_cost.csv", 'w', newline="") as w:
-            item_num = len(samples_perf.keys())
-            field_names = [
-                "item_"+str(i)
-                for i in range(item_num-1)
-            ]
-            field_names.append("time_cost")
-            csv_writer = csv.DictWriter(w, fieldnames=field_names)
-            csv_writer.writeheader()
-            length = len(samples_perf["item_0"])
-            for i in range(length):
-                dic = {       
-                    item: samples_perf[item][i]
-                    for item in samples_perf.keys()
-                }
-                csv_writer.writerow(dic)
+    def save_performance_all(self, case_name, json_helper_time, json_helper_frofile, samples_time, samples_profile):
+        json_helper_time.save(samples_time)
+        json_helper_frofile.save(samples_profile)
+        # with open("./time_results/"+case_name+"_time_cost.csv", 'w', newline="") as w:
+        #     item_num = len(samples_perf.keys())
+        #     field_names = [
+        #         "item_"+str(i)
+        #         for i in range(item_num-1)
+        #     ]
+        #     field_names.append("time_cost")
+        #     csv_writer = csv.DictWriter(w, fieldnames=field_names)
+        #     csv_writer.writeheader()
+        #     length = len(samples_perf["item_0"])
+        #     for i in range(length):
+        #         dic = {       
+        #             item: samples_perf[item][i]
+        #             for item in samples_perf.keys()
+        #         }
+        #         csv_writer.writerow(dic)
                 
-            w.close()
-        with open("./profiler_results/"+case_name+"_profiler.txt", 'w', newline="") as w:
-            for i in range(length):
-                dic = {       
-                    item: samples_perf[item][i]
-                    for item in samples_perf.keys()
-            }
-                w.write(str(dic))
-                w.write("\n"+samples_profile[i]+"\n")
+        #     w.close()
+        # with open("./profiler_results/"+case_name+"_profiler.txt", 'w', newline="") as w:
+        #     for i in range(length):
+        #         dic = {       
+        #             item: samples_perf[item][i]
+        #             for item in samples_perf.keys()
+        #     }
+        #         w.write(str(dic))
+        #         w.write("\n"+samples_profile[i]+"\n")
                 
-            w.close()
+        #     w.close()
             
     
     def check_unknown_error(self, case_name, json_helper):
