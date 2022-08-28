@@ -4,31 +4,26 @@ from bench.common.settings import BENCH_DEBUG
 
 
 class CsvHelper(object):
-    def __init__(self, file_path):
-        self._file_path = file_path
+    def __init__(self, dir_path):
+        self._dir_path = dir_path
         self.create()
 
     def create(self):
-        dir_path = os.path.dirname(self._file_path)
-        if not os.path.exists(dir_path):
-            os.mkdir(dir_path)
+        if os.path.exists(self._dir_path):
+            os.rmdir(self._dir_path)
+        os.mkdir(self._dir_path)
+        
+        if not os.path.exists(self._dir_path):
+            raise Exception("create {} failed.".format(self._dir_path))
 
-        if os.path.exists(self._file_path):
-            os.remove(self._file_path)
-
-        with open(self._file_path, "w", encoding="utf-8") as f:
-            f.write("{}")
-        if not os.path.exists(self._file_path):
-            raise Exception("create {} failed.".format(self._file_path))
-
-    def read(self):
+    def read(self, case_name):
         content = None
-        with open(self._file_path, "r", encoding="utf-8") as f:
+        with open(self._dir_path + "/" + case_name + ".csv", "r", encoding="utf-8") as f:
             content = csv.DictReader(self._file_path)
         return content
 
-    def save(self, content):
-        with open(self._file_path, "w") as f:
+    def save(self, case_name, content):
+        with open(self._dir_path + "/" + case_name + ".csv", "w") as f:
             writer=csv.writer(f)
             for key, value in content.items():
                 writer.writerow([key, value])
