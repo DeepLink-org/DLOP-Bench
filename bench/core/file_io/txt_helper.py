@@ -1,5 +1,4 @@
 import os
-import txt
 import shutil
 from bench.common.settings import BENCH_DEBUG
 
