@@ -22,7 +22,9 @@ class CsvHelper(object):
             raise Exception("create {} failed.".format(self._file_path))
 
     def read(self):
-        content = csv.reader(self._file_path)
+        content = None
+        with open(self._file_path, "r", encoding="utf-8") as f:
+            content = csv.DictReader(self._file_path)
         return content
 
     def save(self, content):
