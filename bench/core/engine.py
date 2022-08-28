@@ -41,7 +41,9 @@ class Engine(object):
         )
         self._origin_func_args = None
         self._stage_modes = settings.frame_type_to_frame_modes[frame_type]
-        self._json_helper = JsonHelper(self._settings.result_json_filepath)
+        self._json_helper_result = JsonHelper(self._settings.result_json_filepath)
+        self._json_helper_time = JsonHelper(self._settings.time_json_filepath)
+        self._json_helper_profile = JsonHelper(self._settings.profiler_json_filepath)
         self._show_config = show_config
         self._parrots_exec_mode = parrots_exec_mode
 
@@ -72,7 +74,7 @@ class Engine(object):
             )
             p.start()
             p.join()
-            self.check_unknown_error(case_name, self._json_helper)
+            self.check_unknown_error(case_name, self._json_helper_result)
 
     def run_modes(self, case_name, case_fetcher):
         print(case_name, ":")
@@ -103,7 +105,7 @@ class Engine(object):
                 )
                 self._errors[stage_mode.value] = traceback.format_exc()
                 self.save_performance(
-                    case_name, self._json_helper, sample_config
+                    case_name, self._json_helper_result, sample_config
                 )
                 logging.exception(e)
                 break
@@ -115,7 +117,7 @@ class Engine(object):
                     stage_mode,
                     "Time Costing: " + str(self._times[stage_mode.value]),
                 )
-            self.save_performance(case_name, self._json_helper, sample_config)
+            self.save_performance(case_name, self._json_helper_result, sample_config)
 
     def run_per_iter(self, executer, func_args, sample_config):
         """
