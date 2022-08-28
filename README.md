@@ -7,7 +7,7 @@ DLOP-Bench is an open source benchmark suite for deep learning operators. It has
 
 We focus on the operator at the deep learning framework level (such as torch.convolution) and do not dive into the implementation details of each operator (implicit gemm implementation or winograd implementation and the related algorithm selection). One can easily benchmark the operators on a certain AI accelerator as long as they finish the adaption on a deep learning framework.
 
-- **Basic Operators and Domain-specific long-tail operators**
+- **Basic operators and Domain-specific long-tail operators**
 
 
 Besides basic operators like convolution, pooling, and normalization, we also collect many representative domain-specific operators mainly from object detection, instance segmentation, and other computer vision directions in [OpenMMLab](https://github.com/open-mmlab). These operators have no dedicated implementation on deep learning accelerators and have to resort to the Python interpreter. As such, they will always be broken down into large numbers of basic operators. They incur a lot of function calls, as well as data transfer and context switching costs. We name them long-tail operators.
@@ -28,7 +28,7 @@ From the operator level, this benchmark suite can provide a more microscopic ass
 
 First, download the latest source code:
 ```bash
-git clone git@github.com:OpenComputeLab/DLOP-Bench.git
+git clone https://github.com/OpenComputeLab/DLOP-Bench.git
 ```
 
 To show the structure of source code, we can use the following command:
@@ -38,8 +38,9 @@ tree -d -L 1 ./bench
 ```
 The implementation functions of basic and long tail operators are located in ./bench/samples/.
 
+### Basic Operators
 
-Here is a command demo that illustrates how you can use DLOP-Bench to test samples performance.
+Here is a command demo that illustrates how you can use DLOP-Bench to test basic operators.
 
 ```bash
 # config bench PYTHONPATH
@@ -49,7 +50,26 @@ If you want to test sample performance using torch backend, you can see the demo
 ```bash
 # prepare pytorch environment, python 3 & torch 1.10 or 1.12 best
 pip3 install torch 
-# run the operator tblr2bbox using torch backend in eager mode
+# run the operator abs using torch backend
+FRAMEWORK=torch python ./bench/api/api.py -c abs
+
+```
+
+### Long-tail Operators
+
+From long-tail operators, this benchmark suite provides several stages to test their performance as below: 
+- **stage 1** : eager stage, 
+- **stage 3** : fixed shape coder stage,
+- **stage 5** : dynamic shape coder stage.
+
+This benchmark suite supports the execution of all long-tail operators in stages 1, while some operators fail to run in stage 3 and 5 because they are unsupported in the current compiler.
+Here is a command demo to test long-tail operators.
+
+```bash
+# config bench PYTHONPATH
+cd bench
+export PYTHONPATH=./bench:$PYTHONPATH
+# run the operator aeloss using torch backend in eager mode
 FRAMEWORK=torch python ./bench/api/api.py -c aeloss -st 1
 
 
@@ -59,9 +79,8 @@ FRAMEWORK=torch python ./bench/api/api.py -c tblr2bbox
 FRAMEWORK=torch python ./bench/api/api.py -c tblr2bbox,bbox2delta
 # run all samples
 FRAMEWORK=torch python ./bench/api/api.py
-# run several stages, 1: eager stage, 2: fixed shape jit stage, 3: fixed shape coder stage,
-# 4: dynamic shape jit stage, 5: dynamic shape coder stage, 
-FRAMEWORK=torch python ./bench/api/api.py -st 1,2,3
+# run several stages, 1: eager stage, 3: fixed shape coder stage, 5: dynamic shape coder stage, 
+FRAMEWORK=torch python ./bench/api/api.py -st 1,3,5
 # show all tags
 FRAMEWORK=torch python ./bench/api/api.py -sg
 # show samples of one tag
@@ -74,7 +93,10 @@ FRAMEWORK=torch python ./bench/api/export_result_to_excel.py
 FRAMEWORK=torch BENCH_DEBUG=1 python ./bench/api/api.py
 
 ```
-These apis can also be used in backend torch, tensorflow, or xla, just set corresponding FRAMEWORK environment:
+These apis can also be used in backend torch, tensorflow, or xla, just set corresponding FRAMEWORK environment.
+While all the operators can be tested using torch backend, some operators may raise an AssertionError in other backends if their corresponding implementation codes have not been added yet.
+You can wait for our update or add the codes yourself.
+
 If you want to test sample performance using tensorflow, or XLA backend, you can see the demo as follows:
 
 
