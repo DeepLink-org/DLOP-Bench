@@ -35,6 +35,10 @@ class Settings(object):
     _RESULT_JSON_FILEPATH = None
     _RESULT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                "..", "..", "results")
+    _TIME_COST_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                               "..", "..", "time_results")
+    _PROFILER_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                               "..", "..", "profiler_results")
     _TEMP_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..",
                              "..", "tests", "test_samples", "temp")
 
