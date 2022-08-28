@@ -28,4 +28,7 @@ class CsvHelper(object):
         return content
 
     def save(self, content):
-        csv.DictWriter(content, fieldnames=content.keys())
+        with open(self._file_path, "w") as f:
+            writer=csv.writer(f)
+            for key,value in content.items:
+                writer.writerow([key,value])
