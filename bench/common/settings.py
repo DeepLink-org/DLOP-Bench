@@ -33,6 +33,8 @@ class Settings(object):
     }
 
     _RESULT_JSON_FILEPATH = None
+    _TIME_JSON_FILEPATH = None
+    _PROFILER_JSON_FILEPATH = None
     _RESULT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                "..", "..", "results")
     _TIME_COST_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)),
@@ -70,6 +72,22 @@ class Settings(object):
     @property
     def result_dir(self):
         return self._RESULT_DIR
+    
+    @property
+    def time_json_filepath(self):
+        return self._TIME_JSON_FILEPATH
+
+    @property
+    def time_dir(self):
+        return self._TIME_COST_DIR
+    
+    @property
+    def profiler_json_filepath(self):
+        return self._PROFILER_JSON_FILEPATH
+
+    @property
+    def result_dir(self):
+        return self._PROFILER_DIR
 
     @property
     def framework_compare_mode(self):
