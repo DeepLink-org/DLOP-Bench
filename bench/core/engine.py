@@ -191,7 +191,7 @@ class Engine(object):
             executer, sample_config, case_name, np_args_generator
         )  # noqa
 
-        self.save_performance_all(case_name, self._json_helper_time, self._json_helper_profile,samples_perf, samples_profile)
+        self.save_performance_all(case_name, self._csv_helper_time, self._json_helper_profile,samples_perf, samples_profile)
         
         self.performance(
             executer, sample_config, stage_mode, np_args_generator
