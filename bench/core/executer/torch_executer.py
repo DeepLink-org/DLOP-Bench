@@ -175,7 +175,7 @@ class TorchExecuter(TorchAPIExecuter):
         prof = torch.autograd.profiler.profile(enable=False)
         prof.export_chrome_trace(self._timeline_saving_path)
     
-    def get_profiler(self, func_args):
+    def get_profiler(self, *func_args):
         func = self._origin_func if not self._stage_args else torch.jit.script(self._origin_func, **self._stage_args)
         with profile(
                 activities=[torch.profiler.ProfilerActivity.CPU, torch.profiler.ProfilerActivity.CUDA],
