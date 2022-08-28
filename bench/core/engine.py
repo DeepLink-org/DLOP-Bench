@@ -288,6 +288,7 @@ class Engine(object):
         self, executer, sample_config, case_name, np_args_generator
     ):
         item_num = len(sample_config.args_cases[0])
+        print(item_num)
         samples_perf = {
             "item_"+str(i): []
             for i in range(item_num)
