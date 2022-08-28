@@ -347,8 +347,8 @@ class Engine(object):
         json_helper.save(content)
     
     def save_performance_all(self, case_name, json_helper_time, json_helper_frofile, samples_time, samples_profile):
-        content_time = json_helper_time.read()
-        content_profile = json_helper_frofile.read()
+        content_time = {}
+        content_profile = {}
         content_time[case_name] = {
             "time_cost": samples_time
         }
