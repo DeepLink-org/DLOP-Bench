@@ -30,5 +30,5 @@ class CsvHelper(object):
     def save(self, content):
         with open(self._file_path, "w") as f:
             writer=csv.writer(f)
-            for key,value in content.items:
-                writer.writerow([key,value])
+            for key, value in content.items():
+                writer.writerow([key, value])
