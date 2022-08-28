@@ -345,36 +345,16 @@ class Engine(object):
         json_helper.save(content)
     
     def save_performance_all(self, case_name, json_helper_time, json_helper_frofile, samples_time, samples_profile):
-        json_helper_time.save(samples_time)
-        json_helper_frofile.save(samples_profile)
-        # with open("./time_results/"+case_name+"_time_cost.csv", 'w', newline="") as w:
-        #     item_num = len(samples_perf.keys())
-        #     field_names = [
-        #         "item_"+str(i)
-        #         for i in range(item_num-1)
-        #     ]
-        #     field_names.append("time_cost")
-        #     csv_writer = csv.DictWriter(w, fieldnames=field_names)
-        #     csv_writer.writeheader()
-        #     length = len(samples_perf["item_0"])
-        #     for i in range(length):
-        #         dic = {       
-        #             item: samples_perf[item][i]
-        #             for item in samples_perf.keys()
-        #         }
-        #         csv_writer.writerow(dic)
-                
-        #     w.close()
-        # with open("./profiler_results/"+case_name+"_profiler.txt", 'w', newline="") as w:
-        #     for i in range(length):
-        #         dic = {       
-        #             item: samples_perf[item][i]
-        #             for item in samples_perf.keys()
-        #     }
-        #         w.write(str(dic))
-        #         w.write("\n"+samples_profile[i]+"\n")
-                
-        #     w.close()
+        content_time = json_helper_time.read()
+        content_profile = json_helper_frofile.read()
+        content_time[case_name] = {
+            samples_time
+        }
+        content_profile[case_name] = {
+            samples_profile
+        }
+        json_helper_time.save(content_time)
+        json_helper_frofile.save(content_profile)
             
     
     def check_unknown_error(self, case_name, json_helper):
