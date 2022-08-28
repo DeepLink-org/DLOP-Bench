@@ -288,7 +288,7 @@ class Engine(object):
         samples_profile = []
         
 
-        for idx in range(len(item_num)):
+        for idx in range(item_num):
             func_args = self.make_data(
                 executer,
                 sample_config,
