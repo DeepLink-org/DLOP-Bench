@@ -350,7 +350,7 @@ class Engine(object):
         json_helper.save(content)
     
     def save_performance_all(self, case_name, csv_helper_time, txt_helper_frofile, samples_time, samples_profile):
-        item_num = len(samples_profile.keys())
+        item_num = len(samples_time.keys())
         field_names = [
             "item_"+str(i)
             for i in range(item_num-1)
