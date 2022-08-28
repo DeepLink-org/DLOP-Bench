@@ -8,6 +8,8 @@ import multiprocessing as mp
 
 from bench.common.types import PatExecMode
 from .file_io.json_helper import JsonHelper
+from .file_io.csv_helper import CsvHelper
+from .file_io.txt_helper import TxtHelper
 from bench.common import BENCH_DEBUG, DEVICE_CPU, trans_to_np,\
     unfold_custom_class, FRAMEWORK, FrameType
 from bench.core.executer import tensor_type, set_runtime_exec_mode
@@ -17,7 +19,7 @@ import csv
 
 import numpy as np
 
-from bench.core.file_io import json_helper
+from bench.core.file_io import json_helper, csv_helper, txt_helper
 
 
 class Engine(object):
@@ -44,7 +46,7 @@ class Engine(object):
         self._origin_func_args = None
         self._stage_modes = settings.frame_type_to_frame_modes[frame_type]
         self._json_helper_result = JsonHelper(self._settings.result_json_filepath)
-        self._json_helper_time = JsonHelper(self._settings.time_json_filepath)
+        self._csv_helper_time = CsvHelper(self._settings.time_json_filepath)
         self._json_helper_profile = JsonHelper(self._settings.profiler_json_filepath)
         self._show_config = show_config
         self._parrots_exec_mode = parrots_exec_mode
