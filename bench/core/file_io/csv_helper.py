@@ -22,8 +22,13 @@ class CsvHelper(object):
             content = csv.DictReader(self._file_path)
         return content
 
-    def save(self, case_name, content):
+    def save(self, case_name, field_names, content):
         with open(self._dir_path + "/" + case_name + ".csv", "w") as f:
-            writer=csv.writer(f)
-            for key, value in content.items():
-                writer.writerow([key, value])
+            csv_writer = csv.DictWriter(f, fieldnames=field_names)
+            csv_writer.writeheader()
+            for i in range(len(content.keys())):
+                dic = {       
+                    item: content[item][i]
+                    for item in content.keys()
+                }
+                csv_writer.writerow(dic)
