@@ -36,6 +36,8 @@ class Engine(object):
         self._rets = {}
         self._times = {}
         self._errors = {}
+        self.content_time = {}
+        self.content_profile = {}
         self._frame_type = frame_type
         self._settings = settings
         self._registry = registry
@@ -50,6 +52,7 @@ class Engine(object):
         self._json_helper_profile = JsonHelper(self._settings.profiler_json_filepath)
         self._show_config = show_config
         self._parrots_exec_mode = parrots_exec_mode
+        
 
     def is_enable(self, case_name):
         if not self._run_case_names:
@@ -347,16 +350,14 @@ class Engine(object):
         json_helper.save(content)
     
     def save_performance_all(self, case_name, csv_helper_time, json_helper_frofile, samples_time, samples_profile):
-        content_time = csv_helper_time.read()
-        content_profile = csv_helper_time.read()
-        content_time[case_name] = {
+        self.content_time[case_name] = {
             "time_cost": samples_time
         }
-        content_profile[case_name] = {
+        self.content_profile[case_name] = {
             "profiler info": samples_profile
         }
-        json_helper_time.save(content_time)
-        json_helper_frofile.save(content_profile)
+        csv_helper_time.save(self.content_time)
+        json_helper_frofile.save(self.content_profile)
             
     
     def check_unknown_error(self, case_name, json_helper):
