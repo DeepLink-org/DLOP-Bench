@@ -341,7 +341,7 @@ class Engine(object):
         json_helper.save(content)
     
     def save_performance_all(self, case_name, samples_perf, samples_profile):
-        with open("./time_cost_result/"+case_name+"_time_cost.csv", 'w', newline="") as w:
+        with open("./time_results/"+case_name+"_time_cost.csv", 'w', newline="") as w:
             item_num = len(samples_perf.keys())
             field_names = [
                 "item_"+str(i)
@@ -359,7 +359,7 @@ class Engine(object):
                 csv_writer.writerow(dic)
                 
             w.close()
-        with open("./profiler_result/"+case_name+"_profiler.txt", 'w', newline="") as w:
+        with open("./profiler_results/"+case_name+"_profiler.txt", 'w', newline="") as w:
             for i in range(length):
                 dic = {       
                     item: samples_perf[item][i]
