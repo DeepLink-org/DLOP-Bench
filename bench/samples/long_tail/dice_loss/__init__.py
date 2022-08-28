@@ -11,7 +11,7 @@ def get_sample_config():
     return SampleConfig(
         args_cases=[(3, 4, 5, 6), (4, 5, 6, 7), (5, 6, 7, 8)],
         requires_grad=[True, False],
-        backward=[False],
+        backward=False,
         save_timeline=False,
         source=SampleSource.UNKNOWN,
         tags=[SampleTag.IfElseBranch, SampleTag.Reduce,
