@@ -158,8 +158,10 @@ class TorchAPIExecuter(BaseCaseExecuter):
 class TorchExecuter(TorchAPIExecuter):
     def __init__(self, core_func, args_generator):
         super().__init__(core_func, args_generator)
+        self._stage_args = None
 
     def prepare(self, stage_mode):
+        self._stage_args = TORCH_MODES_TO_SCRIPT_ARGS[stage_mode]  
         self._execute_func = self.get_profiler
 
     def save_timeline_start(self, case_name, stage_mode, saving_path):
@@ -173,9 +175,8 @@ class TorchExecuter(TorchAPIExecuter):
         prof = torch.autograd.profiler.profile(enable=False)
         prof.export_chrome_trace(self._timeline_saving_path)
     
-    def get_profiler(self, stage_mode):
-        stage_args = TORCH_MODES_TO_SCRIPT_ARGS[stage_mode]
-        func = self._origin_func if not stage_args else torch.jit.script(self._origin_func, **stage_args)
+    def get_profiler(self, func_args):
+        func = self._origin_func if not self._stage_args else torch.jit.script(self._origin_func, **self._stage_args)
         with profile(
                 activities=[torch.profiler.ProfilerActivity.CPU, torch.profiler.ProfilerActivity.CUDA],
                 profile_memory=True,
@@ -184,7 +185,7 @@ class TorchExecuter(TorchAPIExecuter):
                 with_flops=True,
         ) as profiler:
             start = time.time()
-            func()
+            func(func_args)
             time_cost = time.time() - start
             profiler.step()
         profile_data = profiler.key_averages().table(sort_by="self_cuda_time_total", row_limit=-1)
