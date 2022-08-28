@@ -349,7 +349,7 @@ class Engine(object):
         }
         json_helper.save(content)
     
-    def save_performance_all(self, case_name, csv_helper_time, json_helper_frofile, samples_time, samples_profile):
+    def save_performance_all(self, case_name, csv_helper_time, txt_helper_frofile, samples_time, samples_profile):
         self.content_time[case_name] = {
             "time_cost": samples_time
         }
@@ -357,7 +357,7 @@ class Engine(object):
             "profiler info": samples_profile
         }
         csv_helper_time.save(self.content_time)
-        json_helper_frofile.save(self.content_profile)
+        txt_helper_frofile.save(self.content_profile)
             
     
     def check_unknown_error(self, case_name, json_helper):

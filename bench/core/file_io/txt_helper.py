@@ -23,11 +23,10 @@ class TxtHelper(object):
     def read(self):
         content = None
         with open(self._file_path, "r", encoding="utf-8") as f:
-            content = json.load(f)
+            content = f.read()
         return content
 
     def save(self, content):
-        with open(self._file_path, "w") as f:
-            json.dump(content, f)
-        if BENCH_DEBUG:
-            print("{} saved successfully!".format(self._file_path))
+        with open(self._file_path, 'w', newline="") as w:
+            w.write(content)
+            w.close()
