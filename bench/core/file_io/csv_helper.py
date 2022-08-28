@@ -27,7 +27,7 @@ class CsvHelper(object):
         with open(self._dir_path + "/" + case_name + ".csv", "w") as f:
             csv_writer = csv.DictWriter(f, fieldnames=field_names)
             csv_writer.writeheader()
-            for i in range(len(content.keys())):
+            for i in range(len(content["item_0"])):
                 dic = {       
                     item: content[item][i]
                     for item in content.keys()
