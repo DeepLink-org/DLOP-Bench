@@ -49,7 +49,7 @@ class Engine(object):
         self._stage_modes = settings.frame_type_to_frame_modes[frame_type]
         self._json_helper_result = JsonHelper(self._settings.result_json_filepath)
         self._csv_helper_time = CsvHelper(self._settings.time_dir)
-        self._json_helper_profile = JsonHelper(self._settings.profiler_json_filepath)
+        self._json_helper_profile = TxtHelper(self._settings.profiler_dir)
         self._show_config = show_config
         self._parrots_exec_mode = parrots_exec_mode
         
@@ -351,14 +351,24 @@ class Engine(object):
     
     def save_performance_all(self, case_name, csv_helper_time, txt_helper_frofile, samples_time, samples_profile):
         item_num = len(samples_time.keys())
-        field_names = [
+        length = len(samples_time["item_0"])
+        csv_field_names = [
             "item_"+str(i)
             for i in range(item_num-1)
         ]
-        field_names.append("time_cost")
+        csv_field_names.append("time_cost")
+        
+        time_content = samples_time
+        profile_content = ""
+        for i in range(length):
+            dic = {       
+                item: samples_time[item][i]
+                for item in samples_time.keys()
+            }
+            profile_content = profile_content + str(dic) + "\n" + samples_profile[i]+"\n"
             
-        csv_helper_time.save(case_name, field_names, samples_time)
-        # txt_helper_frofile.save(self.content_profile)
+        csv_helper_time.save(case_name, csv_field_names, length, time_content)
+        txt_helper_frofile.save(case_name, profile_content)
             
     
     def check_unknown_error(self, case_name, json_helper):

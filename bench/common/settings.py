@@ -86,7 +86,7 @@ class Settings(object):
         return self._PROFILER_JSON_FILEPATH
 
     @property
-    def result_dir(self):
+    def profiler_dir(self):
         return self._PROFILER_DIR
 
     @property
