@@ -287,7 +287,7 @@ class Engine(object):
     def performance_all(
         self, executer, sample_config, case_name, np_args_generator
     ):
-        item_num = len(sample_config.args_cases)
+        item_num = len(sample_config.args_cases[0])
         samples_perf = {
             "item_"+str(i): []
             for i in range(item_num)
@@ -296,7 +296,7 @@ class Engine(object):
         samples_profile = []
         
 
-        for idx in range(item_num):
+        for idx in range(len(sample_config.args_cases)):
             func_args = self.make_data(
                 executer,
                 sample_config,
