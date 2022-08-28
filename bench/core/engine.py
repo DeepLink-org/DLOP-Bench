@@ -287,7 +287,7 @@ class Engine(object):
     def performance_all(
         self, executer, sample_config, case_name, np_args_generator
     ):
-        item_num = len(sample_config.args_cases[0])
+        item_num = len(sample_config.args_cases)
         print(item_num)
         samples_perf = {
             "item_"+str(i): []
