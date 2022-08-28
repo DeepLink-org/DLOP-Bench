@@ -348,10 +348,10 @@ class Engine(object):
         content_time = json_helper_time.read()
         content_profile = json_helper_frofile.read()
         content_time[case_name] = {
-            samples_time
+            "time_cost": samples_time
         }
         content_profile[case_name] = {
-            samples_profile
+            "profiler info": samples_profile
         }
         json_helper_time.save(content_time)
         json_helper_frofile.save(content_profile)
