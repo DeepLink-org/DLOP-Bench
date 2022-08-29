@@ -66,7 +66,6 @@ def parse_args():
     )
 
     args = parser.parse_args()
-    args.parrots_exec_mode = PatExecMode(args.parrots_exec_mode)
     args.cases = str(args.cases).split(",") if args.cases is not None else None
     if args.stages is not None:
         args.stages = str(args.stages).split(",")
