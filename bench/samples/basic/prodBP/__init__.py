@@ -1,4 +1,4 @@
-from long_tail_bench.common import (
+from bench.common import (
     SampleConfig,
     register_sample,
     SampleSource,
@@ -9,7 +9,7 @@ import json
 
 
 def get_sample_config():
-    with open("./long_tail_bench/samples/basic/prod/prod.json", "r") as f:
+    with open("./bench/samples/basic/prod/prod.json", "r") as f:
         arg_data = json.load(f)
     arg_data_length = len(arg_data["x1"])
     args_cases_ = []

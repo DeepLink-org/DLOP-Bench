@@ -1,6 +1,6 @@
 from functools import reduce
 import torch
-from long_tail_bench.core.executer import Executer
+from bench.core.executer import Executer
 
 
 def prod(input, dim_):
