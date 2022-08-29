@@ -312,7 +312,7 @@ class Engine(object):
                 profile = self.run_per_iter(executer, func_args[0], sample_config)
                 time_cost = time.time() - start
                 profiler.step()
-                profile_data = profiler.key_averages().table(sort_by="self_cuda_time_total", row_limit=-1)
+            profile_data = profiler.key_averages().table(sort_by="self_cuda_time_total", row_limit=-1)
             
             if profile != None:
                 time_cost = profile[0]
