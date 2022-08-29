@@ -64,6 +64,13 @@ def parse_args():
         type=str,
         default=None,
     )
+    parser.add_argument(
+        "-pem",
+        "--parrots_exec_mode",
+        help="parrots exec mode, `sync` or `async`",
+        type=str,
+        default="sync",
+    )
 
     args = parser.parse_args()
     args.parrots_exec_mode = PatExecMode(args.parrots_exec_mode)
