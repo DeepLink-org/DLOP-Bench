@@ -162,7 +162,7 @@ class TorchExecuter(TorchAPIExecuter):
 
     def prepare(self, stage_mode):
         self._stage_args = TORCH_MODES_TO_SCRIPT_ARGS[stage_mode]  
-        self._execute_func = self.get_profiler
+        self._execute_func = self._origin_func if not self._stage_args else torch.jit.script(self._origin_func, **self._stage_args)
 
     def save_timeline_start(self, case_name, stage_mode, saving_path):
         self._timeline_saving_path = self.gen_timeline_saving_path(
@@ -175,19 +175,12 @@ class TorchExecuter(TorchAPIExecuter):
         prof = torch.autograd.profiler.profile(enable=False)
         prof.export_chrome_trace(self._timeline_saving_path)
     
-    def get_profiler(self, *func_args):
-        func = self._origin_func if not self._stage_args else torch.jit.script(self._origin_func, **self._stage_args)
-        with profile(
+    def get_profiler(self,):
+        return profile(
                 activities=[torch.profiler.ProfilerActivity.CPU, torch.profiler.ProfilerActivity.CUDA],
                 profile_memory=True,
                 record_shapes=True,
                 with_stack=True,
                 with_flops=True,
-        ) as profiler:
-            start = time.time()
-            func(*func_args)
-            time_cost = time.time() - start
-            profiler.step()
-        profile_data = profiler.key_averages().table(sort_by="self_cuda_time_total", row_limit=-1)
-        return [time_cost, profile_data]
+        )
         
