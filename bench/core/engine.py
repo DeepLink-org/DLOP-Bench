@@ -218,6 +218,7 @@ class Engine(object):
         
         if stage_mode == self._stage_modes.S1 and self._settings.framework_compare_mode == False:
             return
+        print("STORED!")
         for idx in range(len(func_args)):
             func_args = self.make_data(
                 executer,
