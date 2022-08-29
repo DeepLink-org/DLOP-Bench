@@ -1,3 +1,3 @@
-from bench.api import run, set_running_config
+from bench.api import run
 
-__all__ = ["run", "set_running_config"]
+__all__ = ["run"]

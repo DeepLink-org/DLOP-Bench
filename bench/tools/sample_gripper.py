@@ -8,7 +8,11 @@ from .autogen import (get_sample_config, gen_np_args, get_args_adaptor,
 
 
 class BaseGripper(object):
+    """Base sample griper class.
 
+    Args:
+        dist_dir(str): The sample griped saving path.
+    """
     def __init__(self, dist_dir):
         self._dist_dir = os.path.dirname(__file__).replace(
             "tools", "samples") if dist_dir is None else dist_dir
@@ -28,10 +32,12 @@ class BaseGripper(object):
 
     @abstractmethod
     def entry_name(self):
+        """The sample griped execution function name."""
         pass
 
     @property
     def grapped(self):
+        """Whether the sample was griped."""
         return self._grapped
 
     @grapped.setter
@@ -39,6 +45,7 @@ class BaseGripper(object):
         self._grapped = value
 
     def analyse_inputs(self, *args, **kwargs):
+        """Analyse sample execution function inputs."""
         if kwargs:
             bound_args = self._signature.bind(*args, **kwargs)
             bound_args.apply_defaults()
@@ -46,15 +53,16 @@ class BaseGripper(object):
         self._inputs_tree, self._inputs = abstract_tree(args)
 
     def analyse_outputs(self, outputs):
+        """Analyse sample execution function outputs."""
         self._outputs_tree, self._outputs = abstract_tree(outputs)
 
     @abstractmethod
     def analyse_body(self):
+        """Analyse sample body codes."""
         pass
 
     def format(self):
-        """
-        Transfer inputs outputs and class or func codes to format we need,
+        """Transfer inputs outputs and class or func codes to format we need,
         such as str of function `get_sample_config`,
         `gen_np_args`, `args_adaptor`,
         `executer_creator` and dist class.
@@ -71,6 +79,7 @@ class BaseGripper(object):
         ) + "\n\n" + self._body + "\n\n" + self._args_adaptor + "\n\n" + self._executer_creator  # noqa
 
     def save_to_dist_dir(self):
+        """Save code generated automatically."""
         sample_path = os.path.join(self._dist_dir, self.entry_name())
         assert not os.path.exists(sample_path)
         os.mkdir(sample_path)
@@ -85,7 +94,14 @@ class BaseGripper(object):
 
 
 class ClassGripper(BaseGripper):
+    """Class sample griper.
 
+    Args:
+        cls(class): The class to grip.
+        dist_dir(str): Codes generated saving path.
+        class_entry(str): The class sample execution function  
+            name.
+    """
     def __init__(self, cls, dist_dir, class_entry):
         super().__init__(dist_dir)
         self._cls = cls
@@ -95,6 +111,7 @@ class ClassGripper(BaseGripper):
                                             follow_wrapped=False)
 
     def entry_name(self):
+        """The class sample execution function name."""
         return self._cls_entry
 
     @property
@@ -106,31 +123,34 @@ class ClassGripper(BaseGripper):
         self._cls_entry = value
 
     def analyse_inputs(self, *args, **kwargs):
-        """
-        Analyse inputs codes.
-        """
+        """Analyse inputs codes."""
         super().analyse_inputs(*args[1:], **kwargs)
 
     def analyse_body(self):
-        """
-        Analyse class body codes.
-        """
+        """Analyse class body codes."""
         assert self._cls is not None
         self._body = inspect.getsource(self._cls)
 
 
 class FuncGripper(BaseGripper):
+    """Function sample griper.
 
+    Args:
+        func(Function): The function to grip.
+        dist_dir(str): Codes generated saving path.
+    """
     def __init__(self, func, dist_dir):
         super().__init__(dist_dir)
         self._func = func
         self._signature = inspect.signature(self._func, follow_wrapped=False)
 
     def entry_name(self):
+        """The func sample name."""
         return self._func.__name__
 
     @property
     def func(self):
+        """The function to grip."""
         return self._func
 
     @func.setter
@@ -138,16 +158,14 @@ class FuncGripper(BaseGripper):
         self._func = value
 
     def analyse_body(self):
-        """
-        Analyse func body codes.
-        """
+        """Analyse function body codes."""
         assert self._func is not None
         self._body = inspect.getsource(self._func)
         self._body = '\n'.join(self._body.split('\n')[1:])
 
 
 def wrap_function(func, gripper):
-
+    """Wrap func using `wrapped` function."""
     def wrapped(*args, **kwargs):
         if gripper.grapped:
             return func(*args, **kwargs)
@@ -186,8 +204,8 @@ def grip(obj=None, dist_dir=None, class_entry=None):
 
     Args:
         obj: the class or function you want to grip.
-        dist_dir: the path we want to save to.
-        class_entry: the entry function name of the class decorated.
+        dist_dir(str): the path we want to save to.
+        class_entry(str): the entry function name of the class decorated.
     """
 
     def decorate(obj):

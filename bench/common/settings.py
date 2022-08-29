@@ -3,6 +3,11 @@ from .types import FrameType, PatModes, TorchModes, TFModes, JAXModes
 
 
 def parse_env(env):
+    """Parse environment.
+
+    Args:
+        env(str): environment name.
+    """
     debug = os.getenv(env)
     if debug is None:
         return False
@@ -25,6 +30,12 @@ SAMPLE_IMPL = (FrameType(os.getenv("SAMPLE_IMPL"))
 
 
 class Settings(object):
+    """Framework settings, such as sample performance saving file path, etc.
+
+    Args:
+        framework_compare_mode(bool): This indicates whether to save numpy input 
+            args for sample results comparing, it's used in test_samples.py.
+    """
     _FRAME_TYPE_TO_FRAME_MODES = {
         FrameType.Parrots: PatModes,
         FrameType.Torch: TorchModes,
@@ -63,14 +74,20 @@ class Settings(object):
 
     @property
     def frame_type_to_frame_modes(self):
+        """A dict, the key is FrameType, the value is execution stage.
+        """
         return self._FRAME_TYPE_TO_FRAME_MODES
 
     @property
     def result_json_filepath(self):
+        """A file path, our sample performance of one framework saving path.
+        """
         return self._RESULT_JSON_FILEPATH
 
     @property
     def result_dir(self):
+        """A directory path, our sample performance saving path.
+        """
         return self._RESULT_DIR
     
     @property
@@ -91,18 +108,28 @@ class Settings(object):
 
     @property
     def framework_compare_mode(self):
+        """This indicates whether to save numpy input 
+        args for sample results comparing, it's used in test_samples.py.
+        """
         return self._FRAMEWORK_COMPARE_MODE
 
     @property
     def sample_func_output_pickle_dir(self):
+        """Sample output pickle file saving directory path.
+        """
         return self._SAMPLE_FUNC_OUTPUT_PICKLE_DIR
 
     @property
     def sample_func_input_pickle_dir(self):
+        """Sample input pickle file saving directory path.
+        """
         return self._SAMPLE_FUNC_INPUT_PICKLE_DIR
 
     @property
     def temp_dir(self):
+        """Sample input output pickle file saving directory
+        path.
+        """
         return self._TEMP_DIR
 
     def set_temp_dir(self, temp_dir):

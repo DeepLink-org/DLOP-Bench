@@ -29,9 +29,14 @@ def yolo_decode(bboxes, pred_bboxes, stride):
     h_pred = torch.exp(pred_bboxes[..., 3]) * h
 
     decoded_bboxes = torch.stack(
-        (x_center_pred - w_pred / 2, y_center_pred - h_pred / 2,
-         x_center_pred + w_pred / 2, y_center_pred + h_pred / 2),
-        dim=-1)
+        (
+            x_center_pred - w_pred / 2,
+            y_center_pred - h_pred / 2,
+            x_center_pred + w_pred / 2,
+            y_center_pred + h_pred / 2,
+        ),
+        dim=-1,
+    )
 
     return decoded_bboxes
 

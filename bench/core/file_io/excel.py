@@ -7,10 +7,26 @@ from bench.common.types import PatModes
 
 
 def gen_json_file_path(settings, frame_type):
+    """Generate json file path.
+    
+    Args:
+        settings(Settings): Benchmark settings.
+        frame_type(FrameType): Backend frame type.
+    Returns
+        str: json path.
+        """
     return os.path.join(settings.result_dir, frame_type.value + ".json")
 
 
 def get_all_case_names(settings):
+    """Load sample performance json file and 
+    get all sample names.
+
+    Args:
+        settings(Settings): Benchmark settings.
+    Returns:
+        list: Sample names.
+    """
     case_names = set()
     for frame_type in FrameType:
         json_file_path = gen_json_file_path(settings, frame_type)
@@ -33,6 +49,14 @@ def cal_geometric_mean(speedup):
 
 
 def get_table_head(frame_types, frame_type_to_frame_modes):
+    """Generate excel table head name.
+
+    Args:
+        frame_types(FrameType): Backend frame types.
+        frame_type_to_frame_modes(dict): FrameType to stage modes.
+    Returns:
+        list: excel table head names.
+    """
     heads = ["name"]
     for frame in frame_types:
         for mode in frame_type_to_frame_modes[frame]:
@@ -50,6 +74,16 @@ def get_table_head(frame_types, frame_type_to_frame_modes):
 def collect_func_and_perf_info(
     case_names, frame_types, settings, frame_type_to_frame_modes
 ):
+    """Collect sample performance info.
+
+    Args:
+        case_names(list): sample names.
+        frame_types(FrameType): Backend frame types.
+        settings(Settings): Benchmark settings.
+        frame_type_to_frame_modes(dict): FrameType to stage modes.
+    Returns:
+        dict: Sample perforrmance info.
+    """
     json_re = {}
     for frame in frame_types:
         json_file_path = gen_json_file_path(settings, frame)
@@ -131,6 +165,8 @@ def collect_func_and_perf_info(
 
 
 def save_to_csv(heads, case_names, all_results, result_dir):
+    """Save sample performance info to csv.
+    """
     file_path = os.path.join(result_dir, "results.csv")
 
     content_to_csv = []
@@ -166,6 +202,8 @@ def save_to_csv(heads, case_names, all_results, result_dir):
 
 
 def save_to_xlsx(heads, case_names, all_results, result_dir):
+    """Save sample performance info to xlsx.
+    """
     from openpyxl import Workbook
 
     wb = Workbook()

@@ -12,7 +12,7 @@ def get_sample_config():
         args_cases=[(4, ), (8, ), (12, )],
         requires_grad=[True, False, False],
         backward=[True],
-        performance_iters=1000,
+        performance_iters=10,
         save_timeline=False,
         source=SampleSource.UNKNOWN,
         tags=[

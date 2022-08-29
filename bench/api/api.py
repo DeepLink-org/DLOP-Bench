@@ -21,6 +21,13 @@ if BENCH_DEBUG:
 
 
 def parse_args():
+    """Parse arguments.
+
+    See readme for detail uasge of api argement.
+
+    Returns:
+        argparse.Namespace: Args parsed.
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "-c",
@@ -89,19 +96,18 @@ def run(
     show_config=False,
     parrots_exec_mode=PatExecMode.SYNC,
 ):
-    """
-    @description: Start running cases on one framework, only support
-        parrots, torch or xla now. You should prepare the environment
-        it needs first and set environment variable FRAMEWORK=parrots
-        or torch、xla.
-    @param {
-        run_case_names: The cases you want to run.
-    }
-    @return {
-        It will print the running stage and time it costs if it works,
-        and save function and performance info in json, you can use
-        export_result_to_excel.py to transfer it to csv or xlsx.
-    }
+    """Start running cases on one framework.
+    Only support parrots, torch or xla now. You should prepare the environment
+    it needs first and set environment variable FRAMEWORK=parrots or torch、xla.
+    
+    Args: 
+        run_case_names(list): The sample names you want to run.
+        run_stages(list): The stage number you want to run. 1: eager stage, 
+            2: fixed shape jit stage, 3: fixed shape coder stage,
+            4: dynamic shape jit stage, 5: dynamic shape coder stage, 
+            2、3、4 just for parrots compiler.
+        show_config(bool): Whether show config of samples.
+        parrots_exec_mode(PatExecMode): The execution mode of parrots backend.
     """
     impl = FRAMEWORK if SAMPLE_IMPL is None else SAMPLE_IMPL
     print("Executer Backend:", FRAMEWORK.value)
@@ -123,21 +129,23 @@ def run(
     benchmark_engine.run()
 
 
-def set_running_config():
-    raise NotImplementedError("Do not support setting running config yet.")
-
-
 def show_all_cases():
+    """Print all sample names.
+    """
     for idx, case_name in enumerate(registry.key_iters()):
         print(idx, ":", case_name)
 
 
 def show_all_tags():
+    """Print all sample tags.
+    """
     for tag in SampleTag:
         print(tag.value)
 
 
 def show_samples_of_tag(samples_of_tag):
+    """Show all sample names which have the specified tag.
+    """
     tag = SampleTag(samples_of_tag)
     for sample_name in registry.key_iters():
         sample_config = registry.get(sample_name).sample_config_getter()
@@ -146,6 +154,8 @@ def show_samples_of_tag(samples_of_tag):
 
 
 def main():
+    """Parse args and run benchmark.
+    """
     args = parse_args()
     if args.show_all_cases:
         show_all_cases()

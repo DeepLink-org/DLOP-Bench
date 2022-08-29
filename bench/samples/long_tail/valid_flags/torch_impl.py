@@ -30,10 +30,9 @@ def valid_flags(featmap_size, valid_size, num_base_anchors, device="cuda"):
 
 
 def args_adaptor(np_args):
-    featmap_size = tuple(np_args[0].tolist())
-    valid_size = tuple(np_args[1].tolist())
+    featmap_size = tuple(np_args[0])
+    valid_size = tuple(np_args[1])
     num_base_anchors = np_args[2]
-
     return [featmap_size, valid_size, num_base_anchors]
 
 

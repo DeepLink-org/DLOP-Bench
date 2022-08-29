@@ -2,6 +2,8 @@ from enum import Enum
 
 
 class FrameType(Enum):
+    """Framework backend type.
+    """
     Parrots = "parrots"
     Torch = "torch"
     XLA = "xla"
@@ -9,11 +11,15 @@ class FrameType(Enum):
 
 
 class PatExecMode(Enum):
+    """Parrots mode
+    """
     SYNC = "sync"
     ASYNC = "async"
 
 
 class PatModes(Enum):
+    """Parrots backend execution stages.
+    """
     S1 = "PatS1"  # parrots eager mode
     S2 = "PatS2"  # parrots jit mode of fixed shape
     S3 = "PatS3"  # parrots elena mode of fixed shape
@@ -22,19 +28,27 @@ class PatModes(Enum):
 
 
 class TorchModes(Enum):
+    """Pytorch backend execution stages.
+    """
     S1 = "ScriptS1"  # torch eager mode
     S3 = "ScriptS3"  # torch script mode
 
 
 class TFModes(Enum):
+    """Tensorflow backend execution stages.
+    """
     S1 = "XLAS1"  # tensorflow eager mode
     S3 = "XLAS3"  # tensorflow xla mode
     
 class JAXModes(Enum):
+    """JAX backend execution stages.
+    """
     S1 = "JAXS1"  # tensorflow eager mode
     S3 = "JAXS3"  # tensorflow xla mode
 
 class SampleSource(Enum):
+    """The framework where samples come from.
+    """
     UNKNOWN = "unknown"
     MMCV = "mmcv"
     MMDET = "mmdetection"
@@ -56,6 +70,8 @@ class SampleSource(Enum):
 
 
 class SampleTag(Enum):
+    """Sample features.
+    """
     InputAware = "InputAware"
     ViewAttribute = "ViewAttribute"
     IfElseBranch = "IfElseBranch"

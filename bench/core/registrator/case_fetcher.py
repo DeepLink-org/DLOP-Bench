@@ -1,4 +1,14 @@
 class CaseFetcher(object):
+    """The object which save sample related functions.
+
+    Args:
+        executer_creator(Function): The function to create sample
+            executer.
+        sample_config_getter(Function): The function to get
+            sample config.
+        np_args_generator(Function): The function to generate
+            numpy sample inputs.
+    """
     def __init__(self,
                  executer_creator,
                  sample_config_getter,

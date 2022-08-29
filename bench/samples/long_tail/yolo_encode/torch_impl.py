@@ -5,7 +5,7 @@ import torch
 from bench.core.executer import Executer
 
 
-def yolo_encode(bboxes, gt_bboxes, stride, eps: float):
+def yolo_encode(bboxes, gt_bboxes, stride, eps):
     """Get box regression transformation deltas that can be used to
     transform the ``bboxes`` into the ``gt_bboxes``.
 
@@ -18,6 +18,7 @@ def yolo_encode(bboxes, gt_bboxes, stride, eps: float):
     Returns:
         torch.Tensor: Box transformation deltas
     """
+
     assert bboxes.size(0) == gt_bboxes.size(0)
     assert bboxes.size(-1) == gt_bboxes.size(-1) == 4
     x_center_gt = (gt_bboxes[..., 0] + gt_bboxes[..., 2]) * 0.5
