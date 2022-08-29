@@ -309,14 +309,12 @@ class Engine(object):
     
             with executer.get_profiler() as profiler:
                 start = time.time()
-                profile = self.run_per_iter(executer, func_args[0], sample_config)
+                self.run_per_iter(executer, func_args[0], sample_config)
                 time_cost = time.time() - start
                 profiler.step()
             profile_data = profiler.key_averages().table(sort_by="self_cuda_time_total", row_limit=-1)
             
-            if profile != None:
-                time_cost = profile[0]
-                profile_data = profile[1]
+            if profile_data != None:
                 for item_i in range(item_num):
                     samples_perf["item_"+str(item_i)].append(sample_config.args_cases[idx][item_i])
                 samples_perf["time_cost"].append(str(time_cost))
