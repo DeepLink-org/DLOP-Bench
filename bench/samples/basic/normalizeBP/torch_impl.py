@@ -1,6 +1,6 @@
 import torch
 from torch.nn import functional
-from long_tail_bench.core.executer import Executer
+from bench.core.executer import Executer
 
 
 def normalize(input, p_, dim_, eps_, out):
