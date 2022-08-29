@@ -175,7 +175,9 @@ class TorchExecuter(TorchAPIExecuter):
         prof = torch.autograd.profiler.profile(enable=False)
         prof.export_chrome_trace(self._timeline_saving_path)
     
-    def get_profiler(self,):
+    def get_profiler(self):
+        """get torch profiler tool
+        """
         return profile(
                 activities=[torch.profiler.ProfilerActivity.CPU, torch.profiler.ProfilerActivity.CUDA],
                 profile_memory=True,
