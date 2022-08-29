@@ -122,7 +122,7 @@ class Engine(object):
                     case_name,
                     "Stage Mode:",
                     stage_mode,
-                    "Time Costing: " + str(self._times[stage_mode.value]),
+                    "test success!"
                 )
             self.save_performance(case_name, self._json_helper_result, sample_config)
 
@@ -218,7 +218,6 @@ class Engine(object):
         
         if stage_mode == self._stage_modes.S1 and self._settings.framework_compare_mode == False:
             return
-        print("STORED!")
         for idx in range(len(func_args)):
             func_args = self.make_data(
                 executer,
