@@ -34,7 +34,7 @@ def gen_np_args(topk_0, topk_1):
     if isinstance(topk_1, list): # topk_1 is a tensor
         topk_1 = np.random.random(topk_1)
     else: # topk_1 is an imm
-        topk_1 = np.array(topk_1)
+        topk_1 = topk_1
 
     return [topk_0, topk_1]
 
