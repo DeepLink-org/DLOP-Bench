@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 import torch.nn
 from bench.core.executer import Executer
@@ -5,7 +7,7 @@ from bench.core.executer import Executer
 def nonzero(nonzero_0):
     nonzero.requires_grad = True
     ret = torch.nonzero(nonzero_0)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 def args_adaptor(np_args):

@@ -1,11 +1,13 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 from bench.core.executer import Executer
 
 
 def std(x1, x2):
-    output = torch.std(x1, x2)
-    output.backward(output)
-    return output
+    ret = torch.std(x1, x2)
+    ret.backward(torch.ones_like(ret))
+    return ret
 
 
 def args_adaptor(np_args):

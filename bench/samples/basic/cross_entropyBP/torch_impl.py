@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 from functools import reduce
 import torch
 from torch.nn import functional

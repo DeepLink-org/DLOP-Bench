@@ -146,5 +146,7 @@ results/*.xlsx
 results/*.txt
 results/*.json
 results/*.tar.gz
-profiler_result/*
-perf_result/*
+
+results
+perf_result
+profiler_result

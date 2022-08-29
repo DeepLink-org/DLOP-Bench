@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 import torch.nn
 import numpy as np
@@ -5,10 +7,10 @@ from bench.core.executer import Executer
 
 
 def eye(n, m):
-    output = torch.eye(n, m, device="cuda")
-    output.requires_grad=True
-    output.backward(output)
-    return output
+    ret = torch.eye(n, m, device="cuda")
+    ret.requires_grad=True
+    ret.backward(torch.ones_like(ret))
+    return ret
 
 
 def args_adaptor(np_args):

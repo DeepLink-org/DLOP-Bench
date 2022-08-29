@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 import numpy as np
 from bench.core.executer import Executer
@@ -26,7 +28,7 @@ dtype_mapping = {
 def masked_fillBP(input_tensor, masked_tensor, value):
     input_tensor.requires_grad = True
     ret = input_tensor.masked_fill(masked_tensor, value)
-    retBP = ret.backward(ret)
+    ret = ret.backward(torch.ones_like(ret))
     return ret
 
 def args_adaptor(np_args):

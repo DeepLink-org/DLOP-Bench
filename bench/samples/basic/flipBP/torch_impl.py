@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 from doctest import OutputChecker
 import torch
 import torch.nn

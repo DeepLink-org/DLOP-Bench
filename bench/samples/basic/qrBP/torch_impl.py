@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 import torch.nn
 import numpy as np
@@ -6,7 +8,7 @@ from bench.core.executer import Executer
 
 def qr(input):
     q, r = torch.qr(input)
-    q.backward(q)
+    q.backward(torch.ones_like(q))
     return q
 
 def args_adaptor(np_args):

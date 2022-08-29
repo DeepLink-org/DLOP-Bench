@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 import torch.nn
 import numpy as np
@@ -10,7 +12,7 @@ def sparse_coo_tensor(indices_tensor, values_tensor, size):
     else:
         output = torch.sparse_coo_tensor(indices_tensor, values_tensor)
     output.requires_grad = True
-    output.backward(output)
+    output.backward(torch.ones_like(output))
     return output
 
 def args_adaptor(np_args):

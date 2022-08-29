@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 import torch.nn
 import numpy as np
@@ -6,7 +8,7 @@ from bench.core.executer import Executer
 
 def margin_ranking_loss(theta, size, align_corners):
     ret = torch.nn.functional.affine_grid(theta, torch.Size(size), align_corners)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 

@@ -1,10 +1,12 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 from bench.core.executer import Executer
 
 
 def norm(x1, x2):
     output = torch.norm(x1, x2)
-    output.backward(output)
+    output.backward(torch.ones_like(output))
     return output
 
 

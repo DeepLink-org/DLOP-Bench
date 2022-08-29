@@ -1,16 +1,18 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 import torch.nn
 from bench.core.executer import Executer
 
-def abs(abs_0):
-    abs.requires_grad = True
-    ret = torch.abs(abs_0)
+def abs(abs_0_torch):
+    ret = torch.abs(abs_0_torch)
     ret.backward(ret)
     return ret
 
 def args_adaptor(np_args):
-    abs_0 = torch.from_numpy(np_args[0]).cuda()
-    return [abs_0]
+    abs_0_torch = torch.from_numpy(np_args[0]).cuda()
+    abs_0_torch.requires_grad = True
+    return [abs_0_torch]
 
 
 def executer_creator():

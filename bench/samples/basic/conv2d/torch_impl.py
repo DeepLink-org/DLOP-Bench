@@ -1,12 +1,13 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 import torch.nn
 import numpy as np
 from bench.core.executer import Executer
 
 
-def conv2d(in_channels, out_channels, kernel_size, bias, stride, padding, dilation, groups, input_torch):
-    conv2d = torch.nn.Conv2d(in_channels=in_channels, out_channels=out_channels, kernel_size=kernel_size, stride=stride, padding=padding, dilation=dilation, groups=groups, bias=bias).cuda()
-    ret = conv2d(input_torch)
+def conv2d(op, input_torch):
+    ret = op(input_torch)
     return ret
 
 
@@ -20,8 +21,9 @@ def args_adaptor(np_args):
     dilation = np_args[6]
     groups = np_args[7]
     input_torch = torch.from_numpy(np_args[8]).to(torch.float32).cuda()
+    conv2d = torch.nn.Conv2d(in_channels=in_channels, out_channels=out_channels, kernel_size=kernel_size, stride=stride, padding=padding, dilation=dilation, groups=groups, bias=bias).cuda()
     
-    return [in_channels, out_channels, kernel_size, bias, stride, padding, dilation, groups, input_torch]
+    return [conv2d, input_torch]
 
 
 def executer_creator():

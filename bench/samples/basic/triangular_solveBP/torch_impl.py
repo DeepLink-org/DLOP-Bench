@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 import torch.nn
 import numpy as np
@@ -6,7 +8,7 @@ from bench.core.executer import Executer
 
 def triangular_solve(b, A):
     s, c = torch.triangular_solve(b, A)
-    s.backward(s)
+    s.backward(torch.ones_like(s))
     return s
 
 def args_adaptor(np_args):

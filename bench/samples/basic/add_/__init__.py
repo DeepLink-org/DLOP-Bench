@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 from bench.common import (
     SampleConfig,
     register_sample,
@@ -18,8 +20,8 @@ def get_sample_config():
     return SampleConfig(
         args_cases=args_cases_,
         requires_grad=[False] * 2,
-        backward=[False],
-        performance_iters=1000,
+        backward=False,
+        performance_iters=100,
         save_timeline=False,
         source=SampleSource.MMDET,
         url="",  # noqa
@@ -27,14 +29,14 @@ def get_sample_config():
     )
 
 
-def gen_np_args(add__0, add__1):
-    add__0 = np.random.random(add__0)
-    if isinstance(add__1, list): # add__1 is a tensor
-        add__1 = np.random.random(add__1)
+def gen_np_args(add__0_size, add__1_size):
+    add__0_np = np.random.random(add__0_size)
+    if isinstance(add__1_size, list): # add__1 is a tensor
+        add__1_np = np.random.random(add__1_size)
     else: # add__1 is an imm
-        add__1 = np.array(add__1)
+        add__1_np = np.array(add__1_size)
 
-    return [add__0, add__1]
+    return [add__0_np, add__1_np]
 
 
 register_sample(__name__, get_sample_config, gen_np_args)

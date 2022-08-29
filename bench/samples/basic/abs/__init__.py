@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 from bench.common import (
     SampleConfig,
     register_sample,
@@ -18,8 +20,8 @@ def get_sample_config():
     return SampleConfig(
         args_cases=args_cases_,
         requires_grad=[False] * 1,
-        backward=[False],
-        performance_iters=1000,
+        backward=False,
+        performance_iters=100,
         save_timeline=False,
         source=SampleSource.MMDET,
         url="",  # noqa
@@ -27,9 +29,9 @@ def get_sample_config():
     )
 
 
-def gen_np_args(abs_0):
-    abs_0 = np.random.random(abs_0)
-    return [abs_0]
+def gen_np_args(abs_0_size):
+    abs_0_np = np.random.random(abs_0_size)
+    return [abs_0_np]
 
 
 register_sample(__name__, get_sample_config, gen_np_args)

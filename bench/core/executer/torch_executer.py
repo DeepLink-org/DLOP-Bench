@@ -1,6 +1,9 @@
 import os
 
 import torch
+from torch.profiler import profile
+import time
+
 from collections import OrderedDict
 from bench.common import TorchModes
 from bench.common import build_pytree
@@ -155,14 +158,11 @@ class TorchAPIExecuter(BaseCaseExecuter):
 class TorchExecuter(TorchAPIExecuter):
     def __init__(self, core_func, args_generator):
         super().__init__(core_func, args_generator)
+        self._stage_args = None
 
     def prepare(self, stage_mode):
-        stage_args = TORCH_MODES_TO_SCRIPT_ARGS[stage_mode]
-        self._execute_func = (
-            self._origin_func
-            if not stage_args
-            else torch.jit.script(self._origin_func, **stage_args)
-        )
+        self._stage_args = TORCH_MODES_TO_SCRIPT_ARGS[stage_mode]  
+        self._execute_func = self._origin_func if not self._stage_args else torch.jit.script(self._origin_func, **self._stage_args)
 
     def save_timeline_start(self, case_name, stage_mode, saving_path):
         self._timeline_saving_path = self.gen_timeline_saving_path(
@@ -174,3 +174,13 @@ class TorchExecuter(TorchAPIExecuter):
         assert self._timeline_saving_path is not None
         prof = torch.autograd.profiler.profile(enable=False)
         prof.export_chrome_trace(self._timeline_saving_path)
+    
+    def get_profiler(self,):
+        return profile(
+                activities=[torch.profiler.ProfilerActivity.CPU, torch.profiler.ProfilerActivity.CUDA],
+                profile_memory=True,
+                record_shapes=True,
+                with_stack=True,
+                with_flops=True,
+        )
+        

@@ -1,3 +1,6 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+# Modified from OpenMMLab.
+
 import torch
 from bench.core.executer import Executer
 import torch.nn as nn

@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 from torch.nn import functional
 from bench.core.executer import Executer
@@ -5,7 +7,7 @@ from bench.core.executer import Executer
 
 def smooth_l1_loss_basic(x1, x2):
     output = functional.smooth_l1_loss(x1, x2)
-    output.backward(output)
+    output.backward(torch.ones_like(output))
     return output
 
 

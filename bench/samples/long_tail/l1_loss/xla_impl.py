@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import numpy as np
 import tensorflow as tf
 from bench.core.executer import Executer

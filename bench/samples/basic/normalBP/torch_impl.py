@@ -1,10 +1,12 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 from bench.core.executer import Executer
 
 
 def normal_(x1, x2, x3):
     output = torch.Tensor.normal_(x1, x2, x3)
-    output.backward(output)
+    output.backward(torch.ones_like(output))
     return output
 
 

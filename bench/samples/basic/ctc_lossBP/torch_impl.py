@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 from torch.nn import functional
 from bench.core.executer import Executer
