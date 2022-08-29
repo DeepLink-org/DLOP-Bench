@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 from audioop import bias
 import torch
 from bench.core.executer import Executer

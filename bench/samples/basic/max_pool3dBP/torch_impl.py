@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 from math import ceil
 import torch
 import torch.nn
@@ -10,7 +12,7 @@ def max_pool3d(input_image, kernel_size_image,\
     ret = torch.nn.functional.max_pool3d(input_image, kernel_size_image,\
         stride_image, padding_image, dilation_image, ceil_mode_image,\
         return_indices_image)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 def args_adaptor(np_args):

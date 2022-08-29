@@ -10,7 +10,7 @@ import numpy as np
 def get_sample_config():
     return SampleConfig(
         args_cases=[(3000, 4), (4000, 4), (5000, 4)],
-        requires_grad=[False] * 2,
+        requires_grad=[False] * 4,
         backward=[False],
         performance_iters=1000,
         save_timeline=False,

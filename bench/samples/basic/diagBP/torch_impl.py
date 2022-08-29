@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 import torch.nn
 import numpy as np
@@ -6,7 +8,7 @@ from bench.core.executer import Executer
 
 def diag(input, diagonal):
     ret = torch.diag(input, diagonal)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 def args_adaptor(np_args):

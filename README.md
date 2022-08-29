@@ -1,91 +1,123 @@
-# Long Tail Bench
+## Introduction
 
-A benchmark for long tail operators in deep learning. Deep neural networks have brought significant innovations in many domains, such as computer vision, natural language processing, and speech recognition. To this end, many new operators have also been developed to attain better accuracy in the specific domain, such as the operators about anchors in object detection and operators about agent-environment interaction in reinforcement learning. We name the new operator which has no corresponding implementation in the device compute library and has to be composed of meta-operations and control flow in python interpreter as long-tail operators. This is inspired by the meaning of long tail phenomenon in business and statistics that products with small sales but many types, not valued originally, in fact, have a huge total amount. Benchmark suite is the quantitative foundation for the improvement of related research and industry, which plays a very important role in pushing technology development. Unfortunately, there have been no representative benchmark suites that can present the importance of long-tail operators and help guide to switch the focus of compiler researchers and chip vendors from ordinary neural network operators to them. LongTail-Bench is proposed to fill the gap, which can help to evaluate the existing deep learning systems from underlying hardware up to the algorithm, and further guide the research directions of the algorithm, compiler, and chip researchers.
+DLOP-Bench is an open source benchmark suite for deep learning operators. It has the following three major features:
+
+- **Operators at the deep learning framework level**
+
+
+We focus on the operator at the deep learning framework level (such as torch.convolution) and do not dive into the implementation details of each operator (implicit gemm implementation or winograd implementation and the related algorithm selection). One can easily benchmark the operators on a certain AI accelerator as long as they finish the adaption on a deep learning framework.
+
+- **Basic operators and domain-specific long-tail operators**
+
+
+Besides basic operators like convolution, pooling, and normalization, we also collect many representative domain-specific operators mainly from object detection, instance segmentation, and other computer vision directions in [OpenMMLab](https://github.com/open-mmlab). These operators have no dedicated implementation on deep learning accelerators and have to resort to the Python interpreter. As such, they will always be broken down into large numbers of basic operators. They incur a lot of function calls, as well as data transfer and context switching costs. We name them long-tail operators.
+
+- **Benchmarking deep learning accelerators, frameworks and compilers**
+
+
+From the operator level, this benchmark suite can provide a more microscopic assessment from multiple aspects, including accelerator hardware specifications, deep learning frameworks and deep learning compilers.
 
 ## Highlights
-- **Benchmark:** focus on compiling long tail operators
-- **Execution framework:** The main body is an execution engine, compatible with different modes, such as eager and different compiling mode
-- **100+ samples:** has collected 100+ long tail samples from different deep learning models, more than half of them come from [open-mmlab](https://github.com/open-mmlab), see [samples](bench/samples/README.md) for more detail
-- **Rich sample features:** such as source repo, url and semantic tags, if you want to get detail info, use the bash command as follows:
-```bash
-# show features of the running samples, including sample source, url and semantic tags
-FRAMEWORK=parrots python ./bench/api/api.py -c bbox2delta -sc
-```
-- **CV related strongly** 
-- **TorchScript and XLA mode supported:** some samples have torch script and xla implementation codes, and the execution framework is also able to run it if you could provide corresponding environment. See the instruction
-- **Tools:** grip samples conveniently on your own
+
+- **Execution framework.** The main body is an execution engine, compatible with different deep learning frameworks (PyTorch, TensorFlow, JAX, and so on) with different execution modes, such as eager and graph mode.
+- **200+ basic operators.** We collected the operators from models in [OpenMMLab](https://github.com/open-mmlab). The input information consists of two parts: input tensor shape and attributes information. We run the models and record input configurations of each operator. For each input configuration, we save them in CSV format for evaluation.
+- **100+ long-tail samples.** It has collected 100+ long tail samples from different deep learning models with representative syntax features, mainly from [OpenMMLab](https://github.com/open-mmlab), see [samples](bench/samples/README.md) for more detail.
 
 ## Getting Started Instruction
-This is parrots running command demo that illustrates how you can use LongTail-Bench to test samples performance. These apis can also be used in backend torch or xla, just set corresponding FRAMEWORK environment:
-```bash
-# prepare parrots environmant
-source pat_latest
-# config long tail bench PYTHONPATH
-cd LongTail-Bench
-export PYTHONPATH=./bench:$PYTHONPATH
-# run one sample
-FRAMEWORK=parrots python ./bench/api/api.py -c tblr2bbox
-# run several samples
-FRAMEWORK=parrots python ./bench/api/api.py -c tblr2bbox,bbox2delta
-# run all samples
-FRAMEWORK=parrots python ./bench/api/api.py
-# run several stages, 1: eager stage, 2: fixed shape jit stage, 3: fixed shape coder stage,
-# 4: dynamic shape jit stage, 5: dynamic shape coder stage, 2、3、4 just for parrots compiler
-FRAMEWORK=parrots python ./bench/api/api.py -st 1,2,3
-# show all tags
-FRAMEWORK=parrots python ./bench/api/api.py -sg
-# show samples of one tag
-FRAMEWORK=parrots python ./bench/api/api.py -sot AdvancedIndexing
-# show features of the running samples, including sample source, url and semantic tags
-FRAMEWORK=parrots python ./bench/api/api.py -c bbox2delta -sc
-# transform results recorded to excel, it will create csv or xlsx file in directory ./bench/results/
-FRAMEWORK=parrots python ./bench/api/export_result_to_excel.py
-# parrots PAT debug
-FRAMEWORK=parrots PARROTS_PAT_DEBUG=1 python ./bench/api/api.py
-# benchmark debug
-FRAMEWORK=parrots BENCH_DEBUG=1 python ./bench/api/api.py
 
+
+First, download the latest source code:
+```bash
+git clone https://github.com/OpenComputeLab/DLOP-Bench.git
 ```
 
+To show the structure of source code, we can use the following command:
+```bash
+cd DLOP-Bench
+tree -d -L 1 ./bench
+```
+The implementation functions of basic and long tail operators are located in ./bench/samples/.
+
+### Basic Operators
+
+Here is a command demo that illustrates how you can use DLOP-Bench to test basic operators.
+
+```bash
+# config bench PYTHONPATH
+cd DLOP-bench
+export PYTHONPATH=./bench:$PYTHONPATH
 If you want to test sample performance using torch backend, you can see the demo as follows:
 ```bash
-# prepare pytorch environment, torch 1.3 best
-...
-# config long tail bench PYTHONPATH
-cd LongTail-Bench
-export PYTHONPATH=./bench:$PYTHONPATH
-# run parrots sample implementation using torch backend in that torch samples implementation are equal to parrots' nearly
-FRAMEWORK=torch SAMPLE_IMPL=parrots srun -p pat_dev --gres=gpu:1 python ./bench/api/api.py -st 1
+# prepare pytorch environment, python 3 & torch 1.10 or 1.12 best
+pip install torch 
+# run the operator abs using torch backend
+FRAMEWORK=torch python ./bench/api/api.py -c abs
+
+# get the usage information
+python ./bench/api/api.py --help
 ```
 
+### Long-tail Operators
+
+From long-tail operators, this benchmark suite provides several stages to test their performance as below: 
+- **stage 1** : eager mode.
+- **stage 3** : graph mode with fixed shape jit.
+- **stage 5** : graph mode with dynamic shape jit.
+
+This benchmark suite supports the execution of all long-tail operators in stage 1, while some operators fail to run in stage 3 and 5 because they are unsupported in the given deep learning compiler.
+Here is a command demo to test long-tail operators.
+
+```bash
+# config bench PYTHONPATH
+cd bench
+export PYTHONPATH=./bench:$PYTHONPATH
+# run the operator aeloss using torch backend in eager mode
+FRAMEWORK=torch python ./bench/api/api.py -c aeloss -st 1
+
+
+# run one sample
+FRAMEWORK=torch python ./bench/api/api.py -c tblr2bbox
+# run several samples
+FRAMEWORK=torch python ./bench/api/api.py -c tblr2bbox,bbox2delta
+# run all samples
+FRAMEWORK=torch python ./bench/api/api.py
+# run several stages, 1: eager stage, 3: fixed shape coder stage, 5: dynamic shape coder stage, 
+FRAMEWORK=torch python ./bench/api/api.py -st 1,3,5
+# show all tags
+FRAMEWORK=torch python ./bench/api/api.py -sg
+# show samples of one tag
+FRAMEWORK=torch python ./bench/api/api.py -sot AdvancedIndexing
+# show features of the running samples, including sample source, url and semantic tags
+FRAMEWORK=torch python ./bench/api/api.py -c bbox2delta -sc
+# transform results recorded to excel, it will create csv or xlsx file in directory ./bench/results/
+FRAMEWORK=torch python ./bench/api/export_result_to_excel.py
+# benchmark debug
+FRAMEWORK=torch BENCH_DEBUG=1 python ./bench/api/api.py
+
+```
+These apis can also be used in backend torch, tensorflow, or xla, just set corresponding FRAMEWORK environment.
+While all the operators can be tested using torch backend, some operators may raise an AssertionError in other backends if their corresponding implementation codes have not been added yet.
+You can wait for our update or add the codes yourself.
+
+If you want to test sample performance using tensorflow, or XLA backend, you can see the demo as follows:
+
+
 XLA running demo as follows:
+
 ```bash
 # prepare xla environment
 ...
-# config long tail bench PYTHONPATH
-cd LongTail-Bench
+# config bench PYTHONPATH
+cd bench
 export PYTHONPATH=./bench:$PYTHONPATH
 # run xla samples
 FRAMEWORK=xla TF_XLA_FLAGS=--tf_xla_auto_jit=2 XLA_FLAGS=--xla_gpu_cuda_data_dir=.../cuda-10.1 python ./bench/api/api.py -st 1
 ```
 
-Sample gripper usage, it will grip the sample decorated and save files generated to directory ./bench/samples/:
-```python
->>>from bench.tools.sample_gripper import grip
->>>@grip(class_entry="forward")
-...class Test(obj):
-...    def __init__(self):
-...        pass
-...
-...
-...    def forward(self):
-...        pass
+## How to add new operator
 
->>>@grip
-...def bbox2delta(a, b, c):
-...    pass
-...
-```
-
-## Paper
-[WIP] LongTail-Bench: A Benchmark for long tail operators in Deep Learning
+- Create a folder named after the operator in the ``./bench/samples/basic`` directory
+- Copy the json file of the operator parameter information table generated by the operator acquisition module into the folder
+- Create ``__init__.py`` and ``torch_impl.py`` files, if you need to test other framework operators, you can refer to ``torch_impl.py``
+In ``__init__.py``, you need to implement two functions ``get_sample_config`` and ``gen_np_args``, and then register the two functions using ``register_sample``.
+In ``torch_impl.py`` you need to implement the function ``args_adaptor``, which perform data preparation and the operator definition you are going to add. Then, ``executor_creator`` function is needed to register the above two functions into the benchmark.

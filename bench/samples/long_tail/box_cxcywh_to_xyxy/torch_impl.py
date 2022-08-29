@@ -1,3 +1,6 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+# Modified from OpenMMLab.
+
 # from tiny_ops.jit_example.mmdet_accuracy import N
 import torch
 from bench.core.executer import Executer

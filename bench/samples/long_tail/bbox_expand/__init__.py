@@ -29,8 +29,8 @@ def gen_np_args(M, N, K):
     bbox_weights = np.random.randn(M, N)
     bbox_weights = bbox_weights.astype(np.float32)
     labels = np.ones((M,), np.int64)
-    bbox_targets_expand = np.zeros((M, N), np.float32)
-    bbox_weights_expand = np.zeros((M, N), np.float32)
+    bbox_targets_expand = np.zeros((M, K), np.float32)
+    bbox_weights_expand = np.zeros((M, K), np.float32)
 
     return [
         bbox_targets,

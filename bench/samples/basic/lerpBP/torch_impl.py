@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 import torch.nn
 import numpy as np
@@ -6,7 +8,7 @@ from bench.core.executer import Executer
 
 def lerp(input_torch, end_torch, weight):
     ret = torch.lerp(input_torch, end_torch, weight)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 

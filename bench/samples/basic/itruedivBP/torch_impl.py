@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 from math import ceil
 import torch
 import torch.nn
@@ -7,7 +9,7 @@ from bench.core.executer import Executer
 
 def itruediv(input_image, other_image):
     ret = operator.itruediv(input_image, other_image)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 def args_adaptor(np_args):

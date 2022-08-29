@@ -1,6 +1,9 @@
 import os
 
 import torch
+from torch.profiler import profile
+import time
+
 from collections import OrderedDict
 from bench.common import TorchModes
 from bench.common import build_pytree
@@ -250,6 +253,7 @@ class TorchExecuter(TorchAPIExecuter):
     """
     def __init__(self, core_func, args_generator):
         super().__init__(core_func, args_generator)
+        self._stage_args = None
 
     def prepare(self, stage_mode):
         """Prepare sample func to execute. Compile origin func
@@ -283,3 +287,13 @@ class TorchExecuter(TorchAPIExecuter):
         assert self._timeline_saving_path is not None
         prof = torch.autograd.profiler.profile(enable=False)
         prof.export_chrome_trace(self._timeline_saving_path)
+    
+    def get_profiler(self,):
+        return profile(
+                activities=[torch.profiler.ProfilerActivity.CPU, torch.profiler.ProfilerActivity.CUDA],
+                profile_memory=True,
+                record_shapes=True,
+                with_stack=True,
+                with_flops=True,
+        )
+        

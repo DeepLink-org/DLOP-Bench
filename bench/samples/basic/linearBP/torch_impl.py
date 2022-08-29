@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 import torch.nn
 import numpy as np
@@ -5,7 +7,7 @@ from bench.core.executer import Executer
 
 def linear(input, weight, bias):
     ret = torch.nn.functional.linear(input, weight, bias)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 

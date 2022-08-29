@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 import torch.nn
 import numpy as np
@@ -12,7 +14,7 @@ def avg_pool2d(input_image, kernel_size_image,\
     return ret
 
 def args_adaptor(np_args):
-    input_image = np_args[0]
+    input_image_torch = torch.from_numpy(np_args[0]).to(torch.float32).cuda()
     kernel_size = np_args[1]
     stride = np_args[2]
     padding = np_args[3]
@@ -34,7 +36,7 @@ def args_adaptor(np_args):
     ceil_mode_image = ceil_mode[0]
     count_include_pad_image = count_include_pad[0]
     divisor_override_image = divisor_override[0]
-    return [input_image, kernel_size_image,\
+    return [input_image_torch, kernel_size_image,\
         stride_image, padding_image, ceil_mode_image, count_include_pad_image,\
         divisor_override_image]
 

@@ -1,4 +1,9 @@
-from bench.common import SampleConfig, SampleSource, SampleTag
+from bench.common import (
+    SampleConfig,
+    register_sample,
+    SampleSource,
+    SampleTag,
+)
 import numpy as np
 
 
@@ -37,6 +42,4 @@ def gen_np_args(M, N, K):
     match.append(match_point_3)
     return [tl_preds, br_preds, match]
 
-
-# This case stuck in S3, so we skip it temporarily
-# register_sample(__name__, get_sample_config, gen_np_args)
+register_sample(__name__, get_sample_config, gen_np_args)

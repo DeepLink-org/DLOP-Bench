@@ -1,14 +1,16 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 import torch.nn
 from bench.core.executer import Executer
 
-def add_(add__0, add__1):
-    return add__0.add_(add__1)
+def add_(add__0_torch, add__1_torch):
+    return add__0_torch.add_(add__1_torch)
 
 def args_adaptor(np_args):
-    add__0 = torch.from_numpy(np_args[0]).cuda()
-    add__1 = torch.from_numpy(np_args[1]).cuda()
-    return [add__0, add__1]
+    add__0_torch = torch.from_numpy(np_args[0]).cuda()
+    add__1_torch = torch.from_numpy(np_args[1]).cuda()
+    return [add__0_torch, add__1_torch]
 
 
 def executer_creator():

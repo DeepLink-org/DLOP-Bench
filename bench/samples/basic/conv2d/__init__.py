@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 from bench.common import (
     SampleConfig,
     register_sample,
@@ -19,9 +21,9 @@ def get_sample_config():
             args_cases_.append((arg_data["input_size"][i], arg_data["kernel_size"][i], arg_data["bias"][i], arg_data["stride"][i], arg_data["padding"][i], arg_data["dilation"][i], arg_data["groups"][i]))
     return SampleConfig(
         args_cases=args_cases_,
-        requires_grad=[False] * 9,
+        requires_grad=[False] * 2,
         backward=False,
-        performance_iters=1000,
+        performance_iters=100,
         save_timeline=False,
         source=SampleSource.MMDET,
         url="",  # noqa

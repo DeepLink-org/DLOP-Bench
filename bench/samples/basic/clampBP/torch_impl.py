@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 import torch.nn
 import numpy as np
@@ -7,7 +9,7 @@ from bench.core.executer import Executer
 def clamp(input_image, min, max):
     input_image.requires_grad = True
     ret = torch.clamp(input_image, min, max)
-    ret.backward(ret)
+    ret.backward(torch.ones_like(ret))
     return ret
 
 def args_adaptor(np_args):

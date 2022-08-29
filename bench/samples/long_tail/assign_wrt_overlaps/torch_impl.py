@@ -1,3 +1,6 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+# Modified from OpenMMLab.
+
 from bench.core.executer import Executer
 import torch
 from .assign_result import AssignResult
@@ -98,10 +101,7 @@ def assign_wrt_overlaps(overlaps, assigned_gt_inds=None, gt_labels=None):
     else:
         assigned_labels = None
 
-    return AssignResult(num_gts,
-                        assigned_gt_inds,
-                        max_overlaps,
-                        labels=assigned_labels)
+    return num_gts, assigned_gt_inds, max_overlaps, assigned_labels
 
 
 def args_adaptor(np_args):
