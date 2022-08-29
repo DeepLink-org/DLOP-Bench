@@ -367,6 +367,18 @@ class Engine(object):
     def performance_all(
         self, executer, sample_config, case_name, np_args_generator
     ):
+        """Record all samples performance.
+         
+        Args:
+            executer(subclass of BaseCaseExecuter):  Sample backend executer.
+            sample_config(SampleConfig): Sample execution config.
+            case_name: The name of case being performed
+            np_args_generator(Function): The function to generate
+                numpy format sample inputs.
+                
+        Returns:
+            list: sample's time_cost and profile
+        """
         item_num = len(sample_config.args_cases[0])
         samples_perf = {
             "item_"+str(i): []
@@ -448,6 +460,9 @@ class Engine(object):
         json_helper.save(content)
     
     def save_performance_all(self, case_name, csv_helper_time, txt_helper_frofile, samples_time, samples_profile):
+        
+        """Save sample time_cost and profile info to csv and txt file.
+        """
         item_num = len(samples_time.keys())
         length = len(samples_time["item_0"])
         csv_field_names = [
