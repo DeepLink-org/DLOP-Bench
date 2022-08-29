@@ -5,7 +5,7 @@ import torch.nn
 from bench.core.executer import Executer
 
 def rpow(rpow_0, rpow_1):
-    return torch.rpow(rpow_0, rpow_1)
+    return torch.__rpow__(rpow_0, rpow_1)
 
 def args_adaptor(np_args):
     rpow_0 = torch.from_numpy(np_args[0]).cuda()
