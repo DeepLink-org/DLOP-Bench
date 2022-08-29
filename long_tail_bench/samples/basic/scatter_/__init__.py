@@ -28,12 +28,11 @@ def get_sample_config():
     )
 
 
-def gen_np_args(dim_, index_, src_, reduce_):
+def gen_np_args(input_, dim_, index_, src_):
     input = np.random.random(input_).astype(np.float32)
-    target = np.random.randint(5, size=target_)
+    index = np.random.randint(0, high=32, size=index_, dtype=np.int64)
 
-    return [input, target, weight_,
-            size_average_, ignore_index_, reduce_, reduction_, label_smoothing_]
+    return [input, dim_, index, src_]
 
 
 register_sample(__name__, get_sample_config, gen_np_args)
