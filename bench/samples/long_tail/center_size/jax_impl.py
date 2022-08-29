@@ -1,3 +1,4 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
 import jax.numpy as jnp
 from jax import device_put
 from bench.core.executer import Executer

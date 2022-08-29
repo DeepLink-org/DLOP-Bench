@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+# Modified from OpenMMLab.
 from bench.core.executer import Executer
 import torch
 from .assign_result import AssignResult

@@ -1,3 +1,4 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
 from bench.common import (
     SampleConfig,
     register_sample,
@@ -10,7 +11,7 @@ import numpy as np
 def get_sample_config():
     return SampleConfig(
         args_cases=[(128, 4), (256, 4), (512, 4)],
-        requires_grad=[True, False, False, False],
+        requires_grad=[True, False, False],
         backward=[True],
         performance_iters=1000,
         save_timeline=False,

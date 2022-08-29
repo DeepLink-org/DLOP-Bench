@@ -1,3 +1,4 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
 import jax
 import jax.numpy as jnp
 from jax import numpy as np

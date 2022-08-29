@@ -1,3 +1,4 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
 import os
 from bench.common import auto_register
 

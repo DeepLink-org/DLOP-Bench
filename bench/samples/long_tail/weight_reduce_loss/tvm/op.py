@@ -1,3 +1,4 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
 import io
 import numpy as np
 from torch import nn

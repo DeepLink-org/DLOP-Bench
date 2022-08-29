@@ -1,3 +1,4 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
 from jax import numpy as np
 import jax.numpy as jnp
 from jax import device_put

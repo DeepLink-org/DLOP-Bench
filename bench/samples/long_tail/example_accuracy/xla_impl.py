@@ -1,3 +1,4 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
 import tensorflow as tf
 from bench.core.executer import Executer
 
