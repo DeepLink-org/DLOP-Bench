@@ -11,7 +11,7 @@ import json
 
 
 def get_sample_config():
-    with open("./bench/samples/basic/any/argsort.json", "r") as f:
+    with open("./bench/samples/basic/argsort/argsort.json", "r") as f:
         arg_data = json.load(f)
     arg_data_length = len(arg_data["input_size"])
     args_cases_ = []
