@@ -1,8 +1,8 @@
 # Copyright (c) OpenComputeLab. All Rights Reserved.
 
 from .settings import Settings, FRAMEWORK, SAMPLE_IMPL, BENCH_DEBUG, DEVICE_CPU
-from .types import (FrameType, PatModes, TorchModes, TFModes, JAXModes, SampleTag,
-                    SampleSource, PatExecMode)
+from .types import (FrameType, TorchModes, TFModes, JAXModes, SampleTag,
+                    SampleSource)
 from .sample_config import SampleConfig
 from .args_tree import build_pytree, unfold_custom_class
 from .utils import (
@@ -20,7 +20,6 @@ __all__ = [
     "SAMPLE_IMPL",
     "Settings",
     "FrameType",
-    "PatModes",
     "TorchModes",
     "TFModes",
     "JAXModes",
@@ -33,6 +32,5 @@ __all__ = [
     "auto_register",
     "register_sample",
     "build_pytree",
-    "unfold_custom_class",
-    "PatExecMode"
+    "unfold_custom_class"
 ]

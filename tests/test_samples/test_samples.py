@@ -15,7 +15,6 @@ from bench import samples  # noqa
 
 
 class TaskType(Enum):
-    Test_Parrots = "test_parrots"
     Test_Torch = "test_torch"
     Test_XLA = "test_xla"
     Compare_Res = "compare_results"
@@ -26,7 +25,7 @@ def parse_args():
     parser.add_argument(
         "-t",
         "--task",
-        help="different stage of samples testing, such as test_parrots, \
+        help="different stage of samples testing, such as \
                 test_torch, test_xla, compare_results",
         type=str,
         default=None,
@@ -138,10 +137,7 @@ if __name__ == "__main__":
     args = parse_args()
     task = TaskType(args.task)
     test_samples = SampleChecker()
-    if task == TaskType.Test_Parrots:
-        test_samples.gen_numpy_inputs(args.cases)
-        test_samples.gen_framework_res(args.cases)
-    elif task == TaskType.Compare_Res:
+    if task == TaskType.Compare_Res:
         test_samples.compare_results(args.cases)
     else:
         test_samples.gen_framework_res(args.cases)

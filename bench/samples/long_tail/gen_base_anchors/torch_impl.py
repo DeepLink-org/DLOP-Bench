@@ -53,10 +53,10 @@ def gen_base_anchors(base_size, ratios, scales):
     return base_anchors
 
 
-def args_generator(M, N, K):
-    base_size = M
-    ratios = torch.randn(N).cuda()
-    scales = torch.randn(K).cuda()
+def args_generator(np_args):
+    base_size=np_args[0]
+    ratios=torch.randn(np_args[1]).cuda()
+    scales=torch.randn(np_args[2]).cuda()
     return [base_size, ratios, scales]
 
 

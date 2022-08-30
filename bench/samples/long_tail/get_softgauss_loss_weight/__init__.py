@@ -8,14 +8,10 @@ from bench.common import (
 )
 import numpy as np
 
-# get_softgauss_loss_weight results:
-# parrots: s1 ~ s5 pass
-
-
 def get_sample_config():
     return SampleConfig(
         args_cases=[(30, ), (40, ), (60, )],
-        requires_grad=[False, False],
+        requires_grad=[False]*2,
         backward=[False],
         performance_iters=1000,
         save_timeline=False,

@@ -17,7 +17,7 @@ def get_sample_config():
         performance_iters=1000,
         save_timeline=False,
         source=SampleSource.SEGMENTBASE2,
-        url="https://gitlab.bj.sensetime.com/parrots.fit/segmentbase2/-/blob/master/segmentbase2/models/losses/ifv_loss.py#L18",  # noqa
+        url="",  # noqa
         tags=[SampleTag.ViewAttribute, SampleTag.Reduce,\
               SampleTag.ForLoop, SampleTag.IfElseBranch]
     )

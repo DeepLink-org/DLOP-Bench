@@ -23,10 +23,7 @@ def get_sample_config():
 
 
 def gen_np_args(M, N):
-    boxes = np.random.randn(M, N).astype(np.float32)
-    offset = np.random.randn(M, N).astype(np.float32)
-    weights = np.ones(4)
-    return [boxes, offset, weights]
+    return [M, N]
 
 
 register_sample(__name__, get_sample_config, gen_np_args)

@@ -6,28 +6,9 @@ from enum import Enum
 class FrameType(Enum):
     """Framework backend type.
     """
-    Parrots = "parrots"
     Torch = "torch"
     XLA = "xla"
     JAX = "jax"
-
-
-class PatExecMode(Enum):
-    """Parrots mode
-    """
-    SYNC = "sync"
-    ASYNC = "async"
-
-
-class PatModes(Enum):
-    """Parrots backend execution stages.
-    """
-    S1 = "PatS1"  # parrots eager mode
-    S2 = "PatS2"  # parrots jit mode of fixed shape
-    S3 = "PatS3"  # parrots elena mode of fixed shape
-    S4 = "PatS4"  # parrots jit mode of changed shape
-    S5 = "PatS5"  # parrots elena mode of changed shape
-
 
 class TorchModes(Enum):
     """Pytorch backend execution stages.
@@ -62,7 +43,6 @@ class SampleSource(Enum):
     POD = "pytorch-object-detection"
     GYM = "gym"
     SINGLE_REPO = "single-repo"
-    PARROTS_EXAMPLE = "parrots.example"
     MMEDIT = "mmediting"
     MMCLS = "mmclassification"
     FAIRSEQ = "fairseq"

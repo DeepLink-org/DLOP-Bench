@@ -2,16 +2,7 @@
 
 from bench.common import FrameType, FRAMEWORK
 
-if FRAMEWORK is FrameType.Parrots:
-    from .parrots_executer import (
-        ParrotsExecuter as Executer,
-        log_debug_info,
-        tensor_type,
-        trans_tensor_to_np,
-        set_runtime_exec_mode,
-        get_runtime_exec_mode,
-    )
-elif FRAMEWORK is FrameType.Torch:
+if FRAMEWORK is FrameType.Torch:
     from .torch_executer import (
         TorchExecuter as Executer,
         log_debug_info,

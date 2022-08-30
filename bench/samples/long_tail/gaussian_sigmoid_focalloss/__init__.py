@@ -17,7 +17,7 @@ def get_sample_config():
         performance_iters=1000,
         save_timeline=False,
         source=SampleSource.POD,
-        url="https://gitlab.bj.sensetime.com/platform/ParrotsDL/pytorch-object-detection/-/blob/master/pod/models/losses/focal_loss.py#L202",  # noqa
+        url="",  # noqa
         tags=[SampleTag.ViewAttribute, SampleTag.InputAware],
     )
 

@@ -123,11 +123,11 @@ class TorchAPIExecuter(BaseCaseExecuter):
     def gen_timeline_saving_path(
         self, case_name, stage_mode, saving_path, suffix=".json"
     ):
-        """Generate parrots timeline saving path.
+        """Generate timeline saving path.
 
         Args:
             case_name(str): Sample name.
-            stage_mode(PatModes| TorchModes):Benchmark execution stage.
+            stage_mode(TorchModes):Benchmark execution stage.
             saving_path(str): The path to save timeline.
         Returns:
             str: Timeline saving path.

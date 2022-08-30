@@ -16,7 +16,7 @@ def get_sample_config():
         performance_iters=1000,
         save_timeline=False,
         source=SampleSource.POD,
-        url="https://gitlab.bj.sensetime.com/liuyan/pytorch-object-detection/-/blob/master/pod/models/heads/utils/anchor_generator.py#L286",  # noqa
+        url="",  # noqa
         tags=[SampleTag.ViewAttribute, SampleTag.IfElseBranch]
     )
 

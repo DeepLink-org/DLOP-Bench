@@ -17,7 +17,7 @@ def get_sample_config():
         performance_iters=1000,
         save_timeline=False,
         source=SampleSource.SEGMENTBASE2,
-        url="https://gitlab.bj.sensetime.com/parrots.fit/segmentbase2/-/blob/master/segmentbase2/models/losses/Edge_WBCELoss.py#L17",  # noqa
+        url="",  # noqa
         tags=[SampleTag.ViewAttribute, SampleTag.Reduce]
     )
 
