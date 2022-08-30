@@ -1,3 +1,6 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+# Modified from OpenMMLab.
+
 import cv2
 import torch
 import torch.nn as nn

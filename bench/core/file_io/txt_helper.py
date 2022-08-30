@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import os
 import shutil
 from bench.common.settings import BENCH_DEBUG

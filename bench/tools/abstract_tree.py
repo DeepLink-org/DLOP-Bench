@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 from bench.core.executer import tensor_type
 from bench.common import build_pytree
 

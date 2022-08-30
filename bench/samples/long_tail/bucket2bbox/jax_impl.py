@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import jax
 import jax.numpy as jnp
 import jax.nn as F

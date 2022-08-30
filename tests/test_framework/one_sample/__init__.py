@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import numpy as np
 from bench.common import SampleConfig, register_sample
 from bench.core import registry

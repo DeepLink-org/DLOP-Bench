@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import numpy as np
 import tensorflow as tf
 from .case_executer import BaseCaseExecuter

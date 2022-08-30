@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 from tests.test_framework.one_sample import test_sample_name, registry
 from bench.common.settings import FRAMEWORK, Settings
 

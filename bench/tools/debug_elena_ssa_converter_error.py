@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 from elena.ssa_converter.interface import dump_config
 
 

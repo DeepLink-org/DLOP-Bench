@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 from jax import numpy as np
 from jax import device_put, grad, value_and_grad
 from bench.core.executer import Executer

@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 from collections import OrderedDict
 from bench.core.registrator import custom_class_manager
 

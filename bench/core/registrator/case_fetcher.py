@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 class CaseFetcher(object):
     """The object which save sample related functions.
 

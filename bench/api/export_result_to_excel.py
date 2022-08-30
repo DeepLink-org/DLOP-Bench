@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 from bench.common import Settings, FrameType
 from bench.core import excel
 

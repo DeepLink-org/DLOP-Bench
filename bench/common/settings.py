@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import os
 from .types import FrameType, PatModes, TorchModes, TFModes, JAXModes
 

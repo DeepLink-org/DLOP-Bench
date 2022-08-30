@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import os
 from bench.core.engine import Engine
 from bench.common.settings import FRAMEWORK, Settings

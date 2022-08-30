@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import torch
 from bench.core.executer import Executer
 from tests.test_framework.one_sample.common import count_plus_one

@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import jax.numpy as jnp
 from jax import device_put
 import torch.nn.functional as F

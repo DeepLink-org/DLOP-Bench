@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import os
 from bench.core.file_io.json_helper import JsonHelper
 

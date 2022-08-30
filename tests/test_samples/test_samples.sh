@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 # Run Parrots Samples
 source pat_latest
 export PYTHONPATH=$PWD:$PYTHONPATH

@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 from .settings import Settings, FRAMEWORK, SAMPLE_IMPL, BENCH_DEBUG, DEVICE_CPU
 from .types import (FrameType, PatModes, TorchModes, TFModes, JAXModes, SampleTag,
                     SampleSource, PatExecMode)

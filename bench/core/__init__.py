@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 from .registrator.case_fetcher import CaseFetcher
 from .registrator.registry import registry
 from .file_io import excel

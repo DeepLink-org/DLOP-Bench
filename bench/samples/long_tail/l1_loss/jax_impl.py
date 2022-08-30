@@ -1,3 +1,5 @@
+# Copyright (c) OpenComputeLab. All Rights Reserved.
+
 import jax.numpy as jnp
 import numpy as np
 from jax import device_put, grad, value_and_grad
