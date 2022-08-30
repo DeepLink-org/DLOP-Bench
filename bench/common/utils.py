@@ -72,9 +72,7 @@ def auto_import(sample_module_name):
         ModuleType: Python sys module.
     """
     impl = FRAMEWORK if SAMPLE_IMPL is None else SAMPLE_IMPL
-    if impl is FrameType.Parrots:
-        return import_impl(sample_module_name, "pat_impl")
-    elif impl is FrameType.Torch:
+    if impl is FrameType.Torch:
         return import_impl(sample_module_name, "torch_impl")
     elif impl is FrameType.XLA:
         return import_impl(sample_module_name, "xla_impl")

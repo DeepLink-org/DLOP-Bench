@@ -5,7 +5,6 @@ import csv
 import json
 import math
 from bench.common import FrameType
-from bench.common.types import PatModes
 
 
 def gen_json_file_path(settings, frame_type):
@@ -127,41 +126,9 @@ def collect_func_and_perf_info(
             else:
                 re.append(None)
 
-        if (
-            FrameType.Parrots.value in json_re
-            and case_name in json_re[FrameType.Parrots.value]
-        ):
-            re.append(json_re[FrameType.Parrots.value][case_name]["source"])
-            re.append(json_re[FrameType.Parrots.value][case_name]["url"])
-            re.append(json_re[FrameType.Parrots.value][case_name]["tags"])
-        else:
-            re.append([None, None, None])
-
-        if (
-            FrameType.Parrots.value in json_re
-            and case_name in json_re[FrameType.Parrots.value]
-            and PatModes.S5.value
-            in json_re[FrameType.Parrots.value][case_name]["times"]
-            and PatModes.S1.value
-            in json_re[FrameType.Parrots.value][case_name]["times"]
-            and json_re[FrameType.Parrots.value][case_name]["times"][
-                PatModes.S1.value
-            ]
-            is not None
-            and json_re[FrameType.Parrots.value][case_name]["times"][
-                PatModes.S5.value
-            ]
-            is not None
-        ):
-            s1_time = json_re[FrameType.Parrots.value][case_name]["times"][
-                PatModes.S1.value
-            ]
-            s5_time = json_re[FrameType.Parrots.value][case_name]["times"][
-                PatModes.S5.value
-            ]
-            re.append(s1_time / s5_time)
-        else:
-            re.append(None)
+        
+        re.append([None, None, None])
+        re.append(None)
         results[case_name] = re
     return results
 

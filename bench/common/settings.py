@@ -1,7 +1,7 @@
 # Copyright (c) OpenComputeLab. All Rights Reserved.
 
 import os
-from .types import FrameType, PatModes, TorchModes, TFModes, JAXModes
+from .types import FrameType, TorchModes, TFModes, JAXModes
 
 
 def parse_env(env):
@@ -39,7 +39,6 @@ class Settings(object):
             args for sample results comparing, it's used in test_samples.py.
     """
     _FRAME_TYPE_TO_FRAME_MODES = {
-        FrameType.Parrots: PatModes,
         FrameType.Torch: TorchModes,
         FrameType.XLA: TFModes,
         FrameType.JAX: JAXModes,

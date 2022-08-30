@@ -8,9 +8,6 @@ from bench.common import (
 )
 import numpy as np
 
-# intersect results:
-# parrots: s1 ~ s3 pass
-
 
 def get_sample_config():
     return SampleConfig(

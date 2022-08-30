@@ -7,7 +7,6 @@ from bench.common import (
     SAMPLE_IMPL,
     BENCH_DEBUG,
     SampleTag,
-    PatExecMode,
 )
 from bench.core import registry
 from bench.core.engine import Engine
@@ -73,16 +72,8 @@ def parse_args():
         type=str,
         default=None,
     )
-    parser.add_argument(
-        "-pem",
-        "--parrots_exec_mode",
-        help="parrots exec mode, `sync` or `async`",
-        type=str,
-        default="sync",
-    )
 
     args = parser.parse_args()
-    args.parrots_exec_mode = PatExecMode(args.parrots_exec_mode)
     args.cases = str(args.cases).split(",") if args.cases is not None else None
     if args.stages is not None:
         args.stages = str(args.stages).split(",")
@@ -96,20 +87,16 @@ def run(
     run_case_names=None,
     run_stages=None,
     show_config=False,
-    parrots_exec_mode=PatExecMode.SYNC,
 ):
     """Start running cases on one framework.
-    Only support parrots, torch or xla now. You should prepare the environment
-    it needs first and set environment variable FRAMEWORK=parrots or torch、xla.
+    Only support torch or xla now. You should prepare the environment
+    it needs first and set environment variable FRAMEWORK=torch、xla.
     
     Args: 
         run_case_names(list): The sample names you want to run.
-        run_stages(list): The stage number you want to run. 1: eager stage, 
-            2: fixed shape jit stage, 3: fixed shape coder stage,
-            4: dynamic shape jit stage, 5: dynamic shape coder stage, 
-            2、3、4 just for parrots compiler.
+        run_stages(list): The stage number you want to run. 1: eager mode stage, 
+            3: graph mode stage with jit.
         show_config(bool): Whether show config of samples.
-        parrots_exec_mode(PatExecMode): The execution mode of parrots backend.
     """
     impl = FRAMEWORK if SAMPLE_IMPL is None else SAMPLE_IMPL
     print("Executer Backend:", FRAMEWORK.value)
@@ -126,7 +113,6 @@ def run(
         run_case_names,
         run_stages,
         show_config,
-        parrots_exec_mode,
     )
     benchmark_engine.run()
 
@@ -169,8 +155,7 @@ def main():
         show_samples_of_tag(args.samples_of_tag)
         return
     run(
-        args.cases, args.stages, args.show_sample_config,
-        args.parrots_exec_mode
+        args.cases, args.stages, args.show_sample_config
     )
 
 

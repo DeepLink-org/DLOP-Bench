@@ -8,7 +8,6 @@ import logging
 import traceback
 import multiprocessing as mp
 
-from bench.common.types import PatExecMode
 from .file_io.json_helper import JsonHelper
 from .file_io.csv_helper import CsvHelper
 from .file_io.txt_helper import TxtHelper
@@ -34,7 +33,6 @@ class Engine(object):
         run_case_names(list): Sample names to run.
         run_stages(list): Stage number to execute.
         show_config(bool): Whether to show sample config.
-        parrots_exec_mode(PatExecMode): Parrots runtime mode.
     """
     def __init__(
         self,
@@ -44,7 +42,6 @@ class Engine(object):
         run_case_names,
         run_stages=None,
         show_config=False,
-        parrots_exec_mode=PatExecMode.SYNC,
     ):
         self._rets = {}
         self._times = {}
@@ -64,7 +61,6 @@ class Engine(object):
         self._csv_helper_time = CsvHelper(self._settings.time_dir)
         self._json_helper_profile = TxtHelper(self._settings.profiler_dir)
         self._show_config = show_config
-        self._parrots_exec_mode = parrots_exec_mode
         
 
     def is_enable(self, case_name):
@@ -112,11 +108,6 @@ class Engine(object):
         sample_config = case_fetcher.sample_config_getter()
         if self._show_config:
             sample_config.show()
-        if (
-            FRAMEWORK is FrameType.Parrots
-            and self._parrots_exec_mode is PatExecMode.ASYNC
-        ):
-            set_runtime_exec_mode("ASYNC")
         for stage_mode in self.stage_modes_to_run():
             try:
                 self.run_per_mode(
@@ -224,7 +215,7 @@ class Engine(object):
 
         Args:
             case_name(str): Sample name.
-            stage_mode(PatModes| TorchModes| TFModes| JAXModes): Running stages
+            stage_mode(TorchModes| TFModes| JAXModes): Running stages
                 of different backend.
             executer(subclass of BaseCaseExecuter): Sample backend executer.
                 sample_config(SampleConfig): Sample execution config.
@@ -273,7 +264,7 @@ class Engine(object):
         Args:
             executer(subclass of BaseCaseExecuter):  Sample backend executer.
             sample_config(SampleConfig): Sample execution config.
-            stage_mode(PatModes| TorchModes| TFModes| JAXModes): Running stages
+            stage_mode(TorchModes| TFModes| JAXModes): Running stages
                 of different backend.
             case_name(str): Sample name.
             np_args_generator(Function): The function to generate
@@ -341,7 +332,7 @@ class Engine(object):
         Args:
             executer(subclass of BaseCaseExecuter):  Sample backend executer.
             sample_config(SampleConfig): Sample execution config.
-            stage_mode(PatModes| TorchModes| TFModes| JAXModes): Running stages
+            stage_mode(TorchModes| TFModes| JAXModes): Running stages
                 of different backend.
             np_args_generator(Function): The function to generate
                 numpy format sample inputs.
@@ -426,7 +417,7 @@ class Engine(object):
             executer(subclass of BaseCaseExecuter):  Sample backend executer.
             sample_config(SampleConfig): Sample execution config.
             case_name(str): Sample name.
-            stage_mode(PatModes| TorchModes| TFModes| JAXModes): Running stages
+            stage_mode(TorchModes| TFModes| JAXModes): Running stages
                 of different backend.
             np_args_generator(Function): The function to generate
                 numpy format sample inputs.

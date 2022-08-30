@@ -8,10 +8,6 @@ from bench.common import (
 )
 import numpy as np
 
-# crop results:
-# parrots: s1 ~ s3 pass
-
-
 def get_sample_config():
     return SampleConfig(
         args_cases=[(4, ), (2, ), (8, )],

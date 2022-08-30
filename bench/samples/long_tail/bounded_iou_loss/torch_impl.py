@@ -44,7 +44,6 @@ def bounded_iou_loss(pred, target, beta=0.2, eps=1e-3):
     loss_dh = 1 - torch.min(target_h / (pred_h + eps), pred_h /
                             (target_h + eps))
 
-    # loss_dx.size(0)是常数, Parrots do not support const variable to view in S4
     loss_comb = torch.stack([loss_dx, loss_dy, loss_dw, loss_dh],
                             dim=-1).view(loss_dx.size(0), -1)
 

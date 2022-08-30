@@ -8,11 +8,6 @@ import numpy as np
 from bench.common import FRAMEWORK
 from bench.core.executer import Executer
 
-if FRAMEWORK is FrameType.Parrots:
-    from parrots.nn import Parameter
-    from parrots import DArray
-
-
 class PartialConv2d(nn.Conv2d):
     """Implementation for partial convolution.
 
@@ -50,8 +45,6 @@ class PartialConv2d(nn.Conv2d):
 
         self.mask_kernel_numel = np.prod(self.weight_mask_updater.shape[1:4])
         self.mask_kernel_numel = np.asscalar(self.mask_kernel_numel)
-        if FRAMEWORK is FrameType.Parrots:
-            self.keep_init_weight_same()
 
     def keep_init_weight_same(self):
         self.weight = Parameter(
