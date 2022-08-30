@@ -9,7 +9,7 @@ from torch import _C
 def adaptive_max_pool3d_with_indices(input_image_torch, output_size_image):
     res, indices = torch.nn.functional.adaptive_max_pool3d_with_indices(\
         input_image_torch, output_size_image)
-    res.backward(torch.ones_like(ret))
+    res.backward(torch.ones_like(res))
     return res
 
 def args_adaptor(np_args):

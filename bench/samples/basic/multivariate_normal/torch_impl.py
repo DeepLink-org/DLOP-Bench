@@ -5,7 +5,7 @@ import numpy as np
 from bench.core.executer import Executer
 
 
-def MultivariateNormal(loc, covariance_matrix):
+def multivariate_normal(loc, covariance_matrix):
     sampler = torch.distributions.MultivariateNormal(loc=loc, covariance_matrix=covariance_matrix)
     ret = sampler.sample()
     return ret
@@ -18,4 +18,4 @@ def args_adaptor(np_args):
     return [loc, covariance_matrix]
 
 def executer_creator():
-    return Executer(MultivariateNormal, args_adaptor)
+    return Executer(multivariate_normal, args_adaptor)
