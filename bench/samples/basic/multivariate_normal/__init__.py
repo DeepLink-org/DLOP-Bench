@@ -10,7 +10,7 @@ import numpy as np
 import json
 
 def get_sample_config():
-    with open("./bench/samples/basic/multivariateNormal/MultivariateNormal.json", "r") as f:
+    with open("./bench/samples/basic/multivariate_normal/multivariate_normal.json", "r") as f:
         arg_data = json.load(f)
     arg_data_length = len(arg_data["loc_size"])
     args_cases_ = []
