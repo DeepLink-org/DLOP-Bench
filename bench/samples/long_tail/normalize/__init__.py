@@ -1,5 +1,4 @@
 # Copyright (c) OpenComputeLab. All Rights Reserved.
-
 from bench.common import (
     SampleConfig,
     register_sample,

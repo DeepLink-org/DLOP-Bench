@@ -1,6 +1,5 @@
 # Copyright (c) OpenComputeLab. All Rights Reserved.
 # Modified from OpenMMLab.
-
 from bench.samples.long_tail.random_sampler.assign_result import AssignResult
 import torch
 from abc import ABCMeta, abstractmethod

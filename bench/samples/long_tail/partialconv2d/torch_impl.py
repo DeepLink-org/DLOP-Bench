@@ -1,6 +1,5 @@
 # Copyright (c) OpenComputeLab. All Rights Reserved.
 # Modified from OpenMMLab.
-
 from bench.common.types import FrameType
 import torch
 import torch.nn as nn
