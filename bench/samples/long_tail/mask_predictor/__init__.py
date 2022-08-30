@@ -16,7 +16,7 @@ def get_sample_config():
         performance_iters=1000,
         save_timeline=False,
         source=SampleSource.POD,
-        url="https://gitlab.bj.sensetime.com/platform/ParrotsDL/pytorch-object-detection/-/blob/master/pod/models/heads/htc_head/mask.py#L118",  # noqa
+        url="",  # noqa
         tags=[SampleTag.InputAware, \
               SampleTag.ViewAttribute, SampleTag.IfElseBranch, \
               SampleTag.AdvancedIndexing, SampleTag.BuiltInDataStructure]

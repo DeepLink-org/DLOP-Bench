@@ -16,7 +16,7 @@ def get_sample_config():
         performance_iters=1000,
         save_timeline=False,
         source=SampleSource.SEGMENTBASE2,
-        url="https://gitlab.bj.sensetime.com/parrots.fit/segmentbase2/-/blob/master/segmentbase2/models/losses/Margin_loss.py#L45",  # noqa
+        url="",  # noqa
         tags=[SampleTag.ForLoop, SampleTag.Reduce, SampleTag.ThirdPartyCodes]
     )
 
@@ -31,6 +31,5 @@ def gen_np_args(M):
     label = gen_base(M)
 
     return [logit, label]
-
 
 register_sample(__name__, get_sample_config, gen_np_args)

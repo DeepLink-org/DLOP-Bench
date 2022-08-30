@@ -11,7 +11,7 @@ import numpy as np
 def get_sample_config():
     return SampleConfig(
         args_cases=[(128, 4), (256, 4), (512, 4)],
-        requires_grad=[False, False, False, False],
+        requires_grad=[False, False],
         backward=[False],
         save_timeline=False,
         source=SampleSource.MMDET,

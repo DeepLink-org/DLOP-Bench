@@ -23,12 +23,7 @@ def get_sample_config():
 
 
 def gen_np_args(M, N, K):
-    base_size = M
-    ratios = np.random.randn(N)
-    ratios = ratios.astype(np.float32)
-    scales = np.random.randn(K)
-    scales = scales.astype(np.float32)
-    return [base_size, ratios, scales]
+    return [M, N, K]
 
 
 register_sample(__name__, get_sample_config, gen_np_args)

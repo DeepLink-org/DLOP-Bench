@@ -15,7 +15,7 @@ def get_sample_config():
         backward=[False],
         save_timeline=False,
         source=SampleSource.SEGMENTBASE2,
-        url="https://gitlab.bj.sensetime.com/parrots.fit/segmentbase2/-/blob/master/segmentbase2/models/losses/L2_loss.py#L27",  # noqa
+        url="",  # noqa
         tags=[SampleTag.Reduce]
     )
 

@@ -54,9 +54,9 @@ def offset2bbox(boxes, offset, weights=(1.0, 1.0, 1.0, 1.0)):
     return pred_boxes
 
 
-def args_generator(M, N):
-    boxes = torch.randn(M, N).cuda()
-    offset = torch.randn(M, N).cuda()
+def args_generator(np_args):
+    boxes = torch.randn(np_args[0], np_args[1]).cuda()
+    offset = torch.randn(np_args[0], np_args[1]).cuda()
     weights = (1.0, 1.0, 1.0, 1.0)
     return [boxes, offset, weights]
 

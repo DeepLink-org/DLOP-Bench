@@ -1,6 +1,6 @@
 ## Introduction
 
-DLOP-Bench is an open source benchmark suite for deep learning operators. It has the following three major features:
+DLOP-Bench is an open-source benchmark suite for deep learning operators. It has the following three major features:
 
 - **Operators at the deep learning framework level**
 
@@ -10,18 +10,18 @@ We focus on the operator at the deep learning framework level (such as torch.con
 - **Basic operators and domain-specific long-tail operators**
 
 
-Besides basic operators like convolution, pooling, and normalization, we also collect many representative domain-specific operators mainly from object detection, instance segmentation, and other computer vision directions in [OpenMMLab](https://github.com/open-mmlab). These operators have no dedicated implementation on deep learning accelerators and have to resort to the Python interpreter. As such, they will always be broken down into large numbers of basic operators. They incur a lot of function calls, as well as data transfer and context switching costs. We name them long-tail operators.
+Besides basic operators like convolution, pooling, and normalization, we also collect many representative domain-specific operators mainly from object detection, instance segmentation, and other computer vision directions in [OpenMMLab](https://github.com/open-mmlab). These operators have no dedicated implementation of deep learning accelerators and have to resort to the Python interpreter. As such, they will always be broken down into large numbers of basic operators. They incur a lot of function calls, as well as data transfer and context switching costs. We name them long-tail operators.
 
-- **Benchmarking deep learning accelerators, frameworks and compilers**
+- **Benchmarking deep learning accelerators, frameworks, and compilers**
 
 
-From the operator level, this benchmark suite can provide a more microscopic assessment from multiple aspects, including accelerator hardware specifications, deep learning frameworks and deep learning compilers.
+From the operator level, this benchmark suite can provide a more microscopic assessment from multiple aspects, including accelerator hardware specifications, deep learning frameworks, and deep learning compilers.
 
 ## Highlights
 
 - **Execution framework.** The main body is an execution engine, compatible with different deep learning frameworks (PyTorch, TensorFlow, JAX, and so on) with different execution modes, such as eager and graph mode.
-- **200+ basic operators.** We collected the operators from models in [OpenMMLab](https://github.com/open-mmlab). The input information consists of two parts: input tensor shape and attributes information. We run the models and record input configurations of each operator. For each input configuration, we save them in CSV format for evaluation.
-- **100+ long-tail samples.** It has collected 100+ long tail samples from different deep learning models with representative syntax features, mainly from [OpenMMLab](https://github.com/open-mmlab), see [samples](bench/samples/README.md) for more detail.
+- **200+ basic operators.** We collected the operators from models in [OpenMMLab](https://github.com/open-mmlab). The input information consists of two parts: input tensor shape and attributes information. We run the models and record the input configurations of each operator. For each input configuration, we save them in CSV format for evaluation.
+- **100+ long-tail samples.** It has collected 100+ long-tail samples from different deep learning models with representative syntax features, mainly from [OpenMMLab](https://github.com/open-mmlab), see [samples](bench/samples/README.md) for more detail.
 
 ## Getting Started Instruction
 
@@ -43,6 +43,13 @@ The implementation functions of basic and long tail operators are located in ./b
 The code is tested under Python 3, with different deep learning frameworks (PyTorch, TensorFlow, JAX, and so on).
 You can select a specific version of the framework according to the version of CUDA/cuDNN.
 For more details please refer to their official websites.
+
+Some samples is dependent on OpenCV2.
+
+```bash
+pip install opencv-python
+pip install opencv-python-headless
+```
 
 ### Basic Operators
 

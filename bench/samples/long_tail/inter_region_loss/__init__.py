@@ -2,8 +2,10 @@
 
 from bench.common import (
     SampleConfig,
+    register_sample,
     SampleSource,
     SampleTag,
+    
 )
 import numpy as np
 
@@ -16,7 +18,7 @@ def get_sample_config():
         performance_iters=1000,
         save_timeline=False,
         source=SampleSource.SEGMENTBASE2,
-        url="https://gitlab.bj.sensetime.com/parrots.fit/segmentbase2/-/blob/master/segmentbase2/models/losses/inter_region_loss.py#L16",  # noqa
+        url="",  # noqa
         tags=[SampleTag.ViewAttribute, SampleTag.IfElseBranch, \
               SampleTag.ForLoop, SampleTag.Reduce]
     )
@@ -34,5 +36,4 @@ def gen_np_args(M):
 
     return [logit, softlabel, label]
 
-# This case stuck in S3, so we skip it temporarily
-# register_sample(__name__, get_sample_config, gen_np_args)
+register_sample(__name__, get_sample_config, gen_np_args)

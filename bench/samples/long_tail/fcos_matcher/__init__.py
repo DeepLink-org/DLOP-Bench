@@ -16,7 +16,7 @@ def get_sample_config():
         backward=[False, False],
         save_timeline=False,
         source=SampleSource.POD,
-        url="https://gitlab.bj.sensetime.com/platform/ParrotsDL/pytorch-object-detection/-/blob/master/pod/models/heads/fcos_head/fcos.py#L156",  # noqa
+        url="",  # noqa
         tags=[SampleTag.ViewAttribute, SampleTag.IfElseBranch,
               SampleTag.Reduce, SampleTag.AdvancedIndexing,
               SampleTag.ForLoop]
