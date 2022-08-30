@@ -44,7 +44,7 @@ The code is tested under Python 3, with different deep learning frameworks (PyTo
 You can select a specific version of the framework according to the version of CUDA/cuDNN.
 For more details please refer to their official websites.
 
-Some samples is dependent on OpenCV2.
+Some samples are dependent on OpenCV2.
 
 ```bash
 pip install opencv-python
