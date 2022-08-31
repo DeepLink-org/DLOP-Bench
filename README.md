@@ -92,10 +92,6 @@ While all the operators can be tested using torch backend, some operators may ra
 You can wait for our update or add the codes yourself.
 
 If you want to test sample performance using tensorflow, or XLA backend, you can see the demo as follows:
-
-
-XLA running demo as follows:
-
 ```bash
 # prepare tensorflow environment
 ...
