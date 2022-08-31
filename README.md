@@ -59,14 +59,14 @@ Here is a command demo that illustrates how you can use DLOP-Bench to test basic
 # config bench PYTHONPATH
 cd DLOP-Bench
 export PYTHONPATH=./bench:$PYTHONPATH
-If you want to test sample performance using torch backend, you can see the demo as follows:
-```bash
+# If you want to test sample performance using torch backend, you can see the demo as follows:
 # prepare pytorch environment, python 3 & torch 1.10 or 1.12 best
 ...
-# run the operator abs using torch backend
-FRAMEWORK=torch python ./bench/api/api.py -c abs -st 1
-
-# get the usage information
+# run the operator abs using torch backend, more profiling results can refer to profiler_reulsts, reulsts, and time_reulsts
+FRAMEWORK=torch python ./bench/api/api.py -c abs -st 1 
+# run the operator abs and absBP using torch backend
+FRAMEWORK=torch python ./bench/api/api.py -c abs,absBP -st 1
+# get more usage information
 FRAMEWORK=torch python ./bench/api/api.py --help
 ```
 
@@ -80,13 +80,12 @@ This benchmark suite supports the execution of all long-tail operators in stage 
 Here is a command demo to test long-tail operators.
 
 ```bash
-# config bench PYTHONPATH
-cd DLOP-Bench
-export PYTHONPATH=./bench:$PYTHONPATH
 # run the operator bbox2delta using torch backend in eager mode
 FRAMEWORK=torch python ./bench/api/api.py -c bbox2delta -st 1
 # run the operator bbox2delta using torch backend in both eager mode and graph mode
 FRAMEWORK=torch python ./bench/api/api.py -c bbox2delta -st 1,2
+# run the operator bbox2delta and l2_loss using torch backend in both eager mode and graph mode
+FRAMEWORK=torch python ./bench/api/api.py -c bbox2delta,l2_loss -st 1,2
 ```
 These apis can also be used in backend torch, tensorflow, or xla, just set corresponding FRAMEWORK environment.
 While all the operators can be tested using torch backend, some operators may raise an AssertionError in other backends if their corresponding implementation codes have not been added yet.
@@ -100,9 +99,6 @@ XLA running demo as follows:
 ```bash
 # prepare tensorflow environment
 ...
-# config bench PYTHONPATH
-cd bench
-export PYTHONPATH=./bench:$PYTHONPATH
 # run the operator bbox2offset using tf backend in eager mode
 FRAMEWORK=tf TF_XLA_FLAGS=--tf_xla_auto_jit=2 XLA_FLAGS=--xla_gpu_cuda_data_dir=.../cuda-10.1 python ./bench/api/api.py -c bbox2offset -st 1
 # run the operator bbox2offset using tf backend in both eager mode and graph mode
