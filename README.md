@@ -62,7 +62,7 @@ export PYTHONPATH=./bench:$PYTHONPATH
 If you want to test sample performance using torch backend, you can see the demo as follows:
 ```bash
 # prepare pytorch environment, python 3 & torch 1.10 or 1.12 best
-conda activate torch # for example
+...
 # run the operator abs using torch backend
 FRAMEWORK=torch python ./bench/api/api.py -c abs -st 1
 
@@ -99,7 +99,7 @@ XLA running demo as follows:
 
 ```bash
 # prepare tensorflow environment
-conda activate tf # for example
+...
 # config bench PYTHONPATH
 cd bench
 export PYTHONPATH=./bench:$PYTHONPATH
