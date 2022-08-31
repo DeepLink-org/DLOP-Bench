@@ -374,9 +374,6 @@ class Engine(object):
             list: sample's time_cost and profile
         """
         
-        if FRAMEWORK==FrameType.TF:
-            print("I am here -------------------")
-            return
         item_num = len(sample_config.args_cases[0])
         samples_perf = {
             "item_"+str(i): []
@@ -395,12 +392,19 @@ class Engine(object):
                 np_args_generator=np_args_generator,
             )  # noqa
 
-            with executer.get_profiler() as profiler:
+            if FRAMEWORK==FrameType.Torch:
+                with executer.get_profiler() as profiler:
+                    start = time.time()
+                    self.run_per_iter(executer, func_args[0], sample_config)
+                    time_cost = time.time() - start
+                    profiler.step()
+                profile_data = profiler.key_averages().table(sort_by="self_cuda_time_total", row_limit=-1)
+            else:
                 start = time.time()
                 self.run_per_iter(executer, func_args[0], sample_config)
                 time_cost = time.time() - start
-                profiler.step()
-            profile_data = profiler.key_averages().table(sort_by="self_cuda_time_total", row_limit=-1)
+                profile_data = None
+               
             
             if profile_data != None:
                 for item_i in range(item_num):
