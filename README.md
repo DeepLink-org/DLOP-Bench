@@ -83,9 +83,9 @@ Here is a command demo to test long-tail operators.
 # config bench PYTHONPATH
 cd DLOP-Bench
 export PYTHONPATH=./bench:$PYTHONPATH
-# run the operator aeloss using torch backend in eager mode
+# run the operator bbox2delta using torch backend in eager mode
 FRAMEWORK=torch python ./bench/api/api.py -c bbox2delta -st 1
-# run the operator aeloss using torch backend in both eager mode and graph mode
+# run the operator bbox2delta using torch backend in both eager mode and graph mode
 FRAMEWORK=torch python ./bench/api/api.py -c bbox2delta -st 1,2
 ```
 These apis can also be used in backend torch, tensorflow, or xla, just set corresponding FRAMEWORK environment.
@@ -98,13 +98,15 @@ If you want to test sample performance using tensorflow, or XLA backend, you can
 XLA running demo as follows:
 
 ```bash
-# prepare xla environment
-...
+# prepare tensorflow environment
+conda activate tf # for example
 # config bench PYTHONPATH
 cd bench
 export PYTHONPATH=./bench:$PYTHONPATH
-# run xla samples
-FRAMEWORK=tf TF_XLA_FLAGS=--tf_xla_auto_jit=2 XLA_FLAGS=--xla_gpu_cuda_data_dir=.../cuda-10.1 python ./bench/api/api.py -st 1
+# run the operator bbox2offset using tf backend in eager mode
+FRAMEWORK=tf TF_XLA_FLAGS=--tf_xla_auto_jit=2 XLA_FLAGS=--xla_gpu_cuda_data_dir=.../cuda-10.1 python ./bench/api/api.py -c bbox2offset -st 1
+# run the operator bbox2offset using tf backend in both eager mode and graph mode
+FRAMEWORK=tf TF_XLA_FLAGS=--tf_xla_auto_jit=2 XLA_FLAGS=--xla_gpu_cuda_data_dir=.../cuda-10.1 python ./bench/api/api.py -c bbox2offset -st 1,2
 ```
 
 ## How to add a new operator
