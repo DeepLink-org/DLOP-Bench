@@ -271,9 +271,10 @@ class Engine(object):
                 numpy format sample inputs.
         """
         
-        if stage_mode == self._stage_modes.S1 and self._settings.framework_compare_mode == False:
+        if self._settings.framework_compare_mode == False:
             return
-        for idx in range(len(func_args)):
+
+        for idx in range(len(sample_config.args_cases)):
             func_args = self.make_data(
                 executer,
                 sample_config,
@@ -281,7 +282,7 @@ class Engine(object):
                 case_name=case_name,
                 np_args_generator=np_args_generator,
             )  # noqa
-            ret = self.run_per_iter(executer, func_args[0], sample_config)
+            ret = self.run_per_iter(executer, func_args[idx], sample_config)
             if stage_mode not in self._rets:
                 self._rets[stage_mode] = {}
             self._rets[stage_mode][idx] = ret
@@ -372,6 +373,10 @@ class Engine(object):
         Returns:
             list: sample's time_cost and profile
         """
+        
+        if FRAMEWORK==FrameType.TF:
+            print("I am here -------------------")
+            return
         item_num = len(sample_config.args_cases[0])
         samples_perf = {
             "item_"+str(i): []
@@ -389,9 +394,7 @@ class Engine(object):
                 case_name=case_name,
                 np_args_generator=np_args_generator,
             )  # noqa
-            
-            # 判断torch
-    
+
             with executer.get_profiler() as profiler:
                 start = time.time()
                 self.run_per_iter(executer, func_args[0], sample_config)

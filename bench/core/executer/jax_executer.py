@@ -59,7 +59,7 @@ class JAXExecuter(BaseCaseExecuter):
             stage_mode(JAXModes): JAX stage.
         """
         self._execute_func = (self._origin_func         \
-                if not stage_mode == JAXModes.S3 else   \
+                if not stage_mode == JAXModes.S2 else   \
                 jit(self._origin_func))
 
     def generate_args(self, case, requires_grad, np_args_generator):

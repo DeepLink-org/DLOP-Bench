@@ -7,27 +7,27 @@ class FrameType(Enum):
     """Framework backend type.
     """
     Torch = "torch"
-    XLA = "xla"
+    TF = "tf"
     JAX = "jax"
 
 class TorchModes(Enum):
     """Pytorch backend execution stages.
     """
     S1 = "ScriptS1"  # torch eager mode
-    S3 = "ScriptS3"  # torch script mode
+    S2 = "ScriptS2"  # torch script mode
 
 
 class TFModes(Enum):
     """Tensorflow backend execution stages.
     """
     S1 = "XLAS1"  # tensorflow eager mode
-    S3 = "XLAS3"  # tensorflow xla mode
+    S2 = "XLAS2"  # tensorflow xla mode
     
 class JAXModes(Enum):
     """JAX backend execution stages.
     """
     S1 = "JAXS1"  # tensorflow eager mode
-    S3 = "JAXS3"  # tensorflow xla mode
+    S2 = "JAXS2"  # tensorflow xla mode
 
 class SampleSource(Enum):
     """The framework where samples come from.

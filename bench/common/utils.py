@@ -74,7 +74,7 @@ def auto_import(sample_module_name):
     impl = FRAMEWORK if SAMPLE_IMPL is None else SAMPLE_IMPL
     if impl is FrameType.Torch:
         return import_impl(sample_module_name, "torch_impl")
-    elif impl is FrameType.XLA:
+    elif impl is FrameType.TF:
         return import_impl(sample_module_name, "xla_impl")
     elif impl is FrameType.JAX:
         return import_impl(sample_module_name, "jax_impl")

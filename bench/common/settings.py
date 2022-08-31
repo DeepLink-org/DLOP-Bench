@@ -40,7 +40,7 @@ class Settings(object):
     """
     _FRAME_TYPE_TO_FRAME_MODES = {
         FrameType.Torch: TorchModes,
-        FrameType.XLA: TFModes,
+        FrameType.TF: TFModes,
         FrameType.JAX: JAXModes,
     }
 

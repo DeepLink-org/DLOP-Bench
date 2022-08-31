@@ -14,7 +14,7 @@ from .case_executer import BaseCaseExecuter
 
 TORCH_MODES_TO_SCRIPT_ARGS = {
     TorchModes.S1: {},
-    TorchModes.S3: {"optimize": None},
+    TorchModes.S2: {"optimize": None},
 }
 
 

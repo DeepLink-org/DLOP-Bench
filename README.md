@@ -57,46 +57,36 @@ Here is a command demo that illustrates how you can use DLOP-Bench to test basic
 
 ```bash
 # config bench PYTHONPATH
-cd DLOP-bench
+cd DLOP-Bench
 export PYTHONPATH=./bench:$PYTHONPATH
 If you want to test sample performance using torch backend, you can see the demo as follows:
 ```bash
 # prepare pytorch environment, python 3 & torch 1.10 or 1.12 best
 conda activate torch # for example
 # run the operator abs using torch backend
-FRAMEWORK=torch python ./bench/api/api.py -c abs
+FRAMEWORK=torch python ./bench/api/api.py -c abs -st 1
 
 # get the usage information
-python ./bench/api/api.py --help
+FRAMEWORK=torch python ./bench/api/api.py --help
 ```
 
 ### Long-tail Operators
 
 From long-tail operators, this benchmark suite provides several stages to test their performance as below: 
 - **stage 1** : eager mode.
-- **stage 3** : graph mode with jit.
+- **stage 2** : graph mode with jit.
 
-This benchmark suite supports the execution of all long-tail operators in stage 1, while some operators fail to run in stage 3 because they are unsupported in the given deep learning compiler.
+This benchmark suite supports the execution of all long-tail operators in stage 1, while some operators fail to run in 2 because they are unsupported in the given deep learning compiler.
 Here is a command demo to test long-tail operators.
 
 ```bash
 # config bench PYTHONPATH
-cd bench
+cd DLOP-Bench
 export PYTHONPATH=./bench:$PYTHONPATH
 # run the operator aeloss using torch backend in eager mode
-FRAMEWORK=torch python ./bench/api/api.py -c aeloss -st 1
-
-
-# run one sample
-FRAMEWORK=torch python ./bench/api/api.py -c tblr2bbox
-# run several samples
-FRAMEWORK=torch python ./bench/api/api.py -c tblr2bbox,bbox2delta
-# run all samples
-FRAMEWORK=torch python ./bench/api/api.py
-# run several stages, 1: eager stage, 3: graph mode with jit 
-FRAMEWORK=torch python ./bench/api/api.py -st 1,3
-
-
+FRAMEWORK=torch python ./bench/api/api.py -c bbox2delta -st 1
+# run the operator aeloss using torch backend in both eager mode and graph mode
+FRAMEWORK=torch python ./bench/api/api.py -c bbox2delta -st 1,2
 ```
 These apis can also be used in backend torch, tensorflow, or xla, just set corresponding FRAMEWORK environment.
 While all the operators can be tested using torch backend, some operators may raise an AssertionError in other backends if their corresponding implementation codes have not been added yet.
@@ -114,7 +104,7 @@ XLA running demo as follows:
 cd bench
 export PYTHONPATH=./bench:$PYTHONPATH
 # run xla samples
-FRAMEWORK=xla TF_XLA_FLAGS=--tf_xla_auto_jit=2 XLA_FLAGS=--xla_gpu_cuda_data_dir=.../cuda-10.1 python ./bench/api/api.py -st 1
+FRAMEWORK=tf TF_XLA_FLAGS=--tf_xla_auto_jit=2 XLA_FLAGS=--xla_gpu_cuda_data_dir=.../cuda-10.1 python ./bench/api/api.py -st 1
 ```
 
 ## How to add a new operator

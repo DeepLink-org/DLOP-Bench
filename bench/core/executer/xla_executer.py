@@ -13,7 +13,7 @@ print(
 
 TFModes_TO_XLA_ARGS = {
     TFModes.S1: {},
-    TFModes.S3: {
+    TFModes.S2: {
         "experimental_compile": True
     },
 }

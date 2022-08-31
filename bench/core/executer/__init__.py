@@ -11,7 +11,7 @@ if FRAMEWORK is FrameType.Torch:
         set_runtime_exec_mode,
         get_runtime_exec_mode,
     )
-elif FRAMEWORK is FrameType.XLA:
+elif FRAMEWORK is FrameType.TF:
     from .xla_executer import (  # noqa
         XLAExecuter as Executer,
         log_debug_info,
